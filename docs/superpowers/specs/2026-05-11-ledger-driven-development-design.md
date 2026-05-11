@@ -28,6 +28,12 @@ The MVP should therefore stay intentionally narrow:
 
 Adjacent systems such as QRSPI can inform prompt discipline, review habits, and phase naming, but they are not the architectural base for the MVP. LDD optimizes for organizational reviewability; QRSPI optimizes for agent orchestration and session continuity.
 
+### Installable Skill Packaging
+
+This repository is the source for installable LDD skills. The canonical source layout is `skills/<skill-name>/SKILL.md` with bundled resources under that skill's `assets/`, `references/`, or `scripts/` directories.
+
+Adapter-specific command files, such as Claude slash-command prompts, are generated or copied from bundled skill assets. They are not the source of truth for the workflow. The MVP may ship adapter assets to make installation useful, but the design must keep the installable skill folder as the canonical artifact.
+
 ## 2. MVP Scope
 
 The MVP supports one direct GitHub issue at a time:

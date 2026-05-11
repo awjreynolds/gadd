@@ -1,9 +1,11 @@
 ---
 name: ldd-core
-description: Shared Ledger-Driven Development MVP rules for /ldd commands. Use whenever executing an /ldd:* command.
+description: Shared Ledger-Driven Development MVP rules and installable resources. Use when working on LDD commands, GitHub-ledger workflow state, PRD/SDD/plan handoffs, or installing/adapting the LDD skill into an agent environment.
 ---
 
 # Ledger-Driven Development Core Rules
+
+This folder is the installable skill source. Adapter-specific command prompts and templates live under `assets/` so an installer can copy them into a target agent environment without making `.claude/` the canonical repo layout.
 
 GitHub is the ledger. LDD reads workflow state from GitHub Issues and Pull Requests, not from local progress logs, labels, generated audit files, or agent-session state.
 
@@ -47,6 +49,11 @@ SE-hat commands (`/ldd:design`, `/ldd:plan`) may use the existing codebase. `/ld
 - SDD: `docs/tickets/{issue}/sdd.md`
 - Plan: `docs/tickets/{issue}/plan.md`
 - Plan HTML: `docs/tickets/{issue}/plan.html`
+
+## Bundled Resources
+
+- Claude command adapter prompts: `assets/claude-commands/ldd/`
+- Setup templates copied into target repos: `assets/templates/`
 
 ## Branches
 

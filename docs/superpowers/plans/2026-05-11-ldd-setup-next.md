@@ -12,30 +12,32 @@
 
 ## File Structure
 
-- Create `.claude/commands/ldd/setup.md`
+- Create `skills/ldd-core/assets/claude-commands/ldd/setup.md`
   - Slash-command prompt for bootstrapping a target repository.
   - Owns `.ldd/config.yml`, `docs/tickets/`, and local template creation in the target repo.
-- Create `.claude/commands/ldd/next.md`
+- Create `skills/ldd-core/assets/claude-commands/ldd/next.md`
   - Slash-command prompt for read-only workflow diagnosis for a single GitHub issue.
   - Reads GitHub-native state with `gh`; never writes files or mutates GitHub.
-- Create `.claude/skills/ldd-core/SKILL.md`
+- Create `skills/ldd-core/SKILL.md`
   - Shared LDD principles used by both commands.
   - Contains the command contract, human-control rules, artifact paths, branch naming, and PR title/body conventions.
-- Create `.claude/skills/ldd-core/templates/config.yml`
+- Create `skills/ldd-core/agents/openai.yaml`
+  - UI metadata for the installable skill.
+- Create `skills/ldd-core/assets/templates/config.yml`
   - Default `.ldd/config.yml` template written by `/ldd:setup`.
-- Create `.claude/skills/ldd-core/templates/prd.md`
+- Create `skills/ldd-core/assets/templates/prd.md`
   - Default PRD artifact template.
-- Create `.claude/skills/ldd-core/templates/sdd.md`
+- Create `skills/ldd-core/assets/templates/sdd.md`
   - Default SDD artifact template.
-- Create `.claude/skills/ldd-core/templates/plan.md`
+- Create `skills/ldd-core/assets/templates/plan.md`
   - Default implementation plan artifact template.
-- Create `.claude/skills/ldd-core/templates/plan.html`
+- Create `skills/ldd-core/assets/templates/plan.html`
   - Minimal generated-plan HTML template for the setup slice.
-- Create `.claude/skills/ldd-core/templates/pr-body-prd.md`
+- Create `skills/ldd-core/assets/templates/pr-body-prd.md`
   - PRD PR body template.
-- Create `.claude/skills/ldd-core/templates/pr-body-sdd-plan.md`
+- Create `skills/ldd-core/assets/templates/pr-body-sdd-plan.md`
   - SDD/Plan PR body template.
-- Create `.claude/skills/ldd-core/templates/pr-body-implementation.md`
+- Create `skills/ldd-core/assets/templates/pr-body-implementation.md`
   - Implementation PR body template.
 - Create `scripts/validate-ldd-mvp.sh`
   - Repo-local smoke test that validates the command and template files exist and contain required contract language.
@@ -54,17 +56,18 @@ Create `scripts/validate-ldd-mvp.sh` with:
 set -eu
 
 required_files='
-.claude/commands/ldd/setup.md
-.claude/commands/ldd/next.md
-.claude/skills/ldd-core/SKILL.md
-.claude/skills/ldd-core/templates/config.yml
-.claude/skills/ldd-core/templates/prd.md
-.claude/skills/ldd-core/templates/sdd.md
-.claude/skills/ldd-core/templates/plan.md
-.claude/skills/ldd-core/templates/plan.html
-.claude/skills/ldd-core/templates/pr-body-prd.md
-.claude/skills/ldd-core/templates/pr-body-sdd-plan.md
-.claude/skills/ldd-core/templates/pr-body-implementation.md
+skills/ldd-core/assets/claude-commands/ldd/setup.md
+skills/ldd-core/assets/claude-commands/ldd/next.md
+skills/ldd-core/SKILL.md
+skills/ldd-core/agents/openai.yaml
+skills/ldd-core/assets/templates/config.yml
+skills/ldd-core/assets/templates/prd.md
+skills/ldd-core/assets/templates/sdd.md
+skills/ldd-core/assets/templates/plan.md
+skills/ldd-core/assets/templates/plan.html
+skills/ldd-core/assets/templates/pr-body-prd.md
+skills/ldd-core/assets/templates/pr-body-sdd-plan.md
+skills/ldd-core/assets/templates/pr-body-implementation.md
 '
 
 for file in $required_files; do
@@ -74,23 +77,24 @@ for file in $required_files; do
   fi
 done
 
-grep -q 'GitHub is the ledger' .claude/skills/ldd-core/SKILL.md
-grep -q 'GitHub mutations require human confirmation' .claude/skills/ldd-core/SKILL.md
-grep -q 'must not read the codebase as a design input' .claude/skills/ldd-core/SKILL.md
+grep -q 'GitHub is the ledger' skills/ldd-core/SKILL.md
+grep -q 'GitHub mutations require human confirmation' skills/ldd-core/SKILL.md
+grep -q 'must not read the codebase as a design input' skills/ldd-core/SKILL.md
+grep -q 'display_name: "LDD Core"' skills/ldd-core/agents/openai.yaml
 
-grep -q 'verify the repo has a GitHub remote' .claude/commands/ldd/setup.md
-grep -q 'create `.ldd/config.yml`' .claude/commands/ldd/setup.md
-grep -q 'It should not create labels or GitHub Actions' .claude/commands/ldd/setup.md
+grep -q 'verify the repo has a GitHub remote' skills/ldd-core/assets/claude-commands/ldd/setup.md
+grep -q 'create `.ldd/config.yml`' skills/ldd-core/assets/claude-commands/ldd/setup.md
+grep -q 'It should not create labels or GitHub Actions' skills/ldd-core/assets/claude-commands/ldd/setup.md
 
-grep -q 'Read-only diagnostic command' .claude/commands/ldd/next.md
-grep -q 'It never mutates GitHub' .claude/commands/ldd/next.md
-grep -q 'If issue is closed' .claude/commands/ldd/next.md
+grep -q 'Read-only diagnostic command' skills/ldd-core/assets/claude-commands/ldd/next.md
+grep -q 'It never mutates GitHub' skills/ldd-core/assets/claude-commands/ldd/next.md
+grep -q 'If issue is closed' skills/ldd-core/assets/claude-commands/ldd/next.md
 
-grep -q 'docs/tickets' .claude/skills/ldd-core/templates/config.yml
-grep -q '# PRD:' .claude/skills/ldd-core/templates/prd.md
-grep -q '# Software Design Document:' .claude/skills/ldd-core/templates/sdd.md
-grep -q '# Implementation Plan:' .claude/skills/ldd-core/templates/plan.md
-grep -q 'Does this implementation follow the approved plan?' .claude/skills/ldd-core/templates/pr-body-implementation.md
+grep -q 'docs/tickets' skills/ldd-core/assets/templates/config.yml
+grep -q '# PRD:' skills/ldd-core/assets/templates/prd.md
+grep -q '# Software Design Document:' skills/ldd-core/assets/templates/sdd.md
+grep -q '# Implementation Plan:' skills/ldd-core/assets/templates/plan.md
+grep -q 'Does this implementation follow the approved plan?' skills/ldd-core/assets/templates/pr-body-implementation.md
 
 echo "LDD MVP command surface validated"
 ```
@@ -114,7 +118,7 @@ Run:
 Expected: fail with:
 
 ```text
-missing required file: .claude/commands/ldd/setup.md
+missing required file: skills/ldd-core/assets/claude-commands/ldd/setup.md
 ```
 
 - [ ] **Step 4: Commit**
@@ -127,11 +131,11 @@ git commit -m "test: add LDD MVP command validation"
 ## Task 2: Add shared LDD core rules
 
 **Files:**
-- Create: `.claude/skills/ldd-core/SKILL.md`
+- Create: `skills/ldd-core/SKILL.md`
 
 - [ ] **Step 1: Create the skill file**
 
-Create `.claude/skills/ldd-core/SKILL.md` with:
+Create `skills/ldd-core/SKILL.md` with:
 
 ```markdown
 ---
@@ -218,31 +222,31 @@ Run:
 Expected: fail with:
 
 ```text
-missing required file: .claude/commands/ldd/setup.md
+missing required file: skills/ldd-core/assets/claude-commands/ldd/setup.md
 ```
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/skills/ldd-core/SKILL.md
+git add skills/ldd-core/SKILL.md
 git commit -m "feat: add shared LDD core rules"
 ```
 
 ## Task 3: Add setup templates
 
 **Files:**
-- Create: `.claude/skills/ldd-core/templates/config.yml`
-- Create: `.claude/skills/ldd-core/templates/prd.md`
-- Create: `.claude/skills/ldd-core/templates/sdd.md`
-- Create: `.claude/skills/ldd-core/templates/plan.md`
-- Create: `.claude/skills/ldd-core/templates/plan.html`
-- Create: `.claude/skills/ldd-core/templates/pr-body-prd.md`
-- Create: `.claude/skills/ldd-core/templates/pr-body-sdd-plan.md`
-- Create: `.claude/skills/ldd-core/templates/pr-body-implementation.md`
+- Create: `skills/ldd-core/assets/templates/config.yml`
+- Create: `skills/ldd-core/assets/templates/prd.md`
+- Create: `skills/ldd-core/assets/templates/sdd.md`
+- Create: `skills/ldd-core/assets/templates/plan.md`
+- Create: `skills/ldd-core/assets/templates/plan.html`
+- Create: `skills/ldd-core/assets/templates/pr-body-prd.md`
+- Create: `skills/ldd-core/assets/templates/pr-body-sdd-plan.md`
+- Create: `skills/ldd-core/assets/templates/pr-body-implementation.md`
 
 - [ ] **Step 1: Add `config.yml` template**
 
-Create `.claude/skills/ldd-core/templates/config.yml` with:
+Create `skills/ldd-core/assets/templates/config.yml` with:
 
 ```yaml
 github:
@@ -273,7 +277,7 @@ adr:
 
 - [ ] **Step 2: Add artifact templates**
 
-Create `.claude/skills/ldd-core/templates/prd.md` with:
+Create `skills/ldd-core/assets/templates/prd.md` with:
 
 ```markdown
 ---
@@ -304,7 +308,7 @@ updated: {date}
 ## Open Questions
 ```
 
-Create `.claude/skills/ldd-core/templates/sdd.md` with:
+Create `skills/ldd-core/assets/templates/sdd.md` with:
 
 ```markdown
 ---
@@ -344,7 +348,7 @@ adrs: []
 ## Open Design Questions
 ```
 
-Create `.claude/skills/ldd-core/templates/plan.md` with:
+Create `skills/ldd-core/assets/templates/plan.md` with:
 
 ```markdown
 ---
@@ -378,7 +382,7 @@ adrs: []
 ## Review Checklist
 ```
 
-Create `.claude/skills/ldd-core/templates/plan.html` with:
+Create `skills/ldd-core/assets/templates/plan.html` with:
 
 ```html
 <!doctype html>
@@ -399,7 +403,7 @@ Create `.claude/skills/ldd-core/templates/plan.html` with:
 
 - [ ] **Step 3: Add PR body templates**
 
-Create `.claude/skills/ldd-core/templates/pr-body-prd.md` with:
+Create `skills/ldd-core/assets/templates/pr-body-prd.md` with:
 
 ```markdown
 ## Issue
@@ -419,7 +423,7 @@ References #{issue}
 Is this ready for engineering design?
 ```
 
-Create `.claude/skills/ldd-core/templates/pr-body-sdd-plan.md` with:
+Create `skills/ldd-core/assets/templates/pr-body-sdd-plan.md` with:
 
 ```markdown
 ## Issue
@@ -442,7 +446,7 @@ References #{issue}
 Does this design and plan correctly implement the PRD?
 ```
 
-Create `.claude/skills/ldd-core/templates/pr-body-implementation.md` with:
+Create `skills/ldd-core/assets/templates/pr-body-implementation.md` with:
 
 ```markdown
 ## Issue
@@ -480,24 +484,24 @@ Run:
 Expected: fail with:
 
 ```text
-missing required file: .claude/commands/ldd/setup.md
+missing required file: skills/ldd-core/assets/claude-commands/ldd/setup.md
 ```
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add .claude/skills/ldd-core/templates
+git add skills/ldd-core/assets/templates
 git commit -m "feat: add LDD setup templates"
 ```
 
 ## Task 4: Add `/ldd:setup`
 
 **Files:**
-- Create: `.claude/commands/ldd/setup.md`
+- Create: `skills/ldd-core/assets/claude-commands/ldd/setup.md`
 
 - [ ] **Step 1: Create setup command**
 
-Create `.claude/commands/ldd/setup.md` with:
+Create `skills/ldd-core/assets/claude-commands/ldd/setup.md` with:
 
 ```markdown
 ---
@@ -531,7 +535,7 @@ It should not create labels or GitHub Actions in the MVP.
 3. Run `gh repo view --json nameWithOwner,defaultBranchRef` and use the result for `.ldd/config.yml`.
 4. Create `docs/tickets/` if missing.
 5. Create `.ldd/templates/` if missing.
-6. Write `.ldd/config.yml` from `.claude/skills/ldd-core/templates/config.yml`.
+6. Write `.ldd/config.yml` from `skills/ldd-core/assets/templates/config.yml`.
 7. Copy the artifact and PR body templates into `.ldd/templates/`.
 8. Summarize changed files.
 9. Create a local commit only after showing the diff summary to the human and receiving approval.
@@ -561,24 +565,24 @@ Run:
 Expected: fail with:
 
 ```text
-missing required file: .claude/commands/ldd/next.md
+missing required file: skills/ldd-core/assets/claude-commands/ldd/next.md
 ```
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/commands/ldd/setup.md
+git add skills/ldd-core/assets/claude-commands/ldd/setup.md
 git commit -m "feat: add ldd setup command"
 ```
 
 ## Task 5: Add `/ldd:next`
 
 **Files:**
-- Create: `.claude/commands/ldd/next.md`
+- Create: `skills/ldd-core/assets/claude-commands/ldd/next.md`
 
 - [ ] **Step 1: Create next command**
 
-Create `.claude/commands/ldd/next.md` with:
+Create `skills/ldd-core/assets/claude-commands/ldd/next.md` with:
 
 ````markdown
 ---
@@ -678,7 +682,7 @@ LDD MVP command surface validated
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .claude/commands/ldd/next.md
+git add skills/ldd-core/assets/claude-commands/ldd/next.md
 git commit -m "feat: add ldd next command"
 ```
 
@@ -686,9 +690,9 @@ git commit -m "feat: add ldd next command"
 
 **Files:**
 - Read: `docs/superpowers/specs/2026-05-11-ledger-driven-development-design.md`
-- Read: `.claude/commands/ldd/setup.md`
-- Read: `.claude/commands/ldd/next.md`
-- Read: `.claude/skills/ldd-core/SKILL.md`
+- Read: `skills/ldd-core/assets/claude-commands/ldd/setup.md`
+- Read: `skills/ldd-core/assets/claude-commands/ldd/next.md`
+- Read: `skills/ldd-core/SKILL.md`
 - Run: `scripts/validate-ldd-mvp.sh`
 
 - [ ] **Step 1: Run validation**
@@ -712,8 +716,8 @@ Run:
 ```bash
 grep -n "Command Contract Matrix" docs/superpowers/specs/2026-05-11-ledger-driven-development-design.md
 grep -n "Requirements / Code Influence Boundary" docs/superpowers/specs/2026-05-11-ledger-driven-development-design.md
-grep -n "It never mutates GitHub" .claude/commands/ldd/next.md
-grep -n "It should not create labels or GitHub Actions" .claude/commands/ldd/setup.md
+grep -n "It never mutates GitHub" skills/ldd-core/assets/claude-commands/ldd/next.md
+grep -n "It should not create labels or GitHub Actions" skills/ldd-core/assets/claude-commands/ldd/setup.md
 ```
 
 Expected: each command prints one matching line.
@@ -732,5 +736,7 @@ git commit -m "docs: add LDD setup next implementation plan"
 - `/ldd:setup` has explicit inputs, writes, stop conditions, and no GitHub mutation.
 - `/ldd:next` is read-only and follows the MVP decision tree.
 - The shared skill preserves the GitHub ledger model and PM/code influence boundary.
+- The canonical source is an installable `skills/ldd-core` folder, not an adapter-specific `.claude` folder.
+- Skill UI metadata exists at `skills/ldd-core/agents/openai.yaml`.
 - Templates cover config, PRD, SDD, plan, plan HTML, and all three PR body types.
 - Validation catches missing command/template files and missing critical contract language.
