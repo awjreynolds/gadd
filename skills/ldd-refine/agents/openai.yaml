@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Refine"
+  short_description: "Prepare PRD for handoff"
+  default_prompt: "Use $ldd-refine to run /ldd:refine for issue #1."
+
+policy:
+  allow_implicit_invocation: true

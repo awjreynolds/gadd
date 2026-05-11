@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Design"
+  short_description: "Write SDD and ADR checks"
+  default_prompt: "Use $ldd-design to run /ldd:design for issue #1."
+
+policy:
+  allow_implicit_invocation: true

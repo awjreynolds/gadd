@@ -1,7 +1,0 @@
-interface:
-  display_name: "LDD Core"
-  short_description: "GitHub-ledger workflow handoff rules"
-  default_prompt: "Use $ldd-core to inspect or run the LDD GitHub-ledger workflow for an issue."
-
-policy:
-  allow_implicit_invocation: true

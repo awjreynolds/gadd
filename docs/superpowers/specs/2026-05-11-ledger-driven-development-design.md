@@ -32,6 +32,21 @@ Adjacent systems such as QRSPI can inform prompt discipline, review habits, and 
 
 This repository is the source for installable LDD skills. The canonical source layout is `skills/<skill-name>/SKILL.md` with bundled resources under that skill's `assets/`, `references/`, or `scripts/` directories.
 
+The MVP ships command-shaped skills rather than a user-facing shared core skill:
+
+```text
+skills/ldd-setup
+skills/ldd-next
+skills/ldd-scope
+skills/ldd-elaborate
+skills/ldd-refine
+skills/ldd-design
+skills/ldd-plan
+skills/ldd-implement
+```
+
+Each command skill carries the small shared LDD invariant contract directly: GitHub is the ledger, GitHub mutations require human confirmation, and LDD must not create duplicate local workflow state. This keeps installation and invocation aligned with user intent; there is no separate `ldd-core` skill a user must understand before they can run `/ldd:*`.
+
 Adapter-specific command files, such as Claude slash-command prompts, are generated or copied from bundled skill assets. They are not the source of truth for the workflow. The MVP may ship adapter assets to make installation useful, but the design must keep the installable skill folder as the canonical artifact.
 
 ## 2. MVP Scope

@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Plan"
+  short_description: "Write reviewed implementation plan"
+  default_prompt: "Use $ldd-plan to run /ldd:plan for issue #1."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Scope"
+  short_description: "Write PRD scope boundaries"
+  default_prompt: "Use $ldd-scope to run /ldd:scope for issue #1."
+
+policy:
+  allow_implicit_invocation: true

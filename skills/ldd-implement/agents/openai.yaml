@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Implement"
+  short_description: "Execute an approved LDD plan"
+  default_prompt: "Use $ldd-implement to run /ldd:implement for issue #1."
+
+policy:
+  allow_implicit_invocation: true

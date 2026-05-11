@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Next"
+  short_description: "Find the next LDD command"
+  default_prompt: "Use $ldd-next to run /ldd:next for issue #1."
+
+policy:
+  allow_implicit_invocation: true

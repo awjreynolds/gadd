@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Elaborate"
+  short_description: "Fill product detail in PRD"
+  default_prompt: "Use $ldd-elaborate to run /ldd:elaborate for issue #1."
+
+policy:
+  allow_implicit_invocation: true

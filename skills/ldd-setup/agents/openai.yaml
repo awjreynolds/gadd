@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Setup"
+  short_description: "Bootstrap LDD in a GitHub repo"
+  default_prompt: "Use $ldd-setup to run /ldd:setup for this repository."
+
+policy:
+  allow_implicit_invocation: true
