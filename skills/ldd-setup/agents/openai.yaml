@@ -1,6 +1,6 @@
 interface:
   display_name: "LDD Setup"
-  short_description: "Bootstrap LDD in a GitHub repo"
+  short_description: "Bootstrap LDD local ledger"
   default_prompt: "Use $ldd-setup to run /ldd:setup for this repository."
 
 policy:

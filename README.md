@@ -2,7 +2,7 @@
 
 Agent-agnostic skills for the Ledger-Driven Development MVP.
 
-LDD uses GitHub Issues and Pull Requests as the workflow ledger. It separates product scope, engineering design, implementation planning, and implementation so AI-assisted work has explicit, reviewable handoffs.
+LDD uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, or Jira are optional sync and review surfaces. LDD separates product scope, engineering design, implementation planning, decomposition, and implementation so AI-assisted work has explicit, reviewable handoffs.
 
 ## Package Model
 
@@ -34,6 +34,7 @@ There is no `ldd-core` skill to install. Shared LDD rules are intentionally embe
 /ldd:refine
 /ldd:design
 /ldd:plan
+/ldd:decompose
 /ldd:implement
 ```
 
@@ -48,7 +49,7 @@ Use $skill-installer to install all LDD skills from
 https://github.com/awjreynolds/ledger-driven-development:
 skills/ldd-setup, skills/ldd-next, skills/ldd-scope,
 skills/ldd-elaborate, skills/ldd-refine, skills/ldd-design,
-skills/ldd-plan, and skills/ldd-implement.
+skills/ldd-plan, skills/ldd-decompose, and skills/ldd-implement.
 ```
 
 Restart Codex after installing.
@@ -72,19 +73,20 @@ Install this repository as a Gemini CLI extension:
 gemini extensions install https://github.com/awjreynolds/ledger-driven-development
 ```
 
-Restart Gemini CLI after installing. The extension provides `commands/ldd/*.toml`, which map to `/ldd:setup`, `/ldd:next`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:design`, `/ldd:plan`, and `/ldd:implement`.
+Restart Gemini CLI after installing. The extension provides `commands/ldd/*.toml`, which map to `/ldd:setup`, `/ldd:next`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:design`, `/ldd:plan`, `/ldd:decompose`, and `/ldd:implement`.
 
 ## MVP Workflow
 
 ```text
-GitHub issue
-  -> PRD PR
-  -> SDD/Plan PR
-  -> Implementation PR
-  -> issue closed
+draft PRD ledger
+  -> promoted Product Requirement ticket
+  -> SDD/Plan
+  -> child vertical-slice tickets
+  -> implementation
+  -> completed children archived
 ```
 
-GitHub is the ledger. LDD reads native issue and PR state rather than creating phase labels, local progress logs, audit files, or workflow Actions.
+The repo-local `ledger.yml` is canonical. External trackers are synchronized only when configured and approved by the human.
 
 ## Handoff Artifacts
 
@@ -92,6 +94,7 @@ GitHub is the ledger. LDD reads native issue and PR state rather than creating p
 
 ```text
 .ldd/config.yml
+.ldd/templates/ledger.yml
 .ldd/templates/prd.md
 .ldd/templates/sdd.md
 .ldd/templates/plan.md
@@ -99,7 +102,8 @@ GitHub is the ledger. LDD reads native issue and PR state rather than creating p
 .ldd/templates/pr-body-prd.md
 .ldd/templates/pr-body-sdd-plan.md
 .ldd/templates/pr-body-implementation.md
-docs/tickets/
+docs/tickets/_drafts/
+docs/tickets/_archive/
 ```
 
 The templates are quality contracts, not blank forms:
@@ -107,6 +111,7 @@ The templates are quality contracts, not blank forms:
 - PRDs keep product scope separate from technical design.
 - SDDs translate approved PRDs into designs grounded in code and ADRs.
 - Plans trace acceptance criteria to implementation slices and verification.
+- Decomposition turns approved plan slices into child vertical-slice tickets.
 - PR bodies focus reviewers on the correct handoff question.
 
 ## Validate This Repo

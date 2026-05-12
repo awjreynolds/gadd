@@ -1,4 +1,4 @@
-description = "Report the next LDD command for one GitHub issue."
+description = "Report the next LDD command for one ticket ledger."
 prompt = """
 Run `/ldd:next` using the `ldd-next` Agent Skill.
 

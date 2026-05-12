@@ -6,8 +6,8 @@ Canonical command instructions live in `skills/ldd-*/SKILL.md`. When a user invo
 
 LDD invariants:
 
-- GitHub is the ledger. Use GitHub Issues and Pull Requests as workflow state.
-- GitHub mutations require explicit human confirmation.
+- Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
+- GitHub, Linear, Jira, or other external mutations require explicit human confirmation.
 - Do not create duplicate workflow state with progress logs, audit ledgers, phase labels, or workflow Actions.
 - Preserve PM, SE, planning, and implementation handoff boundaries.
 - Use `.ldd/config.yml` in the target repository when present.
@@ -21,4 +21,5 @@ Command mapping:
 - `/ldd:refine` -> `skills/ldd-refine/SKILL.md`
 - `/ldd:design` -> `skills/ldd-design/SKILL.md`
 - `/ldd:plan` -> `skills/ldd-plan/SKILL.md`
+- `/ldd:decompose` -> `skills/ldd-decompose/SKILL.md`
 - `/ldd:implement` -> `skills/ldd-implement/SKILL.md`

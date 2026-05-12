@@ -1,5 +1,7 @@
 # LDD Command-Shaped Skills Implementation Plan
 
+> Superseded for workflow semantics by `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`. This plan remains historical implementation context for the first command-shaped skill package.
+
 > Supersedes the earlier `ldd-core` packaging plan. The MVP now exposes installable skills that match the user-facing `/ldd:*` command surface.
 
 **Goal:** Build the first installable LDD MVP skill set: one skill per command, with the shared LDD contract duplicated in each command skill instead of hidden in a separate core skill.

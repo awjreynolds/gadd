@@ -1,7 +1,7 @@
 # Ledger-Driven Development — MVP Design
 
 **Date:** 2026-05-11
-**Status:** Draft MVP scope
+**Status:** Superseded by `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`
 **Author:** awjreynolds (with AI-assisted design review)
 
 ## 1. Thesis

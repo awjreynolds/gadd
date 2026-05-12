@@ -9,7 +9,7 @@
     {
       "name": "ldd",
       "source": "./",
-      "description": "Ledger-Driven Development workflow skills for GitHub Issues and Pull Requests.",
+      "description": "Ledger-Driven Development workflow skills for repo-local ledgers and optional external trackers.",
       "version": "0.1.0",
       "author": {
         "name": "awjreynolds"

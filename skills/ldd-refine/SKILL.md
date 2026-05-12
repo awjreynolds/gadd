@@ -1,11 +1,11 @@
 ---
 name: ldd-refine
-description: Run /ldd:refine for a GitHub issue. Use when the user says /ldd:refine or wants to sharpen an LDD PRD for engineering handoff and PRD PR review.
+description: Run /ldd:refine for an LDD ticket. Use when the user says /ldd:refine or wants to sharpen an LDD PRD for engineering handoff and review.
 ---
 
 # /ldd:refine
 
-Polish `docs/tickets/<issue>/prd.md` on `ldd/prd/<issue>` for the PM-to-SE handoff.
+Polish `prd.md` in the active draft or promoted ticket directory for the PM-to-SE handoff.
 
 ## Owns
 
@@ -17,13 +17,13 @@ Polish `docs/tickets/<issue>/prd.md` on `ldd/prd/<issue>` for the PM-to-SE hando
 
 ## Rules
 
-- GitHub is the ledger. Do not create LDD labels, GitHub Actions, progress logs, or audit event files.
-- GitHub mutations require human confirmation.
+- Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
+- External mutations require human confirmation.
 - PM-hat command: do not read the codebase as a design input.
 - Use the PRD template's quality bar and handoff checklist before proposing a PRD PR.
 - Do not expand scope or add technical design.
 - Commit locally after refinement.
-- After human approval, push/open/update the PRD PR with `references #<issue>`.
+- After human approval, promote the draft to a stable ticket ID and sync to the configured external tracker when present.
 - PRD PR reviewer prompt: "Is this ready for engineering design?"
 
 ## Stop Conditions

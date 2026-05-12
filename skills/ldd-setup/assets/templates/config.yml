@@ -1,14 +1,22 @@
-github:
-  repo: "{repo}"
-  default_branch: "{default_branch}"
+ledger:
+  mode: local
+  draft_directory: docs/tickets/_drafts
+  archive_directory: docs/tickets/_archive
+  local_id_prefix: LDD
+
+tracker:
+  provider: local
+  repo: null
+  project: null
+  default_branch: null
 
 artifacts:
   root: docs/tickets
 
 branches:
-  prd: ldd/prd/{issue}
-  sdd_plan: ldd/sdd-plan/{issue}
-  implementation: ldd/impl/{issue}
+  prd: ldd/prd/{ticket}
+  sdd_plan: ldd/sdd-plan/{ticket}
+  implementation: ldd/impl/{ticket}
 
 prs:
   prd_title: "PRD: {title}"

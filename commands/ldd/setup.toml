@@ -1,4 +1,4 @@
-description = "Bootstrap LDD in the current GitHub repository."
+description = "Bootstrap LDD in the current repository."
 prompt = """
 Run `/ldd:setup` using the `ldd-setup` Agent Skill.
 

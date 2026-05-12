@@ -1,11 +1,11 @@
 ---
 name: ldd-design
-description: Run /ldd:design for a GitHub issue. Use when the user says /ldd:design or wants an SDD and ADR check from a merged LDD PRD.
+description: Run /ldd:design for an LDD ticket. Use when the user says /ldd:design or wants an SDD and ADR check from an approved LDD PRD.
 ---
 
 # /ldd:design
 
-Create or update `docs/tickets/<issue>/sdd.md` on `ldd/sdd-plan/<issue>`.
+Create or update `sdd.md` in the promoted ticket directory.
 
 ## Reads
 
@@ -20,8 +20,8 @@ Create or update `docs/tickets/<issue>/sdd.md` on `ldd/sdd-plan/<issue>`.
 
 ## Rules
 
-- GitHub is the ledger. Do not create LDD labels, GitHub Actions, progress logs, or audit event files.
-- GitHub mutations require human confirmation.
+- Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
+- External mutations require human confirmation.
 - SE-hat command: existing code and ADRs may shape implementation design.
 - Use the SDD template's quality bar before committing design output.
 - The PRD still owns product scope. If code reality contradicts the PRD, stop and return to the earliest affected PM step.
@@ -31,6 +31,6 @@ Create or update `docs/tickets/<issue>/sdd.md` on `ldd/sdd-plan/<issue>`.
 
 ## Stop Conditions
 
-- PRD PR not merged
+- PRD not approved
 - code reality contradicts PRD
 - ADR-worthy decision cannot be resolved

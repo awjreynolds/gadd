@@ -1,0 +1,146 @@
+# Local Ledger MVP Design
+
+**Date:** 2026-05-12
+**Status:** MVP scope
+
+## Thesis
+
+Ledger-Driven Development uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, and Jira are optional sync and review surfaces, not the source of truth for LDD state.
+
+The MVP keeps this deliberately narrow: one Product Requirement moves through the full SDLC flow, then decomposes into child vertical-slice tickets for implementation. Sync engines, deep child lifecycle management, and swarm orchestration are out of scope.
+
+## Canonical Terms
+
+See `CONTEXT.md` for the glossary. The key terms are:
+
+- **Ledger**: repo-local machine-readable state for one ticket.
+- **Product Requirement**: the parent product-scope unit.
+- **Draft Ticket Directory**: temporary workspace before a ticket ID is assigned.
+- **Ticket Promotion**: assignment of a stable local or external ticket ID.
+- **Decomposition**: conscious post-plan step that turns an approved plan into vertical slices.
+- **Workflow Navigation**: read-only identification of the next LDD command.
+
+## Directory Model
+
+Every Product Requirement starts as a draft:
+
+```text
+docs/tickets/_drafts/YYYY-MM-DD-short-slug/
+  ledger.yml
+  prd.md
+```
+
+Promotion assigns a stable ticket ID and moves the directory:
+
+```text
+docs/tickets/LDD-0001/
+  ledger.yml
+  prd.md
+  sdd.md
+  plan.md
+  plan.html
+  children/
+```
+
+If an external tracker is configured, promotion may create or bind to an external ID such as `PROJ-123` and use that as the promoted directory name.
+
+Completed child work items move to:
+
+```text
+docs/tickets/_archive/<child-id>/
+```
+
+Normal workflow navigation ignores `_archive/`.
+
+## Ledger MVP Schema
+
+`ledger.yml` is intentionally small:
+
+```yaml
+schema_version: 1
+
+ticket:
+  id: null
+  draft_id: 2026-05-12-short-slug
+  title: Short title
+  kind: product_requirement
+  status: draft
+
+tracker:
+  mode: local
+  external_id: null
+  external_url: null
+
+artifacts:
+  prd:
+    path: docs/tickets/_drafts/2026-05-12-short-slug/prd.md
+    status: draft
+  sdd:
+    path: null
+    status: missing
+  plan:
+    path: null
+    status: missing
+  implementation:
+    status: not_started
+
+children: []
+
+sync:
+  status: local_only
+  last_checked_at: null
+
+events:
+  - at: 2026-05-12T10:00:00Z
+    type: draft_created
+    actor: human
+```
+
+Events are important workflow transitions only. They are not progress logs or session traces.
+
+## Command Flow
+
+```text
+/ldd:setup
+  -> installs config, templates, draft/archive directories
+
+/ldd:scope
+/ldd:elaborate
+/ldd:refine
+  -> build the PRD in a draft directory
+  -> refine promotes the draft to a stable ticket ID when approved
+
+/ldd:design
+  -> writes SDD for the promoted Product Requirement
+
+/ldd:plan
+  -> writes reviewed implementation plan and plan.html
+
+/ldd:decompose
+  -> turns approved plan slices into child vertical-slice tickets
+
+/ldd:implement
+  -> implements one ready child ticket
+```
+
+`/ldd:next` is read-only. It inspects active ledgers, identifies the next command, explains why, and stops.
+
+`/ldd:implement` never auto-decomposes. If no ready child tickets exist, it reports that there are no tickets to implement. If the plan is approved but no child tickets exist, it reports that `/ldd:decompose` is required.
+
+## External Trackers
+
+External trackers are configured through `.ldd/config.yml`. The MVP supports the model, not full sync engines:
+
+- `local`: use `LDD-0001` style local IDs.
+- `github`, `linear`, `jira`: promotion may bind to an externally assigned ID.
+
+External mutations require human confirmation. If local ledger state and external tracker state diverge, commands report drift and stop rather than silently reconciling.
+
+## Out of Scope
+
+- full GitHub/Linear/Jira sync engines
+- automatic external tracker reconciliation
+- swarm orchestration
+- deep child ticket lifecycle beyond planned/ready/in progress/done/archive
+- global ledger files
+- progress.md-style session tracking

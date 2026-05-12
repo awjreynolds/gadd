@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "ldd",
   "version": "0.1.0",
-  "description": "Ledger-Driven Development workflow skills for GitHub Issues and Pull Requests.",
+  "description": "Ledger-Driven Development workflow skills for repo-local ledgers and optional external trackers.",
   "author": {
     "name": "awjreynolds"
   },
@@ -25,6 +25,7 @@
     "./commands/ldd/refine.md",
     "./commands/ldd/design.md",
     "./commands/ldd/plan.md",
+    "./commands/ldd/decompose.md",
     "./commands/ldd/implement.md"
   ]
 }

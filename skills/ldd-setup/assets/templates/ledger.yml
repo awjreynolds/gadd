@@ -1,0 +1,37 @@
+schema_version: 1
+
+ticket:
+  id: null
+  draft_id: "{draft_id}"
+  title: "{title}"
+  kind: product_requirement
+  status: draft
+
+tracker:
+  mode: local
+  external_id: null
+  external_url: null
+
+artifacts:
+  prd:
+    path: "{ticket_dir}/prd.md"
+    status: draft
+  sdd:
+    path: null
+    status: missing
+  plan:
+    path: null
+    status: missing
+  implementation:
+    status: not_started
+
+children: []
+
+sync:
+  status: local_only
+  last_checked_at: null
+
+events:
+  - at: "{created_at}"
+    type: draft_created
+    actor: human

@@ -1,10 +1,10 @@
 ## Issue
 
-References #{issue}
+References {ticket}
 
 ## PRD
 
-`docs/tickets/{issue}/prd.md`
+`docs/tickets/{ticket}/prd.md`
 
 ## Goals / Non-goals Summary
 

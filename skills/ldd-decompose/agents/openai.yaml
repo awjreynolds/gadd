@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Decompose"
+  short_description: "Create child vertical slices"
+  default_prompt: "Use $ldd-decompose to run /ldd:decompose for this ticket."
+
+policy:
+  allow_implicit_invocation: true

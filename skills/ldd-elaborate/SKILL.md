@@ -1,11 +1,11 @@
 ---
 name: ldd-elaborate
-description: Run /ldd:elaborate for a GitHub issue. Use when the user says /ldd:elaborate or wants to fill product detail inside existing LDD PRD scope.
+description: Run /ldd:elaborate for an LDD ticket. Use when the user says /ldd:elaborate or wants to fill product detail inside existing LDD PRD scope.
 ---
 
 # /ldd:elaborate
 
-Update `docs/tickets/<issue>/prd.md` on `ldd/prd/<issue>` with product detail inside existing scope.
+Update `prd.md` in the active draft or promoted ticket directory with product detail inside existing scope.
 
 ## Owns
 
@@ -18,8 +18,8 @@ Update `docs/tickets/<issue>/prd.md` on `ldd/prd/<issue>` with product detail in
 
 ## Rules
 
-- GitHub is the ledger. Do not create LDD labels, GitHub Actions, progress logs, or audit event files.
-- GitHub mutations require human confirmation.
+- Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
+- External mutations require human confirmation.
 - PM-hat command: do not read the codebase as a design input.
 - Use the PRD template as a quality contract. Preserve the scoped goals/non-goals and fill only product-detail sections.
 - Do not expand scope. If elaboration exposes a scope problem, stop and recommend `/ldd:scope`.

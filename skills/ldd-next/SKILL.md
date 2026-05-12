@@ -1,59 +1,58 @@
 ---
 name: ldd-next
-description: Run /ldd:next for one GitHub issue. Use when the user says /ldd:next, asks for the next LDD command, or wants to diagnose LDD workflow state from GitHub Issues and Pull Requests.
+description: Run /ldd:next for an LDD ticket. Use when the user says /ldd:next, asks for the next LDD command, or wants to diagnose workflow state from repo-local ledgers.
 ---
 
 # /ldd:next
 
-Read GitHub-native workflow state for one issue and report the next explicit LDD command.
+Read repo-local ledger state and report the next explicit LDD command.
 
 ## Input
 
-`/ldd:next <issue-number>`
+`/ldd:next [ticket-id]`
 
 ## Reads
 
-- GitHub issue state
-- linked PRs
-- PR branch names
-- PR titles and bodies
-- PR review / merge state
-- expected local branches
-- expected local artifacts
+- active `docs/tickets/**/ledger.yml`
+- draft directories under `docs/tickets/_drafts/`
+- parent ticket artifacts
+- child vertical-slice ticket state
+- external tracker sync state when configured
 
 ## Rules
 
 - Read-only. It never mutates GitHub or local files.
-- GitHub is the ledger. Local artifacts guide unfinished local work, but they do not override GitHub state.
-- GitHub mutations require human confirmation, and this command does not request mutations.
-- Use `.ldd/config.yml` when present; otherwise infer repo from the GitHub remote.
+- Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
+- External mutations require human confirmation, and this command does not request mutations.
+- Ignore `docs/tickets/_archive/` unless the user explicitly asks to inspect archived tickets.
+- Use `.ldd/config.yml` when present.
 
 ## Decision Tree
 
 ```text
-If issue is closed:
+If no ledger exists:
+  next: /ldd:setup
+Else if draft PRD exists:
+  inspect PRD completeness and recommend /ldd:scope, /ldd:elaborate, or /ldd:refine
+Else if parent ticket is done:
   done
-Else if Implementation PR exists:
-  inspect Implementation PR state
-Else if SDD/Plan PR is merged:
-  next: /ldd:implement
-Else if SDD/Plan PR exists:
-  inspect SDD/Plan PR state
-Else if PRD PR is merged:
+Else if ready child vertical slices exist:
+  next: /ldd:implement <child-ticket-id>
+Else if plan is approved and no child tickets exist:
+  next: /ldd:decompose
+Else if plan exists but is not approved:
+  inspect plan state
+Else if SDD is approved:
+  next: /ldd:plan
+Else if PRD is approved:
   next: /ldd:design
-Else if PRD PR exists:
-  inspect PRD PR state
-Else if ldd/prd/<issue> branch exists:
-  inspect prd.md completeness and recommend /ldd:scope, /ldd:elaborate, or /ldd:refine
 Else:
   next: /ldd:scope
 ```
 
 ## Stop Conditions
 
-- issue number missing or invalid
-- issue not found
-- GitHub state cannot be read
-- more than one PR matches a workflow phase
-- a PR references the issue but uses the wrong branch for its phase
-- local artifacts imply a later state than GitHub
+- requested ticket ID not found
+- ledger cannot be parsed
+- multiple active drafts and no ticket ID was supplied
+- external tracker drift is detected

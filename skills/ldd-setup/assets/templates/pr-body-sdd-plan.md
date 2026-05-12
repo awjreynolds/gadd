@@ -1,13 +1,13 @@
 ## Issue
 
-References #{issue}
+References {ticket}
 
 ## Review Package
 
-- PRD: `docs/tickets/{issue}/prd.md`
-- SDD: `docs/tickets/{issue}/sdd.md`
-- Plan: `docs/tickets/{issue}/plan.md`
-- Plan HTML: `docs/tickets/{issue}/plan.html`
+- PRD: `docs/tickets/{ticket}/prd.md`
+- SDD: `docs/tickets/{ticket}/sdd.md`
+- Plan: `docs/tickets/{ticket}/plan.md`
+- Plan HTML: `docs/tickets/{ticket}/plan.html`
 
 ## ADRs
 

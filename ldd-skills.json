@@ -3,26 +3,26 @@
   "name": "ledger-driven-development",
   "displayName": "Ledger-Driven Development",
   "version": "0.1.0",
-  "description": "Agent-agnostic skills for GitHub-ledger product, design, planning, and implementation handoffs.",
+  "description": "Agent-agnostic skills for repo-local ledger product, design, planning, decomposition, and implementation handoffs.",
   "license": "MIT",
   "repository": "https://github.com/awjreynolds/ledger-driven-development",
   "canonicalSkillRoot": "skills",
   "ledger": {
-    "type": "github",
-    "stateSource": "issues-and-pull-requests"
+    "type": "repo-local",
+    "stateSource": "docs/tickets/**/ledger.yml"
   },
   "commands": [
     {
       "command": "/ldd:setup",
       "skill": "ldd-setup",
       "path": "skills/ldd-setup",
-      "purpose": "Bootstrap LDD files in a target GitHub repository."
+      "purpose": "Bootstrap LDD files and local ledger support in a target repository."
     },
     {
       "command": "/ldd:next",
       "skill": "ldd-next",
       "path": "skills/ldd-next",
-      "purpose": "Read GitHub state for one issue and report the next LDD command."
+      "purpose": "Read repo-local ledger state and report the next LDD command."
     },
     {
       "command": "/ldd:scope",
@@ -55,10 +55,16 @@
       "purpose": "Write the implementation plan and generated HTML review copy."
     },
     {
+      "command": "/ldd:decompose",
+      "skill": "ldd-decompose",
+      "path": "skills/ldd-decompose",
+      "purpose": "Create child vertical-slice tickets from an approved plan."
+    },
+    {
       "command": "/ldd:implement",
       "skill": "ldd-implement",
       "path": "skills/ldd-implement",
-      "purpose": "Execute the approved plan with code and tests."
+      "purpose": "Implement one ready child vertical-slice ticket with code and tests."
     }
   ],
   "adapters": {

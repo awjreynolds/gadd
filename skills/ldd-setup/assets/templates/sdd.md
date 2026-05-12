@@ -1,6 +1,6 @@
 ---
-issue: {issue}
-prd: docs/tickets/{issue}/prd.md
+ticket: {ticket}
+prd: docs/tickets/{ticket}/prd.md
 created: {date}
 updated: {date}
 adrs: []
@@ -12,7 +12,7 @@ adrs: []
 
 Write the engineering context after the PRD is merged. Use the merged PRD, current code, and relevant ADRs as inputs.
 
-- PRD: `docs/tickets/{issue}/prd.md`
+- PRD: `docs/tickets/{ticket}/prd.md`
 - Existing entry points:
 - Relevant ADRs:
 - Terms from the codebase/domain glossary:

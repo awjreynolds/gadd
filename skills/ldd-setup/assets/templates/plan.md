@@ -1,10 +1,10 @@
 ---
-issue: {issue}
-prd: docs/tickets/{issue}/prd.md
-sdd: docs/tickets/{issue}/sdd.md
+ticket: {ticket}
+prd: docs/tickets/{ticket}/prd.md
+sdd: docs/tickets/{ticket}/sdd.md
 created: {date}
 updated: {date}
-plan_html: docs/tickets/{issue}/plan.html
+plan_html: docs/tickets/{ticket}/plan.html
 adrs: []
 ---
 
@@ -16,14 +16,14 @@ This plan translates the approved PRD and SDD into executable slices. It must no
 
 ### PRD Summary
 
-- Source: `docs/tickets/{issue}/prd.md`
+- Source: `docs/tickets/{ticket}/prd.md`
 - Goals covered:
 - Non-goals to protect:
 - Acceptance criteria:
 
 ### SDD Summary
 
-- Source: `docs/tickets/{issue}/sdd.md`
+- Source: `docs/tickets/{ticket}/sdd.md`
 - Design decisions to implement:
 - Interfaces/contracts to preserve:
 - Migration/compatibility requirements:

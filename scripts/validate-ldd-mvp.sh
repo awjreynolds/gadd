@@ -1,16 +1,19 @@
 #!/usr/bin/env sh
 set -eu
 
-commands='setup next scope elaborate refine design plan implement'
+commands='setup next scope elaborate refine design plan decompose implement'
 
 required_files='
 ldd-skills.json
 README.md
+CONTEXT.md
+docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 .claude-plugin/plugin.json
 .claude-plugin/marketplace.json
 gemini-extension.json
 GEMINI.md
 skills/ldd-setup/assets/templates/config.yml
+skills/ldd-setup/assets/templates/ledger.yml
 skills/ldd-setup/assets/templates/prd.md
 skills/ldd-setup/assets/templates/sdd.md
 skills/ldd-setup/assets/templates/plan.md
@@ -41,13 +44,18 @@ done
 
 grep -q '"canonicalSkillRoot": "skills"' ldd-skills.json
 grep -q '"command": "/ldd:setup"' ldd-skills.json
+grep -q '"command": "/ldd:decompose"' ldd-skills.json
 grep -q '"command": "/ldd:implement"' ldd-skills.json
 grep -q '"pluginManifest": ".claude-plugin/plugin.json"' ldd-skills.json
 grep -q '"extensionManifest": "gemini-extension.json"' ldd-skills.json
+grep -q 'A repo-local, machine-readable record' CONTEXT.md
+grep -q 'Ticket Promotion' CONTEXT.md
+grep -q 'Vertical Slice' CONTEXT.md
 
 grep -q '"name": "ldd"' .claude-plugin/plugin.json
 grep -q '"commands":' .claude-plugin/plugin.json
 grep -q './commands/ldd/setup.md' .claude-plugin/plugin.json
+grep -q './commands/ldd/decompose.md' .claude-plugin/plugin.json
 grep -q './commands/ldd/implement.md' .claude-plugin/plugin.json
 grep -q '"name": "ledger-driven-development"' .claude-plugin/marketplace.json
 grep -q '"name": "ldd"' .claude-plugin/marketplace.json
@@ -55,12 +63,12 @@ grep -q '"source": "./"' .claude-plugin/marketplace.json
 
 grep -q '"name": "ledger-driven-development"' gemini-extension.json
 grep -q '"contextFileName": "GEMINI.md"' gemini-extension.json
-grep -q 'GitHub is the ledger' GEMINI.md
+grep -q 'Repo-local ledger is canonical' GEMINI.md
 
 for command in $commands; do
   grep -q "/ldd:$command" "skills/ldd-$command/SKILL.md"
-  grep -q 'GitHub is the ledger' "skills/ldd-$command/SKILL.md"
-  grep -q 'GitHub mutations require human confirmation' "skills/ldd-$command/SKILL.md"
+  grep -q 'Repo-local ledger is canonical' "skills/ldd-$command/SKILL.md"
+  grep -q 'External mutations require human confirmation' "skills/ldd-$command/SKILL.md"
   grep -q 'display_name: "LDD ' "skills/ldd-$command/agents/openai.yaml"
   grep -q "ldd-$command" "commands/ldd/$command.md"
   grep -q 'canonical' "commands/ldd/$command.md"
@@ -72,19 +80,22 @@ for command in $commands; do
   grep -q 'canonical' "commands/ldd/$command.toml"
 done
 
-grep -q 'Verify the repo has a GitHub remote' skills/ldd-setup/SKILL.md
 grep -q '`.ldd/config.yml`' skills/ldd-setup/SKILL.md
-grep -q 'Do not create LDD labels, GitHub Actions' skills/ldd-setup/SKILL.md
+grep -q 'docs/tickets/_drafts/' skills/ldd-setup/SKILL.md
+grep -q 'docs/tickets/_archive/' skills/ldd-setup/SKILL.md
 
 grep -q 'Read-only' skills/ldd-next/SKILL.md
-grep -q 'It never mutates GitHub' skills/ldd-next/SKILL.md
-grep -q 'If issue is closed' skills/ldd-next/SKILL.md
+grep -q 'It never mutates GitHub or local files' skills/ldd-next/SKILL.md
+grep -q 'next: /ldd:decompose' skills/ldd-next/SKILL.md
 
 grep -q 'do not read the codebase as a design input' skills/ldd-scope/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-elaborate/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-refine/SKILL.md
 
-grep -q 'docs/tickets' skills/ldd-setup/assets/templates/config.yml
+grep -q 'draft_directory: docs/tickets/_drafts' skills/ldd-setup/assets/templates/config.yml
+grep -q 'archive_directory: docs/tickets/_archive' skills/ldd-setup/assets/templates/config.yml
+grep -q 'schema_version: 1' skills/ldd-setup/assets/templates/ledger.yml
+grep -q 'children: \[\]' skills/ldd-setup/assets/templates/ledger.yml
 grep -q '# PRD:' skills/ldd-setup/assets/templates/prd.md
 grep -q 'PM-hat artifact' skills/ldd-setup/assets/templates/prd.md
 grep -q 'PRD Handoff Checklist' skills/ldd-setup/assets/templates/prd.md
@@ -99,6 +110,8 @@ grep -q '# Implementation Plan:' skills/ldd-setup/assets/templates/plan.md
 grep -q 'Acceptance Criteria Traceability' skills/ldd-setup/assets/templates/plan.md
 grep -q 'Slice quality bar:' skills/ldd-setup/assets/templates/plan.md
 grep -q 'must not introduce new architecture decisions' skills/ldd-setup/assets/templates/plan.md
+grep -q 'Decompose only from an approved plan' skills/ldd-decompose/SKILL.md
+grep -q 'vertical slices' skills/ldd-decompose/SKILL.md
 grep -q 'PM Boundary' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Handoff Checklist' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Traceability Checks' skills/ldd-setup/assets/templates/pr-body-sdd-plan.md
@@ -110,5 +123,6 @@ grep -q 'artifact quality guidance' skills/ldd-setup/SKILL.md
 grep -q 'PRD template as a quality contract' skills/ldd-scope/SKILL.md
 grep -q "SDD template's quality bar" skills/ldd-design/SKILL.md
 grep -q "plan template's traceability" skills/ldd-plan/SKILL.md
+grep -q 'repo-local ledger as canonical workflow state' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 
 echo "LDD MVP installable skills validated"

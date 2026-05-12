@@ -1,0 +1,9 @@
+description = "Create child vertical-slice tickets from an approved LDD plan."
+prompt = """
+Run `/ldd:decompose` using the `ldd-decompose` Agent Skill.
+
+If the `ldd-decompose` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

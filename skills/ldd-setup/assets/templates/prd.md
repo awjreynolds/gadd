@@ -1,5 +1,5 @@
 ---
-issue: {issue}
+ticket: {ticket}
 title: "{title}"
 created: {date}
 updated: {date}
