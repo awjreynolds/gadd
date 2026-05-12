@@ -146,6 +146,16 @@ External mutations require human confirmation. If local ledger state and externa
 
 The MVP supports the state model for external IDs, but does not promise a full sync engine. A GitHub, Linear, or Jira integration can be tested as a thin promotion/binding path without making that tracker canonical.
 
+External tracker tickets are rich projections, not thin placeholders. A TPM, PM, Director, or implementation agent must be able to read the external ticket without opening the repository and understand the product requirement or child work item.
+
+Parent Product Requirement tickets use `.ldd/templates/issue-body-prd.md` and include the PRD problem, goals, non-goals, users, user stories, acceptance criteria, success metrics, dependencies, open questions, and LDD links.
+
+Child work item tickets use `.ldd/templates/issue-body-child.md` and intentionally stay close to the Pocock `to-issues` shape: Parent, What to build, Acceptance criteria, Blocked by, User stories covered, and minimal LDD traceability.
+
+`/ldd:decompose` must preview the complete proposed child ticket set before creation. The preview includes title, AFK/HITL type, blockers, user stories covered, and summary. External child tickets are created only after human approval.
+
+External tickets can evolve through comments or body edits. LDD records sync metadata such as last checked time, external update time, managed body version, and body hash. If an external body changed since the last sync, commands report drift and stop for human reconciliation.
+
 ## Out of Scope
 
 - full GitHub/Linear/Jira sync engines

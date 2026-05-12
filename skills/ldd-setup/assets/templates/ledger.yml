@@ -30,6 +30,9 @@ children: []
 sync:
   status: local_only
   last_checked_at: null
+  external_updated_at: null
+  external_body_hash: null
+  managed_body_version: 1
 
 events:
   - at: "{created_at}"

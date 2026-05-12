@@ -24,6 +24,8 @@ Bootstrap the current target repository for the LDD MVP workflow.
 - `.ldd/templates/sdd.md`
 - `.ldd/templates/plan.md`
 - `.ldd/templates/plan.html`
+- `.ldd/templates/issue-body-prd.md`
+- `.ldd/templates/issue-body-child.md`
 - `.ldd/templates/pr-body-prd.md`
 - `.ldd/templates/pr-body-sdd-plan.md`
 - `.ldd/templates/pr-body-implementation.md`

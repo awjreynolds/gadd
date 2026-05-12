@@ -127,6 +127,8 @@ The repo-local `ledger.yml` is canonical. External trackers are synchronized onl
 .ldd/templates/sdd.md
 .ldd/templates/plan.md
 .ldd/templates/plan.html
+.ldd/templates/issue-body-prd.md
+.ldd/templates/issue-body-child.md
 .ldd/templates/pr-body-prd.md
 .ldd/templates/pr-body-sdd-plan.md
 .ldd/templates/pr-body-implementation.md
@@ -140,6 +142,8 @@ The templates are quality contracts, not blank forms:
 - SDDs translate approved PRDs into designs grounded in code and ADRs.
 - Plans trace acceptance criteria to implementation slices and verification.
 - Decomposition turns approved plan slices into child vertical-slice tickets.
+- External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
+- Child tickets follow a Pocock-style independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
 - PR bodies focus reviewers on the correct handoff question.
 
 ## Validate This Repo

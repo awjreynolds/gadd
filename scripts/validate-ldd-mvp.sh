@@ -18,6 +18,8 @@ skills/ldd-setup/assets/templates/prd.md
 skills/ldd-setup/assets/templates/sdd.md
 skills/ldd-setup/assets/templates/plan.md
 skills/ldd-setup/assets/templates/plan.html
+skills/ldd-setup/assets/templates/issue-body-prd.md
+skills/ldd-setup/assets/templates/issue-body-child.md
 skills/ldd-setup/assets/templates/pr-body-prd.md
 skills/ldd-setup/assets/templates/pr-body-sdd-plan.md
 skills/ldd-setup/assets/templates/pr-body-implementation.md
@@ -105,6 +107,8 @@ grep -q 'draft_directory: docs/tickets/_drafts' skills/ldd-setup/assets/template
 grep -q 'archive_directory: docs/tickets/_archive' skills/ldd-setup/assets/templates/config.yml
 grep -q 'schema_version: 1' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'children: \[\]' skills/ldd-setup/assets/templates/ledger.yml
+grep -q 'external_body_hash:' skills/ldd-setup/assets/templates/ledger.yml
+grep -q 'managed_body_version:' skills/ldd-setup/assets/templates/ledger.yml
 grep -q '# PRD:' skills/ldd-setup/assets/templates/prd.md
 grep -q 'PM-hat artifact' skills/ldd-setup/assets/templates/prd.md
 grep -q 'PRD Handoff Checklist' skills/ldd-setup/assets/templates/prd.md
@@ -119,8 +123,18 @@ grep -q '# Implementation Plan:' skills/ldd-setup/assets/templates/plan.md
 grep -q 'Acceptance Criteria Traceability' skills/ldd-setup/assets/templates/plan.md
 grep -q 'Slice quality bar:' skills/ldd-setup/assets/templates/plan.md
 grep -q 'must not introduce new architecture decisions' skills/ldd-setup/assets/templates/plan.md
+grep -q '## Problem Statement' skills/ldd-setup/assets/templates/issue-body-prd.md
+grep -q '## LDD Links' skills/ldd-setup/assets/templates/issue-body-prd.md
+grep -q '## What to build' skills/ldd-setup/assets/templates/issue-body-child.md
+grep -q '## Acceptance criteria' skills/ldd-setup/assets/templates/issue-body-child.md
+grep -q '## Blocked by' skills/ldd-setup/assets/templates/issue-body-child.md
+grep -q '## User stories covered' skills/ldd-setup/assets/templates/issue-body-child.md
 grep -q 'Decompose only from an approved plan' skills/ldd-decompose/SKILL.md
 grep -q 'vertical slices' skills/ldd-decompose/SKILL.md
+grep -q 'Preview Before Creation' skills/ldd-decompose/SKILL.md
+grep -q 'independently grabbable' skills/ldd-decompose/SKILL.md
+grep -q 'Pocock `to-issues` shape' skills/ldd-decompose/SKILL.md
+grep -q 'external contribution' skills/ldd-decompose/SKILL.md
 grep -q 'PM Boundary' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Handoff Checklist' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Traceability Checks' skills/ldd-setup/assets/templates/pr-body-sdd-plan.md

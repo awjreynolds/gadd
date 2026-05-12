@@ -17,7 +17,7 @@ Read repo-local ledger state and report the next explicit LDD command.
 - draft directories under `docs/tickets/_drafts/`
 - parent ticket artifacts
 - child vertical-slice ticket state
-- external tracker sync state when configured
+- external tracker sync state and body drift when configured
 
 ## Rules
 
@@ -56,3 +56,4 @@ Else:
 - ledger cannot be parsed
 - multiple active drafts and no ticket ID was supplied
 - external tracker drift is detected
+- external ticket body changed since the last recorded sync hash or timestamp
