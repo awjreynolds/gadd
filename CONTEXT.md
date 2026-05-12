@@ -68,6 +68,10 @@ _Avoid_: orchestration, dispatch, execution
 The repo-root `agent-skills.json` file that lists the installable LDD skills and adapter manifests.
 _Avoid_: LDD-specific manifest, command registry, package lock
 
+**Standalone Skill Contract**:
+The rule that every installed LDD command must include its own workflow instructions and must not require other installed skills to run correctly.
+_Avoid_: external skill dependency, hidden prerequisite
+
 **Installed Skill Copy**:
 A copy of an LDD skill installed into an agent-specific local skills directory.
 _Avoid_: live link, source of truth
@@ -113,6 +117,7 @@ _Avoid_: active ticket tree, deletion
 - Completed **Child Work Items** move from the **Active Ticket Tree** to the **Ticket Archive**.
 - **Workflow Navigation** ignores the **Ticket Archive** by default.
 - The **Agent Skills Manifest** is the package source of truth for installable LDD skills.
+- The **Standalone Skill Contract** applies to every `/ldd:*` command.
 - An **Installed Skill Copy** can become stale and must be updated from the **Agent Skills Manifest**.
 - An **External Ticket Projection** must be useful to a PM, TPM, Director, or implementation agent without requiring them to open repository files.
 - **External Drift** stops automatic sync until a human decides whether to import, preserve, or overwrite the external contribution.
@@ -128,3 +133,4 @@ _Avoid_: active ticket tree, deletion
 - "ticket", "epic", "story", and "subtask" were used interchangeably. Resolved: **Product Requirement** is the parent review unit; **Child Work Item** is the implementation/decomposition unit that rolls up to it.
 - "`ldd-core`" previously meant a shared installed skill. Resolved: there is no installed core skill; shared rules live in each command-shaped skill and package discovery lives in the **Agent Skills Manifest**.
 - "External ticket" previously meant a thin identifier binding. Resolved: external tickets are rich projections that may receive external contributions and therefore require drift detection.
+- "TDD" is an implementation discipline embedded in `/ldd:implement`, not a dependency on another installed skill.

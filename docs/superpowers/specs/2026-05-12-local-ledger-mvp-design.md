@@ -17,6 +17,8 @@ Installed skills are copies in an agent-specific local directory. They are not l
 
 There is no installed `ldd-core` skill in the MVP. Shared LDD rules live inside each command-shaped skill so `/ldd:*` commands remain self-contained across Codex, Claude, Gemini, and other agents.
 
+LDD must not depend on other installed skills. Commands may be inspired by known workflows, but the command-shaped LDD skill must include the required instructions itself. In particular, `/ldd:implement` embeds its own red/green/refactor loop.
+
 ## Canonical Terms
 
 See `CONTEXT.md` for the glossary. The key terms are:
@@ -150,9 +152,9 @@ External tracker tickets are rich projections, not thin placeholders. A TPM, PM,
 
 Parent Product Requirement tickets use `.ldd/templates/issue-body-prd.md` and include the PRD problem, goals, non-goals, users, user stories, acceptance criteria, success metrics, dependencies, open questions, and LDD links.
 
-Child work item tickets use `.ldd/templates/issue-body-child.md` and intentionally stay close to the Pocock `to-issues` shape: Parent, What to build, Acceptance criteria, Blocked by, User stories covered, and minimal LDD traceability.
+Child work item tickets use `.ldd/templates/issue-body-child.md` and intentionally stay lightweight: Parent, What to build, Acceptance criteria, Blocked by, User stories covered, and minimal LDD traceability.
 
-`/ldd:decompose` must preview the complete proposed child ticket set before creation. The preview includes title, AFK/HITL type, blockers, user stories covered, and summary. External child tickets are created only after human approval.
+`/ldd:decompose` must preview the complete proposed child ticket set before creation. The preview includes title, Autonomous/Human-review type, blockers, user stories covered, and summary. External child tickets are created only after human approval.
 
 External tickets can evolve through comments or body edits. LDD records sync metadata such as last checked time, external update time, managed body version, and body hash. If an external body changed since the last sync, commands report drift and stop for human reconciliation.
 

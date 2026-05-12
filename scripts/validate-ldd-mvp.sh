@@ -62,6 +62,7 @@ grep -q 'A repo-local, machine-readable record' CONTEXT.md
 grep -q 'Ticket Promotion' CONTEXT.md
 grep -q 'Vertical Slice' CONTEXT.md
 grep -q 'Agent Skills Manifest' CONTEXT.md
+grep -q 'Standalone Skill Contract' CONTEXT.md
 
 grep -q '"name": "ldd"' .claude-plugin/plugin.json
 grep -q '"commands":' .claude-plugin/plugin.json
@@ -133,8 +134,12 @@ grep -q 'Decompose only from an approved plan' skills/ldd-decompose/SKILL.md
 grep -q 'vertical slices' skills/ldd-decompose/SKILL.md
 grep -q 'Preview Before Creation' skills/ldd-decompose/SKILL.md
 grep -q 'independently grabbable' skills/ldd-decompose/SKILL.md
-grep -q 'Pocock `to-issues` shape' skills/ldd-decompose/SKILL.md
+grep -q "LDD's standalone child issue shape" skills/ldd-decompose/SKILL.md
 grep -q 'external contribution' skills/ldd-decompose/SKILL.md
+grep -q 'Built-in TDD Loop' skills/ldd-implement/SKILL.md
+grep -q 'Run this loop directly from this skill' skills/ldd-implement/SKILL.md
+grep -q 'Write the smallest focused test' skills/ldd-implement/SKILL.md
+grep -q 'Run the focused test and confirm it fails' skills/ldd-implement/SKILL.md
 grep -q 'PM Boundary' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Handoff Checklist' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Traceability Checks' skills/ldd-setup/assets/templates/pr-body-sdd-plan.md
@@ -147,5 +152,10 @@ grep -q 'PRD template as a quality contract' skills/ldd-scope/SKILL.md
 grep -q "SDD template's quality bar" skills/ldd-design/SKILL.md
 grep -q "plan template's traceability" skills/ldd-plan/SKILL.md
 grep -q 'repo-local ledger as canonical workflow state' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
+
+if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external TDD skill required|requires? an external .*skill' skills commands README.md CONTEXT.md docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md GEMINI.md agent-skills.json; then
+  echo "LDD command package must not depend on external skills" >&2
+  exit 1
+fi
 
 echo "LDD MVP installable skills validated"

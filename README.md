@@ -28,6 +28,8 @@ Adapter manifests make the same skills installable in specific agents:
 
 There is no `ldd-core` skill to install. Shared LDD rules are intentionally embedded in each command-shaped skill so every agent sees the same command contract.
 
+LDD skills are standalone. They must not require other installed skills such as external TDD, issue-generation, planning, triage, or debugging skills. A host agent may provide helpful tools, but every `/ldd:*` command must carry its own workflow contract.
+
 The current workflow design is `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`. Older GitHub-ledger specs remain as historical context only.
 
 ## Commands
@@ -143,7 +145,7 @@ The templates are quality contracts, not blank forms:
 - Plans trace acceptance criteria to implementation slices and verification.
 - Decomposition turns approved plan slices into child vertical-slice tickets.
 - External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
-- Child tickets follow a Pocock-style independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
+- Child tickets follow LDD's standalone independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
 - PR bodies focus reviewers on the correct handoff question.
 
 ## Validate This Repo
