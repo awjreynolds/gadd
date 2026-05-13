@@ -135,6 +135,8 @@ The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD an
 
 New Product Requirements can be scoped while other promoted tickets are still in progress. `/ldd:scope` creates or updates the local draft ticket directory; incomplete promoted tickets do not block new draft PRDs. Local mode keeps one active draft, so starting another draft first requires continuing, renaming, promoting, or discarding the existing draft.
 
+PM commands use a bounded shared-understanding gate before a PRD can move forward. That gate keeps the useful part of grill-style questioning: the agent must prove it understands the user's intended boundary, blocker, and handoff criteria. It is bounded so the conversation does not absorb every related idea into the current PRD; new scope routes back to `/ldd:scope`, a later phase, or a separate PRD.
+
 ## Handoff Artifacts
 
 `/ldd:setup` installs templates into a target repository:

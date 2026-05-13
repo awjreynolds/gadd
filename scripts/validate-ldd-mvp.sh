@@ -65,10 +65,12 @@ grep -q -- '-> verification' README.md
 grep -q 'human-approved closure/archive' README.md
 grep -q 'GitHub is the first external-tracker dogfooding path' README.md
 grep -q 'Linear and Jira remain follow-on optional collaboration surfaces' README.md
+grep -q 'bounded shared-understanding gate' README.md
 grep -q 'Package Source Of Truth' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 grep -q '/ldd:verify' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 grep -q 'A repo-local, machine-readable record' CONTEXT.md
 grep -q 'Execution Context' CONTEXT.md
+grep -q 'Bounded Shared Understanding Gate' CONTEXT.md
 grep -q 'Verification' CONTEXT.md
 grep -q 'Closure' CONTEXT.md
 grep -q 'Ticket Promotion' CONTEXT.md
@@ -136,11 +138,14 @@ grep -q 'exactly one approval gate is active' skills/ldd-approve/SKILL.md
 grep -q 'GitHub is the first external tracker dogfooding path' skills/ldd-approve/SKILL.md
 
 grep -q 'do not read the codebase as a design input' skills/ldd-scope/SKILL.md
+grep -q 'This is a bounded shared understanding gate' skills/ldd-scope/SKILL.md
 grep -q 'Existing promoted Product Requirement tickets do not block new scoping work' skills/ldd-scope/SKILL.md
 grep -q 'Keep at most one active local draft' skills/ldd-scope/SKILL.md
 grep -q 'create a new draft' skills/ldd-scope/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-elaborate/SKILL.md
+grep -q 'This is a bounded shared understanding gate' skills/ldd-elaborate/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-refine/SKILL.md
+grep -q 'This is a bounded shared understanding gate' skills/ldd-refine/SKILL.md
 
 grep -q 'draft_directory: docs/tickets/_drafts' skills/ldd-setup/assets/templates/config.yml
 grep -q 'archive_directory: docs/tickets/_archive' skills/ldd-setup/assets/templates/config.yml

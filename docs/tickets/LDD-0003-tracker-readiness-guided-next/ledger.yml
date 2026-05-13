@@ -53,7 +53,7 @@ children:
   - id: LDD-0003-004
     title: Preserve shared-understanding guardrails
     type: autonomous
-    status: ready
+    status: verification_required
     path: docs/tickets/LDD-0003-tracker-readiness-guided-next/children/LDD-0003-004-shared-understanding-guardrails/ledger.yml
     blocked_by: []
     user_stories_covered: [1, 5, 6]
@@ -77,7 +77,7 @@ execution_context:
   current_gate: implementation
   next_command: /ldd:implement LDD-0003-001
   next_human_action: null
-  next_reason: LDD-0003-001 through LDD-0003-003 are implemented and await verification; continuing implementation with the guardrail and docs slices.
+  next_reason: LDD-0003-001 through LDD-0003-004 are implemented and await verification; continuing implementation with the docs and validation slice.
   approved_artifacts:
     prd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     sdd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/sdd.md"
@@ -86,7 +86,7 @@ execution_context:
     product: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     design: "docs/tickets/LDD-0003-tracker-readiness-guided-next/sdd.md"
     plan: "docs/tickets/LDD-0003-tracker-readiness-guided-next/plan.md"
-  updated_at: "2026-05-13T17:44:00Z"
+  updated_at: "2026-05-13T17:51:00Z"
 
 sync:
   status: local_only
@@ -174,3 +174,7 @@ events:
     type: child_implementation_completed
     actor: agent
     child: LDD-0003-003
+  - at: "2026-05-13T17:51:00Z"
+    type: child_implementation_completed
+    actor: agent
+    child: LDD-0003-004

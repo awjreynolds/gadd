@@ -39,6 +39,8 @@ Core elaboration questions:
 
 Before writing product detail or declaring elaboration ready, reach shared understanding of the product detail inside the existing scope.
 
+This is a bounded shared understanding gate, not open-ended feature discovery. Ask enough to understand the user's intended problem, personas, and outcomes inside the approved scope; do not grow the scope to absorb every related idea.
+
 State the understanding in this form:
 
 > My understanding is that [personas] need [outcomes] because [problem/blocker]. The required product outcomes are [stories/observable results], within the existing goals and non-goals. Is that right?

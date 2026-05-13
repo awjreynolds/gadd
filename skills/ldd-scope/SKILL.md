@@ -38,6 +38,8 @@ Core scope questions:
 
 Before writing scope or declaring scope ready, reach shared understanding of the product boundary.
 
+This is a bounded shared understanding gate, not an invitation to expand the feature. Use focused questioning to reach the same product boundary as the human, then stop. New ideas that do not preserve that boundary belong to a later LDD phase, a separate PRD, or out of scope.
+
 State the boundary in this form:
 
 > My understanding is that this PRD is about [in-scope outcomes], explicitly not [non-goals], with [constraints/dependencies]. Anything else belongs to a later LDD phase, a separate PRD, or out of scope. Is that boundary right?

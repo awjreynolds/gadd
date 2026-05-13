@@ -38,6 +38,8 @@ Core refinement questions:
 
 Before committing refinement or asking for PRD approval, prove shared understanding of the handoff.
 
+This is a bounded shared understanding gate, not a broad challenge session. Use it to confirm that goals, non-goals, acceptance criteria, metrics, and dependencies line up; route new product scope back to `/ldd:scope` instead of folding it into refinement.
+
 State the handoff understanding in this form:
 
 > My understanding is that engineering design should solve [approved product outcomes], must not solve [non-goals], and will judge success by [acceptance/metrics]. The remaining questions are [resolved/owned/non-blocking]. Is this ready for engineering design?

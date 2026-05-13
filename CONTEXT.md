@@ -48,6 +48,10 @@ _Avoid_: progress update, audit trail, session log
 A compact section in a **Ledger** that records the current phase, gate, approved inputs, work boundaries, and next command or human action for one **Ticket**.
 _Avoid_: global status, progress file, chat summary
 
+**Bounded Shared Understanding Gate**:
+A Product Manager command checkpoint where the agent proves it understands the user's product boundary before writing or approving PRD content, without expanding the current PRD to include every related idea.
+_Avoid_: open-ended challenge session, hidden feature expansion
+
 **External Tracker**:
 A configured system outside the repository that can host the reviewable tracker record for a **Product Requirement**.
 _Avoid_: ledger, source of truth
@@ -144,6 +148,8 @@ _Avoid_: active ticket tree, deletion
 - A **Ledger** contains current state and a small history of **Ledger Events**.
 - A **Ledger** may contain **Execution Context** for exactly its own **Ticket**.
 - **Execution Context** never creates global workflow state.
+- A **Bounded Shared Understanding Gate** protects Product Manager work before PRD approval.
+- A **Bounded Shared Understanding Gate** must route new scope to `/ldd:scope`, a later phase, or a separate **Product Requirement** instead of silently expanding the current PRD.
 - A **Child Work Item** belongs to exactly one parent **Product Requirement**.
 - A **Vertical Slice** is the preferred form of **Child Work Item** for implementation.
 - A **Vertical Slice** may be independent or may depend on other **Vertical Slices**.
