@@ -15,6 +15,49 @@ Polish `prd.md` in the active draft or promoted ticket directory for the Product
 - Clear dependencies
 - Removal of vague or solution-smuggling language
 
+## Facilitation Protocol
+
+Start by stating the boundary: `/ldd:refine` sharpens the Product-to-engineering handoff. It does not add product scope or technical design.
+
+Support three entry modes when the user's intent is not already obvious:
+
+- **Guided**: ask one handoff-quality question at a time.
+- **Context dump**: use supplied context, skip resolved questions, and ask only for missing handoff decisions.
+- **Best guess**: refine from available context, label assumptions, and keep uncertain points owned or explicitly non-blocking.
+
+Core refinement questions:
+
+1. Does every goal have acceptance coverage?
+2. Does every user story have observable acceptance criteria?
+3. Are success metrics measurable enough to judge release success?
+4. Are dependencies clear and owned?
+5. Are open questions resolved, owned, or explicitly non-blocking?
+6. Does any language prescribe design or implementation mechanics?
+
+When refinement is blocked, ask one decisive handoff question and include a recommended product-facing answer. If interrupted, answer the interruption, restate refinement status, and resume the current question.
+
+## Product Quality Bar
+
+- Every goal has acceptance coverage or an explicit reason it does not.
+- Every user story is covered by acceptance criteria.
+- Acceptance criteria are observable without prescribing design, implementation sequence, schemas, file placement, algorithms, or tests.
+- Success metrics include a target, direction, threshold, or measurement owner.
+- Dependencies name owner or status where possible.
+- Open questions are resolved, owned, or explicitly non-blocking.
+- Anti-patterns to reject: vague acceptance criteria, unmeasurable metrics, ownerless open questions, solution-smuggling, and new product scope.
+
+## Exit Gate
+
+End with:
+
+- artifact updated,
+- expected ledger transition or event,
+- remaining non-blocking questions,
+- approval prompt,
+- recommended next command after approval, usually `/ldd:design`.
+
+Use this reviewer prompt exactly: "Is this ready for engineering design?"
+
 ## Rules
 
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.

@@ -6,7 +6,7 @@ ticket:
   title: Add scope facilitation contract
   kind: child_work_item
   type: autonomous
-  status: ready
+  status: verification_required
 
 parent:
   id: LDD-0002
@@ -25,13 +25,20 @@ artifacts:
     path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-001-scope-facilitation-contract/ticket.md
     status: ready
   implementation:
-    status: not_started
+    status: completed
+    completed_at: 2026-05-13T11:31:26Z
+    evidence:
+      - Updated skills/ldd-scope/SKILL.md with Facilitation Protocol, Product Quality Bar, and Exit Gate sections.
+      - Preserved new-draft behavior and promoted-ticket protection in /ldd:scope.
+      - Targeted grep confirmed the new facilitation contract text exists.
+      - git diff --check passed for the changed PM skill files.
+      - ./scripts/validate-ldd-mvp.sh passed.
   verification:
     path: null
     status: missing
 
 closure:
-  status: open
+  status: verification_required
   verified_at: null
   archived_at: null
   external_closed_at: null
@@ -42,11 +49,11 @@ user_stories_covered: [1, 2, 3, 5, 6]
 plan_slice: "1. Scope facilitation and draft-start contract"
 
 execution_context:
-  phase: implement
-  current_gate: implementation
-  next_command: /ldd:implement LDD-0002-001
+  phase: verify
+  current_gate: verification
+  next_command: /ldd:verify LDD-0002-001
   next_human_action: null
-  next_reason: Scope facilitation child ticket is ready to implement.
+  next_reason: Scope facilitation implementation is complete and ready for verification.
   approved_artifacts:
     prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
@@ -55,7 +62,7 @@ execution_context:
     product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
     plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
-  updated_at: 2026-05-13T11:28:43Z
+  updated_at: 2026-05-13T11:31:26Z
 
 sync:
   status: local_only
@@ -67,4 +74,7 @@ sync:
 events:
   - at: 2026-05-13T11:28:43Z
     type: child_created
+    actor: agent
+  - at: 2026-05-13T11:31:26Z
+    type: implementation_completed
     actor: agent

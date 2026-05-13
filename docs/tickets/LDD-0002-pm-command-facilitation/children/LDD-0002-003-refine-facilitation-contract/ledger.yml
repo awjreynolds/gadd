@@ -6,7 +6,7 @@ ticket:
   title: Add refine facilitation contract and evidence checks
   kind: child_work_item
   type: autonomous
-  status: ready
+  status: verification_required
 
 parent:
   id: LDD-0002
@@ -25,13 +25,21 @@ artifacts:
     path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-003-refine-facilitation-contract/ticket.md
     status: ready
   implementation:
-    status: not_started
+    status: completed
+    completed_at: 2026-05-13T11:31:26Z
+    evidence:
+      - Updated skills/ldd-refine/SKILL.md with Facilitation Protocol, Product Quality Bar, and Exit Gate sections.
+      - Added handoff-quality questions, systematic checks, and exact engineering-design reviewer prompt for /ldd:refine.
+      - Targeted grep confirmed all three PM skills include the facilitation protocol and exit gate.
+      - Targeted grep confirmed no external skill dependency references were introduced.
+      - git diff --check passed for the changed PM skill files.
+      - ./scripts/validate-ldd-mvp.sh passed.
   verification:
     path: null
     status: missing
 
 closure:
-  status: open
+  status: verification_required
   verified_at: null
   archived_at: null
   external_closed_at: null
@@ -42,11 +50,11 @@ user_stories_covered: [2, 3, 4, 5]
 plan_slice: "3. Refine facilitation and handoff contract"
 
 execution_context:
-  phase: implement
-  current_gate: implementation
-  next_command: /ldd:implement LDD-0002-003
+  phase: verify
+  current_gate: verification
+  next_command: /ldd:verify LDD-0002-003
   next_human_action: null
-  next_reason: Refine facilitation child ticket is ready after scope and elaborate facilitation contracts.
+  next_reason: Refine facilitation implementation is complete and ready for verification.
   approved_artifacts:
     prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
@@ -55,7 +63,7 @@ execution_context:
     product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
     plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
-  updated_at: 2026-05-13T11:28:43Z
+  updated_at: 2026-05-13T11:31:26Z
 
 sync:
   status: local_only
@@ -67,4 +75,7 @@ sync:
 events:
   - at: 2026-05-13T11:28:43Z
     type: child_created
+    actor: agent
+  - at: 2026-05-13T11:31:26Z
+    type: implementation_completed
     actor: agent

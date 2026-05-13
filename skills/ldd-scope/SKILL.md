@@ -17,6 +17,45 @@ Create or update `prd.md` scope boundaries for a draft Product Requirement. If n
 - Non-goals
 - Initial dependencies or constraints
 
+## Facilitation Protocol
+
+Start by stating the boundary: `/ldd:scope` defines product scope only. It does not fill problem detail, users, stories, acceptance criteria, metrics, software design, implementation plans, or verification behavior.
+
+Support three entry modes when the user's intent is not already obvious:
+
+- **Guided**: ask one scope question at a time.
+- **Context dump**: use the supplied context, skip resolved questions, and ask only for missing scope decisions.
+- **Best guess**: draft scope from available context, label assumptions, and keep uncertain points in dependencies or open questions.
+
+Core scope questions:
+
+1. What product change or outcome is being considered?
+2. What goals are in scope?
+3. What tempting work is explicitly out of scope?
+4. What known constraints or dependencies affect scope?
+
+When scope is blocked, ask one decisive question and include a recommended answer that preserves the narrower product boundary. If interrupted, answer the interruption, restate scope status, and resume the current question.
+
+## Product Quality Bar
+
+- Goals describe product outcomes, not implementation tasks.
+- Non-goals block likely scope creep.
+- Dependencies and constraints are product-relevant and do not become design decisions.
+- Codebase facts, when supplied by the user, are captured only as constraints, dependencies, or open questions.
+- Anti-patterns to reject: user stories, acceptance criteria, success metrics, architecture, schemas, file paths, command algorithms, test strategy, and broad "make it better" scope.
+
+## Exit Gate
+
+End with:
+
+- artifact updated,
+- expected ledger transition or event,
+- blocking and non-blocking scope questions,
+- recommended next command, usually `/ldd:elaborate`,
+- required human decision, if any.
+
+Use this decision language: "Scope ready. Continue to `/ldd:elaborate`, revise scope, or stop?"
+
 ## Rules
 
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.

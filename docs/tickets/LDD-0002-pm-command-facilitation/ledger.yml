@@ -23,7 +23,7 @@ artifacts:
     path: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
     status: approved
   implementation:
-    status: not_started
+    status: completed
   verification:
     path: null
     status: missing
@@ -32,21 +32,21 @@ children:
   - id: LDD-0002-001
     title: Add scope facilitation contract
     type: autonomous
-    status: ready
+    status: verification_required
     path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-001-scope-facilitation-contract/ledger.yml
     blocked_by: []
     user_stories_covered: [1, 2, 3, 5, 6]
   - id: LDD-0002-002
     title: Add elaborate facilitation contract
     type: autonomous
-    status: ready
+    status: verification_required
     path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-002-elaborate-facilitation-contract/ledger.yml
     blocked_by: [LDD-0002-001]
     user_stories_covered: [2, 3, 4, 5]
   - id: LDD-0002-003
     title: Add refine facilitation contract and evidence checks
     type: autonomous
-    status: ready
+    status: verification_required
     path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-003-refine-facilitation-contract/ledger.yml
     blocked_by: [LDD-0002-001, LDD-0002-002]
     user_stories_covered: [2, 3, 4, 5]
@@ -59,11 +59,11 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: implement
-  current_gate: implementation
-  next_command: /ldd:implement LDD-0002-001
+  phase: verify
+  current_gate: verification
+  next_command: /ldd:verify LDD-0002-001
   next_human_action: null
-  next_reason: Child tickets are created. Implement LDD-0002-001 first.
+  next_reason: All child tickets are implemented and awaiting verification. Verify LDD-0002-001 first.
   approved_artifacts:
     prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
@@ -72,7 +72,7 @@ execution_context:
     product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
     plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
-  updated_at: 2026-05-13T11:28:43Z
+  updated_at: 2026-05-13T11:31:26Z
 
 sync:
   status: local_only
@@ -117,4 +117,10 @@ events:
     actor: human
   - at: 2026-05-13T11:28:43Z
     type: child_tickets_created
+    actor: agent
+  - at: 2026-05-13T11:31:26Z
+    type: child_implementations_completed
+    actor: agent
+  - at: 2026-05-13T11:31:26Z
+    type: all_child_implementations_completed
     actor: agent
