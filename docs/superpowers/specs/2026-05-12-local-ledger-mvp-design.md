@@ -7,7 +7,7 @@
 
 Ledger-Driven Development uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, and Jira are optional sync and review surfaces, not the source of truth for LDD state.
 
-The MVP keeps this deliberately narrow: one Product Requirement moves through the full SDLC flow, then decomposes into child vertical-slice tickets for implementation. Sync engines, deep child lifecycle management, and swarm orchestration are out of scope.
+The MVP keeps this deliberately narrow: one Product Requirement moves through the full SDLC flow, then decomposes into child vertical-slice tickets for implementation and verification. Sync engines, deep child lifecycle management, and swarm orchestration are out of scope.
 
 ## Package Source Of Truth
 
@@ -29,6 +29,7 @@ See `CONTEXT.md` for the glossary. The key terms are:
 - **Ticket Promotion**: assignment of a stable local or external ticket ID.
 - **Decomposition**: conscious post-plan step that turns an approved plan into vertical slices.
 - **Workflow Navigation**: read-only identification of the next LDD command.
+- **Verification**: child-work closure gate after implementation.
 
 ## Directory Model
 
@@ -93,8 +94,22 @@ artifacts:
     status: missing
   implementation:
     status: not_started
+  verification:
+    path: null
+    status: missing
 
 children: []
+
+execution_context:
+  phase: scope
+  current_gate: prd_approval
+  next_command: /ldd:elaborate
+  next_human_action: null
+  next_reason: Draft Product Requirement exists and needs elaboration before approval.
+
+closure:
+  status: open
+  verified_at: null
 
 sync:
   status: local_only
@@ -131,11 +146,17 @@ Events are important workflow transitions only. They are not progress logs or se
 
 /ldd:implement
   -> implements one ready child ticket
+
+/ldd:verify
+  -> verifies implemented child-ticket closure readiness
+  -> recommends human-approved archive/external close only after evidence passes
 ```
 
 `/ldd:next` is read-only. It inspects active ledgers, identifies the next command, explains why, and stops.
 
-`/ldd:implement` never auto-decomposes. If no ready child tickets exist, it reports that there are no tickets to implement. If the plan is approved but no child tickets exist, it reports that `/ldd:decompose` is required.
+`/ldd:implement` never auto-decomposes. If no ready child tickets exist, it reports that there are no tickets to implement. If the plan is approved but no child tickets exist, it reports that `/ldd:decompose` is required. Implementation completion does not close child work; it records evidence and routes the child to `/ldd:verify`.
+
+`/ldd:verify` is the child-ticket closure gate. It checks implementation evidence, required checks, traceability to the approved PRD/SDD/plan, and external drift metadata. It writes `verification.md` and machine-readable ledger status. It may recommend closure, but archive and external close still require human confirmation.
 
 ## External Trackers
 
@@ -163,6 +184,6 @@ External tickets can evolve through comments or body edits. LDD records sync met
 - full GitHub/Linear/Jira sync engines
 - automatic external tracker reconciliation
 - swarm orchestration
-- deep child ticket lifecycle beyond planned/ready/in progress/done/archive
+- deep child ticket lifecycle beyond planned/ready/implemented/verification_required/verified/archive
 - global ledger files
 - progress.md-style session tracking

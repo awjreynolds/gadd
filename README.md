@@ -2,7 +2,7 @@
 
 Agent-agnostic skills for the Ledger-Driven Development MVP.
 
-LDD uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, or Jira are optional sync and review surfaces. LDD separates product scope, engineering design, implementation planning, decomposition, and implementation so AI-assisted work has explicit, reviewable handoffs.
+LDD uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, or Jira are optional sync and review surfaces. LDD separates product scope, engineering design, implementation planning, decomposition, implementation, verification, and closure so AI-assisted work has explicit, reviewable handoffs.
 
 ## Package Model
 
@@ -115,7 +115,8 @@ draft PRD ledger
   -> SDD/Plan
   -> child vertical-slice tickets
   -> implementation
-  -> completed children archived
+  -> verification
+  -> human-approved closure/archive
 ```
 
 The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD and, once the human approves it, promotes the draft to a real Product Requirement ticket. In local tracker mode, a promoted stable ticket directory such as `docs/tickets/LDD-0001-short-slug/` is the real ticket. External trackers are synchronized only when configured and approved by the human.
@@ -136,6 +137,7 @@ The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD an
 .ldd/templates/pr-body-prd.md
 .ldd/templates/pr-body-sdd-plan.md
 .ldd/templates/pr-body-implementation.md
+.ldd/templates/verification.md
 docs/tickets/_drafts/
 docs/tickets/_archive/
 ```
@@ -146,6 +148,8 @@ The templates are quality contracts, not blank forms:
 - SDDs translate approved PRDs into designs grounded in code and ADRs.
 - Plans trace acceptance criteria to implementation slices and verification.
 - Decomposition turns approved plan slices into child vertical-slice tickets.
+- Implementation completes child work but does not close it.
+- Verification checks child-ticket closure readiness before archive or external close.
 - External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
 - Child tickets follow LDD's standalone independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
 - PR bodies focus reviewers on the correct handoff question.

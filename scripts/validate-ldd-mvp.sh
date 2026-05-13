@@ -59,8 +59,14 @@ grep -q '"pluginManifest": ".claude-plugin/plugin.json"' agent-skills.json
 grep -q '"extensionManifest": "gemini-extension.json"' agent-skills.json
 grep -q 'agent-skills.json' README.md
 grep -q 'Installed Codex skills are local copies' README.md
+grep -q -- '-> verification' README.md
+grep -q 'human-approved closure/archive' README.md
 grep -q 'Package Source Of Truth' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
+grep -q '/ldd:verify' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 grep -q 'A repo-local, machine-readable record' CONTEXT.md
+grep -q 'Execution Context' CONTEXT.md
+grep -q 'Verification' CONTEXT.md
+grep -q 'Closure' CONTEXT.md
 grep -q 'Ticket Promotion' CONTEXT.md
 grep -q 'Vertical Slice' CONTEXT.md
 grep -q 'Agent Skills Manifest' CONTEXT.md

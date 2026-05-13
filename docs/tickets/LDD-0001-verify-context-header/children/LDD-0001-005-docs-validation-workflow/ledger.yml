@@ -6,7 +6,7 @@ ticket:
   title: Update docs and validation for end-to-end workflow
   kind: child_work_item
   type: human_review
-  status: ready
+  status: verification_required
 
 parent:
   id: LDD-0001
@@ -25,13 +25,21 @@ artifacts:
     path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-005-docs-validation-workflow/ticket.md
     status: ready
   implementation:
-    status: not_started
+    status: completed
+    completed_at: 2026-05-13T11:09:00Z
+    evidence:
+      - Updated README workflow to include verification and human-approved closure/archive.
+      - Updated local-ledger MVP design notes with /ldd:verify and execution context schema notes.
+      - Extended validate-ldd-mvp.sh to enforce public workflow and glossary language.
+      - Updated active parent ledger to route next work to verification.
+      - ./scripts/validate-ldd-mvp.sh passed.
+      - git diff --check passed.
   verification:
     path: null
     status: missing
 
 closure:
-  status: open
+  status: verification_required
   verified_at: null
   archived_at: null
   external_closed_at: null
@@ -42,11 +50,11 @@ user_stories_covered: [1, 2, 3, 4, 5]
 plan_slice: "5. Update docs and validation for the new end-to-end workflow"
 
 execution_context:
-  phase: implement
-  current_gate: implementation
-  next_command: /ldd:implement LDD-0001-005
+  phase: verify
+  current_gate: verification
+  next_command: /ldd:verify LDD-0001-005
   next_human_action: null
-  next_reason: Child ticket dependencies have been implemented and this ticket is ready.
+  next_reason: Docs and validation implementation is complete and ready for verification.
   approved_artifacts:
     prd: docs/tickets/LDD-0001-verify-context-header/prd.md
     sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
@@ -55,7 +63,7 @@ execution_context:
     product: docs/tickets/LDD-0001-verify-context-header/prd.md
     design: docs/tickets/LDD-0001-verify-context-header/sdd.md
     plan: docs/tickets/LDD-0001-verify-context-header/plan.md
-  updated_at: 2026-05-13T00:00:00Z
+  updated_at: 2026-05-13T11:09:00Z
 
 sync:
   status: local_only
@@ -70,4 +78,7 @@ events:
     actor: agent
   - at: 2026-05-13T11:05:28Z
     type: dependencies_implemented
+    actor: agent
+  - at: 2026-05-13T11:09:00Z
+    type: implementation_completed
     actor: agent

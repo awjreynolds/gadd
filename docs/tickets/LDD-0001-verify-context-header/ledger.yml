@@ -23,7 +23,7 @@ artifacts:
     path: docs/tickets/LDD-0001-verify-context-header/plan.md
     status: approved
   implementation:
-    status: not_started
+    status: completed
 
 children:
   - id: LDD-0001-001
@@ -57,17 +57,17 @@ children:
   - id: LDD-0001-005
     title: Update docs and validation for end-to-end workflow
     type: human_review
-    status: ready
+    status: verification_required
     path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-005-docs-validation-workflow/ledger.yml
     blocked_by: [LDD-0001-001, LDD-0001-002, LDD-0001-003, LDD-0001-004]
     user_stories_covered: [1, 2, 3, 4, 5]
 
 execution_context:
-  phase: implement
-  current_gate: implementation
-  next_command: /ldd:implement LDD-0001-005
+  phase: verify
+  current_gate: verification
+  next_command: /ldd:verify LDD-0001-001
   next_human_action: null
-  next_reason: LDD-0001-001 through LDD-0001-004 are implemented and awaiting verification; the final docs and validation child ticket is ready for implementation.
+  next_reason: All child tickets are implemented and awaiting verification. Verify LDD-0001-001 first.
   approved_artifacts:
     prd: docs/tickets/LDD-0001-verify-context-header/prd.md
     sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
@@ -124,4 +124,7 @@ events:
     actor: agent
   - at: 2026-05-13T11:00:35Z
     type: child_implementations_completed
+    actor: agent
+  - at: 2026-05-13T11:09:00Z
+    type: all_child_implementations_completed
     actor: agent
