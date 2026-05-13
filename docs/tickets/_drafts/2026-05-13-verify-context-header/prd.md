@@ -46,15 +46,27 @@ Implementation closure is also underspecified. `/ldd:implement` can produce code
 
 ## User Stories
 
-Not yet addressed by `/ldd:scope`; to be filled by `/ldd:elaborate`.
+1. As an implementation agent, I want a compact LDD context/header for the active ticket, so that I know which artifacts are approved, which boundaries apply, and what gate must be satisfied next.
+2. As an engineering reviewer, I want implementation work to pass a dedicated LDD verification gate before closure, so that code is not treated as done until evidence is checked against the child ticket, PRD, SDD, and plan.
+3. As a maintainer resuming work, I want workflow state and next action to be visible without reconstructing the whole history from conversation, so that I can continue the correct LDD phase safely.
+4. As a product reviewer, I want verification to preserve product scope boundaries, so that implementation does not silently add scope or bypass the approved Product Requirement.
+5. As an external tracker user, I want closure state to remain consistent with the repo-local ledger, so that external tickets do not appear complete before LDD verification has passed.
 
 ## Acceptance Criteria
 
-Not yet addressed by `/ldd:scope`; to be made testable by `/ldd:refine`.
+- Draft: A ticket can expose compact execution context that identifies the current phase, approved artifacts, source-of-truth boundaries, and next required gate.
+- Draft: Implementation completion and ticket closure are separate states in the LDD workflow.
+- Draft: Verification can produce a clear recommendation about whether a child ticket is ready to mark done, archive, and close externally.
+- Draft: Verification blocks closure when required evidence is missing, tests/checks fail, scope/design drift is detected, or external ticket drift is unresolved.
+- Draft: `/ldd:next` can identify verification as the next action when implementation evidence exists but closure has not been approved.
+- Draft: The workflow remains local-ledger-first and does not require external skills, agent-specific orchestration, or a broad repository healthcheck.
 
 ## Success Metrics
 
-Not yet addressed by `/ldd:scope`; to be filled by `/ldd:elaborate`.
+- A maintainer can identify the active ticket's current phase and next gate from LDD artifacts without relying on chat history.
+- A child ticket cannot be archived or externally closed in the documented workflow until verification has passed or a human explicitly overrides the finding.
+- Generated verification output is understandable to product and engineering reviewers without reading every source artifact end to end.
+- Hostile tests cover attempted gate bypasses, including implementing without verification and closing with missing evidence.
 
 ## Dependencies
 
@@ -65,9 +77,9 @@ Not yet addressed by `/ldd:scope`; to be filled by `/ldd:elaborate`.
 
 ## Open Questions
 
-- Should the execution context be a separate per-ticket file or a section inside the existing ledger?
-- What minimum evidence is required before `/ldd:verify` can recommend closure?
-- Does verification close only child tickets in MVP, or can it also verify a parent Product Requirement once all children are done?
+- Should the execution context be a separate per-ticket file or a section inside the existing ledger? Owner: engineering design.
+- What minimum evidence is required before `/ldd:verify` can recommend closure? Owner: refinement.
+- Does verification close only child tickets in MVP, or can it also verify a parent Product Requirement once all children are done? Owner: refinement.
 
 ## PRD Handoff Checklist
 
@@ -75,8 +87,8 @@ Not yet addressed by `/ldd:scope`; to be filled by `/ldd:elaborate`.
 
 - [ ] Problem is expressed from the user's perspective.
 - [x] Goals and non-goals make the scope boundary clear.
-- [ ] User stories cover the main workflow and meaningful user-visible edge cases.
+- [x] User stories cover the main workflow and meaningful user-visible edge cases.
 - [ ] Acceptance criteria are observable without reading code.
-- [ ] Metrics define how product success will be judged.
+- [x] Metrics define how product success will be judged.
 - [x] Dependencies and open questions are explicit.
 - [x] No implementation decisions, architecture, file paths, APIs, schemas, libraries, test strategy, or code snippets are present.

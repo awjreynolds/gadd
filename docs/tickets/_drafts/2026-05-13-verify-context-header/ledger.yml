@@ -15,7 +15,7 @@ tracker:
 artifacts:
   prd:
     path: docs/tickets/_drafts/2026-05-13-verify-context-header/prd.md
-    status: scoped
+    status: elaborated
   sdd:
     path: null
     status: missing
@@ -40,4 +40,7 @@ events:
     actor: human
   - at: 2026-05-13T00:00:00Z
     type: scope_written
+    actor: agent
+  - at: 2026-05-13T00:00:00Z
+    type: elaboration_written
     actor: agent
