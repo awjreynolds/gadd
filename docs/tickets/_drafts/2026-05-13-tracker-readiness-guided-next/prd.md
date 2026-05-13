@@ -50,7 +50,7 @@ There is also a handoff gap in `/ldd:next`. It can tell a maintainer what the ne
 ## User Stories
 
 1. As a maintainer dogfooding LDD, I want a clear assessment of the functional gaps that block normal use, so that I can prioritize the next product work instead of guessing from implementation details.
-2. As a product or engineering lead, I want LDD to work with the external tracker my team already uses, so that adopting LDD does not hide work from existing planning and review routines.
+2. As a product or engineering lead using GitHub, I want the first tracker path to make LDD work visible in the same place as code review, so that adopting LDD does not hide work from existing planning and review routines.
 3. As a reviewer in an external tracker, I want LDD-created work to show the product intent, current phase, and review status, so that I can participate without reading the full local ledger first.
 4. As a maintainer, I want LDD to distinguish required tracker behavior from optional enhancement, so that GitHub, Linear, and Jira support can ship incrementally without weakening the common workflow.
 5. As a contributor or implementation agent, I want `/ldd:next` to offer to continue with the next appropriate action, so that I can move from workflow diagnosis to execution with less manual command stitching.
@@ -61,6 +61,7 @@ There is also a handoff gap in `/ldd:next`. It can tell a maintainer what the ne
 - [ ] A maintainer can identify the user-visible gaps that prevent LDD from being used as a normal project workflow with external tracker participation.
 - [ ] LDD distinguishes mandatory tracker capabilities from optional tracker enhancements.
 - [ ] GitHub, Linear, and Jira are treated as external collaboration surfaces while the repo-local ledger remains the canonical workflow record.
+- [ ] GitHub is the first external-tracker dogfooding path.
 - [ ] A user can understand which tracker path is ready for use, which is partially supported, and which is not yet supported.
 - [ ] External tracker participation preserves LDD phase boundaries, including product scope, design, planning, implementation, verification, and closure.
 - [ ] External tracker mutations require explicit human confirmation.
@@ -102,7 +103,7 @@ Scenario: Blocked next action is not automated
 
 - A maintainer can classify LDD's functional gaps into required-for-use and optional-enhancement categories without reading implementation files.
 - A reviewer can understand an LDD item's product intent, current phase, and required review action from the external collaboration surface plus the linked local artifact context.
-- At least one external tracker path is clear enough for day-to-day dogfooding without requiring GitHub, Linear, and Jira to all reach feature parity first.
+- The GitHub-first tracker path is clear enough for day-to-day dogfooding without requiring Linear and Jira to reach feature parity first.
 - `/ldd:next` reduces manual workflow stitching by offering a safe continuation path when the next action is unblocked.
 - No normal LDD workflow requires an external tracker to become the canonical source of phase state.
 
@@ -110,17 +111,18 @@ Scenario: Blocked next action is not automated
 
 - LDD must remain local-ledger-first; external trackers are review, collaboration, and notification surfaces unless a later approved requirement explicitly changes that boundary.
 - GitHub, Linear, and Jira have different workflow concepts, permission models, and API limits, so scope must allow a common LDD product model without assuming identical tracker behavior.
+- GitHub is the first external-tracker dogfooding path; Linear and Jira remain follow-on collaboration surfaces.
 - External tracker changes require human confirmation.
 - `/ldd:next` must continue to diagnose workflow state accurately before it offers to continue with the next action.
 - The functional-gap assessment should distinguish required MVP gaps from useful enhancements so the resulting work can be decomposed safely.
 
 ## Open Questions
 
-- Should the first external-tracker path prioritize GitHub because it is closest to code review, or should the first path prioritize the tracker a target team already uses for planning?
+- Resolved: the first external-tracker path should prioritize GitHub because it is closest to code review and repo-local workflow review.
 - What is the minimum tracker behavior required for LDD to be considered "usable" rather than merely "sync-capable"?
 - Should `/ldd:next` offer to run only the next LDD command, or should it also offer specific human-review actions such as approving an artifact, resolving drift, or choosing between blocked options? Owner: product refinement.
 - What external-tracker information must be visible to reviewers versus available only through linked local artifacts? Owner: product refinement.
-- Which external tracker should be used for the first dogfooding path? Owner: maintainer.
+- Resolved: GitHub should be used for the first dogfooding path.
 
 ## PRD Handoff Checklist
 

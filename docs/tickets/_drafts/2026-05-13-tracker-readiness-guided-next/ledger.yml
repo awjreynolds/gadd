@@ -51,7 +51,7 @@ execution_context:
     product: "docs/tickets/_drafts/2026-05-13-tracker-readiness-guided-next/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-13T16:26:52Z"
+  updated_at: "2026-05-13T16:30:58Z"
 
 sync:
   status: local_only
@@ -67,3 +67,6 @@ events:
   - at: "2026-05-13T16:26:52Z"
     type: prd_elaborated
     actor: agent
+  - at: "2026-05-13T16:30:58Z"
+    type: prd_elaboration_updated
+    actor: human
