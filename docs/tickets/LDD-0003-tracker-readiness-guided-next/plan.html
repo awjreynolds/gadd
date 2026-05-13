@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LDD-0003 Implementation Plan</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; max-width: 960px; margin: 48px auto; padding: 0 24px; color: #1f2937; }
+    h1, h2, h3 { line-height: 1.2; color: #111827; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { margin-top: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.35rem; }
+    code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 0.5rem; text-align: left; vertical-align: top; }
+    th { background: #f9fafb; }
+  </style>
+</head>
+<body>
+  <h1>Implementation Plan: Make LDD ready for external trackers and guided next actions</h1>
+  <p><strong>Ticket:</strong> LDD-0003<br><strong>Status:</strong> approved<br><strong>Source:</strong> <code>plan.md</code></p>
+  <h2>Context</h2>
+  <p>This plan implements the approved PRD and SDD for LDD-0003. It addresses GitHub-first visibility, guided <code>/ldd:next</code> handoff, explicit <code>/ldd:approve &lt;ticket-id&gt;</code> approval for PRD and SDD gates, and PM shared-understanding guardrails.</p>
+  <h2>Implementation Strategy</h2>
+  <p>The work is implemented as command-surface and workflow-contract changes. The repo-local ledger remains canonical. GitHub is a managed projection surface, while Linear and Jira remain follow-on collaboration surfaces.</p>
+  <h2>Slices</h2>
+  <h3>Slice 1: <code>/ldd:approve</code> command surface</h3>
+  <p>Add a standalone approve skill, adapters, manifests, docs, and validation coverage for PRD and SDD approval only.</p>
+  <h3>Slice 2: Guided <code>/ldd:next</code> and approval-routing gates</h3>
+  <p>Update workflow skills so <code>next_command</code> and <code>next_human_action</code> are explicit, with PRD and SDD gates routing to <code>/ldd:approve &lt;ticket-id&gt;</code>.</p>
+  <h3>Slice 3: GitHub-first tracker projection contracts</h3>
+  <p>Document and validate GitHub issues for PRD/child work and GitHub PRs for SDD/plan/implementation review, with human confirmation and drift checks.</p>
+  <h3>Slice 4: Shared-understanding guardrails and validation</h3>
+  <p>Preserve bounded shared-understanding gates in PM skills and add validation so they are not accidentally removed.</p>
+  <h3>Slice 5: End-to-end docs and package verification</h3>
+  <p>Update user-facing docs and run package validation before verification and closure.</p>
+  <h2>Traceability</h2>
+  <table>
+    <thead><tr><th>PRD acceptance area</th><th>Plan coverage</th></tr></thead>
+    <tbody>
+      <tr><td>GitHub-first path</td><td>Slice 3</td></tr>
+      <tr><td>Guided <code>/ldd:next</code></td><td>Slice 2</td></tr>
+      <tr><td><code>/ldd:approve</code> PRD/SDD approval</td><td>Slice 1 and Slice 2</td></tr>
+      <tr><td>PM shared-understanding gate</td><td>Slice 4</td></tr>
+      <tr><td>Docs and validation</td><td>Slice 5</td></tr>
+    </tbody>
+  </table>
+  <h2>Test Strategy</h2>
+  <p>Run <code>bash scripts/validate-ldd-mvp.sh</code> after implementation, with validation checks covering the new command surface, PM guardrails, GitHub-first contracts, and guided next-action routing.</p>
+</body>
+</html>

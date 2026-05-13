@@ -20,8 +20,8 @@ artifacts:
     path: "docs/tickets/LDD-0003-tracker-readiness-guided-next/sdd.md"
     status: approved
   plan:
-    path: null
-    status: missing
+    path: "docs/tickets/LDD-0003-tracker-readiness-guided-next/plan.md"
+    status: approved
   implementation:
     status: not_started
   verification:
@@ -38,20 +38,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: plan
-  current_gate: plan
-  next_command: /ldd:plan LDD-0003
+  phase: decompose
+  current_gate: decomposition_review
+  next_command: /ldd:decompose LDD-0003
   next_human_action: null
-  next_reason: Software Design Document is approved and ready for implementation planning.
+  next_reason: Implementation plan is approved under the AFK continuation instruction and ready to decompose into child tickets.
   approved_artifacts:
     prd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     sdd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/sdd.md"
-    plan: null
+    plan: "docs/tickets/LDD-0003-tracker-readiness-guided-next/plan.md"
   boundaries:
     product: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     design: "docs/tickets/LDD-0003-tracker-readiness-guided-next/sdd.md"
-    plan: null
-  updated_at: "2026-05-13T17:08:20Z"
+    plan: "docs/tickets/LDD-0003-tracker-readiness-guided-next/plan.md"
+  updated_at: "2026-05-13T17:11:27Z"
 
 sync:
   status: local_only
@@ -114,4 +114,10 @@ events:
     actor: agent
   - at: "2026-05-13T17:08:20Z"
     type: sdd_approved
+    actor: human
+  - at: "2026-05-13T17:11:27Z"
+    type: plan_written
+    actor: agent
+  - at: "2026-05-13T17:11:27Z"
+    type: plan_approved
     actor: human
