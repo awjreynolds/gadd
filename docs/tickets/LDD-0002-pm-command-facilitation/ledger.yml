@@ -5,7 +5,7 @@ ticket:
   draft_id: 2026-05-13-pm-command-facilitation
   title: Strengthen LDD PM command facilitation
   kind: product_requirement
-  status: designed
+  status: planned
 
 tracker:
   mode: local
@@ -20,8 +20,8 @@ artifacts:
     path: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
     status: approved
   plan:
-    path: null
-    status: missing
+    path: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+    status: approved
   implementation:
     status: not_started
   verification:
@@ -38,20 +38,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: plan
-  current_gate: plan_review
-  next_command: /ldd:plan
+  phase: decompose
+  current_gate: decomposition_review
+  next_command: /ldd:decompose
   next_human_action: null
-  next_reason: Software design is approved and ready for implementation planning.
+  next_reason: Implementation plan is approved and ready for decomposition into child work items.
   approved_artifacts:
     prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: null
+    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
   boundaries:
     product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
     design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: null
-  updated_at: 2026-05-13T11:25:51Z
+    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+  updated_at: 2026-05-13T11:27:08Z
 
 sync:
   status: local_only
@@ -84,4 +84,10 @@ events:
     actor: agent
   - at: 2026-05-13T11:25:51Z
     type: sdd_approved
+    actor: human
+  - at: 2026-05-13T11:27:08Z
+    type: plan_written
+    actor: agent
+  - at: 2026-05-13T11:27:08Z
+    type: plan_approved
     actor: human
