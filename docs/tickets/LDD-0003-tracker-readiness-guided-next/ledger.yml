@@ -40,9 +40,9 @@ closure:
 execution_context:
   phase: refine
   current_gate: prd_approval
-  next_command: /ldd:refine LDD-0003
-  next_human_action: null
-  next_reason: Product detail changed after approval; PRD approval was invalidated and refinement must run before engineering design.
+  next_command: /ldd:design LDD-0003
+  next_human_action: approve PRD
+  next_reason: Product Requirement has been refined after approval invalidation and needs fresh human approval before engineering design.
   approved_artifacts:
     prd: null
     sdd: null
@@ -51,7 +51,7 @@ execution_context:
     product: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-13T16:49:58Z"
+  updated_at: "2026-05-13T16:53:34Z"
 
 sync:
   status: local_only
@@ -91,3 +91,6 @@ events:
   - at: "2026-05-13T16:49:58Z"
     type: prd_elaboration_updated
     actor: human
+  - at: "2026-05-13T16:53:34Z"
+    type: prd_refined
+    actor: agent
