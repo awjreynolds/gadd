@@ -35,6 +35,24 @@ Core elaboration questions:
 5. What product-facing draft acceptance criteria prove the stories?
 6. What draft metrics would indicate success?
 
+## Bounded Shared Understanding Gate
+
+Before writing product detail or declaring elaboration ready, reach shared understanding of the product detail inside the existing scope.
+
+State the understanding in this form:
+
+> My understanding is that [personas] need [outcomes] because [problem/blocker]. The required product outcomes are [stories/observable results], within the existing goals and non-goals. Is that right?
+
+Then walk each scoped goal one at a time:
+
+- Explain what product fact would prove the goal is satisfied.
+- Map the goal to at least one persona, user story, draft acceptance criterion, and draft metric, or explain why the goal is only a discovery outcome.
+- If the answer depends on human product knowledge, ask one direct question with a recommended product-facing answer.
+- If the branch exposes a new goal, new non-goal, or changed boundary, stop and route back to `/ldd:scope`.
+- If the branch belongs to engineering design, planning, implementation, or verification, capture it as a dependency or open question for the owning phase instead of adding it to acceptance criteria.
+
+Do not let best-guess mode resolve maintainer-specific knowledge silently. Label such assumptions and ask unless the missing detail is clearly non-blocking.
+
 When elaboration is blocked, ask one decisive question and include a recommended product-facing answer. If interrupted, answer the interruption, restate elaboration status, and resume the current question.
 
 ## Product Quality Bar
@@ -44,6 +62,7 @@ When elaboration is blocked, ask one decisive question and include a recommended
 - User stories describe user outcomes, not components or implementation steps.
 - Draft acceptance criteria remain observable product/workflow outcomes.
 - Draft metrics express product success, even if `/ldd:refine` must make them measurable later.
+- Every scoped goal has visible product-detail coverage or an explicit blocking/non-blocking decision.
 - Anti-patterns to reject: expanding goals/non-goals, solution-smuggling, generic "better UX" language, file paths, schemas, state machines, command algorithms, test strategy, and implementation sequence.
 
 ## Exit Gate

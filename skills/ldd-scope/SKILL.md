@@ -34,6 +34,23 @@ Core scope questions:
 3. What tempting work is explicitly out of scope?
 4. What known constraints or dependencies affect scope?
 
+## Bounded Shared Understanding Gate
+
+Before writing scope or declaring scope ready, reach shared understanding of the product boundary.
+
+State the boundary in this form:
+
+> My understanding is that this PRD is about [in-scope outcomes], explicitly not [non-goals], with [constraints/dependencies]. Anything else belongs to a later LDD phase, a separate PRD, or out of scope. Is that boundary right?
+
+Walk unresolved boundary branches one at a time. For each branch:
+
+- Ask one direct question.
+- Provide a recommended answer that preserves the narrowest useful product boundary.
+- Classify the branch as in scope, out of scope, later phase, or separate PRD.
+- Do not absorb user stories, acceptance criteria, metrics, design, implementation, or verification detail into `/ldd:scope`.
+
+If the human gives enough context to answer a branch, answer it and record the decision. If the branch cannot be resolved from supplied context and affects goals, non-goals, or constraints, stop and ask.
+
 When scope is blocked, ask one decisive question and include a recommended answer that preserves the narrower product boundary. If interrupted, answer the interruption, restate scope status, and resume the current question.
 
 ## Product Quality Bar
@@ -42,6 +59,7 @@ When scope is blocked, ask one decisive question and include a recommended answe
 - Non-goals block likely scope creep.
 - Dependencies and constraints are product-relevant and do not become design decisions.
 - Codebase facts, when supplied by the user, are captured only as constraints, dependencies, or open questions.
+- Scope is not ready until the agent and human share the same boundary understanding, or unresolved boundary questions are explicitly recorded as blocking.
 - Anti-patterns to reject: user stories, acceptance criteria, success metrics, architecture, schemas, file paths, command algorithms, test strategy, and broad "make it better" scope.
 
 ## Exit Gate

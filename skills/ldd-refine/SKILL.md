@@ -34,6 +34,25 @@ Core refinement questions:
 5. Are open questions resolved, owned, or explicitly non-blocking?
 6. Does any language prescribe design or implementation mechanics?
 
+## Bounded Shared Understanding Gate
+
+Before committing refinement or asking for PRD approval, prove shared understanding of the handoff.
+
+State the handoff understanding in this form:
+
+> My understanding is that engineering design should solve [approved product outcomes], must not solve [non-goals], and will judge success by [acceptance/metrics]. The remaining questions are [resolved/owned/non-blocking]. Is this ready for engineering design?
+
+Build an explicit coverage check before approval:
+
+- For each goal, identify the covering user story, acceptance criteria, metric, and dependency or owner.
+- For each acceptance criterion, confirm it is observable without prescribing design, implementation sequence, schemas, file placement, algorithms, or tests.
+- If a goal is a discovery outcome, the acceptance criteria must name the concrete deliverable a maintainer will receive, not merely say the gap will be identified later.
+- If coverage depends on human product knowledge, ask one direct question with a recommended answer.
+- If refinement reveals missing product detail, route back to `/ldd:elaborate`.
+- If refinement reveals changed goals or non-goals, route back to `/ldd:scope`.
+
+Do not approve a PRD whose goals are covered only by circular statements, such as "identify the gaps" paired only with "a maintainer can identify the gaps." Require the artifact to specify the kind of gap inventory, decision, or observable output the user will receive.
+
 When refinement is blocked, ask one decisive handoff question and include a recommended product-facing answer. If interrupted, answer the interruption, restate refinement status, and resume the current question.
 
 ## Product Quality Bar
@@ -44,6 +63,7 @@ When refinement is blocked, ask one decisive handoff question and include a reco
 - Success metrics include a target, direction, threshold, or measurement owner.
 - Dependencies name owner or status where possible.
 - Open questions are resolved, owned, or explicitly non-blocking.
+- The PRD has passed the bounded shared-understanding gate for engineering handoff.
 - Anti-patterns to reject: vague acceptance criteria, unmeasurable metrics, ownerless open questions, solution-smuggling, and new product scope.
 
 ## Exit Gate
