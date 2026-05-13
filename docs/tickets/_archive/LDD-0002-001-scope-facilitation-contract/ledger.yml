@@ -10,10 +10,10 @@ ticket:
 
 parent:
   id: LDD-0002
-  ledger: docs/tickets/LDD-0002-pm-command-facilitation/ledger.yml
-  prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
-  sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-  plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+  ledger: docs/tickets/_archive/LDD-0002-pm-command-facilitation/ledger.yml
+  prd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
+  sdd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
+  plan: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
 
 tracker:
   mode: local
@@ -22,7 +22,7 @@ tracker:
 
 artifacts:
   ticket:
-    path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-001-scope-facilitation-contract/ticket.md
+    path: docs/tickets/_archive/LDD-0002-001-scope-facilitation-contract/ticket.md
     status: ready
   implementation:
     status: completed
@@ -34,7 +34,7 @@ artifacts:
       - git diff --check passed for the changed PM skill files.
       - ./scripts/validate-ldd-mvp.sh passed.
   verification:
-    path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-001-scope-facilitation-contract/verification.md
+    path: docs/tickets/_archive/LDD-0002-001-scope-facilitation-contract/verification.md
     status: passed
 
 closure:
@@ -55,13 +55,13 @@ execution_context:
   next_human_action: null
   next_reason: Child work item is locally archived.
   approved_artifacts:
-    prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
-    sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+    prd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
+    sdd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
+    plan: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
   boundaries:
-    product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
-    design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+    product: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
+    design: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
+    plan: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
   updated_at: 2026-05-13T14:04:36Z
 
 sync:

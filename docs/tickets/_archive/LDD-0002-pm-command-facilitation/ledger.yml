@@ -5,7 +5,7 @@ ticket:
   draft_id: 2026-05-13-pm-command-facilitation
   title: Strengthen LDD PM command facilitation
   kind: product_requirement
-  status: decomposed
+  status: archived
 
 tracker:
   mode: local
@@ -14,13 +14,13 @@ tracker:
 
 artifacts:
   prd:
-    path: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
+    path: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
     status: approved
   sdd:
-    path: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
+    path: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
     status: approved
   plan:
-    path: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+    path: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
     status: approved
   implementation:
     status: completed
@@ -39,40 +39,40 @@ children:
   - id: LDD-0002-002
     title: Add elaborate facilitation contract
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-002-elaborate-facilitation-contract/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0002-pm-command-facilitation/children/LDD-0002-002-elaborate-facilitation-contract/ledger.yml
     blocked_by: [LDD-0002-001]
     user_stories_covered: [2, 3, 4, 5]
   - id: LDD-0002-003
     title: Add refine facilitation contract and evidence checks
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0002-pm-command-facilitation/children/LDD-0002-003-refine-facilitation-contract/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0002-pm-command-facilitation/children/LDD-0002-003-refine-facilitation-contract/ledger.yml
     blocked_by: [LDD-0002-001, LDD-0002-002]
     user_stories_covered: [2, 3, 4, 5]
 
 closure:
-  status: open
+  status: archived
   verified_at: null
-  archived_at: null
+  archived_at: 2026-05-13T14:05:48Z
   external_closed_at: null
   override_reason: null
 
 execution_context:
-  phase: close
+  phase: done
   current_gate: closure
-  next_command: /ldd:close LDD-0002-002
+  next_command: null
   next_human_action: null
-  next_reason: LDD-0002-001 is archived. Close LDD-0002-002 next.
+  next_reason: Parent Product Requirement and all child work items are locally archived.
   approved_artifacts:
-    prd: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
-    sdd: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
+    prd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
+    sdd: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
+    plan: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
   boundaries:
-    product: docs/tickets/LDD-0002-pm-command-facilitation/prd.md
-    design: docs/tickets/LDD-0002-pm-command-facilitation/sdd.md
-    plan: docs/tickets/LDD-0002-pm-command-facilitation/plan.md
-  updated_at: 2026-05-13T14:04:36Z
+    product: docs/tickets/_archive/LDD-0002-pm-command-facilitation/prd.md
+    design: docs/tickets/_archive/LDD-0002-pm-command-facilitation/sdd.md
+    plan: docs/tickets/_archive/LDD-0002-pm-command-facilitation/plan.md
+  updated_at: 2026-05-13T14:05:48Z
 
 sync:
   status: local_only
@@ -129,4 +129,13 @@ events:
     actor: agent
   - at: 2026-05-13T14:04:36Z
     type: child_archived
+    actor: agent
+  - at: 2026-05-13T14:05:48Z
+    type: child_archived
+    actor: agent
+  - at: 2026-05-13T14:05:48Z
+    type: child_archived
+    actor: agent
+  - at: 2026-05-13T14:05:48Z
+    type: parent_closed
     actor: agent
