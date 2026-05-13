@@ -3,7 +3,7 @@ ticket: LDD-0003
 title: "Make LDD ready for external trackers and guided next actions"
 created: 2026-05-13
 updated: 2026-05-13
-status: draft
+status: approved
 ---
 
 # PRD: Make LDD ready for external trackers and guided next actions

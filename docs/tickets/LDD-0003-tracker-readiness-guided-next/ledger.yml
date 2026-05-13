@@ -5,7 +5,7 @@ ticket:
   draft_id: "2026-05-13-tracker-readiness-guided-next"
   title: "Make LDD ready for external trackers and guided next actions"
   kind: product_requirement
-  status: draft
+  status: approved
 
 tracker:
   mode: local
@@ -15,7 +15,7 @@ tracker:
 artifacts:
   prd:
     path: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
-    status: draft
+    status: approved
   sdd:
     path: null
     status: missing
@@ -38,20 +38,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: refine
-  current_gate: prd_approval
+  phase: design
+  current_gate: design
   next_command: /ldd:design LDD-0003
-  next_human_action: approve PRD
-  next_reason: Product Requirement has been refined after approval invalidation and needs fresh human approval before engineering design.
+  next_human_action: null
+  next_reason: Product Requirement is approved and ready for engineering design.
   approved_artifacts:
-    prd: null
+    prd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     sdd: null
     plan: null
   boundaries:
     product: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-13T16:53:34Z"
+  updated_at: "2026-05-13T16:57:08Z"
 
 sync:
   status: local_only
@@ -94,3 +94,6 @@ events:
   - at: "2026-05-13T16:53:34Z"
     type: prd_refined
     actor: agent
+  - at: "2026-05-13T16:57:08Z"
+    type: prd_approved
+    actor: human
