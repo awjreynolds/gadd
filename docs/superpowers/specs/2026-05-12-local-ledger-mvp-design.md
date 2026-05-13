@@ -154,7 +154,7 @@ Events are important workflow transitions only. They are not progress logs or se
   -> recommends human-approved archive/external close only after evidence passes
 
 /ldd:close
-  -> applies closure for one verified child ticket
+  -> applies closure for one verified child ticket or a closeable parent roll-up
   -> archives locally and syncs external close only with explicit human approval
 ```
 
@@ -166,7 +166,7 @@ Events are important workflow transitions only. They are not progress logs or se
 
 `/ldd:verify` is the child-ticket closure-readiness gate. It checks implementation evidence, required checks, traceability to the approved PRD/SDD/plan, and external drift metadata. It writes `verification.md` and machine-readable ledger status. It may recommend closure, but it does not archive or close external tickets.
 
-`/ldd:close` is the post-verification mutating gate. It requires passed verification, archives child work locally, updates parent ledger state, and closes or syncs external tracker projections only with explicit human confirmation.
+`/ldd:close` is the post-verification mutating gate. For a child ticket, it requires passed verification, archives child work locally, updates parent ledger state, and closes or syncs external tracker projections only with explicit human confirmation. For a parent ticket, it may close and archive the parent only when every child is already closed or verified and closeable; otherwise it stops with the blocking child list.
 
 ## External Trackers
 

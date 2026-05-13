@@ -1,4 +1,4 @@
-description = "Close a verified LDD child ticket."
+description = "Close a verified LDD child ticket or closeable parent roll-up."
 prompt = """
 Run `/ldd:close` using the `ldd-close` Agent Skill.
 

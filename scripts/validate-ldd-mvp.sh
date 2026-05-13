@@ -72,6 +72,7 @@ grep -q 'Ticket Promotion' CONTEXT.md
 grep -q 'Vertical Slice' CONTEXT.md
 grep -q 'Agent Skills Manifest' CONTEXT.md
 grep -q 'Standalone Skill Contract' CONTEXT.md
+grep -q 'Parent Roll-up Closure' CONTEXT.md
 
 grep -q '"name": "ldd"' .claude-plugin/plugin.json
 grep -q '"commands":' .claude-plugin/plugin.json
@@ -116,6 +117,7 @@ grep -q 'execution_context' skills/ldd-next/SKILL.md
 grep -q 'derive equivalent state' skills/ldd-next/SKILL.md
 grep -q 'next: /ldd:verify <child-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'next: /ldd:close <child-ticket-id>' skills/ldd-next/SKILL.md
+grep -q 'next: /ldd:close <parent-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'closure.status' skills/ldd-next/SKILL.md
 
 grep -q 'do not read the codebase as a design input' skills/ldd-scope/SKILL.md
@@ -182,6 +184,10 @@ grep -q 'closure.status: verified' skills/ldd-close/SKILL.md
 grep -q 'archive_directory' skills/ldd-close/SKILL.md
 grep -q 'External mutations require human confirmation' skills/ldd-close/SKILL.md
 grep -q 'archive child tickets' skills/ldd-close/SKILL.md
+grep -q 'Parent Roll-up Workflow' skills/ldd-close/SKILL.md
+grep -q 'every child is verified and closeable' skills/ldd-close/SKILL.md
+grep -q 'Move the parent directory' skills/ldd-close/SKILL.md
+grep -q 'parent close requested while any child is not verified and closeable' skills/ldd-close/SKILL.md
 grep -q 'Verification status: pending | passed | failed | override_required' skills/ldd-setup/assets/templates/verification.md
 grep -q 'Boundary: child-ticket closure only, not repository health' skills/ldd-setup/assets/templates/verification.md
 grep -q 'External tracker drift: pending' skills/ldd-setup/assets/templates/verification.md

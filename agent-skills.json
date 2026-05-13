@@ -76,7 +76,7 @@
       "command": "/ldd:close",
       "skill": "ldd-close",
       "path": "skills/ldd-close",
-      "purpose": "Apply human-approved closure for one verified child ticket."
+      "purpose": "Apply human-approved closure for one verified child ticket or a closeable parent roll-up."
     }
   ],
   "adapters": {

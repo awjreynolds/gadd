@@ -31,6 +31,7 @@ Read repo-local ledger state and report the next explicit LDD command.
 - Prefer `execution_context` when present, but verify it against ledger artifact state before reporting the next command.
 - If `execution_context` is absent, derive equivalent state from ticket status, artifact statuses, child ledgers, `closure.status`, sync metadata, and archived-child location.
 - Preserve approved PRD, SDD, and plan boundaries. If the next step would change those boundaries, report the earliest affected `/ldd:scope`, `/ldd:design`, or `/ldd:plan` gate instead of routing implementation or verification.
+- Prioritize parent roll-up closure when all children are verified and closeable.
 - Prioritize verified but unclosed child work before verification and implementation.
 - Prioritize child work with completed implementation evidence and unverified closure before starting additional child implementation.
 
@@ -43,6 +44,8 @@ Else if draft PRD exists:
   inspect PRD completeness and recommend /ldd:scope, /ldd:elaborate, /ldd:refine, or PRD approval/promotion
 Else if parent ticket is done:
   done
+Else if parent has children and every child is verified and closeable or already closed:
+  next: /ldd:close <parent-ticket-id>
 Else if any active child is verified but not closed or archived:
   next: /ldd:close <child-ticket-id>
 Else if any active child has completed implementation evidence and unverified closure:
@@ -82,6 +85,13 @@ Treat an active child as ready to close when either of these is true:
 Derived state means `artifacts.verification.status: passed`, `closure.status: verified`, and the child directory is still in the active ticket tree rather than `_archive/`.
 
 Do not route children with `closure.status: archived | externally_closed` to `/ldd:close`.
+
+Treat a parent as ready for roll-up closure when it has at least one child and every child is either:
+
+- already closed with `closure.status: archived | externally_closed`
+- closeable with `artifacts.verification.status: passed`, `closure.status: verified`, and a readable `verification.md`
+
+If any child is implemented but unverified, route to `/ldd:verify <child-ticket-id>`. If any child is ready but not implemented, route to `/ldd:implement <child-ticket-id>`.
 
 ## Stop Conditions
 

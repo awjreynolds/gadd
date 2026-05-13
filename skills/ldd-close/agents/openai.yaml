@@ -1,6 +1,6 @@
 interface:
   display_name: "LDD Close"
-  short_description: "Close verified child ticket"
+  short_description: "Close verified child or parent"
   default_prompt: "Use $ldd-close to run /ldd:close for issue #1."
 
 policy:

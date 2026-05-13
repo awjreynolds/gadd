@@ -154,7 +154,7 @@ The templates are quality contracts, not blank forms:
 - Decomposition turns approved plan slices into child vertical-slice tickets.
 - Implementation completes child work but does not close it.
 - Verification checks child-ticket closure readiness before archive or external close.
-- Close applies verified closure, archives child work locally, and optionally syncs external closure after explicit human approval.
+- Close applies verified closure, archives child work locally, and can close/archive a parent only when every child is verified and closeable.
 - External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
 - Child tickets follow LDD's standalone independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
 - PR bodies focus reviewers on the correct handoff question.

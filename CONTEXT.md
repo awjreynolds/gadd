@@ -84,6 +84,10 @@ _Avoid_: implementation completion, verification pass, automatic close
 The LDD command that applies **Closure** after **Verification** has passed.
 _Avoid_: verification, implementation, automatic archive
 
+**Parent Roll-up Closure**:
+Closing a parent **Product Requirement** only after every **Child Work Item** is already closed or verified and closeable.
+_Avoid_: partial parent close, implied completion, child bypass
+
 **Verified Child Work**:
 A **Child Work Item** with passing **Verification** recorded in its **Ledger** and a readable `verification.md` report.
 _Avoid_: closed ticket, archived work, merged code
@@ -113,7 +117,7 @@ The repo-local ticket directories that contain current work visible to normal LD
 _Avoid_: archive
 
 **Ticket Archive**:
-The repo-local storage area for completed child work items that should no longer appear in normal workflow navigation.
+The repo-local storage area for completed child work items and closed parent tickets that should no longer appear in normal workflow navigation.
 _Avoid_: active ticket tree, deletion
 
 ## Relationships
@@ -147,10 +151,11 @@ _Avoid_: active ticket tree, deletion
 - **Verified Child Work** is eligible for human closure review.
 - **Closure** remains separate from **Verification** and external tracker mutation.
 - The **Close Command** requires passed **Verification** before archiving or external close.
+- **Parent Roll-up Closure** requires every **Child Work Item** to be closed or verified and closeable.
 - If implementation finds no **Vertical Slices**, it reports that there are no tickets to implement.
 - If implementation finds an approved plan without **Vertical Slices**, it reports that **Decomposition** is required.
 - **Workflow Navigation** identifies the next step but does not perform it.
-- Completed **Child Work Items** move from the **Active Ticket Tree** to the **Ticket Archive**.
+- Completed **Child Work Items** and closed parent tickets move from the **Active Ticket Tree** to the **Ticket Archive**.
 - **Workflow Navigation** ignores the **Ticket Archive** by default.
 - The **Agent Skills Manifest** is the package source of truth for installable LDD skills.
 - The **Standalone Skill Contract** applies to every `/ldd:*` command.
