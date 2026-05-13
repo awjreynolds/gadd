@@ -38,11 +38,11 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: scope
+  phase: elaborate
   current_gate: prd_approval
-  next_command: /ldd:elaborate
+  next_command: /ldd:refine
   next_human_action: null
-  next_reason: Draft Product Requirement exists and needs elaboration before approval.
+  next_reason: Draft Product Requirement has product detail and needs refinement before approval.
   approved_artifacts:
     prd: null
     sdd: null
@@ -51,7 +51,7 @@ execution_context:
     product: "docs/tickets/_drafts/2026-05-13-tracker-readiness-guided-next/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-13T16:23:37Z"
+  updated_at: "2026-05-13T16:26:52Z"
 
 sync:
   status: local_only
@@ -64,3 +64,6 @@ events:
   - at: "2026-05-13T16:23:37Z"
     type: draft_created
     actor: human
+  - at: "2026-05-13T16:26:52Z"
+    type: prd_elaborated
+    actor: agent
