@@ -79,6 +79,7 @@ Use this decision language: "Scope ready. Continue to `/ldd:elaborate`, revise s
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation.
 - Product Manager command: preserve product intent and do not read the codebase as a design input.
+- If scope changes the product meaning of an approved PRD, keep the stable ticket ID but mark the PRD artifact as draft, clear `approved_artifacts.prd`, route `execution_context` back to the owning PM command, record an approval-invalidated event, and require `/ldd:refine` plus human approval before `/ldd:design`.
 - Existing promoted Product Requirement tickets do not block new scoping work. LDD may have multiple active promoted tickets at different phases.
 - Keep at most one active local draft in `docs/tickets/_drafts/`.
 - If no target is provided and exactly one active draft exists, update that draft.

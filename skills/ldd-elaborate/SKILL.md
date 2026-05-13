@@ -82,6 +82,7 @@ Use this decision language: "Elaboration ready. Continue to `/ldd:refine`, retur
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation.
 - Product Manager command: do not read the codebase as a design input.
+- If elaboration changes the product meaning of an approved PRD, keep the stable ticket ID but mark the PRD artifact as draft, clear `approved_artifacts.prd`, route `execution_context` back to `/ldd:refine`, record an approval-invalidated event, and require human approval before `/ldd:design`.
 - Use the PRD template as a quality contract. Preserve the scoped goals/non-goals and fill only product-detail sections.
 - Do not expand scope. If elaboration exposes a scope problem, stop and recommend `/ldd:scope`.
 - Keep acceptance criteria product-facing and draft-quality; testability is finalized by `/ldd:refine`.

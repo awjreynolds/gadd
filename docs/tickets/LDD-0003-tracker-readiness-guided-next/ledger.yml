@@ -5,7 +5,7 @@ ticket:
   draft_id: "2026-05-13-tracker-readiness-guided-next"
   title: "Make LDD ready for external trackers and guided next actions"
   kind: product_requirement
-  status: approved
+  status: draft
 
 tracker:
   mode: local
@@ -15,7 +15,7 @@ tracker:
 artifacts:
   prd:
     path: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
-    status: approved
+    status: draft
   sdd:
     path: null
     status: missing
@@ -38,20 +38,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: elaborate
+  phase: refine
   current_gate: prd_approval
-  next_command: /ldd:elaborate LDD-0003
-  next_human_action: answer functional gap inventory question
-  next_reason: Scope boundary was clarified after approval; product detail must capture the functional gap inventory before engineering design.
+  next_command: /ldd:refine LDD-0003
+  next_human_action: null
+  next_reason: Product detail changed after approval; PRD approval was invalidated and refinement must run before engineering design.
   approved_artifacts:
-    prd: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
+    prd: null
     sdd: null
     plan: null
   boundaries:
     product: "docs/tickets/LDD-0003-tracker-readiness-guided-next/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-13T16:48:31Z"
+  updated_at: "2026-05-13T16:49:58Z"
 
 sync:
   status: local_only
@@ -85,3 +85,9 @@ events:
   - at: "2026-05-13T16:48:31Z"
     type: scope_reopened_for_elaboration
     actor: agent
+  - at: "2026-05-13T16:49:58Z"
+    type: prd_approval_invalidated
+    actor: agent
+  - at: "2026-05-13T16:49:58Z"
+    type: prd_elaboration_updated
+    actor: human

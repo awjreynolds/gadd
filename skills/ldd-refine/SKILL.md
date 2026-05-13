@@ -83,6 +83,7 @@ Use this reviewer prompt exactly: "Is this ready for engineering design?"
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation.
 - Product Manager command: do not read the codebase as a design input.
+- If refinement changes the product meaning of an approved PRD, keep the stable ticket ID but mark the PRD artifact as draft, clear `approved_artifacts.prd`, keep or route `execution_context` to the PRD approval gate, record an approval-invalidated event, and require fresh human approval before `/ldd:design`.
 - Use the PRD template's quality bar and handoff checklist before proposing a PRD PR.
 - Do not expand scope or add technical design.
 - Preserve the Product Manager boundary: acceptance criteria describe required product/workflow outcomes, not the engineering solution that will satisfy them.

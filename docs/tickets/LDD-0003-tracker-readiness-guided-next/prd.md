@@ -3,7 +3,7 @@ ticket: LDD-0003
 title: "Make LDD ready for external trackers and guided next actions"
 created: 2026-05-13
 updated: 2026-05-13
-status: approved
+status: draft
 ---
 
 # PRD: Make LDD ready for external trackers and guided next actions
@@ -48,6 +48,13 @@ There is also a handoff gap in `/ldd:next`. It can tell a maintainer what the ne
 - Contributor or implementation agent - needs the next LDD action to be explicit and actionable after workflow state has been diagnosed.
 - Reviewer working in GitHub, Linear, or Jira - needs enough external context to review, discuss, and track LDD work without becoming responsible for LDD's canonical state.
 
+## Functional Gap Inventory
+
+- Required for use: LDD needs a GitHub-first visibility path for PRDs, design and plan review, implementation PRs, and closure state. Without this, real work remains hidden from the place where code review and project discussion already happen.
+- Required for use: `/ldd:next` needs to move beyond diagnosis by offering to continue with the next safe command or collect the required human decision. Without this, resuming LDD work still requires manual command stitching.
+- Required for use: LDD PM commands need to prove shared understanding of the core product gap before treating a PRD as ready. Without this, agents can produce plausible artifacts that miss the maintainer's actual blocker.
+- Optional enhancement: Linear and Jira should remain follow-on collaboration surfaces once the GitHub-first path proves the common tracker model.
+
 ## User Stories
 
 1. As a maintainer dogfooding LDD, I want a clear assessment of the functional gaps that block normal use, so that I can prioritize the next product work instead of guessing from implementation details.
@@ -59,7 +66,9 @@ There is also a handoff gap in `/ldd:next`. It can tell a maintainer what the ne
 
 ## Acceptance Criteria
 
-- [ ] A maintainer can identify the user-visible gaps that prevent LDD from being used as a normal project workflow with external tracker participation.
+- [ ] The PRD includes a functional gap inventory that names the GitHub-first visibility path, `/ldd:next` safe continuation, and PM shared-understanding gate as required-for-use gaps.
+- [ ] The functional gap inventory classifies Linear and Jira support as a follow-on optional enhancement until the GitHub-first tracker model is proven.
+- [ ] Each listed functional gap explains why it blocks or does not block normal LDD use.
 - [ ] LDD distinguishes mandatory tracker capabilities from optional tracker enhancements, with mandatory capabilities limited to work visibility, phase/status visibility, review participation, and safe handoff back to the canonical local workflow.
 - [ ] GitHub is the first external-tracker dogfooding path, and Linear and Jira are clearly presented as follow-on collaboration surfaces.
 - [ ] A maintainer can understand whether each tracker path is ready for use, partially supported, or not yet supported.
@@ -75,7 +84,7 @@ There is also a handoff gap in `/ldd:next`. It can tell a maintainer what the ne
 Scenario: Maintainer assesses whether LDD is usable with their tracker
   Given a maintainer wants to use LDD for real project work
   When they review LDD's tracker readiness
-  Then they can see the required capabilities, optional enhancements, unsupported tracker gaps, and which tracker is first for dogfooding
+  Then they can see the required-for-use gaps, optional enhancements, and which tracker is first for dogfooding
 ```
 
 ```gherkin
@@ -111,7 +120,7 @@ Scenario: Blocked next action is not automated
 
 ## Success Metrics
 
-- Maintainer gap classification: a maintainer can classify each identified gap as required-for-use or optional-enhancement from the PRD and follow-on design artifacts, without reading implementation files.
+- Maintainer gap classification: a maintainer can classify each identified gap as required-for-use or optional-enhancement from the PRD without reading implementation files.
 - Reviewer comprehension: a reviewer can identify product intent, current LDD phase, required review action, and canonical local context from the GitHub-visible surface plus linked local artifact context.
 - GitHub-first dogfooding readiness: the GitHub path is usable for day-to-day dogfooding before Linear or Jira feature parity is required.
 - `/ldd:next` continuation quality: when the next workflow action is unblocked, `/ldd:next` offers either to run the next command or to collect the required human decision.
