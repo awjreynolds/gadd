@@ -24,5 +24,11 @@
 - Plan: `{plan_path}`
 - Plan slice: `{plan_slice}`
 - Ledger: `{ledger_path}`
+- Canonical state: repo-local ledger
+- External tracker role: GitHub child issue projection for implementation visibility
+
+## External Notes
+
+Add reviewer or stakeholder comments below. LDD must preserve externally edited notes unless the human explicitly approves reconciliation.
 
 <!-- ldd:managed-body-version=1 -->

@@ -108,6 +108,10 @@ _Avoid_: live link, source of truth
 A human-readable external tracker issue generated from LDD ledger and artifact state.
 _Avoid_: canonical state, thin ID placeholder
 
+**GitHub-first Projection**:
+The first supported external tracker visibility path: GitHub issues for Product Requirement and Child Work Item visibility, and GitHub PRs for SDD/Plan and implementation review.
+_Avoid_: source of truth, sync engine, Linear/Jira parity
+
 **External Drift**:
 A detected change in an external tracker record since LDD last synchronized its generated projection.
 _Avoid_: automatic conflict resolution
@@ -161,6 +165,9 @@ _Avoid_: active ticket tree, deletion
 - The **Standalone Skill Contract** applies to every `/ldd:*` command.
 - An **Installed Skill Copy** can become stale and must be updated from the **Agent Skills Manifest**.
 - An **External Ticket Projection** must be useful to a PM, TPM, Director, or implementation agent without requiring them to open repository files.
+- A **GitHub-first Projection** is the initial dogfooding path for external visibility.
+- Linear and Jira are follow-on optional collaboration surfaces until the **GitHub-first Projection** model is proven.
+- GitHub issues project **Product Requirement** and **Child Work Item** visibility; GitHub PRs project SDD/Plan and implementation review.
 - **External Drift** stops automatic sync until a human decides whether to import, preserve, or overwrite the external contribution.
 
 ## Example dialogue

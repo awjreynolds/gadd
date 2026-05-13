@@ -63,6 +63,8 @@ grep -q 'agent-skills.json' README.md
 grep -q 'Installed Codex skills are local copies' README.md
 grep -q -- '-> verification' README.md
 grep -q 'human-approved closure/archive' README.md
+grep -q 'GitHub is the first external-tracker dogfooding path' README.md
+grep -q 'Linear and Jira remain follow-on optional collaboration surfaces' README.md
 grep -q 'Package Source Of Truth' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 grep -q '/ldd:verify' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 grep -q 'A repo-local, machine-readable record' CONTEXT.md
@@ -74,6 +76,7 @@ grep -q 'Vertical Slice' CONTEXT.md
 grep -q 'Agent Skills Manifest' CONTEXT.md
 grep -q 'Standalone Skill Contract' CONTEXT.md
 grep -q 'Parent Roll-up Closure' CONTEXT.md
+grep -q 'GitHub-first Projection' CONTEXT.md
 
 grep -q '"name": "ldd"' .claude-plugin/plugin.json
 grep -q '"commands":' .claude-plugin/plugin.json
@@ -141,6 +144,8 @@ grep -q 'do not read the codebase as a design input' skills/ldd-refine/SKILL.md
 
 grep -q 'draft_directory: docs/tickets/_drafts' skills/ldd-setup/assets/templates/config.yml
 grep -q 'archive_directory: docs/tickets/_archive' skills/ldd-setup/assets/templates/config.yml
+grep -q 'GitHub-first managed projections' skills/ldd-setup/assets/templates/config.yml
+grep -q 'Linear and Jira are follow-on collaboration surfaces' skills/ldd-setup/assets/templates/config.yml
 grep -q 'schema_version: 1' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'children: \[\]' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'external_body_hash:' skills/ldd-setup/assets/templates/ledger.yml
@@ -161,8 +166,10 @@ grep -q 'Acceptance Criteria Traceability' skills/ldd-setup/assets/templates/pla
 grep -q 'Slice quality bar:' skills/ldd-setup/assets/templates/plan.md
 grep -q 'must not introduce new architecture decisions' skills/ldd-setup/assets/templates/plan.md
 grep -q '## Problem Statement' skills/ldd-setup/assets/templates/issue-body-prd.md
+grep -q 'GitHub issue projection' skills/ldd-setup/assets/templates/issue-body-prd.md
 grep -q '## LDD Links' skills/ldd-setup/assets/templates/issue-body-prd.md
 grep -q '## What to build' skills/ldd-setup/assets/templates/issue-body-child.md
+grep -q 'GitHub child issue projection' skills/ldd-setup/assets/templates/issue-body-child.md
 grep -q '## Acceptance criteria' skills/ldd-setup/assets/templates/issue-body-child.md
 grep -q '## Blocked by' skills/ldd-setup/assets/templates/issue-body-child.md
 grep -q '## User stories covered' skills/ldd-setup/assets/templates/issue-body-child.md
@@ -172,6 +179,7 @@ grep -q 'Preview Before Creation' skills/ldd-decompose/SKILL.md
 grep -q 'independently grabbable' skills/ldd-decompose/SKILL.md
 grep -q "LDD's standalone child issue shape" skills/ldd-decompose/SKILL.md
 grep -q 'external contribution' skills/ldd-decompose/SKILL.md
+grep -q 'projected as GitHub issues' skills/ldd-decompose/SKILL.md
 grep -q 'Built-in TDD Loop' skills/ldd-implement/SKILL.md
 grep -q 'Run this loop directly from this skill' skills/ldd-implement/SKILL.md
 grep -q 'Write the smallest focused test' skills/ldd-implement/SKILL.md
@@ -180,6 +188,7 @@ grep -q 'approved PRD, SDD, and plan boundaries' skills/ldd-implement/SKILL.md
 grep -q 'closure.status: verification_required' skills/ldd-implement/SKILL.md
 grep -q 'Do not archive child tickets' skills/ldd-implement/SKILL.md
 grep -q 'Do not close external child work items' skills/ldd-implement/SKILL.md
+grep -q 'implementation PR is a managed projection' skills/ldd-implement/SKILL.md
 grep -q 'child-ticket closure' skills/ldd-verify/SKILL.md
 grep -q 'not a general repository healthcheck' skills/ldd-verify/SKILL.md
 grep -q 'implementation completion' skills/ldd-verify/SKILL.md
@@ -197,6 +206,7 @@ grep -q 'archive_directory' skills/ldd-close/SKILL.md
 grep -q 'External mutations require human confirmation' skills/ldd-close/SKILL.md
 grep -q 'archive child tickets' skills/ldd-close/SKILL.md
 grep -q 'Parent Roll-up Workflow' skills/ldd-close/SKILL.md
+grep -q 'GitHub issue or PR closure is an external mutation' skills/ldd-close/SKILL.md
 grep -q 'every child is verified and closeable' skills/ldd-close/SKILL.md
 grep -q 'Move the parent directory' skills/ldd-close/SKILL.md
 grep -q 'parent close requested while any child is not verified and closeable' skills/ldd-close/SKILL.md
@@ -207,11 +217,14 @@ grep -q 'Human confirmation required before external mutation: yes' skills/ldd-s
 grep -q 'Product Boundary' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Handoff Checklist' skills/ldd-setup/assets/templates/pr-body-prd.md
 grep -q 'Traceability Checks' skills/ldd-setup/assets/templates/pr-body-sdd-plan.md
+grep -q 'GitHub-first managed projection for SDD and plan review' skills/ldd-setup/assets/templates/pr-body-sdd-plan.md
 grep -q 'Does this implementation follow the approved plan?' skills/ldd-setup/assets/templates/pr-body-implementation.md
+grep -q 'GitHub-first managed projection for implementation review' skills/ldd-setup/assets/templates/pr-body-implementation.md
 grep -q 'Plan Conformance' skills/ldd-setup/assets/templates/pr-body-implementation.md
 grep -q 'Treat <code>plan.md</code> as the source of truth' skills/ldd-setup/assets/templates/plan.html
 
 grep -q 'artifact quality guidance' skills/ldd-setup/SKILL.md
+grep -q 'GitHub-first tracker readiness' skills/ldd-setup/SKILL.md
 grep -q 'PRD template as a quality contract' skills/ldd-scope/SKILL.md
 grep -q 'should not prescribe exact command behavior' skills/ldd-elaborate/SKILL.md
 grep -q 'Preserve the Product Manager boundary' skills/ldd-refine/SKILL.md

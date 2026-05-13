@@ -53,6 +53,8 @@ Only after approval may the command create child ledgers or external child ticke
 - Each child ticket must be independently grabbable: an implementation agent can read the ticket, follow links as needed, and understand what end-to-end behavior to build, what acceptance criteria must pass, what it is blocked by, and which user stories or PRD criteria it covers.
 - Each child ticket must reference the parent Product Requirement and approved plan slice.
 - External child ticket bodies use LDD's standalone child issue shape: Parent, What to build, Acceptance criteria, Blocked by, User stories covered, plus minimal LDD Traceability.
+- In GitHub tracker mode, child tickets may be projected as GitHub issues after explicit human confirmation. The child ledger remains canonical.
+- Linear and Jira child-ticket projections are follow-on optional collaboration surfaces.
 - Before updating an existing external child ticket, re-read it. If its body changed since the last recorded sync hash or timestamp, stop and ask the human to reconcile the external contribution.
 - Keep the MVP lightweight: do not create a separate decomposition artifact unless the user explicitly asks.
 

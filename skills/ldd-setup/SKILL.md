@@ -10,7 +10,7 @@ Bootstrap the current target repository for the LDD MVP workflow.
 ## Preflight
 
 - Confirm this is a target project, not the LDD skill source repo. If `skills/ldd-setup/SKILL.md` or another LDD skill source exists in the repo, stop and ask whether the user intends to dogfood LDD here.
-- Detect whether an external tracker is configured or requested. GitHub, Linear, Jira, and local-only are valid MVP modes.
+- Detect whether an external tracker is configured or requested. Local-only is the default. GitHub is the first MVP external tracker projection path. Linear and Jira are follow-on compatibility targets and should be recorded as future intent, not configured as working providers.
 - If no external tracker is configured, default to local-only mode.
 
 ## Create
@@ -39,6 +39,8 @@ Copy templates exactly unless the user explicitly asks to customize them. The te
 
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation.
+- GitHub-first tracker readiness means GitHub issues for PRD/child work and GitHub PRs for SDD/plan/implementation review, all as managed projections of the repo-local ledger.
+- Linear and Jira remain optional follow-on collaboration surfaces until the GitHub projection model is proven.
 - Every Product Requirement starts in `docs/tickets/_drafts/YYYY-MM-DD-short-slug/` with a `ledger.yml`.
 - Promotion moves the draft directory to a stable ticket ID directory using either a local ID such as `LDD-0001` or an external tracker ID.
 - Do not create `docs/adr/` during setup. The ADR directory is created or confirmed only when the first ADR is needed.

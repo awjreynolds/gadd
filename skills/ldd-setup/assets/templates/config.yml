@@ -5,6 +5,10 @@ ledger:
   local_id_prefix: LDD
 
 tracker:
+  # provider values:
+  # - local: repo-local ledger only
+  # - github: GitHub-first managed projections for issues and PR review
+  # Linear and Jira are follow-on collaboration surfaces, not MVP providers.
   provider: local
   repo: null
   project: null

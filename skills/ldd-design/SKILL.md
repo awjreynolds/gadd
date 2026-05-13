@@ -40,6 +40,7 @@ After writing the SDD, stop at explicit SDD approval:
 - Commit locally after design. Do not push/update PRs unless explicitly approved.
 - SDD approval must be recorded through `/ldd:approve <ticket-id>`, not conversational shorthand.
 - In GitHub tracker mode, prepare SDD/plan review PR content only as a managed projection and ask for explicit human confirmation before any PR create or update.
+- GitHub PRs are the first external review surface for SDD/plan review; Linear and Jira review surfaces are follow-on and optional.
 
 ## Stop Conditions
 

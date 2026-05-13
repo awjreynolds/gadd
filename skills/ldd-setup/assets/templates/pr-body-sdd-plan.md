@@ -2,6 +2,8 @@
 
 References {ticket}
 
+This PR is the GitHub-first managed projection for SDD and plan review. The repo-local ledger remains canonical for LDD phase state and approvals.
+
 ## Review Package
 
 - PRD: `docs/tickets/{ticket}/prd.md`
@@ -40,3 +42,9 @@ Please review in this order:
 2. Are any durable architecture decisions missing ADR coverage?
 3. Does the plan implement the SDD without adding new design decisions?
 4. Are the slices small enough to implement and review safely?
+
+## Managed Projection Rule
+
+LDD may update this body only after explicit human confirmation and an external drift check. Linear and Jira review projections are follow-on optional collaboration surfaces.
+
+<!-- ldd:managed-body-version=1 -->

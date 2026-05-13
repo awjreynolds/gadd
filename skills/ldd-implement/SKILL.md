@@ -25,6 +25,7 @@ Execute one ready child vertical-slice ticket.
 - The implementation PR contains product code and tests only. Do not write `progress.md`.
 - Run configured checks before PR.
 - Use the implementation PR body template to summarize plan adherence, tests/checks, and any approved deviations.
+- In GitHub tracker mode, the implementation PR is a managed projection for review. Ask before creating or updating it, stop on external drift, and keep the child ledger canonical.
 - Record implementation completion evidence in the child ledger, including changed-file summary, check evidence, and any implementation PR or local diff reference available.
 - Mark the child as implemented but not closed by setting `artifacts.implementation.status: completed`, `ticket.status: verification_required`, `closure.status: verification_required`, and `execution_context.next_command: /ldd:verify <child-ticket-id>` when those fields are available.
 - If the ledger lacks verification or closure fields, record equivalent implementation completion evidence and state that `/ldd:verify <child-ticket-id>` is the next gate so `/ldd:next` can derive the same state.

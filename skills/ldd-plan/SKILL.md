@@ -36,6 +36,7 @@ Create or update `plan.md` and generated `plan.html` in the promoted ticket dire
 - Commit locally after planning.
 - After human approval of the plan, promote/sync review state according to `.ldd/config.yml`. `/ldd:approve` does not approve plans.
 - When stopping for plan approval, set `execution_context.next_human_action` to the required plan review decision rather than `/ldd:approve`.
+- In GitHub tracker mode, use `.ldd/templates/pr-body-sdd-plan.md` as a managed PR projection for review; ask before creating or updating it and stop on external drift.
 - SDD/Plan PR reviewer prompt: "Does this design and plan correctly implement the PRD?"
 
 ## Stop Conditions

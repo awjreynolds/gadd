@@ -45,6 +45,7 @@ If no ticket ID is provided, stop and ask for one.
 - Refuse closure when verification is missing, pending, failed, or `override_required`.
 - Refuse closure when external tracker drift is unresolved.
 - Archive locally; do not delete evidence. This command may archive child tickets only after local ledger updates are ready.
+- In GitHub tracker mode, GitHub issue or PR closure is an external mutation and requires explicit human confirmation after drift checks. Linear and Jira closure is follow-on optional scope.
 - Preserve the child ledger, ticket body, verification report, and implementation evidence.
 - Update `/ldd:next` state by pointing the parent ledger to the next close, verify, implement, decompose, or done gate.
 
