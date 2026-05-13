@@ -1,9 +1,9 @@
 ---
-ticket: null
-draft_id: "2026-05-13-tracker-readiness-guided-next"
+ticket: LDD-0003
 title: "Make LDD ready for external trackers and guided next actions"
 created: 2026-05-13
 updated: 2026-05-13
+status: approved
 ---
 
 # PRD: Make LDD ready for external trackers and guided next actions
