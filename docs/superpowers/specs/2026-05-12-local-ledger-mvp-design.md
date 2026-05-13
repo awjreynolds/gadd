@@ -7,7 +7,7 @@
 
 Ledger-Driven Development uses a repo-local ledger as canonical workflow state. External trackers such as GitHub, Linear, and Jira are optional sync and review surfaces, not the source of truth for LDD state.
 
-The MVP keeps this deliberately narrow: one Product Requirement moves through the full SDLC flow, then decomposes into child vertical-slice tickets for implementation and verification. Sync engines, deep child lifecycle management, and swarm orchestration are out of scope.
+The MVP keeps each Product Requirement deliberately narrow: one Product Requirement moves through the full SDLC flow, then decomposes into child vertical-slice tickets for implementation and verification. Repositories may contain multiple active Product Requirements at different phases. Sync engines, deep child lifecycle management, and swarm orchestration are out of scope.
 
 ## Package Source Of Truth
 
@@ -40,6 +40,8 @@ docs/tickets/_drafts/YYYY-MM-DD-short-slug/
   ledger.yml
   prd.md
 ```
+
+An incomplete promoted ticket does not block a new draft. `/ldd:scope` may create a new draft while other promoted tickets remain active, but local mode keeps at most one active draft in `_drafts/` to avoid ambiguous Product Manager work.
 
 Promotion assigns a stable ticket ID and moves the directory:
 
@@ -153,6 +155,8 @@ Events are important workflow transitions only. They are not progress logs or se
 ```
 
 `/ldd:next` is read-only. It inspects active ledgers, identifies the next command, explains why, and stops.
+
+`/ldd:scope` is the draft entry point for new Product Requirements. If no active draft exists, it creates a new draft in `docs/tickets/_drafts/`. Existing promoted tickets do not block new scoping work. If an active draft already exists, `/ldd:scope` updates that draft or asks the human to continue, rename, promote, or discard it before starting another one.
 
 `/ldd:implement` never auto-decomposes. If no ready child tickets exist, it reports that there are no tickets to implement. If the plan is approved but no child tickets exist, it reports that `/ldd:decompose` is required. Implementation completion does not close child work; it records evidence and routes the child to `/ldd:verify`.
 

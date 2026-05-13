@@ -115,6 +115,9 @@ grep -q 'next: /ldd:verify <child-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'closure.status' skills/ldd-next/SKILL.md
 
 grep -q 'do not read the codebase as a design input' skills/ldd-scope/SKILL.md
+grep -q 'Existing promoted Product Requirement tickets do not block new scoping work' skills/ldd-scope/SKILL.md
+grep -q 'Keep at most one active local draft' skills/ldd-scope/SKILL.md
+grep -q 'create a new draft' skills/ldd-scope/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-elaborate/SKILL.md
 grep -q 'do not read the codebase as a design input' skills/ldd-refine/SKILL.md
 

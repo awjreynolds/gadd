@@ -24,6 +24,10 @@ _Avoid_: GitHub issue number, Linear issue key, Jira issue key
 A temporary repo-local workspace for a **Product Requirement** before it is ready to create or bind to an external tracker record.
 _Avoid_: final ticket directory, progress folder, scratchpad
 
+**Active Draft**:
+A **Draft Ticket Directory** that has not yet been promoted or archived.
+_Avoid_: promoted ticket, current project, global active ticket
+
 **Draft Slug**:
 A short human-readable phrase embedded in a **Draft Ticket Directory** name to describe the emerging **Product Requirement**.
 _Avoid_: final ticket identifier
@@ -118,6 +122,10 @@ _Avoid_: active ticket tree, deletion
 - A **Draft Ticket Directory** exists before a **Product Requirement** is ready for review in an **External Tracker**.
 - Every **Product Requirement** starts in a **Draft Ticket Directory**.
 - A **Draft Ticket Directory** uses a date and **Draft Slug** for human context.
+- An incomplete **Promoted Ticket Directory** does not block creating a new **Draft Ticket Directory**.
+- Multiple **Promoted Ticket Directories** may be active at different LDD phases.
+- Local mode keeps at most one **Active Draft** to avoid ambiguous Product Manager work.
+- If an **Active Draft** already exists, new scoping work continues that draft or explicitly resolves it before starting another.
 - A **Ticket Promotion** assigns either a **Local Ticket ID** or an **External Tracker ID** as the final ticket identifier.
 - A **Ticket Promotion** moves the **Draft Ticket Directory** to a **Promoted Ticket Directory**.
 - A **Promoted Ticket Directory** name is stable after review starts.

@@ -194,7 +194,7 @@ Because LDD skills must be standalone, duplicate this minimal protocol into `ldd
 - Should `Best guess` mode be allowed to write artifacts immediately, or should it always preview assumptions first?
   - Recommended: allow artifact updates, but label assumptions inline and list them under Open Questions unless the user asked for preview-only behavior.
 - Should `/ldd:scope` create a draft ticket directory when no active draft exists, or remain blocked on missing ledger?
-  - Recommended: keep current stop condition for now. Creation belongs either in `/ldd:setup` or a future explicit draft-start command.
+  - Decision: create a new draft when no active draft exists. Existing promoted tickets, including incomplete tickets, do not block new Product Requirement scoping. Keep one active local draft; if a draft already exists, continue it or explicitly resolve it before starting another.
 - Should `/ldd:refine` promote after local PRD refinement?
   - Decision: yes, once the human approves the refined PRD. Approval is the gate that commits the final PRD and turns the draft into a real Product Requirement ticket.
 
