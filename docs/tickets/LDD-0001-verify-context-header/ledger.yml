@@ -5,7 +5,7 @@ ticket:
   draft_id: 2026-05-13-verify-context-header
   title: Add LDD execution context and verification gate
   kind: product_requirement
-  status: plan_draft
+  status: plan_approved
 
 tracker:
   mode: local
@@ -21,22 +21,22 @@ artifacts:
     status: approved
   plan:
     path: docs/tickets/LDD-0001-verify-context-header/plan.md
-    status: draft
+    status: approved
   implementation:
     status: not_started
 
 children: []
 
 execution_context:
-  phase: plan
-  current_gate: plan_review
-  next_command: null
-  next_human_action: approve plan or request planning changes
-  next_reason: Implementation plan is drafted and needs human approval before decomposition.
+  phase: decompose
+  current_gate: decomposition_review
+  next_command: /ldd:decompose
+  next_human_action: review proposed child ticket set
+  next_reason: Plan is approved and child tickets have not been created.
   approved_artifacts:
     prd: docs/tickets/LDD-0001-verify-context-header/prd.md
     sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
-    plan: null
+    plan: docs/tickets/LDD-0001-verify-context-header/plan.md
   boundaries:
     product: docs/tickets/LDD-0001-verify-context-header/prd.md
     design: docs/tickets/LDD-0001-verify-context-header/sdd.md
@@ -78,3 +78,6 @@ events:
   - at: 2026-05-13T00:00:00Z
     type: plan_written
     actor: agent
+  - at: 2026-05-13T00:00:00Z
+    type: plan_approved
+    actor: human
