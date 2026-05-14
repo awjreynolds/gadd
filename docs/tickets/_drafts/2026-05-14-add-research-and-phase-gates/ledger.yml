@@ -1,11 +1,11 @@
 schema_version: 1
 
 ticket:
-  id: "LDD-0004-add-research-and-phase-gates"
+  id: null
   draft_id: "2026-05-14-add-research-and-phase-gates"
   title: "Add LDD research and phase input gates"
   kind: product_requirement
-  status: approved
+  status: draft
 
 tracker:
   mode: github
@@ -14,8 +14,8 @@ tracker:
 
 artifacts:
   prd:
-    path: "docs/tickets/LDD-0004-add-research-and-phase-gates/prd.md"
-    status: approved
+    path: "docs/tickets/_drafts/2026-05-14-add-research-and-phase-gates/prd.md"
+    status: draft
   sdd:
     path: null
     status: missing
@@ -38,20 +38,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: design
-  current_gate: design
-  next_command: /ldd:design LDD-0004-add-research-and-phase-gates
-  next_human_action: null
-  next_reason: PRD is approved and ready for engineering design.
+  phase: refine
+  current_gate: prd_approval
+  next_command: /ldd:approve 2026-05-14-add-research-and-phase-gates
+  next_human_action: /ldd:approve 2026-05-14-add-research-and-phase-gates
+  next_reason: Draft Product Requirement is refined and ready for explicit PRD approval.
   approved_artifacts:
-    prd: "docs/tickets/LDD-0004-add-research-and-phase-gates/prd.md"
+    prd: null
     sdd: null
     plan: null
   boundaries:
-    product: "docs/tickets/LDD-0004-add-research-and-phase-gates/prd.md"
+    product: "docs/tickets/_drafts/2026-05-14-add-research-and-phase-gates/prd.md"
     design: null
     plan: null
-  updated_at: "2026-05-14T16:33:36Z"
+  updated_at: "2026-05-14T14:31:51Z"
 
 sync:
   status: local_only
@@ -73,6 +73,3 @@ events:
   - at: "2026-05-14T14:31:51Z"
     type: prd_refined
     actor: agent
-  - at: "2026-05-14T16:33:36Z"
-    type: prd_approved
-    actor: human
