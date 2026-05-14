@@ -23,7 +23,7 @@ artifacts:
     external_url: "https://github.com/awjreynolds/ledger-driven-development/issues/2"
   plan:
     path: "docs/tickets/1-add-research-and-phase-gates/plan.md"
-    status: draft
+    status: approved
   implementation:
     status: not_started
   verification:
@@ -40,20 +40,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: plan
-  current_gate: plan_review
+  phase: decompose
+  current_gate: decomposition_review
   next_command: /ldd:decompose 1
-  next_human_action: "Does this design and plan correctly implement the PRD?"
-  next_reason: Implementation plan is drafted and awaiting explicit human plan review.
+  next_human_action: "Review proposed child tickets and confirm creation."
+  next_reason: Implementation plan is approved; decomposition preview needs explicit human approval before child tickets or GitHub issues are created.
   approved_artifacts:
     prd: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     sdd: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
-    plan: null
+    plan: "docs/tickets/1-add-research-and-phase-gates/plan.md"
   boundaries:
     product: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     design: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
-    plan: null
-  updated_at: "2026-05-14T22:09:46Z"
+    plan: "docs/tickets/1-add-research-and-phase-gates/plan.md"
+  updated_at: "2026-05-14T22:14:21Z"
 
 sync:
   status: synced
@@ -93,3 +93,6 @@ events:
   - at: "2026-05-14T22:09:46Z"
     type: plan_written
     actor: agent
+  - at: "2026-05-14T22:14:21Z"
+    type: plan_approved
+    actor: human
