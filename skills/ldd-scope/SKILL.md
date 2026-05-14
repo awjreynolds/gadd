@@ -76,6 +76,8 @@ End with:
 
 Use this decision language: "Scope ready. Continue to `/ldd:elaborate`, revise scope, or stop?"
 
+After writing scope, set `execution_context.phase: scope`, `execution_context.current_gate: scope`, `execution_context.next_command: /ldd:elaborate`, and `execution_context.next_human_action: null` when those fields are available. Do not set `current_gate: prd_approval`; PRD approval is owned by `/ldd:refine`.
+
 ## Rules
 
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.

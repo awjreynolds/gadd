@@ -79,6 +79,8 @@ End with:
 
 Use this decision language: "Elaboration ready. Continue to `/ldd:refine`, return to `/ldd:scope`, or stop?"
 
+After writing elaboration, set `execution_context.phase: elaborate`, `execution_context.current_gate: elaborate`, `execution_context.next_command: /ldd:refine`, and `execution_context.next_human_action: null` when those fields are available. Do not set `current_gate: prd_approval`; PRD approval is owned by `/ldd:refine`.
+
 ## Rules
 
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.

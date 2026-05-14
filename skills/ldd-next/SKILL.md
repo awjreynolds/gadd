@@ -104,7 +104,7 @@ Else if SDD exists but is not approved:
   next_human_action: /ldd:approve <ticket-id>
 Else if PRD is approved:
   next: /ldd:design
-Else if PRD exists but is not approved:
+Else if refined PRD is waiting for approval:
   next: /ldd:approve <ticket-id>
   next_human_action: /ldd:approve <ticket-id>
 Else:
@@ -115,8 +115,10 @@ Else:
 
 Treat a PRD as waiting for approval when either:
 
-- `execution_context.current_gate: prd_approval`
-- `artifacts.prd.status: draft` and `approved_artifacts.prd` is empty or null
+- `execution_context.phase` is `refine` and `execution_context.current_gate: prd_approval`
+- `execution_context.current_gate: prd_approval` and `execution_context.next_command` is `/ldd:approve <ticket-id>`
+
+Do not treat every draft PRD as approval-ready. Drafts in `scope` or `elaborate` must route to `/ldd:elaborate` or `/ldd:refine`, even when `approved_artifacts.prd` is empty.
 
 Report:
 

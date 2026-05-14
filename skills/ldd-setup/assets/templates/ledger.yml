@@ -39,7 +39,7 @@ closure:
 
 execution_context:
   phase: scope
-  current_gate: prd_approval
+  current_gate: scope
   next_command: /ldd:elaborate
   next_human_action: null
   next_reason: Draft Product Requirement exists and needs elaboration before approval.

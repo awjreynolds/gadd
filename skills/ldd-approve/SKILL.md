@@ -57,8 +57,8 @@ Do not write implementation plans, child tickets, verification reports, archive 
 Determine candidate gates from ledger state:
 
 - PRD candidate:
-  - `execution_context.current_gate: prd_approval`, or
-  - `artifacts.prd.status: draft` and `approved_artifacts.prd` is empty or null.
+  - `execution_context.phase` is `refine` and `execution_context.current_gate: prd_approval`, or
+  - `execution_context.current_gate: prd_approval` and `execution_context.next_command` is `/ldd:approve <ticket-id>`.
 - SDD candidate:
   - `execution_context.current_gate: design_review`, or
   - `artifacts.sdd.status: draft` and `artifacts.prd.status: approved`.
@@ -66,6 +66,7 @@ Determine candidate gates from ledger state:
 Then filter candidates:
 
 - Remove the PRD candidate if the PRD path is missing.
+- Remove the PRD candidate if the ledger is still in `scope` or `elaborate`.
 - Remove the SDD candidate if the SDD path is missing.
 - Remove any candidate whose artifact frontmatter already has `status: approved` and ledger artifact status is already `approved`.
 
@@ -181,4 +182,3 @@ Preserve existing unrelated ledger fields and events.
 - requested approval is for plan, decomposition, verification, closure, or external mutation
 - external drift is detected
 - external mutation is needed but human confirmation is not explicit
-

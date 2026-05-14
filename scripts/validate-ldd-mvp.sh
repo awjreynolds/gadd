@@ -133,6 +133,11 @@ grep -q 'next_human_action' skills/ldd-next/SKILL.md
 grep -q '/ldd:approve <ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'does not perform mutations' skills/ldd-next/SKILL.md
 grep -q 'Approval Gate Detection' skills/ldd-next/SKILL.md
+grep -Eq 'execution_context\.phase.*refine' skills/ldd-next/SKILL.md
+if grep -q 'artifacts.prd.status: draft.*approved_artifacts.prd' skills/ldd-next/SKILL.md skills/ldd-approve/SKILL.md; then
+  echo "draft PRDs must not be treated as approval-ready before refinement" >&2
+  exit 1
+fi
 
 grep -q 'Approve exactly one PRD or SDD gate' skills/ldd-approve/SKILL.md
 grep -q 'does not approve implementation plans' skills/ldd-approve/SKILL.md
@@ -157,6 +162,11 @@ grep -q 'schema_version: 1' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'children: \[\]' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'external_body_hash:' skills/ldd-setup/assets/templates/ledger.yml
 grep -q 'managed_body_version:' skills/ldd-setup/assets/templates/ledger.yml
+grep -q 'current_gate: scope' skills/ldd-setup/assets/templates/ledger.yml
+if grep -q 'current_gate: prd_approval' skills/ldd-setup/assets/templates/ledger.yml; then
+  echo "new draft ledger template must not start at PRD approval gate" >&2
+  exit 1
+fi
 grep -q '# PRD:' skills/ldd-setup/assets/templates/prd.md
 grep -q 'Product Manager artifact' skills/ldd-setup/assets/templates/prd.md
 grep -q 'PRD Handoff Checklist' skills/ldd-setup/assets/templates/prd.md

@@ -39,7 +39,7 @@ closure:
 
 execution_context:
   phase: elaborate
-  current_gate: prd_approval
+  current_gate: elaborate
   next_command: /ldd:refine
   next_human_action: null
   next_reason: Draft Product Requirement has scope and product detail, and needs refinement before approval.
