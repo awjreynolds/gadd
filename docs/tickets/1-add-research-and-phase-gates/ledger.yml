@@ -18,7 +18,9 @@ artifacts:
     status: approved
   sdd:
     path: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
-    status: draft
+    status: approved
+    external_id: "2"
+    external_url: "https://github.com/awjreynolds/ledger-driven-development/issues/2"
   plan:
     path: null
     status: missing
@@ -38,20 +40,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: design
-  current_gate: design_review
-  next_command: /ldd:approve 1
-  next_human_action: /ldd:approve 1
-  next_reason: Software Design Document is drafted and awaiting explicit approval.
+  phase: plan
+  current_gate: plan
+  next_command: /ldd:plan 1
+  next_human_action: null
+  next_reason: Software Design Document is approved and ready for implementation planning.
   approved_artifacts:
     prd: "docs/tickets/1-add-research-and-phase-gates/prd.md"
-    sdd: null
+    sdd: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
     plan: null
   boundaries:
     product: "docs/tickets/1-add-research-and-phase-gates/prd.md"
-    design: null
+    design: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
     plan: null
-  updated_at: "2026-05-14T21:57:42Z"
+  updated_at: "2026-05-14T22:03:55Z"
 
 sync:
   status: synced
@@ -82,3 +84,9 @@ events:
   - at: "2026-05-14T21:57:42Z"
     type: sdd_drafted
     actor: agent
+  - at: "2026-05-14T22:03:55Z"
+    type: external_sdd_issue_created
+    actor: agent
+  - at: "2026-05-14T22:03:55Z"
+    type: sdd_approved
+    actor: human

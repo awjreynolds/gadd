@@ -3,7 +3,7 @@ ticket: 1
 prd: docs/tickets/1-add-research-and-phase-gates/prd.md
 created: 2026-05-14
 updated: 2026-05-14
-status: draft
+status: approved
 adrs: []
 ---
 
