@@ -4,7 +4,7 @@ prd: docs/tickets/1-add-research-and-phase-gates/prd.md
 sdd: docs/tickets/1-add-research-and-phase-gates/sdd.md
 created: 2026-05-14
 updated: 2026-05-14
-status: approved
+status: draft
 plan_html: docs/tickets/1-add-research-and-phase-gates/plan.html
 adrs: []
 ---

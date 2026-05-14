@@ -37,7 +37,7 @@ Read repo-local ledger state and report the next explicit LDD command and next h
 - Prioritize child work with completed implementation evidence and unverified closure before starting additional child implementation.
 - When continuation is safe and commandable, name the exact command the user can run next.
 - When continuation requires human review, approval, drift reconciliation, external mutation confirmation, or a blocked choice, name the human decision instead of offering unsafe automation.
-- PRD and SDD approval gates must route to `/ldd:approve <ticket-id>`.
+- PRD, SDD, and plan approval gates must route to `/ldd:approve <ticket-id>`.
 
 ## Report Contract
 
@@ -68,7 +68,7 @@ For approval gates:
 ```text
 Next command: /ldd:approve LDD-0003
 Next human action: /ldd:approve LDD-0003
-Reason: The PRD or SDD is waiting for explicit approval.
+Reason: The PRD, SDD, or plan is waiting for explicit approval.
 Copy:
 ```
 
@@ -105,7 +105,8 @@ Else if ready child vertical slices exist:
 Else if plan is approved and no child tickets exist:
   next: /ldd:decompose
 Else if plan exists but is not approved:
-  inspect plan state
+  next: /ldd:approve <ticket-id>
+  next_human_action: /ldd:approve <ticket-id>
 Else if SDD is approved:
   next: /ldd:plan
 Else if SDD exists but is not approved:
@@ -148,7 +149,19 @@ next_command: /ldd:approve <ticket-id>
 next_human_action: /ldd:approve <ticket-id>
 ```
 
-If both PRD and SDD approval appear active, report the ambiguity and route to human reconciliation. Do not choose one silently.
+Treat a plan as waiting for approval when either:
+
+- `execution_context.current_gate: plan_review`
+- `artifacts.plan.status: draft` and `artifacts.sdd.status: approved`
+
+Report:
+
+```text
+next_command: /ldd:approve <ticket-id>
+next_human_action: /ldd:approve <ticket-id>
+```
+
+If more than one PRD, SDD, or plan approval gate appears active, report the ambiguity and route to human reconciliation. Do not choose one silently.
 
 ## Verification Gate Detection
 

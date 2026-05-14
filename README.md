@@ -162,7 +162,7 @@ docs/tickets/_archive/
 The templates are quality contracts, not blank forms:
 
 - PRDs keep product scope separate from technical design.
-- `/ldd:approve` records explicit human approval for PRD and SDD gates. It does not approve plans, decomposition, closure, or external mutations.
+- `/ldd:approve` records explicit human approval for PRD, SDD, and plan gates. It does not approve decomposition, closure, or external mutations.
 - SDDs translate approved PRDs into designs grounded in code and ADRs.
 - Plans trace acceptance criteria to implementation slices and verification.
 - Decomposition turns approved plan slices into child vertical-slice tickets.

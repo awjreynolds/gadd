@@ -1,15 +1,15 @@
 ---
 name: ldd-approve
-description: Run /ldd:approve for an LDD ticket. Use when the user says /ldd:approve or wants to approve a PRD or SDD from repo-local ledger state.
+description: Run /ldd:approve for an LDD ticket. Use when the user says /ldd:approve or wants to approve a PRD, SDD, or plan from repo-local ledger state.
 ---
 
 # /ldd:approve
 
-Approve exactly one PRD or SDD gate for an LDD ticket.
+Approve exactly one PRD, SDD, or plan gate for an LDD ticket.
 
 This command is a standalone, agent-agnostic LDD command. Follow this file directly; do not require any other installed skill.
 
-Scope this command to PRD and SDD approval only. It does not approve implementation plans, decomposition, closure, PR merges, or broad workflow automation.
+Scope this command to PRD, SDD, and plan approval only. It does not approve decomposition, closure, PR merges, external mutations, or broad workflow automation.
 
 ## Input
 
@@ -24,21 +24,23 @@ If no ticket ID is provided, stop and ask for the target ticket ID. Do not infer
 - target ticket `ledger.yml`
 - target PRD frontmatter and body
 - target SDD frontmatter and body when present
+- target plan frontmatter and body when present
 - `.ldd/config.yml` when present
 - external tracker sync metadata when configured
 
-Read the ledger first. Use the ledger to locate the PRD and SDD paths, artifact statuses, current gate, approved artifact boundaries, and next action.
+Read the ledger first. Use the ledger to locate the PRD, SDD, and plan paths, artifact statuses, current gate, approved artifact boundaries, and next action.
 
 ## Writes
 
 - PRD frontmatter/status when approving the PRD
 - SDD frontmatter/status when approving the SDD
+- plan frontmatter/status when approving the plan
 - target ticket `ledger.yml`
 - compact ledger events
 - GitHub Product Requirement issue when approving a PRD in GitHub tracker mode
 - GitHub SDD issue when approving an SDD in GitHub tracker mode
 
-Do not write implementation plans, child tickets, verification reports, archive locations, or unrelated repository files from this command.
+Do not write child tickets, verification reports, archive locations, or unrelated repository files from this command.
 
 ## Rules
 
@@ -47,8 +49,9 @@ Do not write implementation plans, child tickets, verification reports, archive 
 - Approve only when exactly one approval gate is active.
 - PRD approval is allowed only for a draft PRD gate.
 - SDD approval is allowed only when the PRD is already approved and a draft SDD gate is active.
-- `/ldd:approve` does not approve plan review, decomposition review, closure, verification overrides, external close, PR creation, PR update, or PR merge.
-- Preserve approved boundaries. If approval would change product scope or design, stop and route to `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, or `/ldd:design`.
+- Plan approval is allowed only when the PRD and SDD are already approved and a draft plan gate is active.
+- `/ldd:approve` does not approve decomposition review, closure, verification overrides, external close, PR creation, PR update, or PR merge.
+- Preserve approved boundaries. If approval would change product scope, design, or plan content, stop and route to `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:design`, or `/ldd:plan`.
 - In local tracker mode, approval mutates only repo-local artifacts and ledger state.
 - In GitHub tracker mode, PRD approval creates or binds the GitHub Product Requirement issue before local promotion. The explicit `/ldd:approve <draft-id>` invocation is the human confirmation to create or bind that Product Requirement issue. Other GitHub mutations still require their owning command and explicit confirmation.
 - If external drift is detected, stop before mutation and ask the human to reconcile the external contribution.
@@ -64,12 +67,16 @@ Determine candidate gates from ledger state:
 - SDD candidate:
   - `execution_context.current_gate: design_review`, or
   - `artifacts.sdd.status: draft` and `artifacts.prd.status: approved`.
+- Plan candidate:
+  - `execution_context.current_gate: plan_review`, or
+  - `artifacts.plan.status: draft` and `artifacts.sdd.status: approved`.
 
 Then filter candidates:
 
 - Remove the PRD candidate if the PRD path is missing.
 - Remove the PRD candidate if the ledger is still in `scope` or `elaborate`.
 - Remove the SDD candidate if the SDD path is missing.
+- Remove the Plan candidate if the plan path is missing.
 - Remove any candidate whose artifact frontmatter already has `status: approved` and ledger artifact status is already `approved`.
 
 Proceed only when exactly one candidate remains.
@@ -80,7 +87,8 @@ Stop when:
 - more than one candidate remains
 - the candidate artifact is missing
 - the PRD is not approved before SDD approval
-- the current gate is plan review, decomposition review, implementation, verification, closure, or external mutation confirmation
+- the SDD is not approved before plan approval
+- the current gate is decomposition review, implementation, verification, closure, or external mutation confirmation
 
 When blocked, report the gate candidates and the next command that owns the state.
 
@@ -132,6 +140,23 @@ When blocked, report the gate candidates and the next command that owns the stat
 6. Append an `sdd_approved` event with `actor: human`.
 7. Report the next command: `/ldd:plan <ticket-id>`.
 
+## Plan Approval Workflow
+
+1. Confirm the PRD and SDD are approved in the ledger.
+2. Confirm the plan exists and passes the plan review checklist.
+3. Mark plan frontmatter `status: approved` and update `updated`.
+4. Update ledger:
+   - `artifacts.plan.status: approved`
+   - `execution_context.phase: decompose`
+   - `execution_context.current_gate: decompose`
+   - `execution_context.next_command: /ldd:decompose <ticket-id>`
+   - `execution_context.next_human_action: null`
+   - `execution_context.next_reason: Implementation plan is approved and ready for decomposition preview.`
+   - `execution_context.approved_artifacts.plan` to the plan path
+   - `execution_context.boundaries.plan` to the plan path
+5. Append a `plan_approved` event with `actor: human`.
+6. Report the next command: `/ldd:decompose <ticket-id>`.
+
 ## GitHub Projection Rule
 
 GitHub is the first external tracker dogfooding path, but it is still a projection:
@@ -142,6 +167,7 @@ GitHub is the first external tracker dogfooding path, but it is still a projecti
 - The local ledger remains canonical for phase state, approvals, and closure.
 - PRD approval in GitHub tracker mode creates or binds the Product Requirement issue and uses the GitHub issue number as the promoted ticket ID.
 - SDD approval in GitHub tracker mode creates or binds an SDD issue that references the PRD issue; decomposition-created implementation issues reference the SDD issue, so the PRD issue has grandchildren.
+- Plan approval is repo-local gate approval. It does not create GitHub child issues; `/ldd:decompose` owns child issue preview and creation after its own explicit human confirmation.
 - Every GitHub update, comment, label, close, or PR mutation after issue creation needs explicit human confirmation from the owning command.
 - Before updating a managed GitHub body, re-read the external body and compare recorded hash/timestamp. If it changed, stop and ask the human to reconcile.
 
@@ -183,6 +209,23 @@ events:
     actor: human
 ```
 
+For plan approval, use existing ledger fields:
+
+```yaml
+artifacts:
+  plan:
+    status: approved
+execution_context:
+  phase: decompose
+  current_gate: decompose
+  next_command: /ldd:decompose 123
+  next_human_action: null
+events:
+  - at: 2026-05-13T00:00:00Z
+    type: plan_approved
+    actor: human
+```
+
 Preserve existing unrelated ledger fields and events.
 
 ## Stop Conditions
@@ -191,10 +234,12 @@ Preserve existing unrelated ledger fields and events.
 - missing or unreadable ledger
 - missing PRD for PRD approval
 - missing SDD for SDD approval
+- missing plan for plan approval
 - PRD is not approved before SDD approval
-- no active PRD or SDD approval gate
+- SDD is not approved before plan approval
+- no active PRD, SDD, or plan approval gate
 - multiple active approval gates
-- requested approval is for plan, decomposition, verification, closure, or a non-PRD/SDD external mutation
+- requested approval is for decomposition, verification, closure, or a non-approval external mutation
 - external drift is detected
 - GitHub tracker mode is configured but the Product Requirement issue cannot be created or bound
 - GitHub tracker mode is configured for SDD approval but the SDD issue cannot be created or bound

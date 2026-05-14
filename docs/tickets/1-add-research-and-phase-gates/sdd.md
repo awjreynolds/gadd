@@ -175,7 +175,7 @@ Minimum phase gates:
 | `/ldd:scope` | Clear problem or desired outcome, target user or workflow, constraints/non-goal candidates, and either research readiness or equivalent supplied inputs. | `/ldd:research` or one decisive missing-input question. |
 | `/ldd:elaborate` | Scoped goals/non-goals and enough user/problem detail to map stories and product outcomes. | `/ldd:scope` or `/ldd:research`. |
 | `/ldd:refine` | Elaborated PRD with goals, stories, acceptance criteria, metrics, dependencies, and owned open questions. | `/ldd:elaborate` or `/ldd:scope`. |
-| `/ldd:approve` | Exactly one active PRD or SDD approval gate and the relevant artifact passing its checklist. | Owning phase command. |
+| `/ldd:approve` | Exactly one active PRD, SDD, or plan approval gate and the relevant artifact passing its checklist. | Owning phase command. |
 | `/ldd:design` | Approved PRD, readable code/ADR context, and no product contradiction. | `/ldd:refine`, `/ldd:scope`, or `/ldd:research` depending on the gap. |
 | `/ldd:plan` | Approved SDD and PRD, with no new architecture decision discovered during planning. | `/ldd:design`. |
 | `/ldd:decompose` | Approved plan with traceable vertical slices and, in GitHub mode, an approved/bound SDD issue. | `/ldd:plan` or `/ldd:approve`. |

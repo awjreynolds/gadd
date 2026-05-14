@@ -140,8 +140,8 @@ Events are important workflow transitions only. They are not progress logs or se
   -> refine routes PRD approval to /ldd:approve
 
 /ldd:approve
-  -> approves a PRD or SDD gate when exactly one approval gate is active
-  -> does not approve plans, decomposition, closure, or external mutations
+  -> approves a PRD, SDD, or plan gate when exactly one approval gate is active
+  -> does not approve decomposition, closure, or external mutations
 
 /ldd:design
   -> writes SDD for the promoted Product Requirement
@@ -165,7 +165,7 @@ Events are important workflow transitions only. They are not progress logs or se
   -> archives locally and syncs external close only with explicit human approval
 ```
 
-`/ldd:next` is read-only. It inspects active ledgers, identifies the next command and next human action, explains why, and stops. For PRD and SDD approval gates, it names `/ldd:approve <ticket-id>`.
+`/ldd:next` is read-only. It inspects active ledgers, identifies the next command and next human action, explains why, and stops. For PRD, SDD, and plan approval gates, it names `/ldd:approve <ticket-id>`.
 
 `/ldd:scope` is the draft entry point for new Product Requirements. If no active draft exists, it creates a new draft in `docs/tickets/_drafts/`. Existing promoted tickets do not block new scoping work. If an active draft already exists, `/ldd:scope` updates that draft or asks the human to continue, rename, promote, or discard it before starting another one.
 

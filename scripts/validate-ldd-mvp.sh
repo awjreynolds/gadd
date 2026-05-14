@@ -141,8 +141,10 @@ if grep -q 'artifacts.prd.status: draft.*approved_artifacts.prd' skills/ldd-next
   exit 1
 fi
 
-grep -q 'Approve exactly one PRD or SDD gate' skills/ldd-approve/SKILL.md
-grep -q 'does not approve implementation plans' skills/ldd-approve/SKILL.md
+grep -q 'Approve exactly one PRD, SDD, or plan gate' skills/ldd-approve/SKILL.md
+grep -q 'Plan Approval Workflow' skills/ldd-approve/SKILL.md
+grep -q 'Plan candidate' skills/ldd-approve/SKILL.md
+grep -q 'next_command: /ldd:decompose 123' skills/ldd-approve/SKILL.md
 grep -q 'exactly one approval gate is active' skills/ldd-approve/SKILL.md
 grep -q 'GitHub is the first external tracker dogfooding path' skills/ldd-approve/SKILL.md
 grep -q 'GitHub issue number as the stable ticket ID' skills/ldd-approve/SKILL.md
@@ -261,7 +263,9 @@ grep -q 'GitHub issue number as the promoted ticket ID' skills/ldd-refine/SKILL.
 grep -q "SDD template's quality bar" skills/ldd-design/SKILL.md
 grep -q 'SDD approval must be recorded through `/ldd:approve <ticket-id>`' skills/ldd-design/SKILL.md
 grep -q "plan template's traceability" skills/ldd-plan/SKILL.md
-grep -q '/ldd:approve` does not approve plans' skills/ldd-plan/SKILL.md
+grep -q 'Stop at explicit plan approval through `/ldd:approve <ticket-id>`' skills/ldd-plan/SKILL.md
+grep -q 'next_command: /ldd:approve <ticket-id>' skills/ldd-plan/SKILL.md
+grep -q 'plan exists but is not approved' skills/ldd-next/SKILL.md
 grep -q 'repo-local ledger as canonical workflow state' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 
 if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external TDD skill required|requires? an external .*skill' skills commands README.md CONTEXT.md docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md GEMINI.md agent-skills.json; then
