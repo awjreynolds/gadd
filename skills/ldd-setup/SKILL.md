@@ -10,8 +10,21 @@ Bootstrap the current target repository for the LDD MVP workflow.
 ## Preflight
 
 - Confirm this is a target project, not the LDD skill source repo. If `skills/ldd-setup/SKILL.md` or another LDD skill source exists in the repo, stop and ask whether the user intends to dogfood LDD here.
-- Detect whether an external tracker is configured or requested. Local-only is the default. GitHub is the first MVP external tracker projection path. Linear and Jira are follow-on compatibility targets and should be recorded as future intent, not configured as working providers.
-- If no external tracker is configured, default to local-only mode.
+- Detect whether `.ldd/config.yml` already exists.
+  - If it exists, treat this as a setup rerun. Read and summarize the current settings before changing files:
+    - ledger mode, draft directory, archive directory, local ID prefix
+    - tracker provider, repo/project/default branch
+    - artifact root
+    - branch and PR naming patterns
+    - plan renderer setting
+    - ADR directory and update policy
+  - Ask the human to confirm whether to keep these settings or change them. Do not silently change existing settings.
+  - If the existing config conflicts with the requested setup mode and the human has not explicitly approved the change, stop.
+- If `.ldd/config.yml` does not exist, ask whether to use local-only mode or GitHub projection mode.
+  - Local-only is the recommended default.
+  - GitHub is the first MVP external tracker projection path. If selected, ask for the GitHub repo and default branch before writing config.
+  - Linear and Jira are follow-on compatibility targets and should be recorded as future intent, not configured as working providers.
+- External tracker setup only configures projection intent. Future external mutations still require explicit human confirmation and drift checks.
 
 ## Create
 

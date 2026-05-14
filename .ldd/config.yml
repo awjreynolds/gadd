@@ -5,8 +5,8 @@ ledger:
   local_id_prefix: LDD
 
 tracker:
-  provider: local
-  repo: null
+  provider: github
+  repo: awjreynolds/ledger-driven-development
   project: null
   default_branch: main
 

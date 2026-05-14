@@ -2,6 +2,8 @@
 
 Implements {ticket}
 
+This PR is the GitHub-first managed projection for implementation review. The repo-local child ledger remains canonical for implementation, verification, and closure state.
+
 ## Approved Artifacts
 
 - PRD: `docs/tickets/{ticket}/prd.md`
@@ -49,3 +51,9 @@ Please review in this order:
 2. Are any variances justified and still inside the approved SDD?
 3. Do tests/checks prove the acceptance criteria and contracts?
 4. Is there any hidden scope or architecture drift that should go back through LDD design/planning?
+
+## Managed Projection Rule
+
+LDD may update this body only after explicit human confirmation and an external drift check. Closing this PR does not close the LDD child ticket; `/ldd:verify` and `/ldd:close` own that lifecycle.
+
+<!-- ldd:managed-body-version=1 -->
