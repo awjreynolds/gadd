@@ -136,6 +136,10 @@ grep -q 'closure.status' skills/ldd-next/SKILL.md
 grep -q 'next_human_action' skills/ldd-next/SKILL.md
 grep -q '/ldd:approve <ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'does not perform mutations' skills/ldd-next/SKILL.md
+grep -q 'Do not infer them from the conversation' skills/ldd-next/SKILL.md
+grep -q 'implementation PR merge state is checked' skills/ldd-next/SKILL.md
+grep -q 'reconcile implementation PR merge state into the repo-local ledger' skills/ldd-next/SKILL.md
+grep -q 'Never treat a conversational claim such as "merged" as merge evidence' skills/ldd-next/SKILL.md
 grep -q 'Approval Gate Detection' skills/ldd-next/SKILL.md
 grep -q 'copyable command block containing only the next command' skills/ldd-next/SKILL.md
 grep -Eq 'execution_context\.phase.*refine' skills/ldd-next/SKILL.md
