@@ -137,8 +137,8 @@ grep -q 'next_human_action' skills/ldd-next/SKILL.md
 grep -q '/ldd:approve <ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'does not perform mutations' skills/ldd-next/SKILL.md
 grep -q 'Do not infer them from the conversation' skills/ldd-next/SKILL.md
-grep -q 'implementation PR merge state is checked' skills/ldd-next/SKILL.md
-grep -q 'reconcile implementation PR merge state into the repo-local ledger' skills/ldd-next/SKILL.md
+grep -q 'implementation PR state is checked' skills/ldd-next/SKILL.md
+grep -q 'Verification owns recording observed merge evidence' skills/ldd-next/SKILL.md
 grep -q 'Never treat a conversational claim such as "merged" as merge evidence' skills/ldd-next/SKILL.md
 grep -q 'Approval Gate Detection' skills/ldd-next/SKILL.md
 grep -q 'copyable command block containing only the next command' skills/ldd-next/SKILL.md
@@ -255,7 +255,7 @@ grep -q 'external ticket drift is unresolved' skills/ldd-verify/SKILL.md
 grep -q 'Implementation PR State Rule' skills/ldd-verify/SKILL.md
 grep -q 'implementation PR state is externally checked' skills/ldd-verify/SKILL.md
 grep -q 'Never treat a conversational claim such as "merged" as merge evidence' skills/ldd-verify/SKILL.md
-grep -q 'reconcile implementation PR merge state into the repo-local ledger' skills/ldd-verify/SKILL.md
+grep -q 'records the observed `mergedAt` and merge commit as evidence' skills/ldd-verify/SKILL.md
 grep -q 'verification.md' skills/ldd-verify/SKILL.md
 grep -q 'Do not mutate external trackers' skills/ldd-verify/SKILL.md
 grep -q 'Apply closure for one verified child work item' skills/ldd-close/SKILL.md

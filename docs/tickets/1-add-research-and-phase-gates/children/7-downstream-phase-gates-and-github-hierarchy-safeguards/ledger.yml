@@ -6,7 +6,7 @@ ticket:
   title: "SDD #2 Slice 5: Downstream phase gates and GitHub hierarchy safeguards"
   kind: child_work_item
   type: autonomous
-  status: verification_required
+  status: verified
 
 parent:
   id: "1"
@@ -34,6 +34,10 @@ artifacts:
       implementation_pr:
         number: 9
         url: "https://github.com/awjreynolds/ledger-driven-development/pull/9"
+        state: merged
+        merged_at: "2026-05-14T23:11:19Z"
+        merge_commit: "c104f3cafabf650798e451728b27a992787f495c"
+        checked_at: "2026-05-14T23:41:12Z"
         mode: aggregate
         addresses: ["3", "4", "5", "6", "7", "8"]
       changed_files:
@@ -54,14 +58,14 @@ artifacts:
           result: passed
   verification:
     path: "docs/tickets/1-add-research-and-phase-gates/children/7-downstream-phase-gates-and-github-hierarchy-safeguards/verification.md"
-    status: override_required
+    status: passed
 
 closure:
-  status: verification_required
-  verified_at: null
+  status: verified
+  verified_at: "2026-05-14T23:41:12Z"
   archived_at: null
   external_closed_at: null
-  override_reason: "Implementation PR #9 is merged externally, but matching merge evidence is not recorded in the child ledger."
+  override_reason: null
 
 blocked_by: ["6"]
 user_stories_covered: [4, 5]
@@ -81,7 +85,7 @@ execution_context:
     product: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     design: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
     plan: "docs/tickets/1-add-research-and-phase-gates/plan.md"
-  updated_at: "2026-05-14T22:51:10Z"
+  updated_at: "2026-05-14T23:41:12Z"
 
 sync:
   status: synced
@@ -106,6 +110,6 @@ events:
   - at: "2026-05-14T23:09:22Z"
     type: implementation_pr_created
     actor: agent
-  - at: "2026-05-14T23:31:13Z"
-    type: verification_override_required
+  - at: "2026-05-14T23:41:12Z"
+    type: verification_passed
     actor: agent

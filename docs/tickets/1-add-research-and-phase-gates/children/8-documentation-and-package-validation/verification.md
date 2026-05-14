@@ -2,9 +2,9 @@
 
 - Parent ID: #1
 - Child ID: #8
-- Verification status: override_required
-- Closure recommendation: blocked
-- Verified at: 2026-05-14T23:31:13Z
+- Verification status: passed
+- Closure recommendation: ready for human-approved closure
+- Verified at: 2026-05-14T23:41:12Z
 - Verifier: agent
 
 ## Approved Inputs
@@ -24,39 +24,40 @@ Boundary: child-ticket closure only, not repository health.
 - External PR state checked: MERGED
 - External merged at: 2026-05-14T23:11:19Z
 - External merge commit: c104f3cafabf650798e451728b27a992787f495c
-- Ledger reconciliation status: missing matching merge evidence in the child ledger
+- Ledger reconciliation status: recorded by /ldd:verify
 
 ## Acceptance-Criteria Traceability
 
-The implementation evidence references README, GEMINI, CONTEXT, design-spec, and validation updates for research, gates, privacy, and GitHub projection behavior. Closure is blocked until the merge evidence is reconciled into the repo-local ledger.
+The implementation evidence covers user-facing documentation, package manifests, validation updates, and review safeguards expected for this slice. The implementation PR addresses child issues #3 through #8 as an aggregate PR, and this report verifies only child #8.
 
 ## Check Evidence
 
 - `./scripts/validate-ldd-mvp.sh`: passed before verification
 - `git diff --check`: passed before verification
-- JSON manifest validation: passed before verification
+- JSON manifest validation: passed before verification where applicable
+- GitHub PR state check: passed; PR #9 is merged
 
 ## Drift Review
 
-- Ledger drift: implementation PR is merged externally, but merge evidence is not recorded locally
+- Ledger drift: none after recording PR #9 merge evidence
 - Approved artifact drift: none detected
-- Scope/design/plan drift: none decided; closure blocked before pass decision
-- External tracker drift: merge-state reconciliation required
+- Scope/design/plan drift: none detected
+- External tracker drift: none detected
 
 ## Findings
 
 Blockers:
-- Reconcile PR #9 merge time and merge commit into the repo-local ledger before verification can pass.
+- None.
 
 Warnings:
 - None.
 
 Notes:
-- Verification did not mutate external trackers.
+- Verification recorded observed external merge evidence locally and did not mutate external trackers.
 
 ## Closure Decision
 
-- Local done: no
-- Local archive readiness: no
-- External close readiness: no
+- Local done: yes
+- Local archive readiness: yes
+- External close readiness: yes, pending explicit human confirmation before external mutation
 - Human confirmation required before external mutation: yes

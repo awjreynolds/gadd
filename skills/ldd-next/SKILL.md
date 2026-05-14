@@ -30,7 +30,7 @@ Required input standard before reporting workflow navigation:
 - no ambiguous multiple active drafts unless the user selected one
 - child ledger paths are readable when parent state depends on children
 - external tracker drift metadata is either clean or reported as a blocker
-- implementation PR merge state is checked from the external tracker when the ledger records a PR, before routing to verification or closure
+- implementation PR state is checked from the external tracker when needed to distinguish review/merge waiting from verification-ready work
 
 If inputs fail this standard, do not mutate anything and report the ambiguity or missing state. The earliest LDD command that can repair missing setup is `/ldd:setup`; missing decomposition routes to `/ldd:decompose`; ambiguous or drifted state requires human reconciliation before another command runs.
 
@@ -40,7 +40,8 @@ If inputs fail this standard, do not mutate anything and report the ambiguity or
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation, and this command does not perform mutations.
 - Treat PR review, approval, merge, close, and branch deletion as external actions. Do not infer them from the conversation, branch names, local commits, or the user's statement. If a ledger records an implementation PR, read the external PR state before deciding the next command.
-- If the external PR is merged but the repo-local ledger has not recorded the merge commit and merge time, report external tracker drift and route to human reconciliation or the owning sync/update command instead of proceeding from chat context.
+- If the external PR is merged but the repo-local ledger has not recorded the merge commit and merge time, route to `/ldd:verify <child-ticket-id>` so verification can record observed merge evidence and finish the child-ticket closure-readiness check.
+- Report external tracker drift only when the external PR state conflicts with recorded ledger state, cannot be read, or is closed without merge.
 - If the external PR is still open, report that review/merge remains the next human action and do not route to `/ldd:verify`.
 - Ignore `docs/tickets/_archive/` unless the user explicitly asks to inspect archived tickets.
 - Use `.ldd/config.yml` when present.
@@ -117,9 +118,6 @@ Else if any active child is verified but not closed or archived:
 Else if implementation PR exists and external PR state is open:
   next: blocked
   next_human_action: review and merge implementation PR
-Else if implementation PR exists and external PR state is merged but merge evidence is not recorded in the ledger:
-  next: blocked
-  next_human_action: reconcile implementation PR merge state into the repo-local ledger
 Else if any active child has completed implementation evidence and unverified closure:
   next: /ldd:verify <child-ticket-id>
 Else if ready child vertical slices exist:
@@ -221,8 +219,7 @@ When a parent or child ledger records implementation PR evidence, for example `a
 - Read the external PR state from the configured tracker before reporting `/ldd:verify` or `/ldd:close`.
 - For GitHub, inspect the PR number or URL and check at least `state`, `mergedAt`, and merge commit.
 - If the PR is open, report `next_command: blocked` and `next_human_action: review and merge implementation PR`.
-- If the PR is merged and the ledger already records matching merge evidence, verification may proceed.
-- If the PR is merged and the ledger does not record matching merge evidence, report `next_command: blocked` and `next_human_action: reconcile implementation PR merge state into the repo-local ledger`.
+- If the PR is merged, route to `/ldd:verify <child-ticket-id>`. Verification owns recording observed merge evidence and deciding whether the child can pass.
 - If the PR is closed without merge, report `next_command: blocked` and route back to `/ldd:implement <child-ticket-id>` or human reconciliation depending on the child state.
 
 Never treat a conversational claim such as "merged" as merge evidence. The claim may explain why the command should check the external tracker, but it is not workflow state.
