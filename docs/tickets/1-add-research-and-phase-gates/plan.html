@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Implementation Plan: Add LDD research and phase input gates</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f8fa;
+      --fg: #1f2328;
+      --muted: #57606a;
+      --border: #d0d7de;
+      --panel: #ffffff;
+      --accent: #0969da;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --fg: #e6edf3;
+        --muted: #8b949e;
+        --border: #30363d;
+        --panel: #161b22;
+        --accent: #58a6ff;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    header {
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    h2,
+    h3 {
+      margin-top: 2rem;
+      line-height: 1.25;
+    }
+
+    p {
+      margin: 0.75rem 0;
+    }
+
+    code {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.25rem;
+      background: var(--panel);
+      font-size: 0.9em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: var(--panel);
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: color-mix(in srgb, var(--panel) 82%, var(--accent));
+    }
+
+    .review-note {
+      margin: 1rem 0;
+      border-left: 4px solid var(--accent);
+      padding: 0.7rem 1rem;
+      background: var(--panel);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Implementation Plan: Add LDD research and phase input gates</h1>
+      <p>This file is generated from <code>plan.md</code> for review. Treat <code>plan.md</code> as the source of truth.</p>
+    </header>
+    <section class="review-note" aria-label="Reviewer guidance">
+      Review for traceability, slice order, and whether the plan stays inside the approved PRD and SDD. If the plan contains a new architecture decision, send it back to design before implementation starts.
+    </section>
+
+    <h2>Review Context</h2>
+    <p>This plan adds <code>/ldd:research</code>, makes input-quality gates explicit across all LDD commands, strengthens <code>/ldd:scope</code>, and preserves the GitHub issue hierarchy already approved for PRD and SDD projection.</p>
+
+    <h3>PRD Summary</h3>
+    <ul>
+      <li>Source: <code>docs/tickets/1-add-research-and-phase-gates/prd.md</code></li>
+      <li>Goals: add research, full read-only visibility, phase gates, scope input checks, sensitive-input protection, and GitHub projection validation.</li>
+      <li>Protected non-goals: GitHub is not canonical, scope does not mutate GitHub, no Linear/Jira behavior, no raw sensitive details in committed or GitHub-visible artifacts, and no monolithic command.</li>
+    </ul>
+
+    <h3>SDD Summary</h3>
+    <ul>
+      <li>Source: <code>docs/tickets/1-add-research-and-phase-gates/sdd.md</code></li>
+      <li>Add <code>/ldd:research</code> as a standalone command-shaped skill with Codex, Claude, and Gemini adapters.</li>
+      <li>Add optional <code>artifacts.research.path/status</code> and a sanitized <code>research.md</code> template.</li>
+      <li>Add <code>Input Quality Gate</code> sections to every command skill.</li>
+      <li>Keep SDD issue <code>#2</code> as child of PRD issue <code>#1</code>; future implementation child issues reference SDD issue <code>#2</code>.</li>
+    </ul>
+
+    <h2>Slices</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Slice</th>
+          <th>Outcome</th>
+          <th>Files/modules</th>
+          <th>Tests/checks</th>
+          <th>Dependencies</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Research command surface</td>
+          <td><code>/ldd:research</code> is discoverable and installable across Codex, Claude, and Gemini.</td>
+          <td><code>skills/ldd-research</code>, <code>commands/ldd/research.*</code>, manifests, README, GEMINI.</td>
+          <td>Package validation, manifest JSON validation, command coverage greps.</td>
+          <td>None.</td>
+        </tr>
+        <tr>
+          <td>2. Research artifact, ledger, and setup templates</td>
+          <td>Setup installs <code>research.md</code>; ledgers can record optional research state without breaking old tickets.</td>
+          <td>Setup templates, installed <code>.ldd/templates</code>, setup skill, README, CONTEXT.</td>
+          <td>Validation checks template presence and <code>artifacts.research</code>; manual compatibility check.</td>
+          <td>Slice 1 can run in parallel.</td>
+        </tr>
+        <tr>
+          <td>3. Research workflow and privacy contract</td>
+          <td>Research prompts for PM inputs, reads context read-only, writes sanitized output, and reports readiness.</td>
+          <td><code>skills/ldd-research/SKILL.md</code>, research templates, CONTEXT.</td>
+          <td>Review weak input, split feature, non-PR, and private financial examples; grep readiness labels.</td>
+          <td>Slices 1 and 2.</td>
+        </tr>
+        <tr>
+          <td>4. Scope adequacy gate and PM command gates</td>
+          <td>Scope rejects weak inputs; PM commands state input standards and repair routing.</td>
+          <td><code>ldd-scope</code>, <code>ldd-elaborate</code>, <code>ldd-refine</code>.</td>
+          <td>Validation greps for <code>Input Quality Gate</code>; manual weak-input dry run.</td>
+          <td>Slice 3.</td>
+        </tr>
+        <tr>
+          <td>5. Downstream phase gates and GitHub hierarchy safeguards</td>
+          <td>Downstream commands validate inputs, route gaps, and preserve PRD issue -> SDD issue -> implementation issue hierarchy.</td>
+          <td>Design, plan, decompose, implement, verify, close, approve, next, setup skills.</td>
+          <td>Validation greps for phase gates, SDD issue requirement, and copyable next behavior.</td>
+          <td>Slices 1-4.</td>
+        </tr>
+        <tr>
+          <td>6. Documentation and package validation</td>
+          <td>Docs and validation enforce research, gates, privacy, and GitHub projection behavior.</td>
+          <td>README, GEMINI, CONTEXT, design spec, validation script.</td>
+          <td><code>./scripts/validate-ldd-mvp.sh</code>, <code>git diff --check</code>, docs review.</td>
+          <td>Slices 1-5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Acceptance Criteria Traceability</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Acceptance criterion</th>
+          <th>Slice(s)</th>
+          <th>Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Research prompts for standard PM inputs.</td><td>1, 3</td><td>Inspect research skill; validation greps prompt coverage.</td></tr>
+        <tr><td>Research has full read-only code/docs/artifact/private-local visibility.</td><td>3</td><td>Inspect research rules for read-only context access.</td></tr>
+        <tr><td>Research output separates evidence, codebase facts, constraints, assumptions, risks, sensitivity handling, and open questions.</td><td>2, 3</td><td>Inspect research template and quality bar.</td></tr>
+        <tr><td>Research reports one readiness label.</td><td>3</td><td>Validation greps all readiness labels.</td></tr>
+        <tr><td>Scope refuses unclear problem or desired outcome.</td><td>4</td><td>Inspect scope input gate and weak-input dry run.</td></tr>
+        <tr><td>Scope routes weak inputs to research or asks for missing context.</td><td>4</td><td>Inspect scope rejection language.</td></tr>
+        <tr><td>Every phase states its input standard before mutation.</td><td>4, 5</td><td>Validation greps every skill for <code>Input Quality Gate</code>.</td></tr>
+        <tr><td>Rejected inputs name the gap and earliest fixing command.</td><td>4, 5</td><td>Inspect rejection contracts; validation greps repair routing.</td></tr>
+        <tr><td>Sensitive inputs are sanitized before committed or GitHub-visible output.</td><td>2, 3, 6</td><td>Inspect privacy sections and projection rules.</td></tr>
+        <tr><td>GitHub projection remains human-confirmed and ledger-canonical.</td><td>5, 6</td><td>Inspect approve/decompose contracts and verify issues #1 and #2 as projections.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Test Strategy</h2>
+    <ul>
+      <li>Run <code>./scripts/validate-ldd-mvp.sh</code>.</li>
+      <li>Keep JSON validation for all manifests.</li>
+      <li>Regression-check existing command installability, old-ledger compatibility, copyable <code>/ldd:next</code>, and GitHub issue-number identity.</li>
+      <li>Manually review weak input, sensitive input, and GitHub hierarchy paths.</li>
+      <li>Do not automate Linear/Jira or live GitHub mutations in package validation.</li>
+    </ul>
+
+    <h2>Review Checklist</h2>
+    <ul>
+      <li>[x] The plan only implements the approved PRD and SDD.</li>
+      <li>[x] Every PRD acceptance criterion maps to at least one slice and verification.</li>
+      <li>[x] Every SDD interface/contract change appears in a slice.</li>
+      <li>[x] Migration, compatibility, observability, and security/privacy work is included or explicitly not needed.</li>
+      <li>[x] Slice order is dependency-safe and reviewable.</li>
+      <li>[x] Any newly discovered architecture decision has been moved back to the SDD/ADR process.</li>
+    </ul>
+  </main>
+</body>
+</html>

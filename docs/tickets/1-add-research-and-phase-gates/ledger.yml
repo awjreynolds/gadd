@@ -22,8 +22,8 @@ artifacts:
     external_id: "2"
     external_url: "https://github.com/awjreynolds/ledger-driven-development/issues/2"
   plan:
-    path: null
-    status: missing
+    path: "docs/tickets/1-add-research-and-phase-gates/plan.md"
+    status: draft
   implementation:
     status: not_started
   verification:
@@ -41,10 +41,10 @@ closure:
 
 execution_context:
   phase: plan
-  current_gate: plan
-  next_command: /ldd:plan 1
-  next_human_action: null
-  next_reason: Software Design Document is approved and ready for implementation planning.
+  current_gate: plan_review
+  next_command: /ldd:decompose 1
+  next_human_action: "Does this design and plan correctly implement the PRD?"
+  next_reason: Implementation plan is drafted and awaiting explicit human plan review.
   approved_artifacts:
     prd: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     sdd: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
@@ -53,7 +53,7 @@ execution_context:
     product: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     design: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
     plan: null
-  updated_at: "2026-05-14T22:03:55Z"
+  updated_at: "2026-05-14T22:09:46Z"
 
 sync:
   status: synced
@@ -90,3 +90,6 @@ events:
   - at: "2026-05-14T22:03:55Z"
     type: sdd_approved
     actor: human
+  - at: "2026-05-14T22:09:46Z"
+    type: plan_written
+    actor: agent
