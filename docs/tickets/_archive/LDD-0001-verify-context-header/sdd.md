@@ -1,6 +1,6 @@
 ---
 ticket: LDD-0001
-prd: docs/tickets/LDD-0001-verify-context-header/prd.md
+prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
 created: 2026-05-13
 updated: 2026-05-13
 adrs: []
@@ -12,7 +12,7 @@ adrs: []
 
 This design implements the approved PRD for `LDD-0001`. The existing MVP already has command-shaped skills, repo-local per-ticket ledgers, rich issue templates, and a local archive directory. It does not yet expose a compact execution context/header for a ticket, and it does not yet have a separate verification gate between implementation completion and ticket closure.
 
-- PRD: `docs/tickets/LDD-0001-verify-context-header/prd.md`
+- PRD: `docs/tickets/_archive/LDD-0001-verify-context-header/prd.md`
 - Existing entry points:
   - `skills/ldd-*/SKILL.md`
   - `commands/ldd/*.md`
@@ -135,11 +135,11 @@ execution_context:
   next_human_action: null
   next_reason: PRD is approved and SDD is missing.
   approved_artifacts:
-    prd: docs/tickets/LDD-0001-verify-context-header/prd.md
+    prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
     sdd: null
     plan: null
   boundaries:
-    product: docs/tickets/LDD-0001-verify-context-header/prd.md
+    product: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
     design: null
     plan: null
   updated_at: 2026-05-13T00:00:00Z

@@ -13,7 +13,7 @@ Expected touch points:
 - `README.md`
 - `CONTEXT.md`
 - `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`
-- `docs/tickets/LDD-0001-verify-context-header/ledger.yml`
+- `docs/tickets/_archive/LDD-0001-verify-context-header/ledger.yml`
 - `scripts/validate-ldd-mvp.sh`
 
 ## Acceptance criteria
@@ -38,8 +38,8 @@ Expected touch points:
 
 ## LDD Traceability
 
-- Parent PRD: `docs/tickets/LDD-0001-verify-context-header/prd.md`
-- Parent SDD: `docs/tickets/LDD-0001-verify-context-header/sdd.md`
-- Plan: `docs/tickets/LDD-0001-verify-context-header/plan.md`
+- Parent PRD: `docs/tickets/_archive/LDD-0001-verify-context-header/prd.md`
+- Parent SDD: `docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md`
+- Plan: `docs/tickets/_archive/LDD-0001-verify-context-header/plan.md`
 - Plan slice: `5. Update docs and validation for the new end-to-end workflow`
-- Ledger: `docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-005-docs-validation-workflow/ledger.yml`
+- Ledger: `docs/tickets/_archive/LDD-0001-005-docs-validation-workflow/ledger.yml`

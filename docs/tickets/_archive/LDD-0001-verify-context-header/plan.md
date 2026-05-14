@@ -1,10 +1,10 @@
 ---
 ticket: LDD-0001
-prd: docs/tickets/LDD-0001-verify-context-header/prd.md
-sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
+prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+sdd: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
 created: 2026-05-13
 updated: 2026-05-13
-plan_html: docs/tickets/LDD-0001-verify-context-header/plan.html
+plan_html: docs/tickets/_archive/LDD-0001-verify-context-header/plan.html
 adrs: []
 ---
 
@@ -16,7 +16,7 @@ This plan translates the approved PRD and SDD into executable slices. It does no
 
 ### PRD Summary
 
-- Source: `docs/tickets/LDD-0001-verify-context-header/prd.md`
+- Source: `docs/tickets/_archive/LDD-0001-verify-context-header/prd.md`
 - Goals covered:
   - Add a compact LDD execution context/header for active tickets.
   - Add a verification gate after implementation and before closure.
@@ -39,7 +39,7 @@ This plan translates the approved PRD and SDD into executable slices. It does no
 
 ### SDD Summary
 
-- Source: `docs/tickets/LDD-0001-verify-context-header/sdd.md`
+- Source: `docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md`
 - Design decisions to implement:
   - Add optional `execution_context` to each ticket ledger.
   - Add standalone `/ldd:verify`.
@@ -73,7 +73,7 @@ Use thin vertical slices where possible. Each slice leaves the repo in a reviewa
 | 2. Add ledger execution context and verification templates | New target repos receive `execution_context`, child verification/closure fields, and a `verification.md` template. Existing copied `.ldd/templates` in this repo match the source templates. | `skills/ldd-setup/assets/templates/ledger.yml`, `skills/ldd-setup/assets/templates/verification.md`, `.ldd/templates/ledger.yml`, `.ldd/templates/verification.md`, `skills/ldd-setup/SKILL.md`, `README.md`, `CONTEXT.md` | `./scripts/validate-ldd-mvp.sh`; inspect template copies for parity; `git diff --check` | Slice 1 can run in parallel, but validation updates may land with either slice |
 | 3. Teach `/ldd:next` and `/ldd:implement` the verification gate | Workflow navigation reports `/ldd:verify <child-id>` when implementation is complete but closure is unverified. Implementation marks verification required and does not archive/close. | `skills/ldd-next/SKILL.md`, `skills/ldd-implement/SKILL.md`, `commands/ldd/next.*` only if adapters need non-canonical text changes, `commands/ldd/implement.*` only if adapters need non-canonical text changes | `./scripts/validate-ldd-mvp.sh`; targeted hostile scenario review using fixture ledgers or documented examples; `git diff --check` | Slices 1 and 2 |
 | 4. Define `/ldd:verify` workflow and report contract | `/ldd:verify` can be followed by any supported agent without external skills. It reads evidence, checks drift, writes `verification.md`, updates ledger verification state, and blocks closure when evidence is insufficient. | `skills/ldd-verify/SKILL.md`, `skills/ldd-setup/assets/templates/verification.md`, `.ldd/templates/verification.md`, `scripts/validate-ldd-mvp.sh` | `./scripts/validate-ldd-mvp.sh`; hostile scenario review for missing evidence, failed checks, unresolved drift, and attempted external close before verification; `git diff --check` | Slices 1 and 2 |
-| 5. Update docs and validation for the new end-to-end workflow | Public docs, glossary, validation, and the active LDD ledger reflect the full scope/design/plan/decompose/implement/verify path. | `README.md`, `CONTEXT.md`, `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`, `docs/tickets/LDD-0001-verify-context-header/ledger.yml`, `scripts/validate-ldd-mvp.sh` | `./scripts/validate-ldd-mvp.sh`; `git diff --check`; `/ldd:next` should report plan approval or decompose after plan approval | Slices 1-4 |
+| 5. Update docs and validation for the new end-to-end workflow | Public docs, glossary, validation, and the active LDD ledger reflect the full scope/design/plan/decompose/implement/verify path. | `README.md`, `CONTEXT.md`, `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`, `docs/tickets/_archive/LDD-0001-verify-context-header/ledger.yml`, `scripts/validate-ldd-mvp.sh` | `./scripts/validate-ldd-mvp.sh`; `git diff --check`; `/ldd:next` should report plan approval or decompose after plan approval | Slices 1-4 |
 
 Slice quality bar:
 
@@ -115,7 +115,7 @@ Slice quality bar:
 | `skills/ldd-next/SKILL.md` | Add decision logic for verification-required child work and `execution_context`. | Route work to `/ldd:verify`. |
 | `skills/ldd-implement/SKILL.md` | Clarify implementation completion evidence and verification-required closure status. | Keep implementation from closing work directly. |
 | `scripts/validate-ldd-mvp.sh` | Require verify files and key contract text; keep external-skill dependency ban. | Protect package completeness. |
-| `docs/tickets/LDD-0001-verify-context-header/ledger.yml` | Mark SDD approved, plan drafted, and current gate as plan review. | Keep dogfood workflow state current. |
+| `docs/tickets/_archive/LDD-0001-verify-context-header/ledger.yml` | Mark SDD approved, plan drafted, and current gate as plan review. | Keep dogfood workflow state current. |
 
 If implementation discovers different touch points, explain the variance in the implementation PR body.
 

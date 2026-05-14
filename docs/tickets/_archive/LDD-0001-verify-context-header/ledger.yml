@@ -5,7 +5,7 @@ ticket:
   draft_id: 2026-05-13-verify-context-header
   title: Add LDD execution context and verification gate
   kind: product_requirement
-  status: decomposed
+  status: archived
 
 tracker:
   mode: local
@@ -14,13 +14,13 @@ tracker:
 
 artifacts:
   prd:
-    path: docs/tickets/LDD-0001-verify-context-header/prd.md
+    path: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
     status: approved
   sdd:
-    path: docs/tickets/LDD-0001-verify-context-header/sdd.md
+    path: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
     status: approved
   plan:
-    path: docs/tickets/LDD-0001-verify-context-header/plan.md
+    path: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
     status: approved
   implementation:
     status: completed
@@ -29,54 +29,61 @@ children:
   - id: LDD-0001-001
     title: Add /ldd:verify package surface
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-001-verify-package-surface/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0001-001-verify-package-surface/ledger.yml
     blocked_by: []
     user_stories_covered: [1, 2, 3, 5]
   - id: LDD-0001-002
     title: Add ledger execution context and verification templates
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-002-ledger-context-templates/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0001-002-ledger-context-templates/ledger.yml
     blocked_by: []
     user_stories_covered: [1, 3, 4]
   - id: LDD-0001-003
     title: Teach /ldd:next and /ldd:implement the verification gate
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-003-next-implement-verify-gate/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0001-003-next-implement-verify-gate/ledger.yml
     blocked_by: [LDD-0001-001, LDD-0001-002]
     user_stories_covered: [1, 2, 3, 5]
   - id: LDD-0001-004
     title: Define /ldd:verify workflow and report contract
     type: autonomous
-    status: verified
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-004-verify-workflow-contract/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0001-004-verify-workflow-contract/ledger.yml
     blocked_by: [LDD-0001-001, LDD-0001-002]
     user_stories_covered: [2, 4, 5]
   - id: LDD-0001-005
     title: Update docs and validation for end-to-end workflow
     type: human_review
-    status: verified
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-005-docs-validation-workflow/ledger.yml
+    status: archived
+    path: docs/tickets/_archive/LDD-0001-005-docs-validation-workflow/ledger.yml
     blocked_by: [LDD-0001-001, LDD-0001-002, LDD-0001-003, LDD-0001-004]
     user_stories_covered: [1, 2, 3, 4, 5]
 
+closure:
+  status: archived
+  verified_at: null
+  archived_at: 2026-05-14T08:50:00Z
+  external_closed_at: null
+  override_reason: null
+
 execution_context:
-  phase: close
-  current_gate: closure
-  next_command: /ldd:close LDD-0001-001
+  phase: done
+  current_gate: archived
+  next_command: null
   next_human_action: null
-  next_reason: All child tickets are verified and closeable. Close LDD-0001-001 first.
+  next_reason: Parent ticket and all child tickets are archived locally.
   approved_artifacts:
-    prd: docs/tickets/LDD-0001-verify-context-header/prd.md
-    sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
-    plan: docs/tickets/LDD-0001-verify-context-header/plan.md
+    prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+    sdd: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
+    plan: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
   boundaries:
-    product: docs/tickets/LDD-0001-verify-context-header/prd.md
-    design: docs/tickets/LDD-0001-verify-context-header/sdd.md
-    plan: docs/tickets/LDD-0001-verify-context-header/plan.md
-  updated_at: 2026-05-14T08:42:52Z
+    product: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+    design: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
+    plan: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
+  updated_at: 2026-05-14T08:50:00Z
 
 sync:
   status: local_only
@@ -130,4 +137,10 @@ events:
     actor: agent
   - at: 2026-05-14T08:42:52Z
     type: child_verifications_passed
+    actor: agent
+  - at: 2026-05-14T08:50:00Z
+    type: all_children_archived
+    actor: agent
+  - at: 2026-05-14T08:50:00Z
+    type: parent_closed
     actor: agent

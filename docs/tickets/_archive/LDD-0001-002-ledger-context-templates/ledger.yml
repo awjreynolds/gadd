@@ -6,14 +6,14 @@ ticket:
   title: Add ledger execution context and verification templates
   kind: child_work_item
   type: autonomous
-  status: verified
+  status: archived
 
 parent:
   id: LDD-0001
-  ledger: docs/tickets/LDD-0001-verify-context-header/ledger.yml
-  prd: docs/tickets/LDD-0001-verify-context-header/prd.md
-  sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
-  plan: docs/tickets/LDD-0001-verify-context-header/plan.md
+  ledger: docs/tickets/_archive/LDD-0001-verify-context-header/ledger.yml
+  prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+  sdd: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
+  plan: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
 
 tracker:
   mode: local
@@ -22,7 +22,7 @@ tracker:
 
 artifacts:
   ticket:
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-002-ledger-context-templates/ticket.md
+    path: docs/tickets/_archive/LDD-0001-002-ledger-context-templates/ticket.md
     status: ready
   implementation:
     status: completed
@@ -35,13 +35,13 @@ artifacts:
       - ./scripts/validate-ldd-mvp.sh passed.
       - git diff --check passed.
   verification:
-    path: docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-002-ledger-context-templates/verification.md
+    path: docs/tickets/_archive/LDD-0001-002-ledger-context-templates/verification.md
     status: passed
 
 closure:
-  status: verified
+  status: archived
   verified_at: 2026-05-14T08:42:52Z
-  archived_at: null
+  archived_at: 2026-05-14T08:50:00Z
   external_closed_at: null
   override_reason: null
 
@@ -50,20 +50,20 @@ user_stories_covered: [1, 3, 4]
 plan_slice: "2. Add ledger execution context and verification templates"
 
 execution_context:
-  phase: close
-  current_gate: closure
-  next_command: /ldd:close LDD-0001-002
+  phase: done
+  current_gate: archived
+  next_command: null
   next_human_action: null
-  next_reason: Verification passed and the child is ready for closure.
+  next_reason: Child ticket is archived locally.
   approved_artifacts:
-    prd: docs/tickets/LDD-0001-verify-context-header/prd.md
-    sdd: docs/tickets/LDD-0001-verify-context-header/sdd.md
-    plan: docs/tickets/LDD-0001-verify-context-header/plan.md
+    prd: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+    sdd: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
+    plan: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
   boundaries:
-    product: docs/tickets/LDD-0001-verify-context-header/prd.md
-    design: docs/tickets/LDD-0001-verify-context-header/sdd.md
-    plan: docs/tickets/LDD-0001-verify-context-header/plan.md
-  updated_at: 2026-05-14T08:42:52Z
+    product: docs/tickets/_archive/LDD-0001-verify-context-header/prd.md
+    design: docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md
+    plan: docs/tickets/_archive/LDD-0001-verify-context-header/plan.md
+  updated_at: 2026-05-14T08:50:00Z
 
 sync:
   status: local_only
@@ -81,4 +81,7 @@ events:
     actor: agent
   - at: 2026-05-14T08:42:52Z
     type: verification_passed
+    actor: agent
+  - at: 2026-05-14T08:50:00Z
+    type: child_archived
     actor: agent

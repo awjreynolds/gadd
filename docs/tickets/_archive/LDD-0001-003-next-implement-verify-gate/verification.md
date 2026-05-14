@@ -12,10 +12,10 @@ Verification status: passed
 
 ## Approved Inputs
 
-- PRD: `docs/tickets/LDD-0001-verify-context-header/prd.md` approved
-- SDD: `docs/tickets/LDD-0001-verify-context-header/sdd.md` approved
-- Plan: `docs/tickets/LDD-0001-verify-context-header/plan.md` approved
-- Child ticket: `docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-003-next-implement-verify-gate/ticket.md`
+- PRD: `docs/tickets/_archive/LDD-0001-verify-context-header/prd.md` approved
+- SDD: `docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md` approved
+- Plan: `docs/tickets/_archive/LDD-0001-verify-context-header/plan.md` approved
+- Child ticket: `docs/tickets/_archive/LDD-0001-003-next-implement-verify-gate/ticket.md`
 
 ## Execution Context
 

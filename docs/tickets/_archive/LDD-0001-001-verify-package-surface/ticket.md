@@ -40,8 +40,8 @@ None.
 
 ## LDD Traceability
 
-- Parent PRD: `docs/tickets/LDD-0001-verify-context-header/prd.md`
-- Parent SDD: `docs/tickets/LDD-0001-verify-context-header/sdd.md`
-- Plan: `docs/tickets/LDD-0001-verify-context-header/plan.md`
+- Parent PRD: `docs/tickets/_archive/LDD-0001-verify-context-header/prd.md`
+- Parent SDD: `docs/tickets/_archive/LDD-0001-verify-context-header/sdd.md`
+- Plan: `docs/tickets/_archive/LDD-0001-verify-context-header/plan.md`
 - Plan slice: `1. Add /ldd:verify package surface`
-- Ledger: `docs/tickets/LDD-0001-verify-context-header/children/LDD-0001-001-verify-package-surface/ledger.yml`
+- Ledger: `docs/tickets/_archive/LDD-0001-001-verify-package-surface/ledger.yml`
