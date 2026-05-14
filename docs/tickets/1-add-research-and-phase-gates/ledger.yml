@@ -23,7 +23,7 @@ artifacts:
     external_url: "https://github.com/awjreynolds/ledger-driven-development/issues/2"
   plan:
     path: "docs/tickets/1-add-research-and-phase-gates/plan.md"
-    status: draft
+    status: approved
   implementation:
     status: not_started
   verification:
@@ -40,20 +40,20 @@ closure:
   override_reason: null
 
 execution_context:
-  phase: plan
-  current_gate: plan_review
-  next_command: /ldd:approve 1
-  next_human_action: /ldd:approve 1
-  next_reason: Implementation plan is drafted and awaiting explicit approval.
+  phase: decompose
+  current_gate: decompose
+  next_command: /ldd:decompose 1
+  next_human_action: null
+  next_reason: Implementation plan is approved and ready for decomposition preview.
   approved_artifacts:
     prd: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     sdd: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
-    plan: null
+    plan: "docs/tickets/1-add-research-and-phase-gates/plan.md"
   boundaries:
     product: "docs/tickets/1-add-research-and-phase-gates/prd.md"
     design: "docs/tickets/1-add-research-and-phase-gates/sdd.md"
-    plan: null
-  updated_at: "2026-05-14T22:16:07Z"
+    plan: "docs/tickets/1-add-research-and-phase-gates/plan.md"
+  updated_at: "2026-05-14T22:20:51Z"
 
 sync:
   status: synced
@@ -99,3 +99,6 @@ events:
   - at: "2026-05-14T22:16:07Z"
     type: plan_approval_retracted
     actor: agent
+  - at: "2026-05-14T22:20:51Z"
+    type: plan_approved
+    actor: human
