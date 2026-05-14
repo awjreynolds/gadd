@@ -46,6 +46,7 @@ Always report:
 - ticket ID and current phase/gate
 - `next_command`, if available or derivable
 - `next_human_action`, if available or derivable
+- a copyable command block containing only the next command when continuation is commandable
 - reason
 - blocking decision, if blocked
 
@@ -55,7 +56,11 @@ Use this shape:
 Next command: /ldd:plan LDD-0003
 Next human action: none
 Reason: SDD is approved and ready for implementation planning.
-Offer: Run /ldd:plan LDD-0003 when ready.
+Copy:
+```
+
+```text
+/ldd:plan LDD-0003
 ```
 
 For approval gates:
@@ -64,7 +69,11 @@ For approval gates:
 Next command: /ldd:approve LDD-0003
 Next human action: /ldd:approve LDD-0003
 Reason: The PRD or SDD is waiting for explicit approval.
-Offer: Run /ldd:approve LDD-0003 when ready.
+Copy:
+```
+
+```text
+/ldd:approve LDD-0003
 ```
 
 For blocked gates:
@@ -73,7 +82,7 @@ For blocked gates:
 Next command: blocked
 Next human action: reconcile external tracker drift
 Reason: The external body changed since the last recorded sync hash.
-Offer: no automatic continuation
+Copy: not available
 ```
 
 ## Decision Tree

@@ -134,6 +134,7 @@ grep -q 'next_human_action' skills/ldd-next/SKILL.md
 grep -q '/ldd:approve <ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'does not perform mutations' skills/ldd-next/SKILL.md
 grep -q 'Approval Gate Detection' skills/ldd-next/SKILL.md
+grep -q 'copyable command block containing only the next command' skills/ldd-next/SKILL.md
 grep -Eq 'execution_context\.phase.*refine' skills/ldd-next/SKILL.md
 if grep -q 'artifacts.prd.status: draft.*approved_artifacts.prd' skills/ldd-next/SKILL.md skills/ldd-approve/SKILL.md; then
   echo "draft PRDs must not be treated as approval-ready before refinement" >&2
