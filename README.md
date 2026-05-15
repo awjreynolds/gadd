@@ -1,6 +1,6 @@
 # Ledger-Driven Development
 
-Enterprise teams can use AI agents for real software delivery without giving up SDLC governance, role ownership, roadmap visibility, review discipline, or multi-repo control.
+Enterprise teams can use Artificial Intelligence (AI) agents for real software delivery without giving up Software Development Life Cycle (SDLC) governance, role ownership, roadmap visibility, review discipline, or multi-repo control.
 
 Ledger-Driven Development (LDD) is an AI-native workflow for product and engineering teams. It turns agent work into explicit SDLC handoffs: product scope, technical design, implementation planning, vertical-slice implementation, verification, and closure. The repo-local `ledger.yml` remains canonical; planning and review systems are projection surfaces.
 
@@ -8,7 +8,7 @@ Ledger-Driven Development (LDD) is an AI-native workflow for product and enginee
 
 AI agents are powerful, but chat-first delivery is a poor enterprise control plane.
 
-In a maverick chat/task loop, one prompt can quietly become product scope, technical design, implementation plan, test strategy, documentation policy, and closure decision. PM, EM, Tech Lead, SE, QA, and TPM responsibilities blur. Scope grows in the conversation. Planning systems drift. Reviewers end up asking "what happened?" instead of reviewing the intended handoff.
+In a maverick chat/task loop, one prompt can quietly become product scope, technical design, implementation plan, test strategy, documentation policy, and closure decision. Product Manager (PM), Engineering Manager (EM), Tech Lead, Software Engineer (SE), Quality Assurance (QA), and Technical Program Manager (TPM) responsibilities blur. Scope grows in the conversation. Planning systems drift. Reviewers end up asking "what happened?" instead of reviewing the intended handoff.
 
 LDD keeps the useful part of AI acceleration while putting the work back into recognizable SDLC boundaries:
 
@@ -24,7 +24,7 @@ LDD keeps the useful part of AI acceleration while putting the work back into re
 | Enterprise risk | LDD response |
 | --- | --- |
 | Agent chat becomes the source of truth | Repo-local `ledger.yml` records phase, gate, approved inputs, next action, external links, and evidence. |
-| Scope creep hides inside implementation | PRD, SDD, plan, decomposition, implementation, verification, and closure are separate handoffs. |
+| Scope creep hides inside implementation | Product Requirements Document (PRD), Software Design Document (SDD), plan, decomposition, implementation, verification, and closure are separate handoffs. |
 | AI jumps straight to code | `/ldd:implement` uses a built-in Test-Driven Development (TDD) loop: write a focused failing test, make it pass, refactor, then rerun broader checks. |
 | Existing planning tools go stale | External systems are managed projections for roadmap, review, and status visibility. |
 | Multi-repo work becomes unbounded | LDD is multi-repo aware, but SDDs and plans stay repo-scoped. |
@@ -36,12 +36,12 @@ LDD is designed for teams where different people own different SDLC decisions. T
 
 | Role | Inputs | LDD skills | Outputs |
 | --- | --- | --- | --- |
-| PM | Customer pain, business goal, roadmap context, current workflow, constraints | `/ldd:research`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:approve` | `research.md`, approved `prd.md` |
-| EM / Tech Lead | Approved PRD, repo context, ADRs, technical constraints, related repositories | `/ldd:design`, `/ldd:plan`, `/ldd:approve`, `/ldd:decompose` | repo-scoped `sdd.md`, `plan.md`, `plan.html`, child vertical-slice tickets |
-| SEs | Ready child ticket, approved plan, codebase, tests, documentation obligation | `/ldd:implement <ticket>`, `/ldd:implement ALL` with built-in Test-Driven Development | bounded code diff or PR, test evidence, implementation evidence, documentation impact evidence |
+| Product Manager | Customer pain, business goal, roadmap context, current workflow, constraints | `/ldd:research`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:approve` | `research.md`, approved `prd.md` |
+| Engineering Manager / Tech Lead | Approved PRD, repo context, Architecture Decision Records (ADRs), technical constraints, related repositories | `/ldd:design`, `/ldd:plan`, `/ldd:approve`, `/ldd:decompose` | repo-scoped `sdd.md`, `plan.md`, `plan.html`, child vertical-slice tickets |
+| Software Engineers | Ready child ticket, approved plan, codebase, tests, documentation obligation | `/ldd:implement <ticket>`, `/ldd:implement ALL` with built-in Test-Driven Development | bounded code diff or Pull Request (PR), test evidence, implementation evidence, documentation impact evidence |
 | Engineering Review | Implementation evidence, required checks, approved artifacts, PR state, drift metadata | `/ldd:verify`, `/ldd:close`, `/ldd:archive` | `verification.md`, closed ledger state, optional external tracker projection |
 
-TPMs and delivery stakeholders are first-class consumers of the workflow. They need dependency, sequencing, roadmap, review-load, and status visibility, but the current LDD command model does not define a TPM-owned artifact or approval gate.
+Technical Program Managers and delivery stakeholders are first-class consumers of the workflow. They need dependency, sequencing, roadmap, review-load, and status visibility, but the current LDD command model does not define a TPM-owned artifact or approval gate.
 
 ## Shared Utilities
 
@@ -49,7 +49,7 @@ Some LDD skills support every participant rather than owning one SDLC artifact:
 
 - `/ldd:next` is read-only workflow navigation. It reports the next command, next human action, reason, and blocker from repo-local ledger state.
 - `/ldd:setup` bootstraps a target repository with ledger config, templates, draft/archive directories, and optional external projection settings.
-- Visible session progress is recommended agent UX when the host agent supports it. It helps humans see what the agent is doing, but it never replaces `ledger.yml`, approval evidence, verification, or closure state.
+- Visible session progress is recommended agent User Experience (UX) when the host agent supports it. It helps humans see what the agent is doing, but it never replaces `ledger.yml`, approval evidence, verification, or closure state.
 
 ## Multi-Repo Aware, Repo-Scoped Design
 
@@ -63,14 +63,14 @@ That distinction keeps multi-repo work coordinated without turning one agent tas
 
 Enterprise delivery already lives in planning and review systems. LDD should meet teams there without making those systems canonical workflow state.
 
-The long-term model is adaptive projection: LDD should be able to target the planning system your organization already uses (GitHub Issues, Jira, Asana, Linear, Trello, or an internal tracker), learn the available API surface, and propose the safest projection model. Today, the documented dogfooding path is GitHub-first, and the repo-local ledger remains canonical.
+The long-term model is adaptive projection: LDD should be able to target the planning system your organization already uses (GitHub Issues, Jira, Asana, Linear, Trello, or an internal tracker), learn the available Application Programming Interface (API) surface, and propose the safest projection model. Today, the documented dogfooding path is GitHub-first, and the repo-local ledger remains canonical.
 
 Current maturity:
 
 | Surface | Status |
 | --- | --- |
 | Local ledger | Canonical and always supported |
-| GitHub | First dogfooding path for issues, sub-issues, and PR review projections |
+| GitHub | First dogfooding path for issues, sub-issues, and Pull Request review projections |
 | Linear | Important planning surface, not validated support yet |
 | Jira | Important enterprise planning surface, not validated support yet |
 | Asana | Candidate roadmap/cross-functional planning surface, not validated support yet |
@@ -117,9 +117,7 @@ Adapter manifests make the same skills installable in specific agents:
 | --- | --- |
 | Codex | `skills/ldd-*`, `agents/openai.yaml`, `agent-skills.json` |
 | Claude Code | `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `skills/ldd-*` |
-| Gemini CLI | `gemini-extension.json`, `GEMINI.md`, `commands/ldd/*.toml`, `skills/ldd-*` |
-
-There is no `ldd-core` skill to install. Shared LDD rules are intentionally embedded in each command-shaped skill so every agent sees the same command contract.
+| Gemini Command-Line Interface (CLI) | `gemini-extension.json`, `GEMINI.md`, `commands/ldd/*.toml`, `skills/ldd-*` |
 
 LDD skills are standalone. They must not require other installed skills such as external Test-Driven Development, issue-generation, planning, triage, or debugging skills. A host agent may provide helpful tools, but every `/ldd:*` command must carry its own workflow contract.
 
@@ -195,11 +193,11 @@ GitHub is the first external-tracker dogfooding path:
 
 - GitHub issues project PRD, SDD, and child work visibility.
 - SDD issues are children of PRD issues; implementation child work issues created by decomposition are native GitHub sub-issues of the SDD issue when GitHub supports sub-issues, so a PRD issue may have implementation issue grandchildren.
-- GitHub PRs project implementation review.
+- GitHub Pull Requests project implementation review.
 - LDD updates managed GitHub bodies only after explicit human confirmation and drift checks.
 - Linear and Jira remain follow-on optional collaboration surfaces until the GitHub model is proven.
 
-## MVP Workflow
+## Minimum Viable Product (MVP) Workflow
 
 ```text
 draft PRD ledger
@@ -214,7 +212,7 @@ draft PRD ledger
   -> optional local archive cleanup
 ```
 
-The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD and routes PRD approval to `/ldd:approve <ticket-id>`. In local tracker mode, a promoted stable ticket directory such as `docs/tickets/LDD-0001-short-slug/` is the real ticket. In GitHub tracker mode, PRD approval creates or binds the GitHub Product Requirement issue first, then uses the GitHub issue number as the promoted ticket ID and directory name. External trackers are synchronized only when configured and approved by the human.
+The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD and routes PRD approval to `/ldd:approve <ticket-id>`. In local tracker mode, a promoted stable ticket directory such as `docs/tickets/LDD-0001-short-slug/` is the real ticket. In GitHub tracker mode, PRD approval creates or binds the GitHub Product Requirement issue first, then uses the GitHub issue number as the promoted ticket identifier (ID) and directory name. External trackers are synchronized only when configured and approved by the human.
 
 New Product Requirements can be scoped while other promoted tickets are still in progress. `/ldd:scope` creates or updates the local draft ticket directory; incomplete promoted tickets do not block new draft PRDs. Local mode keeps one active draft, so starting another draft first requires continuing, renaming, promoting, or discarding the existing draft.
 
@@ -264,7 +262,7 @@ The templates are quality contracts, not blank forms:
 - Close applies verified closure, keeps local ticket paths stable, and can close a parent only when every child is verified and closeable. In GitHub mode, issue closure is an explicit external mutation recorded as evidence.
 - Archive is optional storage cleanup for already-closed local ticket packages.
 - External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
-- GitHub-first projections use issues for PRD, SDD, and child work visibility, native sub-issues for implementation child work where supported, and PRs for implementation review while keeping the repo-local ledger canonical.
+- GitHub-first projections use issues for PRD, SDD, and child work visibility, native sub-issues for implementation child work where supported, and Pull Requests for implementation review while keeping the repo-local ledger canonical.
 - Child tickets follow LDD's standalone independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.
 - PR bodies focus reviewers on the correct handoff question.
 
