@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-commands='setup next research scope elaborate refine approve design plan decompose implement verify close archive'
+commands='setup next triage research scope elaborate refine approve design plan decompose implement verify close archive'
 
 required_files='
 agent-skills.json
@@ -19,19 +19,22 @@ docs/package-model.md
 gemini-extension.json
 GEMINI.md
 skills/gadd-setup/assets/templates/config.yml
-skills/gadd-setup/assets/templates/ledger.yml
+skills/gadd-setup/assets/templates/work-item-ledger.yml
+skills/gadd-setup/assets/templates/triage.md
 skills/gadd-setup/assets/templates/research.md
 skills/gadd-setup/assets/templates/prd.md
 skills/gadd-setup/assets/templates/sdd.md
 skills/gadd-setup/assets/templates/plan.md
 skills/gadd-setup/assets/templates/plan.html
+skills/gadd-setup/assets/templates/verification.md
+skills/gadd-setup/assets/templates/issue-body-work-item.md
 skills/gadd-setup/assets/templates/issue-body-prd.md
 skills/gadd-setup/assets/templates/issue-body-sdd.md
-skills/gadd-setup/assets/templates/issue-body-child.md
 skills/gadd-setup/assets/templates/pr-body-prd.md
 skills/gadd-setup/assets/templates/pr-body-sdd-plan.md
 skills/gadd-setup/assets/templates/pr-body-implementation.md
-skills/gadd-setup/assets/templates/verification.md
+docs/assets/gadd-sdlc-workflow.svg
+docs/assets/gadd-sdlc-workflow.png
 '
 
 for command in $commands; do
@@ -64,7 +67,9 @@ if [ -d .gadd ]; then
 fi
 
 grep -q '"canonicalSkillRoot": "skills"' agent-skills.json
+grep -q '"stateSource": "docs/work-items/**/ledger.yml"' agent-skills.json
 grep -q '"command": "/gadd:setup"' agent-skills.json
+grep -q '"command": "/gadd:triage"' agent-skills.json
 grep -q '"command": "/gadd:research"' agent-skills.json
 grep -q '"command": "/gadd:approve"' agent-skills.json
 grep -q '"command": "/gadd:decompose"' agent-skills.json
@@ -80,11 +85,22 @@ grep -q 'skills/gadd-setup/assets/templates/' README.md
 grep -q 'docs/workflow.md' README.md
 grep -q 'docs/skills.md' README.md
 grep -q 'docs/package-model.md' README.md
+grep -q '/gadd:triage' README.md
+grep -q 'Work Item' README.md
+grep -q 'unclassified intake' README.md
 grep -q 'canonical executable contract' docs/skills.md
+grep -q '/gadd:triage' docs/skills.md
+grep -q 'Product Requirement lane' docs/skills.md
 grep -q '/gadd:implement <ticket>' docs/skills.md
 grep -q 'Software Engineering owns implementation quality' docs/skills.md
 grep -q 'npx skills add awjreynolds/gadd' docs/package-model.md
 grep -q 'Do not require repo-root `.gadd/` files' docs/package-model.md
+grep -q 'docs/work-items/' docs/package-model.md
+grep -q 'Unclassified intake' docs/workflow.md
+grep -q 'triage outcome' docs/workflow.md
+grep -q 'ready_for_implementation' docs/workflow.md
+grep -q 'needs_sdd' docs/workflow.md
+grep -q 'needs_prd' docs/workflow.md
 grep -q -- '-> verification' docs/workflow.md
 grep -q 'human-approved closure' docs/workflow.md
 grep -q 'optional local archive cleanup' docs/workflow.md
@@ -112,6 +128,9 @@ grep -q 'Bounded Shared Understanding Gate' CONTEXT.md
 grep -q 'Verification' CONTEXT.md
 grep -q 'Closure' CONTEXT.md
 grep -q 'Ticket Promotion' CONTEXT.md
+grep -q 'Work Item' CONTEXT.md
+grep -q 'Triage Quality Loop' CONTEXT.md
+grep -q 'External Issue' CONTEXT.md
 grep -q 'Vertical Slice' CONTEXT.md
 grep -q 'Agent Skills Manifest' CONTEXT.md
 grep -q 'Standalone Skill Contract' CONTEXT.md
@@ -121,6 +140,7 @@ grep -q 'GitHub-first Projection' CONTEXT.md
 grep -q '"name": "gadd"' .claude-plugin/plugin.json
 grep -q '"commands":' .claude-plugin/plugin.json
 grep -q './commands/gadd/setup.md' .claude-plugin/plugin.json
+grep -q './commands/gadd/triage.md' .claude-plugin/plugin.json
 grep -q './commands/gadd/approve.md' .claude-plugin/plugin.json
 grep -q './commands/gadd/decompose.md' .claude-plugin/plugin.json
 grep -q './commands/gadd/implement.md' .claude-plugin/plugin.json
@@ -133,6 +153,7 @@ grep -q '"source": "./"' .claude-plugin/marketplace.json
 
 grep -q '"name": "gadd"' gemini-extension.json
 grep -q '"contextFileName": "GEMINI.md"' gemini-extension.json
+grep -q '"/gadd:triage"' gemini-extension.json
 grep -q '"/gadd:verify"' gemini-extension.json
 grep -q '"/gadd:research"' gemini-extension.json
 grep -q '"/gadd:approve"' gemini-extension.json
@@ -216,24 +237,34 @@ grep -q 'write or update `## Structure`' skills/gadd-design/SKILL.md
 grep -q 'header-file summary' skills/gadd-design/SKILL.md
 grep -q 'keep it synchronized' skills/gadd-design/SKILL.md
 
-grep -q 'draft_directory: docs/tickets/_drafts' skills/gadd-setup/assets/templates/config.yml
-grep -q 'archive_directory: docs/tickets/_archive' skills/gadd-setup/assets/templates/config.yml
+grep -q 'draft_directory: docs/work-items/_drafts' skills/gadd-setup/assets/templates/config.yml
+grep -q 'archive_directory: docs/work-items/_archive' skills/gadd-setup/assets/templates/config.yml
 grep -q 'GitHub-first managed projections' skills/gadd-setup/assets/templates/config.yml
 grep -q 'Linear and Jira are follow-on collaboration surfaces' skills/gadd-setup/assets/templates/config.yml
 grep -q 'code_intelligence:' skills/gadd-setup/assets/templates/config.yml
 grep -q 'preferred_tool: gitnexus' skills/gadd-setup/assets/templates/config.yml
-grep -q 'schema_version: 1' skills/gadd-setup/assets/templates/ledger.yml
-grep -q 'children: \[\]' skills/gadd-setup/assets/templates/ledger.yml
-grep -q 'research:' skills/gadd-setup/assets/templates/ledger.yml
+grep -q 'required_for_triage: true' skills/gadd-setup/assets/templates/config.yml
+grep -q 'labels:' skills/gadd-setup/assets/templates/config.yml
+grep -q 'gadd:needs-info' skills/gadd-setup/assets/templates/config.yml
+grep -q 'schema_version: 1' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'work_item:' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'type: external_issue_intake' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'state: needs_info' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'external:' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'triage:' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q '# Triage Narrative' skills/gadd-setup/assets/templates/triage.md
+grep -q 'What we have established' skills/gadd-setup/assets/templates/triage.md
+grep -q 'What we still need' skills/gadd-setup/assets/templates/triage.md
+grep -q '# Work Item:' skills/gadd-setup/assets/templates/issue-body-work-item.md
 grep -q '# GADD Research' skills/gadd-setup/assets/templates/research.md
 grep -q 'Readiness Decision' skills/gadd-setup/assets/templates/research.md
 grep -q 'Sensitivity Handling' skills/gadd-setup/assets/templates/research.md
 grep -q 'GitNexus / Code Intelligence' skills/gadd-setup/assets/templates/research.md
 grep -q 'Explicit Uncertainties' skills/gadd-setup/assets/templates/research.md
-grep -q 'external_body_hash:' skills/gadd-setup/assets/templates/ledger.yml
-grep -q 'managed_body_version:' skills/gadd-setup/assets/templates/ledger.yml
-grep -q 'current_gate: scope' skills/gadd-setup/assets/templates/ledger.yml
-if grep -q 'current_gate: prd_approval' skills/gadd-setup/assets/templates/ledger.yml; then
+grep -q 'external_body_hash:' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'managed_body_version:' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'current_gate: scope' skills/gadd-setup/assets/templates/work-item-ledger.yml
+if grep -q 'current_gate: prd_approval' skills/gadd-setup/assets/templates/work-item-ledger.yml; then
   echo "new draft ledger template must not start at PRD approval gate" >&2
   exit 1
 fi
@@ -271,15 +302,6 @@ grep -q '## Parent Product Requirement' skills/gadd-setup/assets/templates/issue
 grep -q '# PRD {prd_issue} SDD: {title}' skills/gadd-setup/assets/templates/issue-body-sdd.md
 grep -q 'GitHub child issue projection for SDD visibility' skills/gadd-setup/assets/templates/issue-body-sdd.md
 grep -q 'implementation child issues created by decomposition are children of this SDD issue' skills/gadd-setup/assets/templates/issue-body-sdd.md
-grep -q '## What to build' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q 'native child/sub-issue projection' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q 'SDD issue:' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q 'Tracker parent relationship:' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q '## Acceptance criteria' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q '## Blocked by' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q '## User stories covered' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q '## Review load' skills/gadd-setup/assets/templates/issue-body-child.md
-grep -q '## Documentation impact' skills/gadd-setup/assets/templates/issue-body-child.md
 grep -q 'Decompose only from an approved plan' skills/gadd-decompose/SKILL.md
 grep -q 'vertical slices' skills/gadd-decompose/SKILL.md
 grep -q 'cognitive-load budget' skills/gadd-decompose/SKILL.md
@@ -367,6 +389,19 @@ grep -q 'GitHub-first managed projection for implementation review' skills/gadd-
 grep -q 'Plan Conformance' skills/gadd-setup/assets/templates/pr-body-implementation.md
 grep -q 'Treat <code>plan.md</code> as the source of truth' skills/gadd-setup/assets/templates/plan.html
 
+grep -q 'approved triage outcome' skills/gadd-design/SKILL.md
+grep -q 'Raw external issues must route through /gadd:triage' skills/gadd-design/SKILL.md
+grep -q 'engineering_change' skills/gadd-approve/SKILL.md
+grep -q 'without requiring an approved PRD' skills/gadd-approve/SKILL.md
+grep -q 'ready_for_implementation' skills/gadd-next/SKILL.md
+grep -q 'needs_sdd' skills/gadd-next/SKILL.md
+grep -q 'needs_prd' skills/gadd-next/SKILL.md
+grep -q 'bug_fix' skills/gadd-implement/SKILL.md
+grep -q 'task' skills/gadd-implement/SKILL.md
+grep -q 'approved triage outcome' skills/gadd-implement/SKILL.md
+grep -q 'Work Items, not only child tickets' skills/gadd-verify/SKILL.md
+grep -q 'Work Item archive directory' skills/gadd-archive/SKILL.md
+
 grep -q 'artifact quality guidance' skills/gadd-setup/SKILL.md
 grep -q 'GitHub-first tracker readiness' skills/gadd-setup/SKILL.md
 grep -q 'PRD template as a quality contract' skills/gadd-scope/SKILL.md
@@ -384,6 +419,12 @@ grep -q 'repo-local ledger as canonical workflow state' docs/superpowers/specs/2
 
 if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external TDD skill required|requires? an external .*skill' skills commands README.md CONTEXT.md docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md GEMINI.md agent-skills.json; then
   echo "GADD command package must not depend on external skills" >&2
+  exit 1
+fi
+
+if rg -n 'GADD ticket|docs/tickets|child ticket|parent ticket|ticket directory|ticket-id|<ticket>' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json >/tmp/gadd-ticket-language.txt; then
+  echo "legacy ticket language remains outside external tracker context:" >&2
+  cat /tmp/gadd-ticket-language.txt >&2
   exit 1
 fi
 
