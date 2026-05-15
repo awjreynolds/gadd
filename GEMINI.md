@@ -27,3 +27,4 @@ Command mapping:
 - `/ldd:implement` -> `skills/ldd-implement/SKILL.md`
 - `/ldd:verify` -> `skills/ldd-verify/SKILL.md`
 - `/ldd:close` -> `skills/ldd-close/SKILL.md`
+- `/ldd:archive` -> `skills/ldd-archive/SKILL.md`

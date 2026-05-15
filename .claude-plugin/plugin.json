@@ -30,6 +30,7 @@
     "./commands/ldd/decompose.md",
     "./commands/ldd/implement.md",
     "./commands/ldd/verify.md",
-    "./commands/ldd/close.md"
+    "./commands/ldd/close.md",
+    "./commands/ldd/archive.md"
   ]
 }

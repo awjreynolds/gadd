@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-commands='setup next research scope elaborate refine approve design plan decompose implement verify close'
+commands='setup next research scope elaborate refine approve design plan decompose implement verify close archive'
 
 required_files='
 agent-skills.json
@@ -60,12 +60,14 @@ grep -q '"command": "/ldd:decompose"' agent-skills.json
 grep -q '"command": "/ldd:implement"' agent-skills.json
 grep -q '"command": "/ldd:verify"' agent-skills.json
 grep -q '"command": "/ldd:close"' agent-skills.json
+grep -q '"command": "/ldd:archive"' agent-skills.json
 grep -q '"pluginManifest": ".claude-plugin/plugin.json"' agent-skills.json
 grep -q '"extensionManifest": "gemini-extension.json"' agent-skills.json
 grep -q 'agent-skills.json' README.md
 grep -q 'Installed Codex skills are local copies' README.md
 grep -q -- '-> verification' README.md
-grep -q 'human-approved closure/archive' README.md
+grep -q 'human-approved closure' README.md
+grep -q 'optional local archive cleanup' README.md
 grep -q 'GitHub is the first external-tracker dogfooding path' README.md
 grep -q 'Linear and Jira remain follow-on optional collaboration surfaces' README.md
 grep -q 'bounded shared-understanding gate' README.md
@@ -93,6 +95,7 @@ grep -q './commands/ldd/decompose.md' .claude-plugin/plugin.json
 grep -q './commands/ldd/implement.md' .claude-plugin/plugin.json
 grep -q './commands/ldd/verify.md' .claude-plugin/plugin.json
 grep -q './commands/ldd/close.md' .claude-plugin/plugin.json
+grep -q './commands/ldd/archive.md' .claude-plugin/plugin.json
 grep -q '"name": "ledger-driven-development"' .claude-plugin/marketplace.json
 grep -q '"name": "ldd"' .claude-plugin/marketplace.json
 grep -q '"source": "./"' .claude-plugin/marketplace.json
@@ -103,6 +106,7 @@ grep -q '"/ldd:verify"' gemini-extension.json
 grep -q '"/ldd:research"' gemini-extension.json
 grep -q '"/ldd:approve"' gemini-extension.json
 grep -q '"/ldd:close"' gemini-extension.json
+grep -q '"/ldd:archive"' gemini-extension.json
 grep -q 'Repo-local ledger is canonical' GEMINI.md
 
 for command in $commands; do
@@ -133,9 +137,15 @@ grep -q 'next: /ldd:verify <child-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'next: /ldd:close <child-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'next: /ldd:close <parent-ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'closure.status' skills/ldd-next/SKILL.md
+grep -q 'optional_cleanup_command: /ldd:archive <parent-ticket-id>' skills/ldd-next/SKILL.md
+grep -q 'optional cleanup, not as `next_command`' skills/ldd-next/SKILL.md
 grep -q 'next_human_action' skills/ldd-next/SKILL.md
 grep -q '/ldd:approve <ticket-id>' skills/ldd-next/SKILL.md
 grep -q 'does not perform mutations' skills/ldd-next/SKILL.md
+grep -q 'Do not infer them from the conversation' skills/ldd-next/SKILL.md
+grep -q 'implementation PR state is checked' skills/ldd-next/SKILL.md
+grep -q 'Verification owns recording observed merge evidence' skills/ldd-next/SKILL.md
+grep -q 'Never treat a conversational claim such as "merged" as merge evidence' skills/ldd-next/SKILL.md
 grep -q 'Approval Gate Detection' skills/ldd-next/SKILL.md
 grep -q 'copyable command block containing only the next command' skills/ldd-next/SKILL.md
 grep -Eq 'execution_context\.phase.*refine' skills/ldd-next/SKILL.md
@@ -248,19 +258,31 @@ grep -q 'passed | failed | override_required' skills/ldd-verify/SKILL.md
 grep -q 'approved parent PRD, approved parent SDD, approved parent plan' skills/ldd-verify/SKILL.md
 grep -q 'scope/design/plan drift' skills/ldd-verify/SKILL.md
 grep -q 'external ticket drift is unresolved' skills/ldd-verify/SKILL.md
+grep -q 'Implementation PR State Rule' skills/ldd-verify/SKILL.md
+grep -q 'implementation PR state is externally checked' skills/ldd-verify/SKILL.md
+grep -q 'Never treat a conversational claim such as "merged" as merge evidence' skills/ldd-verify/SKILL.md
+grep -q 'records the observed `mergedAt` and merge commit as evidence' skills/ldd-verify/SKILL.md
 grep -q 'verification.md' skills/ldd-verify/SKILL.md
 grep -q 'Do not mutate external trackers' skills/ldd-verify/SKILL.md
 grep -q 'Apply closure for one verified child work item' skills/ldd-close/SKILL.md
 grep -q 'artifacts.verification.status: passed' skills/ldd-close/SKILL.md
 grep -q 'closure.status: verified' skills/ldd-close/SKILL.md
-grep -q 'archive_directory' skills/ldd-close/SKILL.md
 grep -q 'External mutations require human confirmation' skills/ldd-close/SKILL.md
-grep -q 'archive child tickets' skills/ldd-close/SKILL.md
+grep -q 'does not archive local ticket files' skills/ldd-close/SKILL.md
+grep -q 'Do not archive or move local ticket directories' skills/ldd-close/SKILL.md
 grep -q 'Parent Roll-up Workflow' skills/ldd-close/SKILL.md
-grep -q 'GitHub issue or PR closure is an external mutation' skills/ldd-close/SKILL.md
+grep -q 'GitHub issue closure is the expected external close projection' skills/ldd-close/SKILL.md
+grep -q 'Do not rely on GitHub auto-close keywords' skills/ldd-close/SKILL.md
 grep -q 'every child is verified and closeable' skills/ldd-close/SKILL.md
-grep -q 'Move the parent directory' skills/ldd-close/SKILL.md
+grep -q 'Keep the parent directory in place' skills/ldd-close/SKILL.md
 grep -q 'parent close requested while any child is not verified and closeable' skills/ldd-close/SKILL.md
+grep -q 'Move already-closed local LDD ticket packages' skills/ldd-archive/SKILL.md
+grep -q 'storage hygiene only' skills/ldd-archive/SKILL.md
+grep -q 'No external tracker writes are allowed' skills/ldd-archive/SKILL.md
+grep -q 'closure.status: closed | externally_closed | archived' skills/ldd-archive/SKILL.md
+grep -q 'archive_directory' skills/ldd-archive/SKILL.md
+grep -q 'child_archived' skills/ldd-archive/SKILL.md
+grep -q 'parent_archived' skills/ldd-archive/SKILL.md
 grep -q 'standard PM inputs' skills/ldd-research/SKILL.md
 grep -q 'full read-only' skills/ldd-research/SKILL.md
 grep -q 'ready_for_scope' skills/ldd-research/SKILL.md

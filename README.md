@@ -48,6 +48,7 @@ The current workflow design is `docs/superpowers/specs/2026-05-12-local-ledger-m
 /ldd:implement
 /ldd:verify
 /ldd:close
+/ldd:archive
 ```
 
 ## Install
@@ -78,6 +79,7 @@ skills/ldd-decompose
 skills/ldd-implement
 skills/ldd-verify
 skills/ldd-close
+skills/ldd-archive
 ```
 
 Installed Codex skills are local copies under `~/.codex/skills`. They are not live-linked to this repository. To update, remove the installed `ldd-*` skills, reinstall from the current `agent-skills.json`, and restart Codex.
@@ -101,7 +103,7 @@ Install this repository as a Gemini CLI extension:
 gemini extensions install https://github.com/awjreynolds/ledger-driven-development
 ```
 
-Restart Gemini CLI after installing. The extension provides `commands/ldd/*.toml`, which map to `/ldd:setup`, `/ldd:next`, `/ldd:research`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:approve`, `/ldd:design`, `/ldd:plan`, `/ldd:decompose`, `/ldd:implement`, `/ldd:verify`, and `/ldd:close`.
+Restart Gemini CLI after installing. The extension provides `commands/ldd/*.toml`, which map to `/ldd:setup`, `/ldd:next`, `/ldd:research`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:approve`, `/ldd:design`, `/ldd:plan`, `/ldd:decompose`, `/ldd:implement`, `/ldd:verify`, `/ldd:close`, and `/ldd:archive`.
 
 ## Source Of Truth
 
@@ -132,7 +134,8 @@ draft PRD ledger
   -> child vertical-slice tickets
   -> implementation
   -> verification
-  -> human-approved closure/archive
+  -> human-approved closure
+  -> optional local archive cleanup
 ```
 
 The repo-local `ledger.yml` is canonical. `/ldd:refine` commits the final PRD and routes PRD approval to `/ldd:approve <ticket-id>`. In local tracker mode, a promoted stable ticket directory such as `docs/tickets/LDD-0001-short-slug/` is the real ticket. In GitHub tracker mode, PRD approval creates or binds the GitHub Product Requirement issue first, then uses the GitHub issue number as the promoted ticket ID and directory name. External trackers are synchronized only when configured and approved by the human.
@@ -176,8 +179,9 @@ The templates are quality contracts, not blank forms:
 - Plans trace acceptance criteria to implementation slices and verification.
 - Decomposition turns approved plan slices into child vertical-slice tickets.
 - Implementation completes child work but does not close it.
-- Verification checks child-ticket closure readiness before archive or external close.
-- Close applies verified closure, archives child work locally, and can close/archive a parent only when every child is verified and closeable.
+- Verification checks child-ticket closure readiness before workflow close.
+- Close applies verified closure, keeps local ticket paths stable, and can close a parent only when every child is verified and closeable. In GitHub mode, issue closure is an explicit external mutation recorded as evidence.
+- Archive is optional storage cleanup for already-closed local ticket packages.
 - External issue bodies are rich projections of the ledger and artifacts, readable without opening the repo.
 - GitHub-first projections use issues for PRD, SDD, and child work visibility, native sub-issues for implementation child work where supported, and PRs for implementation review while keeping the repo-local ledger canonical.
 - Child tickets follow LDD's standalone independently-grabbable shape: parent, what to build, acceptance criteria, blockers, user stories covered, and LDD traceability.

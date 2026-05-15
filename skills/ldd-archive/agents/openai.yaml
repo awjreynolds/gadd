@@ -1,0 +1,7 @@
+interface:
+  display_name: "LDD Archive"
+  short_description: "Archive closed LDD ticket files"
+  default_prompt: "Use $ldd-archive to run /ldd:archive for issue #1."
+
+policy:
+  allow_implicit_invocation: true

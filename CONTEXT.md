@@ -89,12 +89,16 @@ The child-work gate that checks implementation evidence, required checks, tracea
 _Avoid_: repository healthcheck, implementation, archive
 
 **Closure**:
-The post-verification decision to mark child work done, archive it locally, or close its external tracker projection after human approval.
+The post-verification decision to mark child work done and optionally close its external tracker projection after human approval.
 _Avoid_: implementation completion, verification pass, automatic close
 
 **Close Command**:
 The LDD command that applies **Closure** after **Verification** has passed.
 _Avoid_: verification, implementation, automatic archive
+
+**Archive Command**:
+The optional LDD command that moves already-closed ticket files into the **Ticket Archive** as storage cleanup.
+_Avoid_: closure decision, verification, external tracker mutation
 
 **Parent Roll-up Closure**:
 Closing a parent **Product Requirement** only after every **Child Work Item** is already closed or verified and closeable.
@@ -170,13 +174,14 @@ _Avoid_: active ticket tree, deletion
 - **Verification** applies to **Child Work Items**, not general repository health.
 - **Verification** writes a readable report and machine-readable **Ledger** state.
 - **Verified Child Work** is eligible for human closure review.
-- **Closure** remains separate from **Verification** and external tracker mutation.
-- The **Close Command** requires passed **Verification** before archiving or external close.
+- **Closure** remains separate from **Verification** and records external tracker mutation only after explicit human confirmation.
+- The **Close Command** requires passed **Verification** before workflow close.
 - **Parent Roll-up Closure** requires every **Child Work Item** to be closed or verified and closeable.
+- The **Archive Command** is optional cleanup after **Closure** and must not be required for workflow completion.
 - If implementation finds no **Vertical Slices**, it reports that there are no tickets to implement.
 - If implementation finds an approved plan without **Vertical Slices**, it reports that **Decomposition** is required.
 - **Workflow Navigation** identifies the next step but does not perform it.
-- Completed **Child Work Items** and closed parent tickets move from the **Active Ticket Tree** to the **Ticket Archive**.
+- Completed **Child Work Items** and closed parent tickets may move from the **Active Ticket Tree** to the **Ticket Archive** only through optional archival cleanup.
 - **Workflow Navigation** ignores the **Ticket Archive** by default.
 - The **Agent Skills Manifest** is the package source of truth for installable LDD skills.
 - The **Standalone Skill Contract** applies to every `/ldd:*` command.

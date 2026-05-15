@@ -15,6 +15,7 @@
     "/ldd:decompose",
     "/ldd:implement",
     "/ldd:verify",
-    "/ldd:close"
+    "/ldd:close",
+    "/ldd:archive"
   ]
 }

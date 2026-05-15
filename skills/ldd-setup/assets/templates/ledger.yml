@@ -36,6 +36,7 @@ children: []
 closure:
   status: open
   verified_at: null
+  closed_at: null
   archived_at: null
   external_closed_at: null
   override_reason: null

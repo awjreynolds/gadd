@@ -28,6 +28,7 @@ If no child ticket ID is provided, stop and ask for one. Do not infer a target f
 - parent ticket `ledger.yml`
 - approved parent PRD, approved parent SDD, approved parent plan
 - implementation evidence
+- implementation PR state when implementation evidence references a PR
 - check evidence
 - external drift metadata when configured
 
@@ -39,6 +40,7 @@ Required input standard before writing verification:
 
 - exactly one implemented child ticket
 - child ledger implementation evidence and check evidence
+- implementation PR state is externally checked when implementation evidence references a PR
 - approved parent PRD, approved parent SDD, approved parent plan, and child ticket body
 - no unresolved external tracker drift when a tracker projection exists
 
@@ -50,6 +52,7 @@ Required evidence:
 - parent ledger artifact statuses and paths for the approved PRD, SDD, and plan
 - approved PRD, approved SDD, approved plan, and child ticket body
 - implementation evidence from the child ledger, local diff summary, commit/PR reference, or implementation notes recorded by `/ldd:implement`
+- implementation PR evidence from the external tracker when a PR URL or number is recorded, including state, merge time, and merge commit when available
 - check evidence from automated command output, validation output, or explicit manual verification notes
 - external drift metadata from `sync` fields or configured tracker metadata, including external update timestamps/body hashes when available
 
@@ -69,6 +72,10 @@ Do not write outside the child ticket directory and child ledger except for the 
 - Verification is specific to child-ticket closure. It is not a general repository healthcheck.
 - Keep implementation completion separate from ticket closure.
 - Treat external tracker state as a projection. If external metadata shows unresolved drift, block closure and ask for human reconciliation.
+- Treat PR review, approval, merge, close, and branch deletion as external actions. Do not infer them from the conversation, local branch state, or the user's statement. If implementation evidence references a PR, read the external PR state before deciding verification.
+- If the implementation PR is open, closed without merge, or cannot be checked, classify verification as `override_required`.
+- If the implementation PR is merged and there is no conflict with recorded ledger state, record the observed `mergedAt` and merge commit in `verification.md` and the child ledger as verification evidence; do not block merely because the ledger lacked that evidence before verification.
+- If the implementation PR is merged but conflicts with recorded ledger merge evidence, classify verification as `override_required` and route to human reconciliation before closure can be recommended.
 - Do not mutate external trackers, archive child tickets, close external tickets, push branches, or create PRs from this command.
 - Recommend closure only when the child acceptance criteria, approved parent artifacts, implementation evidence, check evidence, and drift checks all support closure.
 - If evidence is missing or checks failed, write the blocking reason to `verification.md` and leave `closure.status` unclosed.
@@ -80,21 +87,22 @@ Do not write outside the child ticket directory and child ledger except for the 
 3. Confirm the parent PRD, SDD, and plan are present and approved in the parent ledger.
 4. Read the approved parent PRD, approved parent SDD, approved parent plan, and child ticket body.
 5. Collect implementation evidence for the child ticket. Prefer child ledger implementation evidence, then current diff/commit/PR evidence if referenced by the user.
-6. Collect check evidence. Include exact commands and results when available; otherwise record the missing evidence as a blocker.
-7. Review scope/design/plan drift:
+6. If implementation evidence references a PR, read the external PR state. For GitHub, inspect at least `state`, `mergedAt`, and merge commit. Do not treat conversational claims such as "merged" as evidence.
+7. Collect check evidence. Include exact commands and results when available; otherwise record the missing evidence as a blocker.
+8. Review scope/design/plan drift:
    - scope drift: implementation no longer fits the approved PRD or child acceptance criteria
    - design drift: implementation contradicts the approved SDD
    - plan drift: implementation does not match the approved plan slice or dependencies
-8. Review external drift metadata. If external ticket drift is unresolved, block closure and identify the human reconciliation needed.
-9. Write or update `verification.md` as a human-readable report.
-10. Update only the child ledger verification state and compact event history.
-11. Report the result and next action to the user.
+9. Review external drift metadata. If external ticket or PR drift is unresolved, block closure and identify the human reconciliation needed.
+10. Write or update `verification.md` as a human-readable report.
+11. Update only the child ledger verification state and compact event history.
+12. Report the result and next action to the user.
 
 ## Verification Status Contract
 
 Update `artifacts.verification.status` to exactly one of:
 
-- `passed`: evidence is present, checks pass, no scope/design/plan drift is detected, and no external ticket drift is unresolved.
+- `passed`: evidence is present, referenced implementation PR state is checked and recorded, checks pass, no scope/design/plan drift is detected, and no external ticket drift is unresolved.
 - `failed`: closure must be blocked because evidence is missing, checks failed, or scope/design/plan drift is detected.
 - `override_required`: closure must be blocked because the command cannot decide safely without human override, most commonly unresolved external ticket drift, unavailable approved artifacts, ambiguous evidence, or a requested external mutation.
 
@@ -116,6 +124,7 @@ Block child-ticket closure when any of these are true:
 - parent ledger is missing
 - approved parent PRD, approved parent SDD, or approved parent plan is missing or not approved
 - implementation evidence is missing or does not trace to the child acceptance criteria
+- implementation PR state is open, closed without merge, unavailable, or conflicts with recorded ledger merge evidence
 - check evidence is missing, skipped without justification, or failed
 - scope/design/plan drift is detected
 - external ticket drift is unresolved
@@ -133,6 +142,7 @@ The report must include:
 - approved inputs with paths and approval status
 - execution context that states `Boundary: child-ticket closure only, not repository health`
 - implementation evidence and acceptance-criteria traceability
+- implementation PR state, merge evidence, and reconciliation status when a PR is referenced
 - check evidence with command names, results, and skipped-check rationale
 - drift review for ledger drift, approved artifact drift, scope/design/plan drift, and external tracker drift
 - findings grouped as blockers, warnings, and notes
@@ -201,6 +211,20 @@ Never mutate external trackers without human confirmation. Verification may read
 
 When external drift exists, classify the result as `override_required` unless the child ledger already records explicit human reconciliation evidence.
 
+## Implementation PR State Rule
+
+When child implementation evidence records an implementation PR, for example `artifacts.implementation.evidence.implementation_pr`, a PR URL, or a PR number:
+
+- Read the PR state from the external tracker before verification can pass.
+- For GitHub, inspect the PR number or URL and check at least `state`, `mergedAt`, and merge commit.
+- If the PR is open, verification status must be `override_required`; next human action is review and merge the implementation PR.
+- If the PR is closed without merge, verification status must be `override_required`; next human action is reconcile the implementation path or return to `/ldd:implement <child-ticket-id>`.
+- If the PR is merged and there is no conflict with recorded ledger state, verification records the observed `mergedAt` and merge commit as evidence and may pass when all other checks pass.
+- If the PR is merged but conflicts with recorded ledger merge evidence, verification status must be `override_required`; next human action is reconcile implementation PR merge state.
+- If the PR state cannot be checked, verification status must be `override_required`; next human action is restore tracker access or provide explicit human reconciliation evidence.
+
+Never treat a conversational claim such as "merged" as merge evidence. The claim may explain why verification should check the external tracker, but it is not workflow state.
+
 ## Package Surface Contract
 
 This initial package surface establishes `/ldd:verify` as an installable command. Later LDD slices may expand the detailed report contract, but they must preserve these invariants:
@@ -217,4 +241,5 @@ This initial package surface establishes `/ldd:verify` as an installable command
 - missing implementation evidence
 - failed or missing check evidence
 - unresolved external drift
+- implementation PR state cannot be checked or conflicts with recorded ledger merge evidence
 - requested external mutation without human confirmation

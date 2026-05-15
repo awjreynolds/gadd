@@ -1,0 +1,9 @@
+description = "Archive closed LDD ticket files after workflow closure."
+prompt = """
+Run `/ldd:archive` using the `ldd-archive` Agent Skill.
+
+If the `ldd-archive` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

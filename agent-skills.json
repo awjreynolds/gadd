@@ -89,6 +89,12 @@
       "skill": "ldd-close",
       "path": "skills/ldd-close",
       "purpose": "Apply human-approved closure for one verified child ticket or a closeable parent roll-up."
+    },
+    {
+      "command": "/ldd:archive",
+      "skill": "ldd-archive",
+      "path": "skills/ldd-archive",
+      "purpose": "Optionally archive closed LDD ticket files after workflow closure."
     }
   ],
   "adapters": {

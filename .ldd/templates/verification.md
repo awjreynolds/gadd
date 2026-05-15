@@ -21,7 +21,7 @@
 - Current gate: verification
 - Boundary: child-ticket closure only, not repository health
 - Next command: null
-- Next human action: review verification findings before archive or external close
+- Next human action: review verification findings before workflow close
 - Reason: Verification must pass before closure can be recommended.
 
 ## Implementation Evidence
@@ -62,7 +62,8 @@
 ## Closure Decision
 
 - Ready to mark done: no
-- Ready to archive locally: no
+- Ready for workflow close: no
+- Optional archive cleanup after close: no
 - Ready for external close: no
 - Human confirmation required before external mutation: yes
 - Blocking reasons:

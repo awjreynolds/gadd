@@ -20,6 +20,7 @@ Read repo-local ledger state and report the next explicit LDD command and next h
 - child vertical-slice ticket state
 - child implementation, verification, and closure state
 - external tracker sync state and body drift when configured
+- implementation PR state when a ledger records an implementation PR URL or number
 
 ## Input Quality Gate
 
@@ -29,6 +30,7 @@ Required input standard before reporting workflow navigation:
 - no ambiguous multiple active drafts unless the user selected one
 - child ledger paths are readable when parent state depends on children
 - external tracker drift metadata is either clean or reported as a blocker
+- implementation PR state is checked from the external tracker when needed to distinguish review/merge waiting from verification-ready work
 
 If inputs fail this standard, do not mutate anything and report the ambiguity or missing state. The earliest LDD command that can repair missing setup is `/ldd:setup`; missing decomposition routes to `/ldd:decompose`; ambiguous or drifted state requires human reconciliation before another command runs.
 
@@ -37,6 +39,10 @@ If inputs fail this standard, do not mutate anything and report the ambiguity or
 - Read-only. It never mutates GitHub or local files.
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation, and this command does not perform mutations.
+- Treat PR review, approval, merge, close, and branch deletion as external actions. Do not infer them from the conversation, branch names, local commits, or the user's statement. If a ledger records an implementation PR, read the external PR state before deciding the next command.
+- If the external PR is merged but the repo-local ledger has not recorded the merge commit and merge time, route to `/ldd:verify <child-ticket-id>` so verification can record observed merge evidence and finish the child-ticket closure-readiness check.
+- Report external tracker drift only when the external PR state conflicts with recorded ledger state, cannot be read, or is closed without merge.
+- If the external PR is still open, report that review/merge remains the next human action and do not route to `/ldd:verify`.
 - Ignore `docs/tickets/_archive/` unless the user explicitly asks to inspect archived tickets.
 - Use `.ldd/config.yml` when present.
 - Prefer `execution_context` when present, but verify it against ledger artifact state before reporting the next command.
@@ -46,6 +52,7 @@ If inputs fail this standard, do not mutate anything and report the ambiguity or
 - Prioritize parent roll-up closure when all children are verified and closeable.
 - Prioritize verified but unclosed child work before verification and implementation.
 - Prioritize child work with completed implementation evidence and unverified closure before starting additional child implementation.
+- Treat `/ldd:archive` as optional cleanup only. Do not route to archive as required workflow work after closure.
 - When continuation is safe and commandable, name the exact command the user can run next.
 - When continuation requires human review, approval, drift reconciliation, external mutation confirmation, or a blocked choice, name the human decision instead of offering unsafe automation.
 - PRD, SDD, and plan approval gates must route to `/ldd:approve <ticket-id>`.
@@ -103,12 +110,16 @@ If no ledger exists:
   next: /ldd:setup
 Else if draft PRD exists:
   inspect PRD completeness and recommend /ldd:scope, /ldd:elaborate, /ldd:refine, or /ldd:approve <ticket-id> for PRD approval
-Else if parent ticket is done:
+Else if parent ticket is closed, externally closed, archived, or done:
   done
+  optional_cleanup_command: /ldd:archive <parent-ticket-id> only when the ticket is closed in the active tree and the human wants local cleanup
 Else if parent has children and every child is verified and closeable or already closed:
   next: /ldd:close <parent-ticket-id>
 Else if any active child is verified but not closed or archived:
   next: /ldd:close <child-ticket-id>
+Else if implementation PR exists and external PR state is open:
+  next: blocked
+  next_human_action: review and merge implementation PR
 Else if any active child has completed implementation evidence and unverified closure:
   next: /ldd:verify <child-ticket-id>
 Else if ready child vertical slices exist:
@@ -183,7 +194,7 @@ Treat an active child as needing verification when either of these is true:
 
 Derived state means implementation evidence exists, for example `artifacts.implementation.status: completed`, `artifacts.implementation.evidence`, a recorded implementation completion event, or equivalent local changed-file/check evidence in the child ledger; and closure is unverified, for example missing `closure`, `closure.status: open`, `closure.status: verification_required`, missing `artifacts.verification`, or `artifacts.verification.status: missing | pending | failed`.
 
-Do not route archived children, externally closed children, or children with `closure.status: verified | archived | externally_closed` to `/ldd:verify`.
+Do not route archived, closed, or externally closed children, or children with `closure.status: verified | closed | archived | externally_closed`, to `/ldd:verify`.
 
 ## Closure Gate Detection
 
@@ -194,14 +205,30 @@ Treat an active child as ready to close when either of these is true:
 
 Derived state means `artifacts.verification.status: passed`, `closure.status: verified`, and the child directory is still in the active ticket tree rather than `_archive/`.
 
-Do not route children with `closure.status: archived | externally_closed` to `/ldd:close`.
+Do not route children with `closure.status: closed | archived | externally_closed` to `/ldd:close`.
 
 Treat a parent as ready for roll-up closure when it has at least one child and every child is either:
 
-- already closed with `closure.status: archived | externally_closed`
+- already closed with `closure.status: closed | archived | externally_closed`
 - closeable with `artifacts.verification.status: passed`, `closure.status: verified`, and a readable `verification.md`
 
 If any child is implemented but unverified, route to `/ldd:verify <child-ticket-id>`. If any child is ready but not implemented, route to `/ldd:implement <child-ticket-id>`.
+
+## Archive Cleanup Detection
+
+Treat a ticket as optionally ready to archive when it has `closure.status: closed | externally_closed`, lives in the active ticket tree, and the configured `archive_directory` exists or can be created safely. Report this as optional cleanup, not as `next_command`, unless the user explicitly asks for `/ldd:archive`.
+
+## Implementation PR State Detection
+
+When a parent or child ledger records implementation PR evidence, for example `artifacts.implementation.pr`, `artifacts.implementation.evidence.implementation_pr`, or equivalent PR URL/number:
+
+- Read the external PR state from the configured tracker before reporting `/ldd:verify` or `/ldd:close`.
+- For GitHub, inspect the PR number or URL and check at least `state`, `mergedAt`, and merge commit.
+- If the PR is open, report `next_command: blocked` and `next_human_action: review and merge implementation PR`.
+- If the PR is merged, route to `/ldd:verify <child-ticket-id>`. Verification owns recording observed merge evidence and deciding whether the child can pass.
+- If the PR is closed without merge, report `next_command: blocked` and route back to `/ldd:implement <child-ticket-id>` or human reconciliation depending on the child state.
+
+Never treat a conversational claim such as "merged" as merge evidence. The claim may explain why the command should check the external tracker, but it is not workflow state.
 
 ## Stop Conditions
 
@@ -210,3 +237,4 @@ If any child is implemented but unverified, route to `/ldd:verify <child-ticket-
 - multiple active drafts and no ticket ID was supplied
 - external tracker drift is detected
 - external ticket body changed since the last recorded sync hash or timestamp
+- implementation PR state cannot be checked when it is required to choose the next gate
