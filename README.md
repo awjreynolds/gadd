@@ -50,6 +50,33 @@ Some LDD skills support every participant rather than owning one SDLC artifact:
 - `/ldd:setup` bootstraps a target repository with ledger config, templates, draft/archive directories, and optional external projection settings.
 - Visible session progress is recommended agent UX when the host agent supports it. It helps humans see what the agent is doing, but it never replaces `ledger.yml`, approval evidence, verification, or closure state.
 
+## Multi-Repo Aware, Repo-Scoped Design
+
+LDD can reason about product work that affects more than one repository. Research and design may inspect related repositories and code-intelligence evidence when available.
+
+The boundary is deliberate: Product Requirements can be multi-repo aware, but SDDs are repo-scoped. Each affected repository needs its own design and plan boundary so ownership, implementation, review, verification, and closure remain concrete.
+
+That distinction keeps multi-repo work coordinated without turning one agent task into an unbounded cross-repo implementation.
+
+## Planning-System Projections
+
+Enterprise delivery already lives in planning and review systems. LDD should meet teams there without making those systems canonical workflow state.
+
+The long-term model is adaptive projection: point LDD at the planning system your organization already uses (GitHub Issues, Jira, Asana, Linear, Trello, or an internal tracker). LDD is designed to learn the available API surface, propose the safest projection model, and keep the repo-local ledger canonical.
+
+Current maturity:
+
+| Surface | Status |
+| --- | --- |
+| Local ledger | Canonical and always supported |
+| GitHub | First dogfooding path for issues, sub-issues, and PR review projections |
+| Linear | Important planning surface, not validated support yet |
+| Jira | Important enterprise planning surface, not validated support yet |
+| Asana | Candidate roadmap/cross-functional planning surface, not validated support yet |
+| Trello and internal trackers | Adaptive projection examples, not validated support yet |
+
+Do not treat external trackers as LDD's source of truth. External mutations require explicit human confirmation and drift checks.
+
 ## Package Model
 
 The canonical package manifest is `agent-skills.json`.
