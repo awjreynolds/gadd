@@ -91,7 +91,7 @@ grep -q 'unclassified intake' README.md
 grep -q 'canonical executable contract' docs/skills.md
 grep -q '/gadd:triage' docs/skills.md
 grep -q 'Product Requirement lane' docs/skills.md
-grep -q '/gadd:implement <ticket>' docs/skills.md
+grep -q '/gadd:implement <work-item-id>' docs/skills.md
 grep -q 'Software Engineering owns implementation quality' docs/skills.md
 grep -q 'npx skills add awjreynolds/gadd' docs/package-model.md
 grep -q 'Do not require repo-root `.gadd/` files' docs/package-model.md
@@ -184,14 +184,14 @@ grep -q 'It never mutates GitHub or local files' skills/gadd-next/SKILL.md
 grep -q 'next: /gadd:decompose' skills/gadd-next/SKILL.md
 grep -q 'execution_context' skills/gadd-next/SKILL.md
 grep -q 'derive equivalent state' skills/gadd-next/SKILL.md
-grep -q 'next: /gadd:verify <child-ticket-id>' skills/gadd-next/SKILL.md
-grep -q 'next: /gadd:close <child-ticket-id>' skills/gadd-next/SKILL.md
-grep -q 'next: /gadd:close <parent-ticket-id>' skills/gadd-next/SKILL.md
+grep -q 'next: /gadd:verify <work-item-id>' skills/gadd-next/SKILL.md
+grep -q 'next: /gadd:close <work-item-id>' skills/gadd-next/SKILL.md
+grep -q 'next: /gadd:close <parent-work-item-id>' skills/gadd-next/SKILL.md
 grep -q 'closure.status' skills/gadd-next/SKILL.md
-grep -q 'optional_cleanup_command: /gadd:archive <parent-ticket-id>' skills/gadd-next/SKILL.md
+grep -q 'optional_cleanup_command: /gadd:archive <parent-work-item-id>' skills/gadd-next/SKILL.md
 grep -q 'optional cleanup, not as `next_command`' skills/gadd-next/SKILL.md
 grep -q 'next_human_action' skills/gadd-next/SKILL.md
-grep -q '/gadd:approve <ticket-id>' skills/gadd-next/SKILL.md
+grep -q '/gadd:approve <work-item-id>' skills/gadd-next/SKILL.md
 grep -q 'does not perform mutations' skills/gadd-next/SKILL.md
 grep -q 'Do not infer them from the conversation' skills/gadd-next/SKILL.md
 grep -q 'implementation PR state is checked' skills/gadd-next/SKILL.md
@@ -215,7 +215,7 @@ grep -q 'GitHub issue number as the stable ticket ID' skills/gadd-approve/SKILL.
 grep -q 'Do not invent or preserve an `GADD-0004` style ID in GitHub tracker mode' skills/gadd-approve/SKILL.md
 grep -q 'GitHub SDD issue' skills/gadd-approve/SKILL.md
 grep -q 'PRD #<prd_issue_number> SDD:' skills/gadd-approve/SKILL.md
-grep -q 'child ticket of the PRD issue' skills/gadd-approve/SKILL.md
+grep -q 'SDD Work Item projection' skills/gadd-approve/SKILL.md
 grep -q 'missing or stale `## Structure`' skills/gadd-approve/SKILL.md
 grep -q 'structure summary' skills/gadd-approve/SKILL.md
 
@@ -323,8 +323,8 @@ grep -q 'Write the smallest focused test' skills/gadd-implement/SKILL.md
 grep -q 'Run the focused test and confirm it fails' skills/gadd-implement/SKILL.md
 grep -q 'approved PRD, SDD, and plan boundaries' skills/gadd-implement/SKILL.md
 grep -q 'closure.status: verification_required' skills/gadd-implement/SKILL.md
-grep -q 'Do not archive child tickets' skills/gadd-implement/SKILL.md
-grep -q 'Do not close external child work items' skills/gadd-implement/SKILL.md
+grep -q 'Do not archive Work Items' skills/gadd-implement/SKILL.md
+grep -q 'Do not close external Work Item projections' skills/gadd-implement/SKILL.md
 grep -q 'implementation PR is a managed projection' skills/gadd-implement/SKILL.md
 grep -q 'documentation impact status and paths or rationale' skills/gadd-implement/SKILL.md
 grep -q 'documentation impact is `blocked`' skills/gadd-implement/SKILL.md
@@ -356,7 +356,7 @@ grep -q 'Do not rely on GitHub auto-close keywords' skills/gadd-close/SKILL.md
 grep -q 'every child is verified and closeable' skills/gadd-close/SKILL.md
 grep -q 'Keep the parent directory in place' skills/gadd-close/SKILL.md
 grep -q 'parent close requested while any child is not verified and closeable' skills/gadd-close/SKILL.md
-grep -q 'Move already-closed local GADD ticket packages' skills/gadd-archive/SKILL.md
+grep -q 'Move already-closed local Work Item packages' skills/gadd-archive/SKILL.md
 grep -q 'storage hygiene only' skills/gadd-archive/SKILL.md
 grep -q 'No external tracker writes are allowed' skills/gadd-archive/SKILL.md
 grep -q 'closure.status: closed | externally_closed | archived' skills/gadd-archive/SKILL.md
@@ -397,7 +397,7 @@ grep -q 'needs_prd' skills/gadd-next/SKILL.md
 grep -q 'bug_fix' skills/gadd-implement/SKILL.md
 grep -q 'task' skills/gadd-implement/SKILL.md
 grep -q 'approved triage outcome' skills/gadd-implement/SKILL.md
-grep -q 'verify Work Items, not only child tickets' skills/gadd-verify/SKILL.md
+grep -q 'verify Work Items, not only implementation slices' skills/gadd-verify/SKILL.md
 grep -q 'Work Item archive directory' skills/gadd-archive/SKILL.md
 
 grep -q 'artifact quality guidance' skills/gadd-setup/SKILL.md
@@ -405,13 +405,13 @@ grep -q 'GitHub-first tracker readiness' skills/gadd-setup/SKILL.md
 grep -q 'PRD template as a quality contract' skills/gadd-scope/SKILL.md
 grep -q 'should not prescribe exact command behavior' skills/gadd-elaborate/SKILL.md
 grep -q 'Preserve the Product Manager boundary' skills/gadd-refine/SKILL.md
-grep -q 'Run /gadd:approve <ticket-id> to approve this PRD' skills/gadd-refine/SKILL.md
+grep -q 'Run /gadd:approve <work-item-id> to approve this PRD' skills/gadd-refine/SKILL.md
 grep -q 'GitHub issue number as the promoted ticket ID' skills/gadd-refine/SKILL.md
 grep -q "SDD template's quality bar" skills/gadd-design/SKILL.md
-grep -q 'SDD approval must be recorded through `/gadd:approve <ticket-id>`' skills/gadd-design/SKILL.md
+grep -q 'SDD approval must be recorded through `/gadd:approve <work-item-id>`' skills/gadd-design/SKILL.md
 grep -q "plan template's traceability" skills/gadd-plan/SKILL.md
-grep -q 'Stop at explicit plan approval through `/gadd:approve <ticket-id>`' skills/gadd-plan/SKILL.md
-grep -q 'next_command: /gadd:approve <ticket-id>' skills/gadd-plan/SKILL.md
+grep -q 'Stop at explicit plan approval through `/gadd:approve <work-item-id>`' skills/gadd-plan/SKILL.md
+grep -q 'next_command: /gadd:approve <work-item-id>' skills/gadd-plan/SKILL.md
 grep -q 'plan exists but is not approved' skills/gadd-next/SKILL.md
 grep -q 'repo-local ledger as canonical workflow state' docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md
 
