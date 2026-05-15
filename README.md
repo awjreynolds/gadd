@@ -62,7 +62,7 @@ That distinction keeps multi-repo work coordinated without turning one agent tas
 
 Enterprise delivery already lives in planning and review systems. LDD should meet teams there without making those systems canonical workflow state.
 
-The long-term model is adaptive projection: point LDD at the planning system your organization already uses (GitHub Issues, Jira, Asana, Linear, Trello, or an internal tracker). LDD is designed to learn the available API surface, propose the safest projection model, and keep the repo-local ledger canonical.
+The long-term model is adaptive projection: LDD should be able to target the planning system your organization already uses (GitHub Issues, Jira, Asana, Linear, Trello, or an internal tracker), learn the available API surface, and propose the safest projection model. Today, the documented dogfooding path is GitHub-first, and the repo-local ledger remains canonical.
 
 Current maturity:
 
