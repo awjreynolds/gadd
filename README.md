@@ -25,7 +25,7 @@ LDD keeps the useful part of AI acceleration while putting the work back into re
 | --- | --- |
 | Agent chat becomes the source of truth | Repo-local `ledger.yml` records phase, gate, approved inputs, next action, external links, and evidence. |
 | Scope creep hides inside implementation | PRD, SDD, plan, decomposition, implementation, verification, and closure are separate handoffs. |
-| AI jumps straight to code | `/ldd:implement` uses a built-in TDD loop: write a focused failing test, make it pass, refactor, then rerun broader checks. |
+| AI jumps straight to code | `/ldd:implement` uses a built-in Test-Driven Development (TDD) loop: write a focused failing test, make it pass, refactor, then rerun broader checks. |
 | Existing planning tools go stale | External systems are managed projections for roadmap, review, and status visibility. |
 | Multi-repo work becomes unbounded | LDD is multi-repo aware, but SDDs and plans stay repo-scoped. |
 | Reviewers lack evidence | Implementation, documentation impact, verification, and closure evidence are recorded explicitly. |
@@ -38,7 +38,7 @@ LDD is designed for teams where different people own different SDLC decisions. T
 | --- | --- | --- | --- |
 | PM | Customer pain, business goal, roadmap context, current workflow, constraints | `/ldd:research`, `/ldd:scope`, `/ldd:elaborate`, `/ldd:refine`, `/ldd:approve` | `research.md`, approved `prd.md` |
 | EM / Tech Lead | Approved PRD, repo context, ADRs, technical constraints, related repositories | `/ldd:design`, `/ldd:plan`, `/ldd:approve`, `/ldd:decompose` | repo-scoped `sdd.md`, `plan.md`, `plan.html`, child vertical-slice tickets |
-| SEs | Ready child ticket, approved plan, codebase, tests, documentation obligation | `/ldd:implement <ticket>`, `/ldd:implement ALL` with built-in TDD | bounded code diff or PR, test evidence, implementation evidence, documentation impact evidence |
+| SEs | Ready child ticket, approved plan, codebase, tests, documentation obligation | `/ldd:implement <ticket>`, `/ldd:implement ALL` with built-in Test-Driven Development | bounded code diff or PR, test evidence, implementation evidence, documentation impact evidence |
 | Engineering Review | Implementation evidence, required checks, approved artifacts, PR state, drift metadata | `/ldd:verify`, `/ldd:close`, `/ldd:archive` | `verification.md`, closed ledger state, optional external tracker projection |
 
 TPMs and delivery stakeholders are first-class consumers of the workflow. They need dependency, sequencing, roadmap, review-load, and status visibility, but the current LDD command model does not define a TPM-owned artifact or approval gate.
@@ -121,7 +121,7 @@ Adapter manifests make the same skills installable in specific agents:
 
 There is no `ldd-core` skill to install. Shared LDD rules are intentionally embedded in each command-shaped skill so every agent sees the same command contract.
 
-LDD skills are standalone. They must not require other installed skills such as external TDD, issue-generation, planning, triage, or debugging skills. A host agent may provide helpful tools, but every `/ldd:*` command must carry its own workflow contract.
+LDD skills are standalone. They must not require other installed skills such as external Test-Driven Development, issue-generation, planning, triage, or debugging skills. A host agent may provide helpful tools, but every `/ldd:*` command must carry its own workflow contract.
 
 The current workflow design is `docs/superpowers/specs/2026-05-12-local-ledger-mvp-design.md`. Supplemental design notes capture the GitNexus code-intelligence contract and documentation freshness contract. Older GitHub-ledger specs remain as historical context only.
 
