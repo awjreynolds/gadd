@@ -76,31 +76,31 @@
       "command": "/gadd:decompose",
       "skill": "gadd-decompose",
       "path": "skills/gadd-decompose",
-      "purpose": "Create child vertical-slice tickets from an approved plan."
+      "purpose": "Create reviewable child Work Items from an approved plan when decomposition is needed."
     },
     {
       "command": "/gadd:implement",
       "skill": "gadd-implement",
       "path": "skills/gadd-implement",
-      "purpose": "Implement one ready child vertical-slice ticket with code and tests."
+      "purpose": "Implement one ready Work Item with code, tests, docs impact, and evidence."
     },
     {
       "command": "/gadd:verify",
       "skill": "gadd-verify",
       "path": "skills/gadd-verify",
-      "purpose": "Verify one implemented child ticket is ready for human-approved closure."
+      "purpose": "Verify one implemented Work Item is ready for human-approved closure."
     },
     {
       "command": "/gadd:close",
       "skill": "gadd-close",
       "path": "skills/gadd-close",
-      "purpose": "Apply human-approved closure for one verified child ticket or a closeable parent roll-up."
+      "purpose": "Apply human-approved closure for one verified Work Item or a closeable parent roll-up."
     },
     {
       "command": "/gadd:archive",
       "skill": "gadd-archive",
       "path": "skills/gadd-archive",
-      "purpose": "Optionally archive closed GADD ticket files after workflow closure."
+      "purpose": "Optionally archive closed GADD Work Item files after workflow closure."
     }
   ],
   "adapters": {
