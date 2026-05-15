@@ -250,6 +250,34 @@ It should not design directly from an unnormalized external issue. If the user p
 
 `/gadd:close` should close Work Items only after verification passes or an explicit human override is recorded.
 
+## Impacted Skills
+
+The triage model affects every command that currently assumes a PRD-led parent ticket, SDD, plan, or child-ticket hierarchy.
+
+High-impact updates:
+
+- `/gadd:setup`: must create `docs/work-items/`, Work Item templates, Triage Brief template, label mapping config, and GitNexus setup guidance. Setup should no longer describe `docs/tickets/` as canonical storage.
+- `/gadd:next`: must navigate Work Item type/state/route. It must support direct implementation from `ready_for_implementation`, design from `needs_sdd`, PRD discovery from `needs_prd`, and terminal triage states.
+- `/gadd:design`: must accept either an approved PRD or an approved Triage Brief as its design boundary. Raw external issues must route through triage first.
+- `/gadd:approve`: must approve SDD gates that are attached to `engineering_change` Work Items without requiring an approved PRD. PRD approval remains required only for `product_requirement` Work Items.
+- `/gadd:implement`: must choose its required inputs from Work Item type. `bug_fix` and `task` use the Triage Brief; `engineering_change` uses Triage Brief plus approved SDD and optional plan; `product_requirement` uses PRD, SDD, plan, and decomposition outputs.
+- `/gadd:verify`: must verify Work Items, not only child tickets. Its required approved inputs depend on Work Item type.
+- `/gadd:close`: must close verified Work Items and support external issue closure projections after human approval and drift checks.
+- `/gadd:archive`: must archive closed Work Item packages under the configured Work Item archive directory.
+
+Medium-impact updates:
+
+- `/gadd:research`: remains a PM discovery command, but it must accept a Work Item routed from triage with `needs_prd`. It should not treat every Work Item as product work.
+- `/gadd:scope`: remains product-scope-only, but it must create or update `product_requirement` Work Items rather than ticket directories. It can be entered directly by a PM or via triage.
+- `/gadd:elaborate` and `/gadd:refine`: remain PRD-only commands and should reject `bug_fix`, `task`, and `engineering_change` Work Items with a clear route back to `/gadd:next` or `/gadd:triage`.
+- `/gadd:plan`: must support `engineering_change` Work Items after SDD approval when plan/decompose is needed, while still requiring PRD plus SDD for `product_requirement` Work Items.
+- `/gadd:decompose`: must support planned Work Item slices that are not necessarily children of a PRD issue. For `engineering_change`, child Work Items should attach to the SDD/design Work Item projection rather than a PRD projection.
+
+Low-impact or wording updates:
+
+- `/gadd:research`, `/gadd:scope`, `/gadd:elaborate`, and `/gadd:refine` should consistently describe themselves as the Product Requirement lane rather than the only GADD entry path.
+- Public docs, templates, validation, and command adapters must replace user-facing "ticket" language with Work Item language except when referring to external tracker tickets/issues.
+
 ## Setup And Storage
 
 Because GADD is new, the implementation should use a clean Work Item model rather than preserving `docs/tickets/` as canonical language.
@@ -319,7 +347,8 @@ Package validation should require:
 - Work Item ledger schema.
 - GitNexus setup guidance and config.
 - Label mapping config.
-- Updated `/gadd:next`, `/gadd:implement`, `/gadd:design`, `/gadd:verify`, and `/gadd:close` contracts.
+- Updated `/gadd:setup`, `/gadd:next`, `/gadd:approve`, `/gadd:implement`, `/gadd:design`, `/gadd:plan`, `/gadd:decompose`, `/gadd:verify`, `/gadd:close`, and `/gadd:archive` contracts.
+- Product-lane commands that accept only `product_requirement` Work Items and reject other Work Item types cleanly.
 - No remaining user-facing claim that a GADD Ticket is the canonical work unit.
 
 ## Open Implementation Decisions
