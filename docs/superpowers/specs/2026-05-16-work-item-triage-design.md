@@ -208,7 +208,9 @@ external:
 
 The Triage Brief records a human-readable source block that points back to the external issue and states whether the external body has been projected from the brief.
 
-External tracker projection should add only a compact GADD traceability block to the issue body or comment, for example:
+External tracker projection may add either a compact traceability block or an approved sanitized triage comment.
+
+A compact GADD traceability block can be added to the issue body or comment:
 
 ```text
 ## GADD Traceability
@@ -220,6 +222,29 @@ External tracker projection should add only a compact GADD traceability block to
 ```
 
 That block is a pointer and sync marker, not the source of truth. The full Triage Brief remains local because it may contain repo evidence, GitNexus findings, lower-confidence fallback notes, or internal reasoning that should not automatically be copied to an external tracker.
+
+A sanitized triage comment is appropriate when the external issue needs reporter questions, maintainer clarification, or a shareable summary of what GADD has established so far. It should be generated from the local Triage Brief, but it must not include raw private context, sensitive repo analysis, non-shareable GitNexus detail, or internal reasoning.
+
+Recommended triage comment shape:
+
+```text
+## Triage Summary
+
+What we have established:
+
+- ...
+
+What we still need:
+
+- ...
+
+Current GADD route:
+
+- State: needs_info
+- Likely route after clarification: needs_sdd | ready_for_implementation | needs_prd
+```
+
+For external issues raised by non-GADD users, the comment should be readable as normal engineering triage. GADD traceability should remain a small footer rather than the main content. Posting the comment, rewriting the body, applying labels, or closing the issue all require human approval and drift checks.
 
 Before rewriting the external issue body or labels, `/gadd:triage` must re-read the external issue and compare the recorded `external_updated_at` and `body_hash`. If the issue changed since the last read, triage stops for human reconciliation instead of overwriting the reporter or another engineer.
 
