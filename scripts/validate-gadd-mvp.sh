@@ -262,7 +262,9 @@ grep -q 'GitNexus / Code Intelligence' skills/gadd-setup/assets/templates/resear
 grep -q 'Explicit Uncertainties' skills/gadd-setup/assets/templates/research.md
 grep -q 'external_body_hash:' skills/gadd-setup/assets/templates/work-item-ledger.yml
 grep -q 'managed_body_version:' skills/gadd-setup/assets/templates/work-item-ledger.yml
-grep -q 'current_gate: scope' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'phase: triage' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'current_gate: triage' skills/gadd-setup/assets/templates/work-item-ledger.yml
+grep -q 'next_command: /gadd:triage {work_item_id}' skills/gadd-setup/assets/templates/work-item-ledger.yml
 if grep -q 'current_gate: prd_approval' skills/gadd-setup/assets/templates/work-item-ledger.yml; then
   echo "new draft ledger template must not start at PRD approval gate" >&2
   exit 1

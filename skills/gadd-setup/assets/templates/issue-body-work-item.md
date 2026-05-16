@@ -23,7 +23,7 @@
 ## GADD Traceability
 
 - Work Item: `{work_item_id}`
-- Work Item type: `{work_item_type}`
+- Type: `{work_item_type}`
 - State: `{work_item_state}`
 - Route: `{route}`
-- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Local ledger: `{ledger_path}`
