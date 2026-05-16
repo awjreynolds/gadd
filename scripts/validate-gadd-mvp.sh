@@ -360,7 +360,7 @@ grep -q 'Built-in TDD Loop' skills/gadd-implement/SKILL.md
 grep -q 'Run this loop directly from this skill' skills/gadd-implement/SKILL.md
 grep -q 'Write the smallest focused test' skills/gadd-implement/SKILL.md
 grep -q 'Run the focused test and confirm it fails' skills/gadd-implement/SKILL.md
-grep -q 'approved PRD, SDD, and plan boundaries' skills/gadd-implement/SKILL.md
+grep -q 'parent Work Item ledger when the target is a child Work Item' skills/gadd-implement/SKILL.md
 grep -q 'work_item.state: verification_required' skills/gadd-implement/SKILL.md
 grep -q 'closure.status: verification_required' skills/gadd-implement/SKILL.md
 grep -q 'Do not archive Work Items' skills/gadd-implement/SKILL.md
@@ -434,6 +434,11 @@ grep -q 'GitHub-first managed projection for SDD and plan review' skills/gadd-se
 grep -q 'Does this implementation follow the approved plan?' skills/gadd-setup/assets/templates/pr-body-implementation.md
 grep -q 'GitHub-first managed projection for implementation review' skills/gadd-setup/assets/templates/pr-body-implementation.md
 grep -q 'Plan Conformance' skills/gadd-setup/assets/templates/pr-body-implementation.md
+grep -q 'approved boundary source and SDD' skills/gadd-setup/assets/templates/plan.md
+grep -q 'Boundary Source Summary' skills/gadd-setup/assets/templates/plan.md
+grep -q 'Triage outcome' skills/gadd-setup/assets/templates/plan.md
+grep -q 'approved boundary source' skills/gadd-setup/assets/templates/pr-body-sdd-plan.md
+grep -q 'approved boundary source, SDD, and plan' skills/gadd-setup/assets/templates/pr-body-implementation.md
 grep -q 'Treat <code>plan.md</code> as the source of truth' skills/gadd-setup/assets/templates/plan.html
 
 grep -q 'approved triage outcome' skills/gadd-design/SKILL.md

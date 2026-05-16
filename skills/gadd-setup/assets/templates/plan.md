@@ -1,6 +1,8 @@
 ---
 work_item: {work_item_id}
-prd: docs/work-items/{work_item_id}/prd.md
+boundary_source: {boundary_source}
+prd: {prd_path}
+triage_outcome: {triage_projection_url}
 sdd: docs/work-items/{work_item_id}/sdd.md
 created: {date}
 updated: {date}
@@ -18,14 +20,16 @@ adrs: []
 
 ## Review Context
 
-This plan translates the approved PRD and SDD into executable slices. It must not introduce new architecture decisions. If planning reveals a design gap, stop and update the SDD instead of hiding the decision here.
+This plan translates the approved boundary source and SDD into executable slices. The boundary source is an approved PRD for `product_requirement` Work Items, or an approved triage outcome for `engineering_change` Work Items. The plan must not introduce new architecture decisions. If planning reveals a design gap, stop and update the SDD instead of hiding the decision here.
 
-### PRD Summary
+### Boundary Source Summary
 
-- Source: `docs/work-items/{work_item_id}/prd.md`
+- Source: `{boundary_source}`
+- PRD: `{prd_path}`
+- Triage outcome: `{triage_projection_url}`
 - Goals covered:
 - Non-goals to protect:
-- Acceptance criteria:
+- Acceptance or done criteria:
 
 ### SDD Summary
 
@@ -59,7 +63,7 @@ Slice quality bar:
 
 ## Acceptance Criteria Traceability
 
-Map PRD acceptance criteria to slices and verification.
+Map approved acceptance or done criteria to slices and verification.
 
 | Acceptance criterion | Slice(s) | Verification |
 | --- | --- | --- |
@@ -99,8 +103,8 @@ Quality bar: tests prove behavior and contract conformance, not internal line-by
 
 ## Review Checklist
 
-- [ ] The plan only implements the approved PRD and SDD.
-- [ ] Every PRD acceptance criterion maps to at least one slice and verification.
+- [ ] The plan only implements the approved boundary source and SDD.
+- [ ] Every approved acceptance or done criterion maps to at least one slice and verification.
 - [ ] Every SDD interface/contract change appears in a slice.
 - [ ] Every slice records documentation impact as updated, not needed with reason, or blocked.
 - [ ] Migration, compatibility, observability, and security/privacy work is included or explicitly not needed.

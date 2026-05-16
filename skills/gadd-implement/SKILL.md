@@ -10,7 +10,7 @@ Execute one ready Work Item.
 ## Reads
 
 - Work Item ledger
-- parent Product Requirement ledger
+- parent Work Item ledger when the target is a child Work Item
 - approved triage outcome, PRD, SDD, and/or `plan.md` as required by Work Item type
 
 ## Input Quality Gate

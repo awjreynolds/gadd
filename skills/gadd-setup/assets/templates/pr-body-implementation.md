@@ -9,10 +9,12 @@ This PR is the GitHub-first managed projection for implementation review. The re
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
 - Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Boundary source: `{boundary_source}`
 
 ## Approved Artifacts
 
-- PRD: `docs/work-items/{work_item_id}/prd.md`
+- PRD: `{prd_path}`
+- Triage outcome: `{triage_projection_url}`
 - SDD: `docs/work-items/{work_item_id}/sdd.md`
 - Plan: `docs/work-items/{work_item_id}/plan.md`
 - Plan HTML: `docs/work-items/{work_item_id}/plan.html`
@@ -52,7 +54,7 @@ If documentation impact is `blocked`, do not request implementation review until
 
 ## Review Boundaries
 
-- Review implementation correctness against the approved PRD, SDD, and plan.
+- Review implementation correctness against the approved boundary source, SDD, and plan.
 - Do not use this PR to approve new product scope.
 - Do not accept new architecture decisions unless the SDD/ADR links were updated first.
 
