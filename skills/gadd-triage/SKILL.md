@@ -73,7 +73,7 @@ Required input standard before routing:
 - GitNexus evidence is available and fresh enough before routing `bug_fix`, `task`, or `engineering_change` to `ready_for_implementation` or `needs_sdd`, unless the human explicitly approves manual fallback
 - manual fallback records lower confidence and must not silently claim low blast radius
 
-If the input quality gate fails, write only safe local state when useful and set `state: needs_info` or `blocked_on_human_decision`. Ask one focused question or recommend the earliest repairing action.
+If the input quality gate fails, write only safe local state when useful and set `state: needs_info` or `blocked_on_human_decision`. Ask one focused question or recommend the earliest GADD command or repairing action.
 
 ## Triage Quality Loop
 
