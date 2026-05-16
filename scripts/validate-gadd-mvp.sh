@@ -481,8 +481,8 @@ if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external 
   exit 1
 fi
 
-if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|docs/work-items|child ticket|parent ticket|ticket directory|ticket-id|<ticket>|issue #1' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
-  echo "legacy ticket language or docs-hosted Work Item paths remain outside historical context:" >&2
+if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|docs/work-items|\.gadd|child ticket|parent ticket|ticket directory|ticket-id|<ticket>|issue #1' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
+  echo "legacy ticket language, docs-hosted Work Item paths, or hidden .gadd runtime paths remain outside historical context:" >&2
   cat /tmp/gadd-ticket-language.txt >&2
   exit 1
 fi
