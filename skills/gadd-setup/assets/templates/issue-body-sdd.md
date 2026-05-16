@@ -1,8 +1,11 @@
-# PRD {prd_issue} SDD: {title}
+# SDD: {title}
 
-## Parent Product Requirement
+## Boundary Source
 
-- PRD issue: `{prd_issue}`
+- Work Item type: `{work_item_type}`
+- Approved boundary source: `{boundary_source}`
+- Product Requirement issue: `{prd_issue}`
+- Triage outcome projection: `{triage_projection_url}`
 
 ## Design Summary
 
@@ -28,8 +31,8 @@
 
 - Phase: SDD approved / plan ready
 - Canonical state: repo-local ledger
-- External tracker role: GitHub child issue projection for SDD visibility
-- Relationship: child of the PRD issue; implementation child issues created by decomposition are children of this SDD issue
+- External tracker role: GitHub issue projection for SDD visibility
+- Relationship: for `product_requirement`, child of the Product Requirement issue; for `engineering_change`, projection of the approved triage outcome. Implementation child Work Items created by decomposition are children of this SDD issue when supported.
 
 ## GADD Traceability
 
@@ -41,6 +44,7 @@
 
 - Ledger: `{ledger_path}`
 - PRD: `{prd_path}`
+- Triage outcome: `{triage_projection_url}`
 - SDD: `{sdd_path}`
 - Plan: `{plan_path}`
 

@@ -31,8 +31,11 @@
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
 - Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
-- Parent PRD: `{parent_prd_path}`
-- Parent PRD issue: `{parent_prd_issue}`
+- Parent Work Item: `{parent_work_item_id}`
+- Parent boundary source: `{parent_boundary_source}`
+- Product Requirement: `{parent_prd_path}`
+- Product Requirement issue: `{parent_prd_issue}`
+- Triage outcome projection: `{triage_projection_url}`
 - SDD issue: `{sdd_issue}`
 - Tracker parent relationship: `{tracker_parent_relationship}`
 - Plan: `{plan_path}`

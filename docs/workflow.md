@@ -126,7 +126,7 @@ The templates are quality contracts, not blank forms:
 GitHub is the first external-tracker dogfooding path:
 
 - GitHub issues project Product Requirement, SDD, and Work Item visibility.
-- SDD issues are children of PRD issues; implementation Child Work Items created by decomposition are native GitHub sub-issues of the SDD issue when GitHub supports sub-issues, so a PRD issue may have implementation issue grandchildren.
+- For `product_requirement` work, SDD issues are children of PRD issues. For `engineering_change` work, SDD issues project the approved triage outcome directly without requiring a parent PRD issue. Implementation Child Work Items created by decomposition are native GitHub sub-issues of the SDD issue when GitHub supports sub-issues.
 - GitHub Pull Requests project implementation review.
 - GADD updates managed GitHub bodies only after explicit human confirmation and drift checks.
 - Linear and Jira remain follow-on optional collaboration surfaces until the GitHub model is proven.

@@ -328,10 +328,13 @@ grep -q 'must not introduce new architecture decisions' skills/gadd-setup/assets
 grep -q '## Problem Statement' skills/gadd-setup/assets/templates/issue-body-prd.md
 grep -q 'GitHub issue projection' skills/gadd-setup/assets/templates/issue-body-prd.md
 grep -q '## GADD Links' skills/gadd-setup/assets/templates/issue-body-prd.md
-grep -q '## Parent Product Requirement' skills/gadd-setup/assets/templates/issue-body-sdd.md
-grep -q '# PRD {prd_issue} SDD: {title}' skills/gadd-setup/assets/templates/issue-body-sdd.md
-grep -q 'GitHub child issue projection for SDD visibility' skills/gadd-setup/assets/templates/issue-body-sdd.md
-grep -q 'implementation child issues created by decomposition are children of this SDD issue' skills/gadd-setup/assets/templates/issue-body-sdd.md
+grep -q '## Boundary Source' skills/gadd-setup/assets/templates/issue-body-sdd.md
+grep -q '# SDD: {title}' skills/gadd-setup/assets/templates/issue-body-sdd.md
+grep -q 'Triage outcome projection' skills/gadd-setup/assets/templates/issue-body-sdd.md
+grep -q 'for `engineering_change`, projection of the approved triage outcome' skills/gadd-setup/assets/templates/issue-body-sdd.md
+grep -q 'Parent Work Item' skills/gadd-setup/assets/templates/issue-body-child.md
+grep -q 'Parent boundary source' skills/gadd-setup/assets/templates/issue-body-child.md
+grep -q 'Triage outcome projection' skills/gadd-setup/assets/templates/issue-body-child.md
 grep -q 'Decompose only from an approved plan' skills/gadd-decompose/SKILL.md
 grep -q 'vertical slices' skills/gadd-decompose/SKILL.md
 grep -q 'cognitive-load budget' skills/gadd-decompose/SKILL.md
