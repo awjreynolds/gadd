@@ -1,11 +1,11 @@
 schema_version: 1
 
-ticket:
+work_item:
   id: null
   draft_id: "{draft_id}"
   title: "{title}"
-  kind: product_requirement
-  status: draft
+  type: product_requirement
+  state: draft
 
 tracker:
   mode: local
@@ -17,7 +17,7 @@ artifacts:
     path: null
     status: missing
   prd:
-    path: "{ticket_dir}/prd.md"
+    path: "{work_item_dir}/prd.md"
     status: draft
   sdd:
     path: null
@@ -52,7 +52,7 @@ execution_context:
     sdd: null
     plan: null
   boundaries:
-    product: "{ticket_dir}/prd.md"
+    product: "{work_item_dir}/prd.md"
     design: null
     plan: null
   updated_at: "{created_at}"

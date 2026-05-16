@@ -47,6 +47,12 @@
 - External tracker role: GitHub issue projection for visibility, review, and discussion
 - Mutation rule: GADD updates this managed projection only after explicit human confirmation and drift checks
 
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+
 ## GADD Links
 
 - Ledger: `{ledger_path}`

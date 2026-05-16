@@ -1,10 +1,16 @@
 ## Issue
 
-References {ticket}
+References {work_item_id}
+
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
 
 ## PRD
 
-`docs/tickets/{ticket}/prd.md`
+`docs/work-items/{work_item_id}/prd.md`
 
 ## Goals / Non-goals Summary
 

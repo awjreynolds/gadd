@@ -31,6 +31,12 @@
 - External tracker role: GitHub child issue projection for SDD visibility
 - Relationship: child of the PRD issue; implementation child issues created by decomposition are children of this SDD issue
 
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+
 ## GADD Links
 
 - Ledger: `{ledger_path}`

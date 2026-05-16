@@ -1,5 +1,5 @@
 ---
-ticket: {ticket}
+work_item: {work_item_id}
 title: "{title}"
 created: {date}
 updated: {date}
@@ -14,12 +14,18 @@ architecture, file paths, APIs, schemas, libraries, test strategy, or code snipp
 Capture technical uncertainty only as a dependency, constraint, or open question.
 -->
 
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+
 ## Problem
 
 <!--
 Explain the user-visible problem in plain domain language.
 Good: names the affected users, current pain, why now, and consequence of doing nothing.
-Avoid: proposing a technical solution, restating the ticket title, or mixing several unrelated problems.
+Avoid: proposing a technical solution, restating the Work Item title, or mixing several unrelated problems.
 -->
 
 TODO: What problem are we solving, for whom, and why does it matter now?

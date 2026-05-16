@@ -1,15 +1,21 @@
 ## Issue
 
-References {ticket}
+References {work_item_id}
 
 This PR is the GitHub-first managed projection for SDD and plan review. The repo-local ledger remains canonical for GADD phase state and approvals.
 
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+
 ## Review Package
 
-- PRD: `docs/tickets/{ticket}/prd.md`
-- SDD: `docs/tickets/{ticket}/sdd.md`
-- Plan: `docs/tickets/{ticket}/plan.md`
-- Plan HTML: `docs/tickets/{ticket}/plan.html`
+- PRD: `docs/work-items/{work_item_id}/prd.md`
+- SDD: `docs/work-items/{work_item_id}/sdd.md`
+- Plan: `docs/work-items/{work_item_id}/plan.md`
+- Plan HTML: `docs/work-items/{work_item_id}/plan.html`
 
 ## ADRs
 

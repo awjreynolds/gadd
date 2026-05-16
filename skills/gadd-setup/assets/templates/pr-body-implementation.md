@@ -1,15 +1,21 @@
 ## Issue
 
-Implements {ticket}
+Implements {work_item_id}
 
-This PR is the GitHub-first managed projection for implementation review. The repo-local child ledger remains canonical for implementation, verification, and closure state.
+This PR is the GitHub-first managed projection for implementation review. The repo-local Work Item ledger remains canonical for implementation, verification, and closure state.
+
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
 
 ## Approved Artifacts
 
-- PRD: `docs/tickets/{ticket}/prd.md`
-- SDD: `docs/tickets/{ticket}/sdd.md`
-- Plan: `docs/tickets/{ticket}/plan.md`
-- Plan HTML: `docs/tickets/{ticket}/plan.html`
+- PRD: `docs/work-items/{work_item_id}/prd.md`
+- SDD: `docs/work-items/{work_item_id}/sdd.md`
+- Plan: `docs/work-items/{work_item_id}/plan.md`
+- Plan HTML: `docs/work-items/{work_item_id}/plan.html`
 
 ## ADRs
 
@@ -64,6 +70,6 @@ Please review in this order:
 
 ## Managed Projection Rule
 
-GADD may update this body only after explicit human confirmation and an external drift check. Closing this PR does not close the GADD child ticket; `/gadd:verify` and `/gadd:close` own that lifecycle.
+GADD may update this body only after explicit human confirmation and an external drift check. Closing this PR does not close the GADD Work Item; `/gadd:verify` and `/gadd:close` own that lifecycle.
 
 <!-- gadd:managed-body-version=1 -->

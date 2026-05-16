@@ -1,14 +1,20 @@
 ---
-ticket: {ticket}
-prd: docs/tickets/{ticket}/prd.md
-sdd: docs/tickets/{ticket}/sdd.md
+work_item: {work_item_id}
+prd: docs/work-items/{work_item_id}/prd.md
+sdd: docs/work-items/{work_item_id}/sdd.md
 created: {date}
 updated: {date}
-plan_html: docs/tickets/{ticket}/plan.html
+plan_html: docs/work-items/{work_item_id}/plan.html
 adrs: []
 ---
 
 # Implementation Plan: {title}
+
+## GADD Traceability
+
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
 
 ## Review Context
 
@@ -16,14 +22,14 @@ This plan translates the approved PRD and SDD into executable slices. It must no
 
 ### PRD Summary
 
-- Source: `docs/tickets/{ticket}/prd.md`
+- Source: `docs/work-items/{work_item_id}/prd.md`
 - Goals covered:
 - Non-goals to protect:
 - Acceptance criteria:
 
 ### SDD Summary
 
-- Source: `docs/tickets/{ticket}/sdd.md`
+- Source: `docs/work-items/{work_item_id}/sdd.md`
 - Design decisions to implement:
 - Interfaces/contracts to preserve:
 - Migration/compatibility requirements:

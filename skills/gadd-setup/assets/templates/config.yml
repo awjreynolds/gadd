@@ -1,7 +1,8 @@
-ledger:
+workflow:
+  root: docs/work-items
+  draft_directory: docs/work-items/_drafts
+  archive_directory: docs/work-items/_archive
   mode: local
-  draft_directory: docs/tickets/_drafts
-  archive_directory: docs/tickets/_archive
   local_id_prefix: GADD
 
 tracker:
@@ -15,21 +16,37 @@ tracker:
   default_branch: null
 
 artifacts:
-  root: docs/tickets
+  root: docs/work-items
 
 code_intelligence:
   preferred_tool: gitnexus
-  recommendation_level: strong
-  required: false
+  required_for_triage: true
+  required_for_routes:
+    - ready_for_implementation
+    - needs_sdd
+  fallback_requires_human_approval: true
   related_repositories: []
   freshness_policy:
     warn_when_stale: true
-    block_when_stale: false
+    block_when_stale_for_triage: true
+
+labels:
+  triage:
+    needs_info: gadd:needs-info
+    ready_for_implementation: gadd:ready-for-implementation
+    needs_sdd: gadd:needs-sdd
+    needs_prd: gadd:needs-prd
+    blocked_on_human_decision: gadd:blocked-human
+  types:
+    bug_fix: type:bug
+    task: type:task
+    engineering_change: type:engineering-change
+    product_requirement: type:product-requirement
 
 branches:
-  prd: gadd/prd/{ticket}
-  sdd_plan: gadd/sdd-plan/{ticket}
-  implementation: gadd/impl/{ticket}
+  prd: gadd/prd/{work_item_id}
+  sdd_plan: gadd/sdd-plan/{work_item_id}
+  implementation: gadd/impl/{work_item_id}
 
 prs:
   prd_title: "PRD: {title}"

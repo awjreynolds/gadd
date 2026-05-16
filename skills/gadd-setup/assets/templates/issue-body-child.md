@@ -28,6 +28,9 @@
 
 ## GADD Traceability
 
+- Work Item: `{work_item_id}`
+- Work Item type: `{work_item_type}`
+- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
 - Parent PRD: `{parent_prd_path}`
 - Parent PRD issue: `{parent_prd_issue}`
 - SDD issue: `{sdd_issue}`
