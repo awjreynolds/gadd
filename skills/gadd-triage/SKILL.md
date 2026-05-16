@@ -19,7 +19,7 @@ Use `/gadd:triage` for unclassified incoming work: external issues, bug reports,
 
 ## Reads
 
-- `.gadd/config.yml` when present
+- `gadd/config.yml` when present
 - active Work Item ledgers under the configured Work Item root
 - external issue body, comments, labels, timestamps, and reporter metadata when an external reference is supplied and the tracker is configured
 - repository files, docs, tests, ADRs, and existing GADD artifacts
@@ -113,7 +113,7 @@ triage:
   approved_outcome:
     status: approved
     boundary_source: external_projection | local_triage
-    local_path: docs/work-items/<work-item-id>/triage.md | null
+    local_path: gadd/work-items/<work-item-id>/triage.md | null
     external_projection_url: <external comment-or-body-url> | null
     approved_at: <timestamp>
     approved_by: human

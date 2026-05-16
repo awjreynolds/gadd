@@ -25,7 +25,7 @@ If no Work Item ID is provided, stop and ask for the target Work Item ID. Do not
 - target PRD frontmatter and body
 - target SDD frontmatter and body when present
 - target plan frontmatter and body when present
-- `.gadd/config.yml` when present
+- `gadd/config.yml` when present
 - external tracker sync metadata when configured
 
 Read the ledger first. Use the ledger to locate the PRD, SDD, and plan paths, artifact statuses, current gate, approved artifact boundaries, and next action.
@@ -112,9 +112,9 @@ When blocked, report the gate candidates and the next command that owns the stat
 1. Confirm the PRD exists and passes the Product Manager handoff checklist.
 2. If tracker mode is GitHub and the Work Item is still in a draft directory:
    - Create or bind the GitHub Product Requirement issue before changing the local PRD.
-   - Build the issue from the current draft `prd.md` content and `.gadd/templates/issue-body-prd.md`.
+   - Build the issue from the current draft `prd.md` content and `gadd/templates/issue-body-prd.md`.
    - Use the returned GitHub issue number as the stable Work Item ID.
-   - Move the draft directory to `docs/work-items/<issue-number>-<short-slug>/`.
+   - Move the draft directory to `gadd/work-items/<issue-number>-<short-slug>/`.
    - Set `work_item.id` and `tracker.external_id` to the issue number, and `tracker.external_url` to the issue URL.
    - Do not invent or preserve an `GADD-0004` style ID in GitHub tracker mode.
 3. If tracker mode is local and the Work Item is still in a draft directory, assign the next local ID according to the configured local ledger convention.
@@ -140,7 +140,7 @@ When blocked, report the gate candidates and the next command that owns the stat
 2. Confirm the SDD exists and passes the SDD review checklist.
 3. Confirm `## Structure` is present, non-placeholder, and synchronized with the detailed design. Treat missing or stale `## Structure` as approval-blocking for SDD approval. Block approval when the structure summary contradicts the detailed design, omits a material component, boundary, interface, or explicit non-change described later in the SDD, or only restates product scope.
 4. In GitHub tracker mode, create or bind the GitHub SDD issue before marking the SDD approved:
-   - Build the issue from the current SDD content and `.gadd/templates/issue-body-sdd.md`.
+   - Build the issue from the current SDD content and `gadd/templates/issue-body-sdd.md`.
    - For `product_requirement`, title the SDD issue `PRD #<prd_issue_number> SDD: <short title>` and reference the approved parent PRD issue number and URL in the SDD issue body.
    - For `engineering_change`, title the SDD issue `Engineering Change SDD: <short title>` and reference the approved triage outcome projection instead of a parent PRD issue.
    - Record the SDD issue number and URL under `artifacts.sdd.external_id` and `artifacts.sdd.external_url`.

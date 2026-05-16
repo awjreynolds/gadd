@@ -46,7 +46,7 @@ Product Requirement lane commands reject non-product Work Item types. `/gadd:res
 
 | Skill | Used by | Purpose | Writes |
 | --- | --- | --- | --- |
-| `/gadd:setup` | Repository owners and project starters | Bootstrap a target repository with `.gadd/config.yml`, templates, Work Item directories, and optional projection settings. | Local GADD config, templates, `docs/work-items/` structure |
+| `/gadd:setup` | Repository owners and project starters | Bootstrap a target repository with `gadd/config.yml`, templates, Work Item directories, and optional projection settings. | Local GADD config, templates, `gadd/work-items/` structure |
 | `/gadd:next` | Everyone | Read repo-local ledger state and report the next command, next human action, reason, and blocker. | Nothing. It is read-only. |
 
 ## Ownership Boundaries

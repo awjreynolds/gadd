@@ -3,10 +3,10 @@ work_item: {work_item_id}
 boundary_source: {boundary_source}
 prd: {prd_path}
 triage_outcome: {triage_projection_url}
-sdd: docs/work-items/{work_item_id}/sdd.md
+sdd: gadd/work-items/{work_item_id}/sdd.md
 created: {date}
 updated: {date}
-plan_html: docs/work-items/{work_item_id}/plan.html
+plan_html: gadd/work-items/{work_item_id}/plan.html
 adrs: []
 ---
 
@@ -16,7 +16,7 @@ adrs: []
 
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
-- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Local ledger: `gadd/work-items/{work_item_id}/ledger.yml`
 
 ## Review Context
 
@@ -33,7 +33,7 @@ This plan translates the approved boundary source and SDD into executable slices
 
 ### SDD Summary
 
-- Source: `docs/work-items/{work_item_id}/sdd.md`
+- Source: `gadd/work-items/{work_item_id}/sdd.md`
 - Design decisions to implement:
 - Interfaces/contracts to preserve:
 - Migration/compatibility requirements:

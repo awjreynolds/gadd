@@ -1,6 +1,6 @@
 ---
 work_item: {work_item_id}
-prd: docs/work-items/{work_item_id}/prd.md
+prd: gadd/work-items/{work_item_id}/prd.md
 created: {date}
 updated: {date}
 adrs: []
@@ -12,7 +12,7 @@ adrs: []
 
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
-- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Local ledger: `gadd/work-items/{work_item_id}/ledger.yml`
 
 ## Structure
 
@@ -32,7 +32,7 @@ Quality bar: a reviewer can read this section first and understand what is chang
 
 Write the engineering context after the PRD is merged. Use the merged PRD, current code, and relevant ADRs as inputs.
 
-- PRD: `docs/work-items/{work_item_id}/prd.md`
+- PRD: `gadd/work-items/{work_item_id}/prd.md`
 - Existing entry points:
 - Relevant ADRs:
 - Terms from the codebase/domain glossary:

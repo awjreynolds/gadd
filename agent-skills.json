@@ -9,7 +9,7 @@
   "canonicalSkillRoot": "skills",
   "ledger": {
     "type": "repo-local",
-    "stateSource": "docs/work-items/**/ledger.yml"
+    "stateSource": "gadd/work-items/**/ledger.yml"
   },
   "commands": [
     {

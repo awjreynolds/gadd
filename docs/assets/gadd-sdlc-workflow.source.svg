@@ -129,7 +129,7 @@
   </g>
   <text x="100" y="1086" class="bar-title">Canonical workflow state</text>
   <text x="405" y="1086" class="bar-body">repo-local </text>
-  <text x="505" y="1086" class="mono">docs/work-items/**/ledger.yml</text>
+  <text x="505" y="1086" class="mono">gadd/work-items/**/ledger.yml</text>
   <text x="815" y="1086" class="bar-body">records Work Item type, route, approvals, evidence, external binding, and next action.</text>
 
   <text x="100" y="1162" class="bar-body">Outside this slice, release operations and long-term maintenance remain in the team's existing deployment, operations, and support processes.</text>

@@ -12,7 +12,7 @@ GADD invariants:
 - GitHub, Linear, Jira, or other external mutations require explicit human confirmation.
 - Do not create duplicate workflow state with progress logs, audit ledgers, phase labels, or workflow Actions.
 - Preserve PM, SE, planning, and implementation handoff boundaries.
-- Use `.gadd/config.yml` in the target repository when present.
+- Use `gadd/config.yml` in the target repository when present.
 
 Command mapping:
 

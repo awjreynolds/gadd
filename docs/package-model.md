@@ -50,13 +50,13 @@ skills/gadd-setup/assets/templates/
 Those assets are installed with `gadd-setup`. `/gadd:setup` copies them into a target repository as:
 
 ```text
-.gadd/config.yml
-.gadd/templates/
-docs/work-items/_drafts/
-docs/work-items/_archive/
+gadd/config.yml
+gadd/templates/
+gadd/work-items/_drafts/
+gadd/work-items/_archive/
 ```
 
-Do not require repo-root `.gadd/` files in this package. They are generated in consumer repositories by `/gadd:setup`.
+This package does not include repo-root `gadd/` runtime state. `/gadd:setup` generates that state in consumer repositories.
 
 ## Compatibility Surfaces
 

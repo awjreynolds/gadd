@@ -62,13 +62,8 @@ if [ -f gadd-skills.json ]; then
   exit 1
 fi
 
-if [ -d .gadd ]; then
-  echo "repo-root .gadd must not exist; setup templates live under skills/gadd-setup/assets/templates" >&2
-  exit 1
-fi
-
 grep -q '"canonicalSkillRoot": "skills"' agent-skills.json
-grep -Fq '"stateSource": "docs/work-items/**/ledger.yml"' agent-skills.json
+grep -Fq '"stateSource": "gadd/work-items/**/ledger.yml"' agent-skills.json
 grep -q '"command": "/gadd:setup"' agent-skills.json
 grep -q '"command": "/gadd:triage"' agent-skills.json
 grep -q '"command": "/gadd:research"' agent-skills.json
@@ -95,8 +90,8 @@ grep -q 'Product Requirement lane' docs/skills.md
 grep -q '/gadd:implement <work-item-id>' docs/skills.md
 grep -q 'Software Engineering owns implementation quality' docs/skills.md
 grep -q 'npx skills add awjreynolds/gadd' docs/package-model.md
-grep -q 'Do not require repo-root `.gadd/` files' docs/package-model.md
-grep -q 'docs/work-items/' docs/package-model.md
+grep -q 'This package does not include repo-root `gadd/` runtime state' docs/package-model.md
+grep -q 'gadd/work-items/' docs/package-model.md
 grep -q 'Unclassified intake' docs/workflow.md
 grep -q 'triage outcome' docs/workflow.md
 grep -q 'ready_for_implementation' docs/workflow.md
@@ -202,7 +197,7 @@ grep -q 'default_prompt: "Use $gadd-close to close Work Item GADD-123."' skills/
 grep -q 'short_description: "Archive closed Work Item files"' skills/gadd-archive/agents/openai.yaml
 grep -q 'default_prompt: "Use $gadd-archive to archive Work Item GADD-123."' skills/gadd-archive/agents/openai.yaml
 
-grep -q '`.gadd/config.yml`' skills/gadd-setup/SKILL.md
+grep -q '`gadd/config.yml`' skills/gadd-setup/SKILL.md
 grep -q 'GitNexus is expected for normal GADD operation' skills/gadd-setup/SKILL.md
 grep -q 'required for impact-aware triage routing' skills/gadd-setup/SKILL.md
 
@@ -272,8 +267,8 @@ grep -q 'write or update `## Structure`' skills/gadd-design/SKILL.md
 grep -q 'header-file summary' skills/gadd-design/SKILL.md
 grep -q 'keep it synchronized' skills/gadd-design/SKILL.md
 
-grep -q 'draft_directory: docs/work-items/_drafts' skills/gadd-setup/assets/templates/config.yml
-grep -q 'archive_directory: docs/work-items/_archive' skills/gadd-setup/assets/templates/config.yml
+grep -q 'draft_directory: gadd/work-items/_drafts' skills/gadd-setup/assets/templates/config.yml
+grep -q 'archive_directory: gadd/work-items/_archive' skills/gadd-setup/assets/templates/config.yml
 grep -q 'GitHub-first managed projections' skills/gadd-setup/assets/templates/config.yml
 grep -q 'Linear and Jira are follow-on collaboration surfaces' skills/gadd-setup/assets/templates/config.yml
 grep -q 'code_intelligence:' skills/gadd-setup/assets/templates/config.yml
@@ -486,8 +481,8 @@ if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external 
   exit 1
 fi
 
-if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|child ticket|parent ticket|ticket directory|ticket-id|<ticket>|issue #1' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
-  echo "legacy ticket language remains outside external tracker context:" >&2
+if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|docs/work-items|child ticket|parent ticket|ticket directory|ticket-id|<ticket>|issue #1' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
+  echo "legacy ticket language or docs-hosted Work Item paths remain outside historical context:" >&2
   cat /tmp/gadd-ticket-language.txt >&2
   exit 1
 fi

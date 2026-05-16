@@ -25,7 +25,7 @@ If no Work Item ID is provided, stop and ask for one.
 - Work Item `ledger.yml`
 - Work Item `verification.md`
 - parent Work Item `ledger.yml` when the Work Item is a child or a parent roll-up is requested
-- `.gadd/config.yml`
+- `gadd/config.yml`
 - external drift metadata when configured
 
 ## Writes
@@ -132,7 +132,7 @@ Parent ledger child Work Item entry should be equivalent to:
 children:
   - id: GADD-0001-001
     status: closed
-    path: docs/work-items/GADD-0001/children/GADD-0001-001-slug/ledger.yml
+    path: gadd/work-items/GADD-0001/children/GADD-0001-001-slug/ledger.yml
 ```
 
 Preserve existing unrelated ledger fields and events.

@@ -1,7 +1,7 @@
 workflow:
-  root: docs/work-items
-  draft_directory: docs/work-items/_drafts
-  archive_directory: docs/work-items/_archive
+  root: gadd/work-items
+  draft_directory: gadd/work-items/_drafts
+  archive_directory: gadd/work-items/_archive
   mode: local
   local_id_prefix: GADD
 
@@ -16,7 +16,7 @@ tracker:
   default_branch: null
 
 artifacts:
-  root: docs/work-items
+  root: gadd/work-items
 
 code_intelligence:
   preferred_tool: gitnexus

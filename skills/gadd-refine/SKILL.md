@@ -109,7 +109,7 @@ Use this reviewer prompt exactly: "Is this ready for engineering design? If yes,
 - In `local` tracker mode, the promoted repo-local ledger directory is the real Product Requirement Work Item.
 - In GitHub tracker mode, promotion creates or binds the GitHub Product Requirement issue before approving the local PRD. The GitHub issue number is the stable Work Item ID and the promoted directory name uses that number, not a local `GADD-0004` style ID.
 - Linear and Jira are follow-on optional collaboration surfaces; do not invent Linear or Jira mutation behavior in this command.
-- External Product Requirement issues must be readable without opening the repo. Use `.gadd/templates/issue-body-prd.md` and include the PRD problem, goals, non-goals, users, user stories, acceptance criteria, success metrics, dependencies, open questions, and GADD links.
+- External Product Requirement issues must be readable without opening the repo. Use `gadd/templates/issue-body-prd.md` and include the PRD problem, goals, non-goals, users, user stories, acceptance criteria, success metrics, dependencies, open questions, and GADD links.
 - Before updating an existing External Issue, re-read it. If its body changed since the last recorded sync hash or timestamp, stop and ask the human to reconcile the external contribution.
 - Before approval, set `execution_context.current_gate: prd_approval`, `execution_context.next_command: /gadd:approve <work-item-id>`, and `execution_context.next_human_action: /gadd:approve <work-item-id>` when those fields are available.
 - PRD PR reviewer prompt: "Is this ready for engineering design? If yes, run `/gadd:approve <work-item-id>`."

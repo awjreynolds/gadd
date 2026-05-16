@@ -8,16 +8,16 @@ This PR is the GitHub-first managed projection for SDD and plan review. The repo
 
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
-- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Local ledger: `gadd/work-items/{work_item_id}/ledger.yml`
 - Boundary source: `{boundary_source}`
 
 ## Review Package
 
 - PRD: `{prd_path}`
 - Triage outcome: `{triage_projection_url}`
-- SDD: `docs/work-items/{work_item_id}/sdd.md`
-- Plan: `docs/work-items/{work_item_id}/plan.md`
-- Plan HTML: `docs/work-items/{work_item_id}/plan.html`
+- SDD: `gadd/work-items/{work_item_id}/sdd.md`
+- Plan: `gadd/work-items/{work_item_id}/plan.md`
+- Plan HTML: `gadd/work-items/{work_item_id}/plan.html`
 
 ## ADRs
 

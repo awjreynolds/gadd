@@ -21,7 +21,7 @@ If no Work Item ID is provided, stop and ask for one.
 - target Work Item `ledger.yml`
 - parent Work Item `ledger.yml` when archiving a child
 - child Work Item ledgers when archiving a parent
-- `.gadd/config.yml`
+- `gadd/config.yml`
 - configured `archive_directory`
 
 ## Writes
@@ -51,7 +51,7 @@ If inputs fail this standard, do not move anything. The earliest GADD command th
 - External mutations require human confirmation, but this command never performs external mutations.
 - Archive only after closure. Do not archive verified-but-unclosed Work Items.
 - Preserve the ledger, Work Item body, PRD, SDD, plan, verification reports, and implementation evidence.
-- Move files only under configured Work Item archive directory; default is `docs/work-items/_archive`.
+- Move files only under configured Work Item archive directory; default is `gadd/work-items/_archive`.
 - Do not archive drafts from this command.
 - Keep references readable by rewriting moved paths in the moved ledgers and the parent ledger.
 - Archiving is optional cleanup. It must not be required for `/gadd:next` to report done after closure.

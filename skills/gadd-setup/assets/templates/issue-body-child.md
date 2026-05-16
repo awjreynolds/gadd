@@ -30,7 +30,7 @@
 
 - Work Item: `{work_item_id}`
 - Work Item type: `{work_item_type}`
-- Local ledger: `docs/work-items/{work_item_id}/ledger.yml`
+- Local ledger: `gadd/work-items/{work_item_id}/ledger.yml`
 - Parent Work Item: `{parent_work_item_id}`
 - Parent boundary source: `{parent_boundary_source}`
 - Product Requirement: `{parent_prd_path}`

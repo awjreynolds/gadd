@@ -54,7 +54,7 @@ GADD governs the SDLC slice from Requirements Analysis through Testing / Verific
 
 ## Templates
 
-The setup templates are bundled with the `gadd-setup` skill under `skills/gadd-setup/assets/templates/`. When `/gadd:setup` runs in a target repository, it copies those templates into that repository's `.gadd/templates/` directory.
+The setup templates are bundled with the `gadd-setup` skill under `skills/gadd-setup/assets/templates/`. When `/gadd:setup` runs in a target repository, it copies those templates into that repository's `gadd/templates/` directory.
 
 ## More Detail
 

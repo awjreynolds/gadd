@@ -4,7 +4,7 @@ This document expands the workflow model summarized in the README. The README is
 
 ## Source Of Truth
 
-- Workflow state: repo-local `ledger.yml` files in Work Item directories under `docs/work-items/` in the target project.
+- Workflow state: repo-local `ledger.yml` files in Work Item directories under `gadd/work-items/` in the target project.
 - Skill package: `agent-skills.json`.
 - Command behavior: `skills/gadd-*/SKILL.md`.
 - Claude adapters: `commands/gadd/*.md`.
@@ -65,7 +65,7 @@ known product discovery
   -> optional local archive cleanup
 ```
 
-The repo-local `ledger.yml` is canonical. `/gadd:triage` records Work Item type, state, route, external binding, GitNexus evidence summary, sync hashes, projection links, and the next command. `/gadd:refine` commits the final PRD and routes PRD approval to `/gadd:approve <work-item-id>`. In local mode, a promoted stable Work Item directory such as `docs/work-items/GADD-0001-short-slug/` is the repo-local state package. In GitHub tracker mode, approval creates or binds the GitHub issue first, then records the GitHub issue number in the Work Item ledger. External trackers are synchronized only when configured and approved by the human.
+The repo-local `ledger.yml` is canonical. `/gadd:triage` records Work Item type, state, route, external binding, GitNexus evidence summary, sync hashes, projection links, and the next command. `/gadd:refine` commits the final PRD and routes PRD approval to `/gadd:approve <work-item-id>`. In local mode, a promoted stable Work Item directory such as `gadd/work-items/GADD-0001-short-slug/` is the repo-local state package. In GitHub tracker mode, approval creates or binds the GitHub issue first, then records the GitHub issue number in the Work Item ledger. External trackers are synchronized only when configured and approved by the human.
 
 New Product Requirements can be scoped while other promoted Work Items are still in progress. `/gadd:scope` creates or updates the local draft Work Item directory; incomplete promoted Work Items do not block new draft PRDs. Local mode keeps one active draft, so starting another draft first requires continuing, renaming, promoting, or discarding the existing draft.
 
@@ -82,23 +82,23 @@ Every GADD phase has an input quality gate. A command must validate its source i
 `/gadd:setup` installs templates into a target repository:
 
 ```text
-.gadd/config.yml
-.gadd/templates/work-item-ledger.yml
-.gadd/templates/triage.md
-.gadd/templates/research.md
-.gadd/templates/prd.md
-.gadd/templates/sdd.md
-.gadd/templates/plan.md
-.gadd/templates/plan.html
-.gadd/templates/issue-body-work-item.md
-.gadd/templates/issue-body-prd.md
-.gadd/templates/issue-body-sdd.md
-.gadd/templates/pr-body-prd.md
-.gadd/templates/pr-body-sdd-plan.md
-.gadd/templates/pr-body-implementation.md
-.gadd/templates/verification.md
-docs/work-items/_drafts/
-docs/work-items/_archive/
+gadd/config.yml
+gadd/templates/work-item-ledger.yml
+gadd/templates/triage.md
+gadd/templates/research.md
+gadd/templates/prd.md
+gadd/templates/sdd.md
+gadd/templates/plan.md
+gadd/templates/plan.html
+gadd/templates/issue-body-work-item.md
+gadd/templates/issue-body-prd.md
+gadd/templates/issue-body-sdd.md
+gadd/templates/pr-body-prd.md
+gadd/templates/pr-body-sdd-plan.md
+gadd/templates/pr-body-implementation.md
+gadd/templates/verification.md
+gadd/work-items/_drafts/
+gadd/work-items/_archive/
 ```
 
 The templates are quality contracts, not blank forms:

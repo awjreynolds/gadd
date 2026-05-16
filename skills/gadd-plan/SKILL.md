@@ -53,7 +53,7 @@ If inputs fail this standard, write nothing and name the blocking gap. The earli
 - Stop at explicit plan approval through `/gadd:approve <work-item-id>`.
 - After writing the plan, set `execution_context.current_gate: plan_review`, `execution_context.next_command: /gadd:approve <work-item-id>`, and `execution_context.next_human_action: /gadd:approve <work-item-id>`.
 - `/gadd:decompose` must not be the next command until `/gadd:approve <work-item-id>` has approved the plan.
-- In GitHub tracker mode, use `.gadd/templates/pr-body-sdd-plan.md` as a managed PR projection for review; ask before creating or updating it and stop on external drift.
+- In GitHub tracker mode, use `gadd/templates/pr-body-sdd-plan.md` as a managed PR projection for review; ask before creating or updating it and stop on external drift.
 - SDD/Plan PR reviewer prompt: "Does this design and plan correctly implement the approved Work Item boundary? If yes, run `/gadd:approve <work-item-id>`."
 
 ## Stop Conditions

@@ -13,9 +13,9 @@ Read repo-local ledger state and report the next explicit GADD command and next 
 
 ## Reads
 
-- active `docs/work-items/**/ledger.yml`
+- active `gadd/work-items/**/ledger.yml`
 - `execution_context` when present
-- draft directories under `docs/work-items/_drafts/`
+- draft directories under `gadd/work-items/_drafts/`
 - parent Work Item artifacts
 - child vertical-slice Work Item state
 - child implementation, verification, and closure state
@@ -43,8 +43,8 @@ If inputs fail this standard, do not mutate anything and report the ambiguity or
 - If the external PR is merged but the repo-local ledger has not recorded the merge commit and merge time, route to `/gadd:verify <work-item-id>` so verification can record observed merge evidence and finish the Work Item closure-readiness check.
 - Report external tracker drift only when the external PR state conflicts with recorded ledger state, cannot be read, or is closed without merge.
 - If the external PR is still open, report that review/merge remains the next human action and do not route to `/gadd:verify`.
-- Ignore `docs/work-items/_archive/` unless the user explicitly asks to inspect archived Work Items.
-- Use `.gadd/config.yml` when present.
+- Ignore `gadd/work-items/_archive/` unless the user explicitly asks to inspect archived Work Items.
+- Use `gadd/config.yml` when present.
 - Prefer `execution_context` when present, but verify it against ledger artifact state before reporting the next command.
 - Report both `execution_context.next_command` and `execution_context.next_human_action` when present. If `next_human_action` is missing, derive it from the active gate.
 - If `execution_context` is absent, derive equivalent state from Work Item status, artifact statuses, child ledgers, `closure.status`, sync metadata, and archived-child location.

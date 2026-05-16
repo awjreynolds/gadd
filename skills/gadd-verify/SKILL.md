@@ -174,7 +174,7 @@ For a passed verification, update the Work Item ledger:
 ```yaml
 artifacts:
   verification:
-    path: docs/work-items/.../verification.md
+    path: gadd/work-items/.../verification.md
     status: passed
 closure:
   status: verified
@@ -191,7 +191,7 @@ For failed verification, update the Work Item ledger:
 ```yaml
 artifacts:
   verification:
-    path: docs/work-items/.../verification.md
+    path: gadd/work-items/.../verification.md
     status: failed
 closure:
   status: verification_required
@@ -207,7 +207,7 @@ For override-required verification, update the Work Item ledger:
 ```yaml
 artifacts:
   verification:
-    path: docs/work-items/.../verification.md
+    path: gadd/work-items/.../verification.md
     status: override_required
 closure:
   status: verification_required
