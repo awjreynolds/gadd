@@ -7,6 +7,8 @@ description: Run /gadd:archive to move already-closed GADD Work Item packages in
 
 Move already-closed local Work Item packages into the configured archive directory. This command is storage hygiene only; it does not decide closure readiness and does not mutate external trackers.
 
+This command is a standalone, agent-agnostic GADD command. Follow this file directly; do not require any other installed skill.
+
 ## Inputs
 
 ```text
