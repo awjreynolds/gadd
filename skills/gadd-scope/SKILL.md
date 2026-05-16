@@ -96,12 +96,12 @@ After writing scope, set `execution_context.phase: scope`, `execution_context.cu
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation.
 - Product Manager command: preserve product intent and do not read the codebase as a design input.
-- If scope changes the product meaning of an approved PRD, keep the stable ticket ID but mark the PRD artifact as draft, clear `approved_artifacts.prd`, route `execution_context` back to the owning PM command, record an approval-invalidated event, and require `/gadd:refine` plus human approval before `/gadd:design`.
+- If scope changes the product meaning of an approved PRD, keep the stable Work Item ID but mark the PRD artifact as draft, clear `approved_artifacts.prd`, route `execution_context` back to the owning PM command, record an approval-invalidated event, and require `/gadd:refine` plus human approval before `/gadd:design`.
 - Existing promoted Product Requirement Work Items do not block new scoping work. GADD may have multiple active promoted Work Items at different phases.
 - Keep at most one active local draft in `docs/work-items/_drafts/`.
 - If no target is provided and exactly one active draft exists, update that draft.
 - If no target is provided and no active draft exists, create a new draft under `docs/work-items/_drafts/YYYY-MM-DD-short-slug/` using `.gadd/templates/work-item-ledger.yml` and `.gadd/templates/prd.md` when present.
-- If the user asks to start new scope and no active draft exists, create a draft under the configured draft directory even when other promoted tickets are incomplete.
+- If the user asks to start new scope and no active draft exists, create a draft under the configured draft directory even when other promoted Work Items are incomplete.
 - If the user asks to start new scope while an active draft already exists, stop and ask whether to continue, rename, promote, or discard the existing draft first.
 - If multiple active drafts exist, stop and ask the human to reconcile them back to one active draft before continuing.
 - Do not update a promoted Work Item unless the user explicitly identifies that Work Item. Promoted Work Items are stable workflow records; new product ideas should normally start as new drafts.

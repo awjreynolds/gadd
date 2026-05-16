@@ -177,6 +177,25 @@ for command in $commands; do
   grep -q 'canonical' "commands/gadd/$command.toml"
 done
 
+grep -q 'short_description: "Report the next action for a Work Item"' skills/gadd-next/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-next to inspect Work Item GADD-123."' skills/gadd-next/agents/openai.yaml
+grep -q 'short_description: "Approve a PRD, SDD, or plan gate"' skills/gadd-approve/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-approve to approve the active gate for Work Item GADD-123."' skills/gadd-approve/agents/openai.yaml
+grep -q 'short_description: "Design from a PRD or triage outcome"' skills/gadd-design/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-design to create an SDD for Work Item GADD-123."' skills/gadd-design/agents/openai.yaml
+grep -q 'short_description: "Implement a ready Work Item"' skills/gadd-implement/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-implement to implement Work Item GADD-123."' skills/gadd-implement/agents/openai.yaml
+grep -q 'short_description: "Plan implementation for an approved design"' skills/gadd-plan/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-plan to plan Work Item GADD-123."' skills/gadd-plan/agents/openai.yaml
+grep -q 'short_description: "Create reviewable Work Item slices"' skills/gadd-decompose/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-decompose to decompose Work Item GADD-123."' skills/gadd-decompose/agents/openai.yaml
+grep -q 'short_description: "Verify Work Item closure readiness"' skills/gadd-verify/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-verify to verify Work Item GADD-123."' skills/gadd-verify/agents/openai.yaml
+grep -q 'short_description: "Close a verified Work Item"' skills/gadd-close/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-close to close Work Item GADD-123."' skills/gadd-close/agents/openai.yaml
+grep -q 'short_description: "Archive closed Work Item files"' skills/gadd-archive/agents/openai.yaml
+grep -q 'default_prompt: "Use $gadd-archive to archive Work Item GADD-123."' skills/gadd-archive/agents/openai.yaml
+
 grep -q '`.gadd/config.yml`' skills/gadd-setup/SKILL.md
 grep -q 'GitNexus is expected for normal GADD operation' skills/gadd-setup/SKILL.md
 grep -q 'required for impact-aware triage routing' skills/gadd-setup/SKILL.md
@@ -424,7 +443,7 @@ if grep -R -n -E 'Pocock|to-issues|to-prd|/tdd|/setup-matt|Superpowers|external 
   exit 1
 fi
 
-if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|child ticket|parent ticket|ticket directory|ticket-id|<ticket>' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
+if rg -n --glob '!docs/superpowers/**' --glob '!docs/tickets/**' 'GADD ticket|docs/tickets|child ticket|parent ticket|ticket directory|ticket-id|<ticket>|issue #1' README.md CONTEXT.md docs skills commands agent-skills.json gemini-extension.json GEMINI.md >/tmp/gadd-ticket-language.txt; then
   echo "legacy ticket language remains outside external tracker context:" >&2
   cat /tmp/gadd-ticket-language.txt >&2
   exit 1

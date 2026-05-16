@@ -260,7 +260,7 @@ Never treat a conversational claim such as "merged" as merge evidence. The claim
 
 - requested Work Item ID not found
 - ledger cannot be parsed
-- multiple active drafts and no ticket ID was supplied
+- multiple active drafts and no Work Item ID was supplied
 - external tracker drift is detected
 - external issue body changed since the last recorded sync hash or timestamp
 - implementation PR state cannot be checked when it is required to choose the next gate

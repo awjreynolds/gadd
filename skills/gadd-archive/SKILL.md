@@ -50,7 +50,7 @@ If inputs fail this standard, do not move anything. The earliest GADD command th
 - Repo-local ledger is canonical. External trackers are optional sync/review surfaces.
 - External mutations require human confirmation, but this command never performs external mutations.
 - Archive only after closure. Do not archive verified-but-unclosed Work Items.
-- Preserve the ledger, ticket body, PRD, SDD, plan, verification reports, and implementation evidence.
+- Preserve the ledger, Work Item body, PRD, SDD, plan, verification reports, and implementation evidence.
 - Move files only under configured Work Item archive directory; default is `docs/work-items/_archive`.
 - Do not archive drafts from this command.
 - Keep references readable by rewriting moved paths in the moved ledgers and the parent ledger.

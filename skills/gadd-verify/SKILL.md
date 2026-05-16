@@ -118,7 +118,7 @@ Update `artifacts.verification.status` to exactly one of:
 
 - `passed`: evidence is present, referenced implementation PR state is checked and recorded, documentation impact is satisfied, checks pass, no boundary/design/plan drift is detected, and no External Issue drift is unresolved.
 - `failed`: closure must be blocked because evidence is missing, checks failed, or scope/design/plan drift is detected.
-- `override_required`: closure must be blocked because the command cannot decide safely without human override, most commonly unresolved external ticket drift, unavailable approved artifacts, ambiguous evidence, or a requested external mutation.
+- `override_required`: closure must be blocked because the command cannot decide safely without human override, most commonly unresolved External Issue drift, unavailable approved artifacts, ambiguous evidence, or a requested external mutation.
 
 Write the same value in `verification.md` as `Verification status: passed | failed | override_required` by choosing the actual value. Use `pending` only in templates before verification has run.
 
@@ -223,7 +223,7 @@ Preserve existing unrelated ledger fields and events.
 
 ## External Tracker Rule
 
-Never mutate external trackers without human confirmation. Verification may read configured external metadata, compare timestamps or body hashes, and recommend the next human action. It must not close, comment on, relabel, archive, or synchronize an external ticket by itself.
+Never mutate external trackers without human confirmation. Verification may read configured external metadata, compare timestamps or body hashes, and recommend the next human action. It must not close, comment on, relabel, archive, or synchronize an External Issue by itself.
 
 When External Issue drift exists, classify the result as `override_required` unless the Work Item ledger already records explicit human reconciliation evidence.
 

@@ -23,7 +23,7 @@ If no trigger, draft, Work Item, or context source is provided, ask one direct q
 
 - repository files, docs, ADRs, and existing GADD artifacts with full read-only visibility
 - human-supplied private/local PM context when explicitly provided
-- `.gadd/config.yml` and ledger state when a draft or ticket is selected
+- `.gadd/config.yml` and ledger state when a draft or Work Item is selected
 - prior research, PRD, SDD, plan, or child artifacts when present
 - GitNexus code-intelligence context when available and relevant
 

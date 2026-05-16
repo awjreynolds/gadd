@@ -44,7 +44,7 @@ Proposed child Work Items:
 
 1. SDD #<sdd-issue-number> Slice <slice-number>: <short outcome title>
    Type: Autonomous | Human-review
-   Blocked by: None | <ticket title/id>
+   Blocked by: None | <Work Item title/id>
    User stories covered: <PRD story numbers>
    Documentation impact: Updated | Not needed: <reason> | Blocked: <question>
    Review load: Low | Medium | High, with expected file groups and risk
@@ -56,7 +56,7 @@ Ask:
 - Are Autonomous/Human-review classifications correct?
 - Is the review load small enough for a focused PR?
 - Is documentation impact explicit for every child Work Item?
-- Should any tickets be merged or split?
+- Should any Work Items be merged or split?
 ```
 
 Only after approval may the command create child ledgers or external child Work Items. When stopping before approval, set `execution_context.next_human_action` to the decomposition review decision.

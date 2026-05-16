@@ -89,7 +89,7 @@ If inputs fail this standard, do not close anything. The earliest GADD command t
 
 ## Parent Roll-up Workflow
 
-Use this workflow only when the requested ticket ID is a parent Product Requirement.
+Use this workflow only when the requested Work Item ID is a parent Product Requirement.
 
 1. Read the parent ledger and all child ledger paths listed in `children`.
 2. Stop if the parent has no children; parent closure without decomposition is outside the MVP unless explicitly requested by the human.
