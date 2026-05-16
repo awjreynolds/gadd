@@ -2,7 +2,7 @@
 
 GADD is a governed autonomy methodology for AI-assisted software delivery.
 
-It keeps autonomous agent work inside explicit role, scope, evidence, and approval boundaries from requirements to verified implementation. The repo-local `ledger.yml` remains canonical; planning and review systems are projection surfaces.
+GADD manages Work Items across triage, product scope, engineering design, planning, implementation, verification, and closure. External issues are collaboration surfaces; repo-local ledgers remain canonical workflow state.
 
 ## Installation
 
@@ -24,8 +24,9 @@ npx skills add awjreynolds/gadd --all -y
 
 ## Available Skills
 
-- `/gadd:setup` - Bootstrap GADD config, templates, ticket directories, and optional external projection settings.
+- `/gadd:setup` - Bootstrap GADD config, templates, Work Item directories, and optional external projection settings.
 - `/gadd:next` - Read repo-local ledger state and report the next command or human action.
+- `/gadd:triage` - Normalize unclassified intake into a Work Item and route it to implementation, SDD, PRD discovery, or a terminal state.
 - `/gadd:research` - Gather sanitized product and repo evidence before scoping.
 - `/gadd:scope` - Define Product Requirement scope boundaries.
 - `/gadd:elaborate` - Fill product detail inside approved scope.
@@ -33,11 +34,17 @@ npx skills add awjreynolds/gadd --all -y
 - `/gadd:approve` - Approve exactly one PRD, SDD, or plan gate.
 - `/gadd:design` - Create or update the repo-scoped SDD.
 - `/gadd:plan` - Create the implementation plan and review copy.
-- `/gadd:decompose` - Turn an approved plan into vertical-slice child tickets.
-- `/gadd:implement` - Implement one ready child ticket, or all ready child tickets, with code and tests.
+- `/gadd:decompose` - Turn an approved plan into reviewable Work Item slices.
+- `/gadd:implement` - Implement one ready Work Item, or all ready Work Items, with code and tests.
 - `/gadd:verify` - Verify implemented child work before closure.
 - `/gadd:close` - Apply human-approved workflow closure.
-- `/gadd:archive` - Optionally archive already-closed local ticket packages.
+- `/gadd:archive` - Optionally archive already-closed local Work Item packages.
+
+## Entry Paths
+
+- Known product discovery starts with `/gadd:research` or `/gadd:scope`.
+- Unclassified intake starts with `/gadd:triage`.
+- Existing Work Items continue with `/gadd:next`.
 
 ## Workflow
 

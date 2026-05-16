@@ -35,6 +35,8 @@ skills/gadd-<command>/
   assets/
 ```
 
+Examples include `gadd-setup`, `gadd-next`, `gadd-triage`, `gadd-research`, `gadd-design`, and `gadd-implement`.
+
 Each `SKILL.md` is standalone. A GADD command must not require other installed skills such as external Test-Driven Development, issue-generation, planning, triage, or debugging skills. A host agent may provide helpful tools, but every `/gadd:*` command carries its own workflow contract.
 
 ## Templates
@@ -50,8 +52,8 @@ Those assets are installed with `gadd-setup`. `/gadd:setup` copies them into a t
 ```text
 .gadd/config.yml
 .gadd/templates/
-docs/tickets/_drafts/
-docs/tickets/_archive/
+docs/work-items/_drafts/
+docs/work-items/_archive/
 ```
 
 Do not require repo-root `.gadd/` files in this package. They are generated in consumer repositories by `/gadd:setup`.
