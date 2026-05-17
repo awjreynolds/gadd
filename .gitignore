@@ -1,7 +1,10 @@
 .DS_Store
 __pycache__/
 .claude/settings.local.json
+.claude/skills/
 .superpowers/
+AGENTS.md
+CLAUDE.md
 skills-lock.json
 .worktrees/
 tests/level2/.runs/
