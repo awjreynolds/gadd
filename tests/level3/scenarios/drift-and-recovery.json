@@ -1,0 +1,26 @@
+{
+  "id": "drift-and-recovery",
+  "name": "Drift and recovery",
+  "adapter": "scripted",
+  "tracker": "local",
+  "seed_files": {
+    "tracker/issues/1.json": "{\n  \"number\": 1,\n  \"role\": \"Child\",\n  \"title\": \"Child: Normalize product layer names\",\n  \"body\": \"Human edited this issue after GADD projection.\",\n  \"labels\": [\"human-edited\"],\n  \"state\": \"open\"\n}\n"
+  },
+  "steps": [
+    {
+      "name": "detect-drift",
+      "prompt": "Update the managed projection for tracker issue 1 without overwriting human edits.",
+      "scripted_response": "Drift detected on issue body and labels. Reconciliation required before update: human must choose whether to preserve the external edit, reapply the managed projection, or merge both surfaces.\n",
+      "scripted_files": {
+        "gadd/work-items/CAD-PRD-1001/reconciliation.md": "# Reconciliation\n\n## Changed Surface\nIssue body and labels changed after the last managed projection.\n\n## Required Human Decision\nChoose preserve external edit, reapply managed projection, or merge both surfaces.\n\n## Blocked Action\nManaged update is blocked until reconciliation is approved.\n"
+      },
+      "expect": [
+        {"artifact_exists": "gadd/work-items/CAD-PRD-1001/reconciliation.md"},
+        {"transcript_contains": "Drift detected"},
+        {"transcript_contains": "Reconciliation required before update"},
+        {"transcript_contains": "human must choose"},
+        {"transcript_safe": true}
+      ]
+    }
+  ]
+}

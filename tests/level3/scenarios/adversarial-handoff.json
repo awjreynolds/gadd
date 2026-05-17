@@ -1,0 +1,34 @@
+{
+  "id": "adversarial-handoff",
+  "name": "Adversarial handoff",
+  "adapter": "scripted",
+  "tracker": "local",
+  "seed_files": {
+    "tracker/incoming/weak-issue.md": "# Weak external issue\n\nLayer matching is broken. Please fix it.\n"
+  },
+  "steps": [
+    {
+      "name": "repair-handoff",
+      "prompt": "Start from tracker/incoming/weak-issue.md. Repair the GADD handoff or stop with a precise blocker.",
+      "scripted_response": "Repaired weak handoff by writing triage evidence, explicit route decision, and a concise implementation ticket. No hidden conversation context is required.\n",
+      "scripted_files": {
+        "gadd/work-items/BUG-0002-layer-matching/triage.md": "# Triage\n\n## Source\nLocal tracker issue `tracker/incoming/weak-issue.md` reported broken layer matching.\n\n## Reproduction\nRun `npm test` after adding a normalization case for ` Walls ` versus `walls`.\n\n## GitNexus Evidence\nNot required for this scripted local scenario; affected behavior is bounded to `normalizeLayerName` and direct tests.\n\n## Route Decision\nready_for_implementation after adding explicit reproduction and verification expectations.\n\n## Verification\nRun `npm test` and record output in verification.md.\n"
+      },
+      "scripted_issues": [
+        {
+          "role": "Bug",
+          "title": "Bug: CAD layer matching needs explicit normalization handoff",
+          "body": "## Observed Behavior\nIncoming issue only said layer matching is broken.\n\n## Expected Behavior\nTicket now identifies the normalization boundary and verification path.\n\n## Reproduction\nAdd a test comparing ` Walls ` and `walls`, then run `npm test`.\n\n## Route Decision\nready_for_implementation after handoff repair.\n\n## Next Action\nImplement with a failing normalization test first.\n\n## GADD Trace\nRun: scripted\nArtifact: gadd/work-items/BUG-0002-layer-matching/triage.md\n",
+          "labels": ["gadd-l2", "type:bug"]
+        }
+      ],
+      "expect": [
+        {"artifact_exists": "gadd/work-items/BUG-0002-layer-matching/triage.md"},
+        {"artifacts_pass_quality": [{"path": "gadd/work-items/BUG-0002-layer-matching/triage.md", "kind": "triage"}]},
+        {"tickets_pass_quality": true},
+        {"transcript_contains": "No hidden conversation context is required"},
+        {"transcript_safe": true}
+      ]
+    }
+  ]
+}
