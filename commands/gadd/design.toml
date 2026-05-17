@@ -1,9 +1,0 @@
-description = "Create or update an SDD from an approved PRD or approved triage outcome."
-prompt = """
-Run `/gadd:design` using the `gadd-design` Agent Skill.
-
-If the `gadd-design` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

@@ -1,9 +1,0 @@
-description = "Report the next GADD command for one Work Item ledger."
-prompt = """
-Run `/gadd:next` using the `gadd-next` Agent Skill.
-
-If the `gadd-next` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

@@ -11,13 +11,33 @@ triage:
     approved_hash: cad-0001-approved-direct-implementation
 artifacts:
   implementation:
-    status: null
+    status: completed
+    completed_by: codex
+    evidence:
+      - file: cad.js
+        summary: normalizeLayerName now trims and lowercases layer names.
+      - file: cad.test.js
+        summary: Node test coverage proves trimmed lowercase normalization.
   verification:
-    status: null
+    path: verification.md
+    status: passed
+    checks:
+      - command: npm test
+        result: passed
 closure:
-  status: open
+  status: closed
+  verified_at: 2026-05-17T00:00:00Z
+  closed_at: 2026-05-17T00:00:00Z
+  archived_at: null
 execution_context:
-  phase: implementation
-  current_gate: implementation
-  next_command: /gadd:implement CAD-0001
+  phase: closed
+  current_gate: closed
+  next_command: done
   next_human_action: none
+events:
+  - type: implementation_completed
+    summary: Implemented normalizeLayerName lowercase normalization with focused failing-then-passing Node tests.
+  - type: verification_passed
+    summary: npm test passed with 2 tests and 0 failures.
+  - type: work_item_closed
+    summary: Closed local-only Work Item after verification passed.

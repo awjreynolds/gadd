@@ -1,9 +1,0 @@
-description = "Create reviewable Work Item slices from an approved GADD plan."
-prompt = """
-Run `/gadd:decompose` using the `gadd-decompose` Agent Skill.
-
-If the `gadd-decompose` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

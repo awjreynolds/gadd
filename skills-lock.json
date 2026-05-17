@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "skills": {
+    "find-skills": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/find-skills/SKILL.md",
+      "computedHash": "26bee7d823d9b923d1615fa7894351ca9ddda88ead2cc0e6c7c2f3f5c247bc83"
+    },
+    "gadd-approve": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-approve/SKILL.md",
+      "computedHash": "66b46b9abed02a0da5bcaaeb366774575bd8bcb549c97e7404f4542744a6ebeb"
+    },
+    "gadd-archive": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-archive/SKILL.md",
+      "computedHash": "9f8c8048edfc61fa9e14654fd9b863fbca9991ae449180daec6d57f082dcba03"
+    },
+    "gadd-close": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-close/SKILL.md",
+      "computedHash": "5300530b5b3f9e275ccbbd3de7a8065ec1c69d9a047923be67d1ce40c1ee861b"
+    },
+    "gadd-decompose": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-decompose/SKILL.md",
+      "computedHash": "42d208f467e6c0ac75355553267985aad1bb211356924a62c5e67b13d759240e"
+    },
+    "gadd-design": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-design/SKILL.md",
+      "computedHash": "d3639ee422a322e58390f2f493171f07abade876e715d9b0c13eb029734ecb70"
+    },
+    "gadd-elaborate": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-elaborate/SKILL.md",
+      "computedHash": "7f7524cda52ae04c37b013dccedcb3c234e452d1daeac0194a2a77406c0fffb9"
+    },
+    "gadd-implement": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-implement/SKILL.md",
+      "computedHash": "8b7e2b34be2cf529bed60617f60d64121a9bd90c4d512ade3ebeab913abeba7a"
+    },
+    "gadd-next": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-next/SKILL.md",
+      "computedHash": "96012f946abd622feffbdc0096a8f09b32b927db100ca8a6ee180296ae086c12"
+    },
+    "gadd-plan": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-plan/SKILL.md",
+      "computedHash": "e6f12f7735ddcc8c2c4bfd233427da8751e3d52395a028265da9c1797434bbe1"
+    },
+    "gadd-refine": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-refine/SKILL.md",
+      "computedHash": "dc0354819a8146a8765bfc6e02d9352cc43d8898dccda216aeb2973dc76f1168"
+    },
+    "gadd-research": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-research/SKILL.md",
+      "computedHash": "f0f9f7daf349e282bb1c8f7b0297f56a4de0107ef04ca0242cc16279d815baa9"
+    },
+    "gadd-scope": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-scope/SKILL.md",
+      "computedHash": "c7d78a1e34ff5c28af8fe4e6b94c9347c54ba9304626e19f5babc282a0ead0e5"
+    },
+    "gadd-setup": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-setup/SKILL.md",
+      "computedHash": "01116c34d0ee017abac0f58a2a94f48e4f7d2491d0a34188269968269f65d2ee"
+    },
+    "gadd-triage": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-triage/SKILL.md",
+      "computedHash": "3f0c7c54c35d044acca73a986f321abe2f783f8f19f652b550e87264e46f919d"
+    },
+    "gadd-verify": {
+      "source": "awjreynolds/gadd",
+      "sourceType": "github",
+      "skillPath": "skills/gadd-verify/SKILL.md",
+      "computedHash": "29e8857e659e19e05c8fb97c5a81b743387627ed55bdbe7c3d4154698a8124b7"
+    }
+  }
+}

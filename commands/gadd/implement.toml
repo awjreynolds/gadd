@@ -1,9 +1,0 @@
-description = "Implement a ready GADD Work Item with code, tests, docs impact, and evidence."
-prompt = """
-Run `/gadd:implement` using the `gadd-implement` Agent Skill.
-
-If the `gadd-implement` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

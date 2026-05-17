@@ -1,0 +1,21 @@
+schema_version: 1
+work_item:
+  id: CAD-PRD-1001
+  title: CAD shared layer normalization
+  type: product_requirement
+  state: approved
+artifacts:
+  prd:
+    path: prd.md
+    status: approved
+    owning_repo: gadd-cad-live-test
+    related_repositories:
+      - gadd-cad-live-test
+      - gadd-cad-render-test
+closure:
+  status: open
+execution_context:
+  phase: design
+  current_gate: multi_repo_design
+  next_command: /gadd:design CAD-PRD-1001
+  next_human_action: none

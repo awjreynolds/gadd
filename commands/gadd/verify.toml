@@ -1,9 +1,0 @@
-description = "Verify an implemented GADD Work Item for closure readiness."
-prompt = """
-Run `/gadd:verify` using the `gadd-verify` Agent Skill.
-
-If the `gadd-verify` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

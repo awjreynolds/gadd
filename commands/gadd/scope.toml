@@ -1,9 +1,0 @@
-description = "Write PRD scope boundaries for a GADD Product Requirement."
-prompt = """
-Run `/gadd:scope` using the `gadd-scope` Agent Skill.
-
-If the `gadd-scope` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""

@@ -1,0 +1,85 @@
+schema_version: 1
+work_item:
+  id: "{work_item_id}"
+  title: "{title}"
+  type: external_issue_intake
+  state: needs_info
+  route: /gadd:triage {work_item_id}
+  created_at: "{created_at}"
+  updated_at: "{updated_at}"
+external:
+  provider: null
+  kind: null
+  id: null
+  url: null
+  title: null
+  last_read_at: null
+  external_updated_at: null
+  body_hash: null
+  labels:
+    observed: []
+    managed: []
+triage:
+  approved_outcome:
+    status: null
+    boundary_source: null
+    local_path: null
+    external_projection_url: null
+    approved_at: null
+    approved_by: null
+    approved_hash: null
+    summary: null
+  projection:
+    mode: null
+    url: null
+    projected_at: null
+    projected_by: null
+    body_hash: null
+  code_intelligence:
+    provider: gitnexus
+    freshness: unknown
+    indexed_repositories: []
+    summary: null
+    fallback_approved: false
+artifacts:
+  research:
+    path: null
+    status: null
+  prd:
+    path: null
+    status: null
+  sdd:
+    path: null
+    status: null
+  plan:
+    path: null
+    status: null
+  implementation:
+    status: null
+    evidence: {}
+  verification:
+    path: null
+    status: null
+closure:
+  status: open
+  verified_at: null
+  closed_at: null
+  external_closed_at: null
+children: []
+sync:
+  external_body_hash: null
+  external_updated_at: null
+  managed_body_version: null
+execution_context:
+  phase: triage
+  current_gate: triage
+  next_command: /gadd:triage {work_item_id}
+  next_human_action: null
+  next_reason: Work Item is in triage and needs enough evidence to route.
+  approved_artifacts: {}
+  boundaries: {}
+events:
+  - type: work_item_created
+    at: "{created_at}"
+    by: gadd
+    summary: Work Item created for triage.

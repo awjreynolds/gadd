@@ -1,9 +1,0 @@
-description = "Close a verified GADD Work Item or closeable parent roll-up."
-prompt = """
-Run `/gadd:close` using the `gadd-close` Agent Skill.
-
-If the `gadd-close` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
-
-User arguments:
-{{args}}
-"""
