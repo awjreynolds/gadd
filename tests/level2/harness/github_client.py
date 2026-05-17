@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import json
 import os
 import subprocess
+import urllib.parse
 
 
 class GitHubError(Exception):
@@ -60,6 +61,20 @@ class GitHubClient:
         if not isinstance(value, dict):
             raise GitHubError(f"unexpected create issue response for {repo.full_name}")
         return value
+
+    def ensure_label(self, repo: RepoRef, name: str, color: str = "0969da", description: str = "GADD Level 2 test label") -> None:
+        encoded = urllib.parse.quote(name, safe="")
+        try:
+            self.api("GET", f"repos/{repo.full_name}/labels/{encoded}")
+            return
+        except GitHubError:
+            self.api(
+                "POST",
+                f"repos/{repo.full_name}/labels",
+                f"name={name}",
+                f"color={color}",
+                f"description={description}",
+            )
 
     def close_issue(self, repo: RepoRef, number: int, reason: str = "completed") -> dict:
         value = self.api(
