@@ -1,0 +1,39 @@
+id: small-tdd-implementation
+name: Small TDD implementation
+adapter: scripted
+tracker: local
+steps:
+  - name: implement-child
+    prompt: "Implement child work item CAD-0001 with TDD and record verification."
+    scripted_response: "Added failing test, implemented normalizeLayerName, reran npm test, and recorded verification.\n"
+    scripted_files:
+      cad.test.js: |
+        import { normalizeLayerName } from "./cad.js";
+
+        test("normalizes layer names for comparison", () => {
+          expect(normalizeLayerName(" Walls ")).toBe("walls");
+        });
+      cad.js: |
+        export function normalizeLayerName(name) {
+          return name.trim().toLowerCase();
+        }
+      gadd/work-items/CAD-PRD-1001/children/CAD-0001/verification.md: |
+        # Verification
+
+        ## Commands
+        npm test
+
+        ## Output
+        PASS cad.test.js
+
+        ## Evidence
+        Failing test was added before implementation in the agent transcript.
+
+        ## Residual Risk
+        No renderer behavior was changed.
+    expect:
+      - artifact_exists: gadd/work-items/CAD-PRD-1001/children/CAD-0001/verification.md
+      - implementation_changed_files:
+          - cad.js
+          - cad.test.js
+      - verification_recorded: true

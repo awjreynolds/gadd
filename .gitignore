@@ -8,3 +8,4 @@ CLAUDE.md
 skills-lock.json
 .worktrees/
 tests/level2/.runs/
+tests/level3/.runs/

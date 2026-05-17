@@ -1,0 +1,34 @@
+id: approval-gate-stop
+name: Approval gate stop
+adapter: scripted
+tracker: local
+steps:
+  - name: intake
+    prompt: "Use GADD to scope a CAD layer normalization request. Stop when human approval is required."
+    scripted_response: "Created gadd/work-items/CAD-PRD-1001/prd.md and stopped for human approval.\nApproval required before design continues.\n"
+    scripted_files:
+      gadd/work-items/CAD-PRD-1001/ledger.yml: |
+        id: CAD-PRD-1001
+        state: awaiting_prd_approval
+        next_command: /gadd:approve CAD-PRD-1001
+      gadd/work-items/CAD-PRD-1001/prd.md: |
+        # PRD
+
+        ## Problem
+        CAD layer names need consistent comparison.
+
+        ## Scope
+        Normalize layer names for comparison.
+
+        ## Non-Goals
+        No renderer rewrite.
+
+        ## Acceptance Criteria
+        - Layer names are trimmed before comparison.
+
+        ## Approval
+        Human approval is required before design.
+    expect:
+      - approval_gate_requested: true
+      - no_continuation_past_approval: true
+      - artifact_exists: gadd/work-items/CAD-PRD-1001/prd.md

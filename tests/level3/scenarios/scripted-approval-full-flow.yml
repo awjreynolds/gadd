@@ -1,0 +1,79 @@
+id: scripted-approval-full-flow
+name: Scripted approval full flow
+adapter: scripted
+tracker: local
+steps:
+  - name: approved-design
+    prompt: "Approved. Continue to design and planning for CAD layer normalization."
+    scripted_response: "Created SDD and plan. Approval required before decomposition.\n"
+    scripted_files:
+      gadd/work-items/CAD-PRD-1001/sdd.md: |
+        # SDD
+
+        ## Boundary
+        Product repo owns normalizeLayerName behavior.
+
+        ## Affected Modules
+        - cad.js
+
+        ## Tradeoffs
+        Keep normalization local to comparison logic.
+
+        ## Verification
+        Run npm test.
+      gadd/work-items/CAD-PRD-1001/plan.md: |
+        # Plan
+
+        ## Slice 1
+        Add failing tests for whitespace and case normalization.
+
+        ## Slice 2
+        Implement normalizeLayerName changes.
+    expect:
+      - artifact_exists: gadd/work-items/CAD-PRD-1001/sdd.md
+      - artifact_exists: gadd/work-items/CAD-PRD-1001/plan.md
+  - name: approved-decompose
+    prompt: "Approved. Decompose into child work."
+    scripted_response: "Created child work item and local tracker issue.\n"
+    scripted_files:
+      gadd/work-items/CAD-PRD-1001/children/CAD-0001/ledger.yml: |
+        id: CAD-0001
+        state: ready_for_implementation
+        next_command: /gadd:implement CAD-0001
+      gadd/work-items/CAD-PRD-1001/children/CAD-0001/work-item.md: |
+        # Child Work Item
+
+        ## Boundary
+        Implement product repo normalization only.
+
+        ## Acceptance Criteria
+        - Whitespace is trimmed.
+        - Case is normalized.
+
+        ## Verification
+        Run npm test.
+    scripted_issues:
+      - role: Child
+        title: "Child: Normalize product layer names"
+        body: |
+          ## Boundary
+          Implement product repo normalization only.
+
+          ## Acceptance Criteria
+          Whitespace is trimmed and case is normalized.
+
+          ## Verification
+          Run `npm test`.
+
+          ## Next Action
+          Implement with a failing test first.
+
+          ## GADD Trace
+          Run: scripted
+          Artifact: gadd/work-items/CAD-PRD-1001/children/CAD-0001/work-item.md
+        labels:
+          - gadd-l2
+          - type:task
+    expect:
+      - artifact_exists: gadd/work-items/CAD-PRD-1001/children/CAD-0001/work-item.md
+      - tickets_pass_quality: true
