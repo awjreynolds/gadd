@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Design"
+  short_description: "Design from a PRD or triage outcome"
+  default_prompt: "Use $gadd-design to create an SDD for Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

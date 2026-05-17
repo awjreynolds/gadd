@@ -1,0 +1,23 @@
+schema_version: 1
+work_item:
+  id: CAD-0001
+  title: Normalize CAD layer names for case-insensitive comparison
+  type: bug_fix
+  state: ready_for_implementation
+triage:
+  approved_outcome:
+    status: approved
+    boundary_source: triage.md
+    approved_hash: cad-0001-approved-direct-implementation
+artifacts:
+  implementation:
+    status: null
+  verification:
+    status: null
+closure:
+  status: open
+execution_context:
+  phase: implementation
+  current_gate: implementation
+  next_command: /gadd:implement CAD-0001
+  next_human_action: none

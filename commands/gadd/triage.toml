@@ -1,0 +1,9 @@
+description = "Normalize unclassified GADD intake, including free-form prompts, and route the Work Item."
+prompt = """
+Run `/gadd:triage` using the `gadd-triage` Agent Skill.
+
+If the `gadd-triage` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

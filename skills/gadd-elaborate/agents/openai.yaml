@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Elaborate"
+  short_description: "Elaborate a Product Requirement Work Item"
+  default_prompt: "Use $gadd-elaborate to elaborate Product Requirement Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

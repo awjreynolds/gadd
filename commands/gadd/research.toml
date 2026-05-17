@@ -1,0 +1,9 @@
+description = "Gather PM-grade research inputs before GADD scoping."
+prompt = """
+Run `/gadd:research` using the `gadd-research` Agent Skill.
+
+If the `gadd-research` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

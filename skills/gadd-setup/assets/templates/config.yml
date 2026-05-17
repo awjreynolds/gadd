@@ -1,0 +1,62 @@
+workflow:
+  root: gadd/work-items
+  draft_directory: gadd/work-items/_drafts
+  archive_directory: gadd/work-items/_archive
+  mode: local
+  local_id_prefix: GADD
+
+tracker:
+  # provider values:
+  # - local: repo-local ledger only
+  # - github: GitHub-first managed projections for issues and PR review
+  # Linear and Jira are follow-on collaboration surfaces, not MVP providers.
+  provider: local
+  repo: null
+  project: null
+  default_branch: null
+
+artifacts:
+  root: gadd/work-items
+
+code_intelligence:
+  preferred_tool: gitnexus
+  required_for_triage: true
+  required_for_routes:
+    - ready_for_implementation
+    - needs_sdd
+  fallback_requires_human_approval: true
+  related_repositories: []
+  freshness_policy:
+    warn_when_stale: true
+    block_when_stale_for_triage: true
+
+labels:
+  triage:
+    needs_info: gadd:needs-info
+    ready_for_implementation: gadd:ready-for-implementation
+    needs_sdd: gadd:needs-sdd
+    needs_prd: gadd:needs-prd
+    blocked_on_human_decision: gadd:blocked-human
+  types:
+    bug_fix: type:bug
+    task: type:task
+    engineering_change: type:engineering-change
+    product_requirement: type:product-requirement
+
+branches:
+  prd: gadd/prd/{work_item_id}
+  sdd_plan: gadd/sdd-plan/{work_item_id}
+  implementation: gadd/impl/{work_item_id}
+
+prs:
+  prd_title: "PRD: {title}"
+  sdd_plan_title: "SDD + Plan: {title}"
+  implementation_title: "{title}"
+
+renderer:
+  plan_html: true
+
+adr:
+  directory: docs/adr
+  update_policy: immutable_superseded
+  filename_style: dated_slug

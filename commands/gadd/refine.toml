@@ -1,0 +1,9 @@
+description = "Prepare a GADD PRD for engineering design handoff."
+prompt = """
+Run `/gadd:refine` using the `gadd-refine` Agent Skill.
+
+If the `gadd-refine` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Triage"
+  short_description: "Normalize intake and route Work Items"
+  default_prompt: "Use $gadd-triage to triage a free-form prompt, external issue, bug, task, or ambiguous request."
+
+policy:
+  allow_implicit_invocation: true

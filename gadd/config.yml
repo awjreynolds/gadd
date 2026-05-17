@@ -1,0 +1,7 @@
+schema_version: 1
+work_items:
+  directory: gadd/work-items
+  archive_directory: gadd/work-items/_archive
+external_tracker:
+  mode: none
+  reason: Live test avoids GitHub API mutations because gh auth token is invalid; SSH push is used only for repository publication.

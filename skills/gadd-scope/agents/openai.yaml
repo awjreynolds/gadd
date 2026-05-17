@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Scope"
+  short_description: "Scope a Product Requirement Work Item"
+  default_prompt: "Use $gadd-scope to scope Product Requirement Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

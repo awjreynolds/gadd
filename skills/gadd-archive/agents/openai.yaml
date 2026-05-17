@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Archive"
+  short_description: "Archive closed Work Item files"
+  default_prompt: "Use $gadd-archive to archive Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Close"
+  short_description: "Close a verified Work Item"
+  default_prompt: "Use $gadd-close to close Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

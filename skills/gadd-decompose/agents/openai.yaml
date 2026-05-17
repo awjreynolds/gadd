@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Decompose"
+  short_description: "Create reviewable Work Item slices"
+  default_prompt: "Use $gadd-decompose to decompose Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

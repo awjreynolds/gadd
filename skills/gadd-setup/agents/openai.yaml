@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Setup"
+  short_description: "Bootstrap GADD local ledger"
+  default_prompt: "Use $gadd-setup to run /gadd:setup for this repository."
+
+policy:
+  allow_implicit_invocation: true

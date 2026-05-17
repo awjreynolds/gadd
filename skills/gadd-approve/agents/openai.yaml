@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Approve"
+  short_description: "Approve a PRD, SDD, or plan gate"
+  default_prompt: "Use $gadd-approve to approve the active gate for Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,9 @@
+description = "Bootstrap GADD in the current repository."
+prompt = """
+Run `/gadd:setup` using the `gadd-setup` Agent Skill.
+
+If the `gadd-setup` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""

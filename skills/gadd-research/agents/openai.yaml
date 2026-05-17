@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Research"
+  short_description: "Gather PM-grade inputs before scope"
+  default_prompt: "Use $gadd-research to run /gadd:research before scoping."
+
+policy:
+  allow_implicit_invocation: true

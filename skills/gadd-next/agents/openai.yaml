@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Next"
+  short_description: "Report the next action for a Work Item"
+  default_prompt: "Use $gadd-next to inspect Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

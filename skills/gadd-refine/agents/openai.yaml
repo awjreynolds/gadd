@@ -1,0 +1,7 @@
+interface:
+  display_name: "GADD Refine"
+  short_description: "Refine a Product Requirement Work Item"
+  default_prompt: "Use $gadd-refine to refine Product Requirement Work Item GADD-123."
+
+policy:
+  allow_implicit_invocation: true

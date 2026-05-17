@@ -1,0 +1,9 @@
+description = "Approve a GADD PRD, SDD, or plan gate from ledger state."
+prompt = """
+Run `/gadd:approve` using the `gadd-approve` Agent Skill.
+
+If the `gadd-approve` skill is available, activate it and follow its `SKILL.md` exactly. Treat the skill as canonical; this TOML file is only a command router.
+
+User arguments:
+{{args}}
+"""
