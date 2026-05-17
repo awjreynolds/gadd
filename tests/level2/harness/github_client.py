@@ -28,7 +28,7 @@ class RepoRef:
 
 
 class GitHubClient:
-    def __init__(self, token: str):
+    def __init__(self, token: str | None = None):
         self.token = token
 
     def api(self, method: str, path: str, *fields: str) -> dict | list | None:
@@ -36,7 +36,8 @@ class GitHubClient:
         for field in fields:
             command.extend(["-f", field])
         env = dict(os.environ)
-        env["GH_TOKEN"] = self.token
+        if self.token:
+            env["GH_TOKEN"] = self.token
         result = subprocess.run(command, text=True, capture_output=True, env=env, check=False)
         if result.returncode != 0:
             raise GitHubError(result.stderr.strip() or result.stdout.strip())

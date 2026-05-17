@@ -6,11 +6,14 @@ import argparse
 import os
 import sys
 
-from tests.level2.harness.github_client import RepoRef
+from tests.level2.harness.github_client import GitHubClient, RepoRef
+from tests.level2.harness.ticket_quality import Ticket, evaluate_ticket
 
 
 ROOT = Path(__file__).resolve().parents[3]
 RUNS_DIR = ROOT / "tests" / "level2" / ".runs"
+EXISTING_PRODUCT_ISSUES = (1, 2, 4)
+EXISTING_RENDER_ISSUES = (1,)
 
 
 @dataclass(frozen=True)
@@ -42,14 +45,14 @@ def load_config(env: dict[str, str] | None = None) -> Config:
     repo_value = values.get("GADD_L2_GITHUB_REPO")
     token = values.get("GADD_L2_GITHUB_TOKEN")
     run_id = values.get("GADD_L2_RUN_ID", "gadd-l2-local")
-    if not repo_value or not token:
+    if not repo_value:
         return Config(
             skip_live=True,
             product_repo=None,
             product_repo_path=None,
             render_repo=None,
             render_repo_path=None,
-            token=None,
+            token=token,
             cleanup=cleanup,
             run_id=run_id,
         )
@@ -75,6 +78,52 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def summarize_findings(findings: list[dict]) -> str:
+    count = len(findings)
+    if count == 0:
+        return "0 quality findings"
+    if count == 1:
+        return "1 quality finding"
+    return f"{count} quality findings"
+
+
+def _ticket_from_issue(issue: dict, role: str, gitnexus_available: bool) -> Ticket:
+    labels = [label["name"] if isinstance(label, dict) else str(label) for label in issue.get("labels", [])]
+    comments = [comment.get("body", "") for comment in issue.get("comments", [])]
+    return Ticket(
+        role=role,
+        title=issue.get("title", ""),
+        body=issue.get("body") or "",
+        state=issue.get("state", "open"),
+        labels=labels,
+        comments=comments,
+        gitnexus_available=gitnexus_available,
+    )
+
+
+def audit_existing(config: Config, client: GitHubClient) -> list[dict]:
+    if config.product_repo is None:
+        return []
+
+    findings: list[dict] = []
+    role_by_product_issue = {1: "PRD", 2: "SDD", 4: "Bug"}
+    for number in EXISTING_PRODUCT_ISSUES:
+        issue = client.get_issue(config.product_repo, number)
+        issue["comments"] = client.list_comments(config.product_repo, number)
+        ticket = _ticket_from_issue(issue, role_by_product_issue[number], gitnexus_available=True)
+        for finding in evaluate_ticket(ticket):
+            findings.append({"target": f"{config.product_repo.full_name}#{number}", "message": finding.message})
+
+    if config.render_repo:
+        for number in EXISTING_RENDER_ISSUES:
+            issue = client.get_issue(config.render_repo, number)
+            issue["comments"] = client.list_comments(config.render_repo, number)
+            ticket = _ticket_from_issue(issue, "SDD", gitnexus_available=False)
+            for finding in evaluate_ticket(ticket):
+                findings.append({"target": f"{config.render_repo.full_name}#{number}", "message": finding.message})
+    return findings
+
+
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv or sys.argv[1:])
     try:
@@ -83,8 +132,17 @@ def main(argv: list[str] | None = None) -> int:
         print(str(error), file=sys.stderr)
         return 2
     if config.skip_live:
-        message = "Skipping Level 2 GitHub tests: set GADD_L2_GITHUB_REPO and GADD_L2_GITHUB_TOKEN to run live checks."
+        message = "Skipping Level 2 GitHub tests: set GADD_L2_GITHUB_REPO to run live checks."
         print(message)
         return 1 if args.strict else 0
+
+    client = GitHubClient(config.token)
+    if args.audit_existing:
+        findings = audit_existing(config, client)
+        for finding in findings:
+            print(f"{finding['target']}: {finding['message']}", file=sys.stderr)
+        print(summarize_findings(findings))
+        return 1 if findings else 0
+
     print(f"Level 2 GitHub config loaded for {config.product_repo.full_name}; run_id={config.run_id}")
     return 0
