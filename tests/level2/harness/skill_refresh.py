@@ -14,20 +14,26 @@ DEFAULT_SANDBOXES = (
 )
 
 
-def commands_for(sandboxes: tuple[Path, ...]) -> list[list[str]]:
-    commands = [["git", "push"]]
+def commands_for(sandboxes: tuple[Path, ...]) -> list[tuple[Path | None, list[str]]]:
+    commands: list[tuple[Path | None, list[str]]] = [(None, ["git", "push"])]
     for sandbox in sandboxes:
-        commands.append(["npx", "skills", "add", "awjreynolds/gadd", "--all", "-y", "--cwd", str(sandbox)])
+        commands.append((sandbox, ["npx", "skills", "add", "awjreynolds/gadd", "--all", "-y"]))
     return commands
 
 
-def format_commands(commands: list[list[str]]) -> str:
-    return "\n".join(" ".join(command) for command in commands)
+def format_commands(commands: list[tuple[Path | None, list[str]]]) -> str:
+    lines = []
+    for cwd, command in commands:
+        rendered = " ".join(command)
+        if cwd:
+            rendered = f"cd {cwd} && {rendered}"
+        lines.append(rendered)
+    return "\n".join(lines)
 
 
-def run_commands(commands: list[list[str]]) -> int:
-    for command in commands:
-        result = subprocess.run(command, check=False)
+def run_commands(commands: list[tuple[Path | None, list[str]]]) -> int:
+    for cwd, command in commands:
+        result = subprocess.run(command, cwd=cwd, check=False)
         if result.returncode != 0:
             return result.returncode
     return 0
