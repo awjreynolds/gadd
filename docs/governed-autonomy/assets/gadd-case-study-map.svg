@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1220" height="500" viewBox="0 0 1220 500" role="img" aria-labelledby="title desc">
   <title id="title">GADD case study map</title>
   <desc id="desc">Governed Autonomy principle maps to role boundaries, scope boundaries, evidence, approval, and canonical state, which map to GADD expressions.</desc>
+  <rect width="100%" height="100%" fill="#fff"/>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#333"/>

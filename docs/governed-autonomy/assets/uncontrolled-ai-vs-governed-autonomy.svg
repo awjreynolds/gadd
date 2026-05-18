@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
   <title id="title">Uncontrolled AI compared with Governed Autonomy</title>
   <desc id="desc">Uncontrolled AI has chat-held state, role collapse, evidence drift, tool sprawl, and accountability gaps. Governed Autonomy has canonical state, explicit roles and decision rights, required evidence, projection surfaces, and named human accountability.</desc>
+  <rect width="100%" height="100%" fill="#fff"/>
   <defs>
     <style>
       .group{fill:#fff;stroke:#333;stroke-width:2}

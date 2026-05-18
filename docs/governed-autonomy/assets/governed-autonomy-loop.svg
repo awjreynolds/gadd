@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="360" viewBox="0 0 1160 360" role="img" aria-labelledby="title desc">
   <title id="title">Governed Autonomy loop</title>
   <desc id="desc">Map the process, define delegation boundary, run autonomous execution, capture evidence, decide whether a boundary was reached, then measure outcome or escalate and approve.</desc>
+  <rect width="100%" height="100%" fill="#fff"/>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
