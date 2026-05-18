@@ -92,6 +92,8 @@ Governed Autonomy is a business-process discipline for the AI transformation era
 
 It starts from a simple idea: organizations can delegate more work to autonomous systems only when accountability, authority, scope, evidence, escalation, approval, and closure boundaries remain explicit.
 
+Governed Autonomy is not a claim that business process management, Responsible AI, risk management, auditability, or operating model design are new. It is a practical lens for applying those existing disciplines when autonomous systems start performing work inside business processes.
+
 ## ELI5
 
 Governed Autonomy means letting AI or automated systems help do work while making sure people still decide what matters, know what happened, can inspect the evidence, and approve important steps.
@@ -105,6 +107,8 @@ AI transformation is often treated as task automation. That misses the larger ri
 The better question is not "can AI do this task?" The better question is:
 
 > Can this business process safely delegate this step under defined boundaries, with enough evidence, escalation, and approval?
+
+That makes Governed Autonomy a synthesis, not a replacement for existing governance or process-improvement disciplines.
 
 ## The Business Process Is The Unit Of Design
 
@@ -505,7 +509,7 @@ Create `docs/governed-autonomy/references.md` with these initial annotated links
 
 This page collects adjacent standards, principles, research, and market writing that informed the Governed Autonomy documentation.
 
-Governed Autonomy is not presented here as an exclusively owned term. The phrase and related ideas already appear in AI-governance discussions. The distinctive emphasis in this repository is the business process as the unit of design.
+Governed Autonomy is not presented here as an exclusively owned term or a wholly new philosophy. The phrase and related ideas already appear in AI-governance discussions, and its ingredients already exist across business process management, Responsible AI, risk management, auditability, operating model design, and human oversight. The distinctive emphasis in this repository is the business process as the unit of design under AI autonomy pressure.
 
 ## Standards And Principles
 
@@ -536,6 +540,8 @@ Create `docs/governed-autonomy/related-landscape.md` with this structure:
 # Related Landscape
 
 Governed Autonomy sits near several established and emerging disciplines. It should be understood as part of the broader AI transformation and business-process governance landscape, not as a replacement for those disciplines.
+
+The position is deliberately modest: Governed Autonomy is a synthesis lens. It names the practical work of applying existing governance, process, risk, and operating-model disciplines to business processes where autonomous systems are beginning to perform work.
 
 ## Responsible AI
 
@@ -570,6 +576,8 @@ Governed Autonomy uses that language for AI transformation. It does not start wi
 ## Distinction
 
 Governed Autonomy centers the business process as the unit of design. It asks how autonomous systems participate in a process without dissolving human accountability, evidence, escalation, and approval boundaries.
+
+Its useful contribution is not claiming that controls, decision rights, evidence, or escalation are new. Its contribution is making those ideas operational when AI systems can move from recommendation to action inside real processes.
 ```
 
 - [ ] **Step 4: Validate no long copied passages**
@@ -936,7 +944,17 @@ rg -n "Governed Autonomy is.*software|Governed Autonomy.*software-only|GADD defi
 
 Expected: no matches that imply Governed Autonomy is software-only or exclusively owned.
 
-- [ ] **Step 3: Check GADD scope guardrails**
+- [ ] **Step 3: Check synthesis positioning**
+
+Run:
+
+```bash
+rg -n "wholly new|invented Governed Autonomy|replaces Responsible AI|replaces BPM|replaces risk management|replacement for those disciplines" docs/governed-autonomy README.md docs/workflow.md
+```
+
+Expected: no matches for invention or replacement claims. A match for "not as a replacement for those disciplines" in `related-landscape.md` is acceptable.
+
+- [ ] **Step 4: Check GADD scope guardrails**
 
 Run:
 
@@ -946,7 +964,7 @@ rg -n "GADD supports non-software|GADD supports local government|GADD integrates
 
 Expected: no matches.
 
-- [ ] **Step 4: Check references are concise**
+- [ ] **Step 5: Check references are concise**
 
 Run:
 
@@ -956,7 +974,7 @@ wc -w docs/governed-autonomy/references.md docs/governed-autonomy/related-landsc
 
 Expected: both files are concise enough to inspect manually. Review them and confirm no long copied passages appear.
 
-- [ ] **Step 5: Check image references exist**
+- [ ] **Step 6: Check image references exist**
 
 Run:
 
@@ -966,7 +984,7 @@ for f in docs/governed-autonomy/assets/*.svg docs/governed-autonomy/assets/*.mmd
 
 Expected: command exits with status `0`.
 
-- [ ] **Step 6: Run full MVP validation if time permits**
+- [ ] **Step 7: Run full MVP validation if time permits**
 
 Run:
 
@@ -976,7 +994,7 @@ Run:
 
 Expected: validation passes. If it fails for reasons unrelated to docs, record the failure output and do not hide it.
 
-- [ ] **Step 7: Final commit**
+- [ ] **Step 8: Final commit**
 
 If polishing edits were needed, run:
 

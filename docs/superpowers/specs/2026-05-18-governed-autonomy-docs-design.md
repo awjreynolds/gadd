@@ -12,6 +12,8 @@ Its core claim is:
 
 > Organizations can delegate more work to autonomous systems only when human accountability, authority, scope, evidence, escalation, approval, and closure boundaries remain explicit.
 
+Governed Autonomy should be presented as a practical synthesis, not as a claim of invention. It draws from existing disciplines: business process management, business analysis, process improvement, Responsible AI, AI governance, operating model design, risk management, human oversight, auditability, and agentic AI governance. Its useful contribution is the lens it gives organizations under AI autonomy pressure: redesign the business process so autonomous systems can act without dissolving accountability, evidence, escalation, and approval.
+
 GADD is one concrete application of that philosophy to software delivery. The Governed Autonomy docs must therefore explain the general philosophy first, then show GADD as a case study rather than defining Governed Autonomy as software-specific.
 
 The documentation should be accessible enough for an ELI5 reader and serious enough for business analysts, process-improvement practitioners, transformation leads, COOs, CIOs, local-government digital leaders, enterprise buyers, and senior stakeholders evaluating uncontrolled AI business risk.
@@ -173,6 +175,8 @@ It should discuss adjacent areas:
 - Business process improvement.
 - Human oversight and accountability.
 
+This page should be explicit that Governed Autonomy is not trying to replace these disciplines or claim their ideas as new. It is a practical lens for applying them to business processes where autonomous systems are beginning to perform work.
+
 The distinction should be:
 
 > Governed Autonomy centers the business process as the unit of design. It asks how autonomous systems participate in a process without dissolving human accountability, evidence, escalation, and approval boundaries.
@@ -226,6 +230,7 @@ Prefer maintainable diagram sources such as Mermaid or SVG source committed with
 The docs may claim:
 
 - Governed Autonomy is a general business-process philosophy for AI transformation.
+- Governed Autonomy is a synthesis lens that applies existing governance, process, risk, and operating-model disciplines to autonomous systems.
 - GADD is a software-delivery application of Governed Autonomy.
 - The business process, not the industry, is the main unit of analysis.
 - Uncontrolled AI creates business risk when autonomy changes work without accountable process control.
@@ -234,6 +239,7 @@ The docs may claim:
 The docs must not claim:
 
 - GADD supports non-software workflows today.
+- Governed Autonomy is a wholly new invention or replacement for Responsible AI, BPM, operating model design, risk management, or AI governance.
 - Governed Autonomy is an exclusively owned term.
 - GitHub Pages or Wiki is the canonical documentation surface.
 - Jira, Linear, Asana, or government-system integrations are validated beyond the existing maturity model.
