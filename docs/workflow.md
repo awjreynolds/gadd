@@ -12,6 +12,8 @@ This document expands the workflow model summarized in the README. The README is
 
 External trackers are optional review and sync surfaces. They are not canonical GADD state.
 
+GADD is a software-delivery application of [Governed Autonomy](governed-autonomy/README.md). The broader Governed Autonomy docs explain the business-process philosophy, operating model, uncontrolled AI risk patterns, and GADD case study.
+
 GitNexus is the strongly recommended code-intelligence surface when code reality matters. GADD treats GitNexus as advisory evidence, not canonical workflow state. If GitNexus is unavailable, stale, unindexed, or outside the configured related repositories, commands continue with normal repository inspection and record the limitation.
 
 ## Intake And Triage

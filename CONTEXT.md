@@ -1,6 +1,6 @@
 # GADD
 
-Governed Autonomy is the operating philosophy for AI-assisted work that keeps authority, scope, evidence, and approval boundaries explicit. GADD is the software-delivery methodology that applies that philosophy across triage, product scope, engineering design, planning, implementation, verification, and closure.
+Governed Autonomy is the business-process discipline for delegating work to autonomous systems while keeping accountability, authority, scope, evidence, escalation, approval, and closure boundaries explicit. GADD is the software-delivery methodology that applies that philosophy across triage, product scope, engineering design, planning, implementation, verification, and closure.
 
 ## Language
 
