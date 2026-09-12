@@ -1,6 +1,6 @@
 ---
 name: gadd-implement
-description: Run /gadd:implement to execute one ready GADD Work Item or every ready Work Item under an approved boundary, with built-in Test-Driven Development. Use when the user says /gadd:implement, /gadd:implement <work-item-id>, or /gadd:implement ALL, asks to build, code, test, or ship the next approved Work Item, asks to implement an approved plan slice or vertical slice, or asks to work the child Work Items created by /gadd:decompose. Phrasings to recognize include "build the next approved Work Item", "code and test the ready slice", "implement everything that is ready", and "work the decomposed children". This is the Software Engineering lane gate after /gadd:approve and /gadd:decompose; it hands off to /gadd:verify <work-item-id> and does not close or archive Work Items.
+description: Use for /gadd:implement or implementing one ready GADD Work Item or ALL ready items within an approved boundary.
 ---
 
 # /gadd:implement

@@ -1,6 +1,6 @@
 ---
 name: gadd-triage
-description: Run /gadd:triage for unclassified GADD intake. Use when the user says /gadd:triage, provides a free-form work prompt or external issue, reports a bug, asks what to do with an issue, or wants to route a task, bug, engineering change, or ambiguous request into GADD.
+description: Use for /gadd:triage or when the user asks to route unclassified intake into the GADD workflow.
 ---
 
 # /gadd:triage

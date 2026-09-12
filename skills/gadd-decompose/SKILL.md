@@ -1,6 +1,6 @@
 ---
 name: gadd-decompose
-description: Run /gadd:decompose after an approved GADD plan to split it into reviewable child Work Items. Use when the user says /gadd:decompose, asks to split a plan into slices, wants vertical slices created as child Work Items, asks to turn a plan into reviewable slices, or says things like "decompose this plan", "create the child Work Items", "slice the plan for implementation", or "make sub-issues from the plan". This is the post-approval Technical Design step that hands off to /gadd:implement <work-item-id> or /gadd:implement ALL; it does not implement code and does not approve the plan itself.
+description: Use for /gadd:decompose or splitting an approved GADD plan into reviewable child Work Items.
 ---
 
 # /gadd:decompose

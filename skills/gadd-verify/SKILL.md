@@ -1,6 +1,6 @@
 ---
 name: gadd-verify
-description: Run /gadd:verify on one implemented GADD Work Item to check whether it is ready to close. Use when the user says /gadd:verify, asks to verify a Work Item, asks whether a Work Item is ready to close, wants the verification.md report written, or says things like "run the checks", "the PR merged, is this verified?", "confirm this Work Item is done", or "check closure readiness". Verification reads ledger evidence, external implementation PR state, configured checks, and documentation impact, then writes verification.md and updates artifacts.verification plus closure.status. It is not a repository healthcheck and does not perform closure; it hands off to /gadd:close <work-item-id> on pass.
+description: Use for /gadd:verify or checking whether an implemented GADD Work Item is ready for closure.
 ---
 
 # /gadd:verify

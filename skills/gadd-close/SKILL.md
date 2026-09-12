@@ -1,6 +1,6 @@
 ---
 name: gadd-close
-description: Run /gadd:close to wrap up a verified GADD Work Item or apply parent roll-up closure once every child is verified and closeable. Use when the user says /gadd:close, asks to mark a Work Item complete or done, asks to apply human-approved workflow closure after /gadd:verify passed, asks to close the parent after all children are verified, or says things like "this is verified, close it", "roll up the parent", or "we're done with this Work Item". Closure is the Engineering Review gate after /gadd:verify; it does not archive local files (use /gadd:archive) and mutates external trackers only after explicit human confirmation.
+description: Use for /gadd:close or human-approved closure of a verified GADD Work Item, including parent roll-up.
 ---
 
 # /gadd:close
