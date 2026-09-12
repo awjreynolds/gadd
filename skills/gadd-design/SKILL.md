@@ -1,6 +1,6 @@
 ---
 name: gadd-design
-description: Run /gadd:design for a GADD Work Item to create or update the repo-scoped Software Design Document (SDD) from an approved PRD or approved engineering triage outcome. Use when the user says /gadd:design, asks for an SDD, wants to "create or update the SDD", needs an ADR threshold check, asks about architecture for a Work Item, requests the `## Structure` header-file summary, or otherwise needs to translate an approved product or engineering boundary into a repo-scoped technical design.
+description: Use for /gadd:design or creating or revising a GADD SDD from an approved PRD or engineering triage outcome.
 ---
 
 # /gadd:design

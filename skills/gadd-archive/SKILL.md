@@ -1,6 +1,6 @@
 ---
 name: gadd-archive
-description: Run /gadd:archive to move already-closed GADD Work Item packages into the local archive directory after /gadd:close. Use when the user says /gadd:archive, asks for cleanup after close, asks to move closed Work Items out of the active tree, asks to tidy gadd/work-items, or says things like "archive this closed Work Item", "clean up after close", or "shrink the active Work Item list". Archive is optional storage hygiene; it never decides closure readiness and never mutates external trackers.
+description: Use for /gadd:archive or moving already-closed GADD Work Items out of the active local tree after closure.
 ---
 
 # /gadd:archive

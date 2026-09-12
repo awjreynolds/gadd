@@ -1,6 +1,6 @@
 ---
 name: gadd-plan
-description: Run /gadd:plan to create or update the implementation plan for a GADD Work Item with an approved SDD. Use when the user says /gadd:plan, asks for an implementation plan, wants plan.md or plan.html generated, needs slices traced to acceptance criteria, or says things like "plan the work", "draft a plan", "turn the SDD into a plan", or "produce reviewable slices for this design". This is the Technical Design lane gate after /gadd:design; it does not split slices into child Work Items (that is /gadd:decompose) and it must route to /gadd:approve <work-item-id> for plan approval before any decomposition.
+description: Use for /gadd:plan or creating or revising the implementation plan for a GADD Work Item with an approved SDD.
 ---
 
 # /gadd:plan
